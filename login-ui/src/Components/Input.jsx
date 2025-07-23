@@ -2,7 +2,7 @@ function Input(props){
   console.log(props);
   return (
 
-<div className="Login-input"  style={{ display: 'flex', flexDirection: 'column', width: '300px', gap: '12px' }}>
+<div className="Login-input">
 
   <input
   type="text"
@@ -20,7 +20,7 @@ function Input(props){
   required
 />
 
-  <a href="#">Forgot password?</a><br/>
+  <a href="#">Forgot password?</a>
 
 </div>
 
