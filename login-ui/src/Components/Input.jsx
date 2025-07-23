@@ -20,9 +20,7 @@ function Input(props){
   required
 />
 
-  <a href="#">Forgot password?</a>
-
-  <button onClick={() => console.log('Testing')}>Sign-in</button>
+  <a href="#">Forgot password?</a><br/>
 
 </div>
 

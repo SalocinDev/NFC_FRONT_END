@@ -1,7 +1,10 @@
 function Button(props){
   console.log(props);
-  return (<button>{props.name}</button>
+  const {name} = props;
 
+  return (
+
+    <button onClick={() => console.log('Testing')}>{props.name}</button>
   );
 }
 
