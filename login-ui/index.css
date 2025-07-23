@@ -1,9 +1,37 @@
 body{
-background: white;
-font-family: 'NATS', sans-serif;
+ margin: 0;
+  padding: 0;
+  background: white;
+  font-family: 'NATS', sans-serif;
+  overflow: hidden; /* Prevent scrollbars */
+}
+.rectangle {
+  position: relative;
+  width: 300px;
+  height: 245px;
+  background: #101540;
+  border-radius: 16px;
+}
+.rectangle img {
+  position: absolute;
+  top: 45px;      /* Adjust as needed */
+  left: 70px;     /* Adjust as needed */
+  width: 80px;
+  height: auto;
+  transform: scale();
 }
 
+.rectangle-container {
+  /* Example: move and scale the rectangle */
+  transform: translateX(850px) translateY(420px) scale(3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
 Input {
+  
   width: 100%;
   height: 2rem;            
   font-size: 1rem;         
@@ -14,7 +42,6 @@ Input {
 }
 
 .Button-sign-up{
-  
   display: flex;
   flex-direction: column;
   width: 100%;            
@@ -29,6 +56,24 @@ Input {
   background-color: #101540;
   color: white;
   font-weight: bold;
+}
+.Button-sign-up:hover {
+  background: #fff;
+  color: #101540;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: scale(0.1); /* Try 1.2 or lower */
+  transform-origin: center;
+}
+
+.Header {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   
 }
 
@@ -38,5 +83,19 @@ Input {
   flex-direction: column;
   width: 300px;
   gap: 12px;
+}
+
+.Login {
+/* Remove padding-bottom and reduce scale */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 800px;
+  padding-left: 80px;
+  width: 50%;
+  height: 100vh;
+  transform: scale(1.6); /* Try 1.2 or lower */
+  transform-origin: center;
 }
 

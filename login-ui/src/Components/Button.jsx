@@ -3,8 +3,10 @@ function Button(props){
   const {name} = props;
 
   return (
-
-    <button onClick={() => console.log('Testing')} class='Button-sign-up'>{props.name}</button>
+    <div>
+      <button onClick={() => console.log('Testing')} class='Button-sign-up'>{props.name}</button>
+      
+    </div>
   );
 }
 

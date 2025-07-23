@@ -13,11 +13,19 @@ function Login() {
 
     
    <div className="Login">
-      <Logo/>
-      <Header/>
-      <Input/>
-      <Button name="SIGN-UP"/>
-   </div>
+  <div className="rectangle-container">
+    <div className="rectangle"> 
+      <img src="/src/Logo/W-typo.png" alt="Logo" style={{ width: '80px', height: 'auto' }} /> 
+          <span style={{ fontSize: '9px', color: 'white', position: 'absolute', bottom: '115px', left: '53px' }}>New to our platform? Sign Up now.</span>
+      </div>
+  </div>
+ 
+  <Logo src={'/src/Logo/B-lugo.png'} />
+  <Header/>
+  <Input/>
+  <Button name="SIGN-IN"/>
+  <Button name="NFC LOGIN" className="rectangle-btn" />
+</div>
     
   </StrictMode>,
 )

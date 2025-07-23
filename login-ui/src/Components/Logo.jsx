@@ -1,14 +1,9 @@
-import logo from '/src/Logo/B-lugo.png';
 
+import React from 'react';
 
-function Logo(props){
-  console.log(props);
-  
-  return (
-
-<img src={logo} alt="Logo" />
-    
-  );
+function Logo({ src = '/src/Logo/default.png', alt = 'Logo' }) {
+  return <img src={src} alt={alt} />;
 }
+
 
 export default Logo;
