@@ -1,15 +1,14 @@
-function Logo() {
-   
-   return  (
+import logo from '/src/Logo/B-lugo.png';
+
+
+function Logo(props){
+  console.log(props);
   
-    <div className='Header'>
+  return (
 
-    <img src="/login-ui/Logo/B-lugo.png"></img>
-    <h1>Welcome Back !!</h1>
-    <p>Please Enter Your Credentials To Log-in</p>
-
-    </div>
+<img src={logo} alt="Logo" />
     
-   );
+  );
 }
+
 export default Logo;
