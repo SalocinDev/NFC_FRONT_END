@@ -4,7 +4,7 @@ function Button(props){
 
   return (
 
-    <button onClick={() => console.log('Testing')} class='Button-sign-up'>{props.name}</button>
+    <button onClick={() => console.log('Testing')} className='Button-sign-up'>{props.name}</button>
   );
 }
 
