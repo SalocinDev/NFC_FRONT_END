@@ -1,5 +1,7 @@
-function Logo({ src = '/src/Logo/B-lugo.png', alt = 'Logo' }) {
-  return <img src={src} alt={alt} />;
+function Logo() {
+  return (
+    <img src="/src/Logo/B-logo.png" alt="Logo" className="B-logo" />
+  );
 }
 
 export default Logo;
