@@ -1,6 +1,6 @@
 function Whitelogo() {
   return (
-    <img src="/src/Logo/W-logo.png" alt="W-Logo" className="W-logo" />
+    <img src="/src/Logo/W-logo2.png" alt="W-Logo" className="W-logo" />
   );
 }
 
