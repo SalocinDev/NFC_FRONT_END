@@ -3,6 +3,25 @@ background: white;
 font-family: 'NATS', sans-serif;
 }
 
+.Login-container {
+  width: 90%;
+  max-width: 400px;
+  padding: 2rem 1rem;
+  transform: translateX(20%); /* Pushes it right without affecting others */
+}
+
+.Welcome-header{
+  color: #101540;
+}
+
+.Login-input{
+
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  gap: 12px;
+}
+
 Input {
   width: 100%;
   max-width: 21.75rem; /* 348px */
@@ -41,18 +60,6 @@ Input {
   
 }
 
-@media (max-width: 480px) {
-  .Button-sign-up {
-    max-width: 90%;           
-    font-size: 0.95rem;
-    padding: 0.4rem 0.75rem;
-  }
-}
-
-.Welcome-header{
-  color: #101540;
-}
-
 .Button-sign-up:hover{
   cursor: pointer;
   background-color: white;
@@ -60,20 +67,11 @@ Input {
   transition: 0.9s;
 }
 
-.Login-input{
-
-  display: flex;
-  flex-direction: column;
-  width: 300px;
-  gap: 12px;
+@media (max-width: 480px) {
+  .Button-sign-up {
+    max-width: 90%;           
+    font-size: 0.95rem;
+    padding: 0.4rem 0.75rem;
+  }
 }
-
-.Login-container {
-  width: 90%;
-  max-width: 400px;
-  padding: 2rem 1rem;
-  transform: translateX(20%); /* Pushes it right without affecting others */
-}
-
-
 
