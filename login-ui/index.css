@@ -1,18 +1,17 @@
 body{
 background: white;
-font-family: 'NATS', sans-serif;
 }
 
 .Login-container {
   width: 90%;
   max-width: 400px;
   padding: 4rem 2rem;
-  transform: translateX(75%); /* Pushes it right without affecting others */
+  transform: translateX(75%); 
   position: fixed;
 }
 
 .B-logo{
-  transform: scale(1); /* Increase to 120% */
+  transform: scale(1); 
   transform-origin: center;
   position: relative;
   top: 50px;
@@ -20,7 +19,7 @@ font-family: 'NATS', sans-serif;
 }
 
 .W-logo{
-  transform: scale(1.3); /* Increase to 120% */
+  transform: scale(1.3); 
   transform-origin: center;
   position: relative;
   top: -5vw;
@@ -66,6 +65,7 @@ Input, .Button-sign-in, .Nfc-sign-in, .Button-sign-up{
   border-radius: 0.75rem;
   border: 2px solid #727374;
   box-sizing: border-box;
+  margin-bottom: 2px;
 }
 
 @media (max-width: 480px) {
