@@ -1,0 +1,20 @@
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+    }
+
+    .curvedRectangle {
+      width: 50vw;                
+      height: 100vh;              
+      background-color: #0d1046;  
+      border-top-right-radius: 40px;
+      border-bottom-right-radius: 40px;
+    }
+
+    @media (max-width: 768px) {
+      .curvedRectangle {
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+      }
+    }

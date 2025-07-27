@@ -1,12 +1,14 @@
-import Button from '../Components/Button.jsx';
-import Logo from '../Components/Logo.jsx';
-import Whitelogo from '../Components/Whitelogo.jsx';
+import classes from '/src/CSS-Folder/Dashboard.module.css';
 
 function Dashboard() {
   return (
-    <div className='Dashboard'>
-      
+
+    <div className={classes.body}>
+      <div class={classes.curvedRectangle}>
+        
+      </div>
     </div>
+
   );
 }
 
