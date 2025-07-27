@@ -18,7 +18,7 @@ background: white;
 }
 
 .W-logo{
-  transform: scale(1.3); 
+  transform: scale(1.7); 
   top: -5vw;
 }
 
@@ -190,4 +190,8 @@ Input, .Button-sign-in, .Nfc-sign-in, .Button-sign-up{
 
   margin: rem 100;
   font-size: 1.5rem;
+}
+
+.signUp-container{
+  margin-top: 4rem;
 }

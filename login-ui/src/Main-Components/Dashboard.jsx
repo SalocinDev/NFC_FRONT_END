@@ -1,11 +1,17 @@
 import classes from '/src/CSS-Folder/Dashboard.module.css';
+import Whitelogo from '../Components/Whitelogo.jsx';
 
 function Dashboard() {
   return (
 
-    <div className={classes.body}>
-      <div class={classes.curvedRectangle}>
-        
+     <div className={classes.body}>
+      <div className={classes.curvedRectangle}>
+        <div className={classes.content}>
+          <Whitelogo />
+          <p className={classes.tagline}>
+            "Your premier digital library for borrowing and reading books"
+          </p>
+        </div>
       </div>
     </div>
 

@@ -10,9 +10,10 @@ function App() {
          <div className="Right-content">
 
          <Whitelogo />
+         <div className='signUp-container'>
          <p>New to our platform? Sign up now.</p>
          <Button name="SIGN UP" use="Button-sign-up"/>
-
+         </div>
          </div>
        </div>
 
