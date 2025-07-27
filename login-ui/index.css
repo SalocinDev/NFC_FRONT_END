@@ -15,15 +15,12 @@ background: white;
   transform-origin: center;
   position: relative;
   top: 50px;
-  
 }
 
 .W-logo{
   transform: scale(1.3); 
-  transform-origin: center;
-  position: relative;
+
   top: -5vw;
-  
 }
 
 .Welcome-header{
