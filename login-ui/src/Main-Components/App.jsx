@@ -1,29 +1,30 @@
 import Button from '../Components/Button.jsx';
 import Logo from '../Components/Logo.jsx';
 import Whitelogo from '../Components/Whitelogo.jsx';
+import { useNavigate } from 'react-router-dom';
+import { handleLoginClick } from '../Services/LoginService.js';
 
 function App() {
+  const navigate = useNavigate();
   return (
     <div className='App'>
       {/* Right side rectangle background */}
       <div className="Right-rectangle">
-         <div className="Right-content">
-
-         <Whitelogo />
-         <div className='signUp-container'>
-         <p>New to our platform? Sign up now.</p>
-         <Button name="SIGN UP" use="Button-sign-up"/>
-         </div>
-         </div>
-       </div>
+        <div className="Right-content">
+          <Whitelogo />
+          <div className='signUp-container'>
+            <p>New to our platform? Sign up now.</p>
+            <Button name="SIGN UP" use="Button-sign-up" />
+          </div>
+        </div>
+      </div>
 
       {/* Main login form container */}
       <div className="Login-container">
-
         <div className='Header'>
-            <Logo />
-            <h1 className="Welcome-header">Welcome Back !!</h1>
-            <p className='Credentials'>Please Enter Your Credentials To Log-in</p>
+          <Logo />
+          <h1 className="Welcome-header">Welcome Back !!</h1>
+          <p className='Credentials'>Please Enter Your Credentials To Log-in</p>
         </div>
 
         <div className="Login-input">
@@ -34,9 +35,8 @@ function App() {
             placeholder="Username"
             required
           />
-
           <input
-            type="text"
+            type="password"
             id="password"
             name="password"
             placeholder="Password"
@@ -45,7 +45,7 @@ function App() {
         </div>
 
         <a href="#" className='Forgot-password'>Forgot password?</a>
-        <Button name="SIGN-IN" use="Button-sign-in" />
+        <Button name="SIGN-IN" use="Button-sign-in" onClick={() => handleLoginClick(navigate)} />
 
         <div className="Line-container">
           <div className="Line Left"></div>
