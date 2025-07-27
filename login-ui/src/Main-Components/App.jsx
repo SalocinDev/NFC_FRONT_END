@@ -1,10 +1,10 @@
-import Button from './Components/Button.jsx';
-import Logo from './Components/Logo.jsx';
-import Whitelogo from './Components/Whitelogo.jsx';
+import Button from '../Components/Button.jsx';
+import Logo from '../Components/Logo.jsx';
+import Whitelogo from '../Components/Whitelogo.jsx';
 
 function App() {
   return (
-    <>
+    <div className='App'>
       {/* Right side rectangle background */}
       <div className="Right-rectangle">
          <div className="Right-content">
@@ -18,10 +18,11 @@ function App() {
 
       {/* Main login form container */}
       <div className="Login-container">
+
         <div className='Header'>
-          <Logo />
-          <h1 className="Welcome-header">Welcome Back !!</h1>
-          <p className='Credentials'>Please Enter Your Credentials To Log-in</p>
+            <Logo />
+            <h1 className="Welcome-header">Welcome Back !!</h1>
+            <p className='Credentials'>Please Enter Your Credentials To Log-in</p>
         </div>
 
         <div className="Login-input">
@@ -53,7 +54,7 @@ function App() {
 
         <Button name="LOGIN WITH NFC" use="Nfc-sign-in" />
       </div>
-    </>
+    </div>
   );
 }
 
