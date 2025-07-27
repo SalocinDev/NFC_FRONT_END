@@ -10,6 +10,22 @@ background: white;
   margin-top: 5vw;
 }
 
+@media (max-width: 1024px) {
+  .login-container {
+    top: 10%;
+    left: 5%;
+  }
+}
+
+@media (max-width: 768px) {
+  .login-container {
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+  }
+}
+
 .B-logo{
   transform: scale(1); 
   transform-origin: center;
@@ -166,7 +182,7 @@ Input, .Button-sign-in, .Nfc-sign-in, .Button-sign-up{
 }
 
 .Right-rectangle {
-  width: 50vw;
+  width: 100vh;
   height: 100vh;
   background-color: #101540;
   position: fixed;
@@ -183,6 +199,7 @@ Input, .Button-sign-in, .Nfc-sign-in, .Button-sign-up{
 
 .Right-content {
   text-align: center;
+  padding: 2rem;
   color: white;
 }
 
