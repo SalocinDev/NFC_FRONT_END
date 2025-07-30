@@ -1,5 +1,4 @@
 import classes from '/src/CSS-Folder/Dashboard.module.css';
-import Whitelogo from '../Components/Whitelogo.jsx';
 
 function Dashboard() {
   return (

@@ -1,0 +1,6 @@
+.Bluelogo{
+  transform: scale(1); 
+  transform-origin: center;
+  position: relative;
+  top: 50px;
+}
