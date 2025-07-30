@@ -18,7 +18,7 @@ function App() {
             </div>
           </div>
         </div>
-
+    
         <div className={classes.LoginContainer}>
       
         <div className={classes.Header}>
@@ -45,6 +45,7 @@ function App() {
 
         <Button name="LOGIN WITH NFC" use="NfcSignIn" />
       </div>
+    
     </div>
   );
 }

@@ -15,16 +15,19 @@ function Dashboard() {
       </div>
 
     <div className={classes.container}>
-      <button className={classes.backButton} onClick={() => navigate(-1)}>BACK</button>
+      <Button name="Back" use="BackButton" />
 
       <Blogo />
 
       <h1 className={classes.title}>Forgot Password</h1>
       <p className={classes.subtitle}>Please enter your username</p>
 
-      <Input placeholder="Username" name="username" id="username" />
-      <Button name="Reset Password" use="ResetButton" />
+       
 
+      <Input placeholder="Username" name="username" id="username" />
+      <Button name="RESET PASSWORD" use="ButtonReset" />
+      
+      
     </div>
 
     </div>
