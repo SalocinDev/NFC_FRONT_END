@@ -1,4 +1,4 @@
-.Button-sign-in, .Nfc-sign-in, .Button-sign-up{
+.ButtonSignIn, .NfcSignIn, .ButtonSignUp, .ResetButton{
   width: 100%;
   max-width: 25.75rem;
   height: 4rem;
@@ -10,7 +10,7 @@
   margin-bottom: 2px;
 }
 
-.Button-sign-in{
+.ButtonSignIn{
   background-color: #101540;
   border-style: solid;
   border-color: #101540;
@@ -18,7 +18,7 @@
 
 }
 
-.Button-sign-in:hover{
+.ButtonSignIn:hover{
   cursor: pointer;
   background-color: lightblue;
   color: white;
@@ -26,21 +26,21 @@
 }
 
 @media (max-width: 480px) {
-  .Button-sign-in {
+  .ButtonSignIn {
     max-width: 90%;           
     font-size: 0.95rem;
     padding: 0.4rem 0.75rem;
   }
 }
 
-.Button-sign-up{
+.ButtonSignUp{
   background-color: transparent;
   border-style: solid;
   border-color: white;
   color: white;
 }
 
-.Nfc-sign-in{
+.NfcSignIn{
   background-color: #222D8A;
   border-style: solid;
   border-color: #222D8A;

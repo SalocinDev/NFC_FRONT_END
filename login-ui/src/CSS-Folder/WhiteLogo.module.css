@@ -1,6 +1,4 @@
-.WhiteLogo {
-  transform: scale(1.7);
-  position: relative; /* or absolute depending on layout */
+.WhiteLogo{
+  transform: scale(1.7); 
   top: -5vw;
-  display: block; /* optional but often helps with spacing */
 }
