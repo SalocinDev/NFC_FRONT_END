@@ -1,26 +1,204 @@
 body{
 background: white;
+font-family: 'NATS', sans-serif;
 }
 
-a{
-  text-decoration: none;
+.Login-container {
+  width: 90%;
+  max-width: 400px;
+  padding: 4rem 2rem;
+  transform: translateX(75%); /* Pushes it right without affecting others */
+  position: fixed;
+}
+
+.B-logo{
+  transform: scale(1.3); /* Increase to 120% */
+  transform-origin: center;
+  position: relative;
+  top: 50px;
+  padding-bottom: 50px;
+}
+
+.W-logo{
+  transform: scale(1.6); /* Increase to 120% */
+  transform-origin: center;
+  position: relative;
+  top: -5vw;
+  
+}
+
+.Welcome-header{
   color: #101540;
+  font-size: 3em;  /* Resize the text */
+  font-family: 'Montserrat';
+  font-weight: bold;
+  margin-bottom: 16px;
+  text-align: center;
 }
 
-a:hover{
-  color: lightblue;
+.Header{
+  text-align: center;
+  position: relative;
+  margin-top: 30px;
+}
+
+.Credentials{
+  color: #101540;
+  font-size: 20px;
+  text-align: center;
+}
+
+.Login-input{
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;  /* ✅ pushes children to the right */
+  gap: 20px;
+  
+}
+
+Input, .Button-sign-in, .Nfc-sign-in, .Button-sign-up{
+  width: 100%;
+  max-width: 25.75rem;
+  height: 4rem;
+  font-size: 1.5rem;
+  padding: 1rem 1.5rem;
+  border-radius: 0.75rem;
+  border: 2px solid #727374;
+  box-sizing: border-box;
+}
+
+@media (max-width: 480px) {
+  Input {
+    max-width: 90%;           
+    font-size: 0.75rem;
+    padding: 0.4rem 0.75rem;
+  }
+}
+
+.Button-sign-in{
+  background-color: #101540;
+  border-style: solid;
+  border-color: #101540;
+  color: white;
+
+}
+
+.Button-sign-in:hover{
   cursor: pointer;
+  background-color: lightblue;
+  color: white;
+  transition: 0.9s;
 }
 
+@media (max-width: 480px) {
+  .Button-sign-in {
+    max-width: 90%;           
+    font-size: 0.95rem;
+    padding: 0.4rem 0.75rem;
+  }
+}
 
+.Button-sign-up{
+  background-color: transparent;
+  border-style: solid;
+  border-color: white;
+  color: white;
+}
 
+.Line-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 400px; /* optional, for better layout */
+  margin: 10px auto;
+}
 
+.Line {
+  flex: 1;
+  height: 2px;
+}
 
+.Left {
+  background: linear-gradient(to right, transparent, black);
+}
 
+.Right {
+  background: linear-gradient(to left, transparent, black);
+}
 
+.Text {
+  margin: 0 10px;
+  font-size: 2rem;
+  color: black;
+  white-space: nowrap;
+}
 
+.Nfc-sign-in{
+  background-color: #222D8A;
+  border-style: solid;
+  border-color: #222D8A;
+  color: white;
+}
 
+/*Anything below this is not done*/
 
+.Right-rectangle {
+  width: 40vw;                        /* Half the screen */
+  height: 100vh;                      /* Full height */
+  background-color: #0f1242;          /* Dark blue like your image */
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 0;                         /* Make sure it stays behind */
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+}
 
+@media (max-width: 768px) {
+  .Right-rectangle {
+    width: 100vw;
+    height: 40vh;
+    border-radius: 0;
+    top: auto;
+    bottom: 0;
+    right: 0;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+  }
 
+  .Login-container {
+    transform: translateX(0);
+    left: 5%;
+    right: 5%;
+    width: 90%;
+    max-width: none;
+  }
+}
 
+.Right-rectangle {
+  width: 50vw;
+  height: 100vh;
+  background-color: #101540;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: -1;
+  border-top-left-radius: 100px;
+  border-bottom-left-radius: 100px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Right-content {
+  text-align: center;
+  color: white;
+}
+
+.Right-content p {
+
+  margin: rem 100;
+  font-size: 1.5rem;
+}
