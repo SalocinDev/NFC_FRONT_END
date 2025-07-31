@@ -52,6 +52,14 @@
   color: white;
 }
 
+.NfcSignIn:hover{
+  background-color: #222D8A;
+  cursor: pointer;
+  border-style: solid;
+  border-color: #222D8A;
+  color: white;
+}
+
 .ButtonReset{
   background-color: #101540;
   border-style: solid;

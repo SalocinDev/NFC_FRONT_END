@@ -1,7 +1,7 @@
 import { Button, Wlogo, Blogo, Input } from '../Components';
 import classes from '/src/CSS-Folder/App.module.css';
 import { useNavigate } from 'react-router-dom';
-import { handleLoginClick } from '../Services/LoginService.js';
+import { handleLoginClick, handleNFCloginClick } from '../Services/LoginService.js';
 
 function App() {
   const navigate = useNavigate();
@@ -43,7 +43,7 @@ function App() {
           <div className={`${classes.Line} ${classes.Right}`}></div>
         </div>
 
-        <Button name="LOGIN WITH NFC" use="NfcSignIn" />
+        <Button name="LOGIN WITH NFC" use="NfcSignIn" onClick={() => handleNFCloginClick(navigate)}/>
       </div>
     
     </div>
