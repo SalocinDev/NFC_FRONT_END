@@ -1,10 +1,12 @@
-function Button(props){
-  console.log(props);
-  const {name, use} = props;
+import bStyles from '/src/CSS-Folder/Button.module.css';
+
+function Button(props) {
+  const { name, use, onClick } = props;
 
   return (
-
-    <button onClick={() => console.log('Testing')} className={use}>{props.name}</button>
+    <button onClick={onClick} className={bStyles[use]}>
+      {name}
+    </button>
   );
 }
 

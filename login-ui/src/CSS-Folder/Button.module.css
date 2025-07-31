@@ -1,0 +1,77 @@
+.ButtonSignIn, 
+.NfcSignIn, 
+.ButtonSignUp, 
+.ButtonReset{
+  width: 100%;
+  max-width: 25.75rem;
+  height: 4rem;
+  font-size: 1.5rem;
+  padding: 1rem 5rem;
+  border-radius: 0.75rem;
+  border: 2px solid #727374;
+  box-sizing: border-box;
+  margin-bottom: 2px;
+}
+
+.ButtonSignIn:hover, 
+.ButtonSignUp:hover, 
+.ButtonReset:hover{
+  cursor: pointer;
+  background-color: lightblue;
+  color: white;
+  transition: 0.9s;
+}
+
+.ButtonSignIn{
+  background-color: #101540;
+  border-style: solid;
+  border-color: #101540;
+  color: white;
+
+}
+
+@media (max-width: 480px) {
+  .ButtonSignIn {
+    max-width: 90%;           
+    font-size: 0.95rem;
+    padding: 0.4rem 0.75rem;
+  }
+}
+
+.ButtonSignUp{
+  background-color: transparent;
+  border-style: solid;
+  border-color: white;
+  color: white;
+}
+
+.NfcSignIn{
+  background-color: #222D8A;
+  border-style: solid;
+  border-color: #222D8A;
+  color: white;
+}
+
+.ButtonReset{
+  background-color: #101540;
+  border-style: solid;
+  border-color: #101540;
+  color: white;
+  width: 100%;
+  max-width: 27.75rem;
+}
+
+.BackButton {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  padding: 0.4rem 1rem;
+  font-weight: bold;
+  border: 2px solid 101540;
+  border-style: solid;
+  border-radius: 20px;
+  border-color: #101540;
+  background: white;
+  color: #101540;
+  cursor: pointer;
+}
