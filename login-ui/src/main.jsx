@@ -3,12 +3,14 @@ import { createRoot } from 'react-dom/client'
 import '/index.css'
 import App from './Main-Components/App.jsx'
 import Dashboard from './Main-Components/Dashboard.jsx'
+import NfcPage from './Main-Components/NfcPage.jsx'
 import NotFoundPage from './Components/NotFoundPage.jsx'
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 
 const router = createBrowserRouter([
   {path: "/", element: <App/>},
   {path: "/Dashboard", element: <Dashboard/>},
+  {path: "/NfcPage", element: <NfcPage/>},
   {path: "*", element: <NotFoundPage/>},
 ]);
 

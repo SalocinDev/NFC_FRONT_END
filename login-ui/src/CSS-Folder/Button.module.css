@@ -1,7 +1,9 @@
 .ButtonSignIn, 
 .NfcSignIn, 
 .ButtonSignUp, 
-.ButtonReset{
+.ButtonReset,
+.NfcButtonSignIn,
+.ButtonSignUpBlue{
   width: 100%;
   max-width: 25.75rem;
   height: 4rem;
@@ -15,7 +17,8 @@
 
 .ButtonSignIn:hover, 
 .ButtonSignUp:hover, 
-.ButtonReset:hover{
+.ButtonReset:hover,
+.ButtonSignIn:hover{
   cursor: pointer;
   background-color: lightblue;
   color: white;
@@ -38,7 +41,8 @@
   }
 }
 
-.ButtonSignUp{
+.ButtonSignUp,
+.NfcButtonSignIn{
   background-color: transparent;
   border-style: solid;
   border-color: white;
@@ -82,4 +86,19 @@
   background: white;
   color: #101540;
   cursor: pointer;
+}
+
+.BackButton:hover{
+  background-color: #101540;
+  color: white;
+  cursor: pointer;
+  transition: 0.8s;
+}
+
+.NfcButtonSignIn:hover{
+  cursor: pointer;
+  background-color: white;
+  border-style: solid;
+  transition: 0.8s;
+  color: #101540 ;
 }
