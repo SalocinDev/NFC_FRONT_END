@@ -43,7 +43,7 @@ function App() {
           <div className={`${classes.Line} ${classes.Right}`}></div>
         </div>
 
-        <Button name="LOGIN WITH NFC" use="NfcSignIn" onClick={() => handleNFCloginClick(navigate)}/>
+        <Button name="LOGIN WITH NFC" use="NfcSignIn" onClick={() => navigate("/NfcPage")}/>
       </div>
     
     </div>
