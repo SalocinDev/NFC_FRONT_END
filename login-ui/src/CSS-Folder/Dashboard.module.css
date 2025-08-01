@@ -58,6 +58,7 @@ html,
   }
 }
 
+/*Eto ang aking progress, ako ay titigil*/
 .container {
   width: 90%;
   max-width: 1000px;
@@ -85,5 +86,4 @@ html,
   font-size: 1.2rem;
   color: #101540;
   margin-bottom: 1rem;
-  font-family: 'Montserrat';
 }

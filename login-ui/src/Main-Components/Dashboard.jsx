@@ -15,7 +15,7 @@ function Dashboard() {
       </div>
 
     <div className={classes.container}>
-      <Button name="Back" use="BackButton"/>
+      <Button name="Back" use="BackButton" />
 
       <Blogo />
 

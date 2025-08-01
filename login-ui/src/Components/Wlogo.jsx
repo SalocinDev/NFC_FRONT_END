@@ -1,4 +1,4 @@
-import WhiteLogo from '/src/CSS-Folder/Logo.module.css';
+import WhiteLogo from '/src/CSS-Folder/WhiteLogo.module.css';
 
 function Wlogo() {
 
