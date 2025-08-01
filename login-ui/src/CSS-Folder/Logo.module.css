@@ -1,3 +1,8 @@
+.WhiteLogo{
+  transform: scale(1.5); 
+  top: -5vw;
+}
+
 .Bluelogo{
   transform: scale(1); 
   transform-origin: center;

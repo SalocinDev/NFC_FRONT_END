@@ -1,4 +1,4 @@
-import BlueLogo from '/src/CSS-Folder/BlueLogo.module.css';
+import BlueLogo from '/src/CSS-Folder/Logo.module.css';
 
 function Wlogo() {
   return (
