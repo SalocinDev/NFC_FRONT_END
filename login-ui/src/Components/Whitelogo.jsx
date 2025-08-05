@@ -1,6 +1,8 @@
+import WlogoImg from '/src/Logo/W-logo2.png';
+
 function Whitelogo() {
   return (
-    <img src="/src/Logo/W-logo2.png" alt="W-Logo" className="W-logo" />
+    <img src={WlogoImg} alt="W-Logo" className="W-logo" />
   );
 }
 

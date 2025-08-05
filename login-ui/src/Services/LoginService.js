@@ -23,11 +23,8 @@ export async function handleLoginClick(navigate) {
     const result = await toLogin(name, password);
     console.log(result);
   
-    if (result.success && result.role === "admin") {
-      alert("Welcome Admin!");
-      navigate("/Dashboard");
-    } else if (result.success && result.role === "member") {
-      alert("Welcome Member!");
+    if (result.success && result.role) {
+      alert(`Welcome, ${result.role}!`);
       navigate("/Dashboard");
     } else if (result.success === false) {
       alert("Login Failed. Try again.");

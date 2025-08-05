@@ -1,8 +1,9 @@
 import BlueLogo from '/src/CSS-Folder/Logo.module.css';
+import BlogoImg from '/src/Logo/B-logo.png';
 
 function Wlogo() {
   return (
-    <img src="/src/Logo/B-logo.png" alt="BlueLogo" className={BlueLogo["BlueLogo"]}/>
+    <img src={BlogoImg} alt="BlueLogo" className={BlueLogo["BlueLogo"]}/>
   );
 }
 

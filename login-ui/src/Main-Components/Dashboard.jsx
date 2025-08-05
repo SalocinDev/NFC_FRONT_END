@@ -1,7 +1,9 @@
 import classes from '/src/CSS-Folder/Dashboard.module.css';
+import { useNavigate } from 'react-router-dom';
 import { Wlogo, Input, Blogo, Button } from '../Components';
 
 function Dashboard() {
+  const navigate = useNavigate();
   return (
 
      <div className={classes.body}>
@@ -15,7 +17,7 @@ function Dashboard() {
       </div>
 
     <div className={classes.container}>
-      <Button name="Back" use="BackButton"/>
+      <Button name="Back" use="BackButton" onClick={() => navigate(-2)}/>
 
       <Blogo />
 

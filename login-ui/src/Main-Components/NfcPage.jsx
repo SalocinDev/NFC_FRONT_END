@@ -7,7 +7,7 @@ import { useState, useEffect, useRef } from 'react';
 
 function NfcPage() {
   const [SigningIn, IsSigningIn] = useState(false);
-  const hasStartedRef = useRef(false); // 💡 only run once
+  const hasStartedRef = useRef(false); // only run once
   const navigate = useNavigate();
 
   useEffect(() => {
