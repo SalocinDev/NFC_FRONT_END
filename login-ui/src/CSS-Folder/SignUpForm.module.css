@@ -1,0 +1,142 @@
+body,
+html,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow: hidden; 
+}
+
+.body {
+  display: flex;
+  height: 100vh;
+  overflow: hidden; 
+}
+
+.curvedRectangle {
+  width: 50vw;
+  height: 100vh; 
+  background-color: #0d1046;
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.tagline {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.4rem;
+  color: white;
+  line-height: 1.6;
+  text-align: center;
+  max-width: 400px;
+  margin: 0 auto;
+  font-weight: 400;
+  margin-top: 4rem;
+}
+
+.info{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.4rem;
+  color: black;
+  line-height: 1.6;
+  text-align: center;
+  max-width: 400px;
+  margin: 0 auto;
+  font-weight: 400;
+}
+
+
+@media (max-width: 768px) {
+  .curvedRectangle {
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
+
+  .tagline {
+    font-size: 0.5rem;
+  }
+}
+
+.container {
+  width: 90%;
+  max-width: 1000px;
+  margin: auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+  height: 100vh;
+  justify-content: start;
+  margin-top: 7vh;
+}
+
+.title {
+  font-size: 2.3rem;
+  font-family: 'Montserrat';
+  font-weight: bold;
+  color: #101540;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: #101540;
+  margin-bottom: 1rem;
+  font-family: 'Montserrat';
+}
+
+.LogoContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* spacing between text and image */
+  font-size: 3rem;
+  font-weight: 600;
+  color: #101540;
+}
+
+.icon {
+  width: 10.5rem;
+  height: auto;
+  object-fit: contain;
+}
+
+.text {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.InputMagkatabi {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.SmallInput {
+  flex: 1;
+  max-width: 100%; /* you can adjust this */
+  font-size: 1.3rem;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+
+}
+
+.info{
+  font-size: 1.3rem;
+  color: #101540;
+  font-family: 'Montserrat';
+}
