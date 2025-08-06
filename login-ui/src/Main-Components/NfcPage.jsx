@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { toNFClogin } from '../Services/LoginService';
 import classes from '/src/CSS-Folder/NfcPage.module.css';
 import NfcLogo from '/src/Logo/NFC-logo.png';
-import { Wlogo, Input, Blogo, Button } from '../Components';
+import { Button, LogoComponent} from '../Components';
 import { useState, useEffect, useRef } from 'react';
 
 function NfcPage() {
@@ -61,9 +61,27 @@ function NfcPage() {
               </div>
             )}
           </div>
+          
         </div>
+        
       </div>
+            <div className={classes.Ewan}>
+              <div className={classes.Logo}>
+                
+                <LogoComponent/>
+                <p className={classes.Text}>
+                  New to our platform? Sign Up now.
+                </p>
+
+              <div>        
+                <Button name="SIGN UP" use="NfcSignUp" />  
+              </div>
+
+              </div>
+            </div>
     </div>
+
+    
   );
 }
 

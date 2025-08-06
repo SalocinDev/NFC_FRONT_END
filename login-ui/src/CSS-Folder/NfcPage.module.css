@@ -13,10 +13,8 @@ html,
   overflow: hidden; 
 }
 
-
-
 .curvedRectangle {
-  width: 50vw;
+ width: 44.6vw;
   height: 100vh; 
   background-color: #0d1046;
   border-top-right-radius: 40px;
@@ -29,18 +27,32 @@ html,
   box-sizing: border-box;
 }
 
+.Ewan {
+  width: 50vw;
+  height: 100vh; 
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 10rem;
+  padding-left: 7rem;
+  box-sizing: border-box;
+}
+
 @media (max-width: 768px) {
-  .curvedRectangle {
+  .Ewan {
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
+    
   }
 
-  .tagline {
+  .Text {
     font-size: 0.9rem;
   }
 }
 
-.content {
+.Logo {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -48,10 +60,10 @@ html,
   transform: translateY(-10vh); /* move content up proportionally */
 }
 
-.tagline {
+.Text {
   font-family: 'Montserrat', sans-serif;
-  font-size: 2rem;
-  color: white;
+  font-size: 1rem;
+  color: #0d1046;
   line-height: 1.6;
   text-align: center;
   max-width: 400px;
@@ -128,4 +140,5 @@ html,
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
 

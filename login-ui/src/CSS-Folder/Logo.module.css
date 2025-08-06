@@ -9,3 +9,7 @@
   position: relative;
   top: 50px;
 }
+
+.BlueLogo2{
+  transform: scale(1.5); 
+}
