@@ -73,10 +73,10 @@ html,
 }
 
 .NfcLogo {
-  width: 25vw;
+  width: 30vw;
   height: auto;
   display: block;
-  transform: translate(-1.5rem, 1.5rem);
+  transform: translate(1.3rem, -1rem);
   margin: 0 auto 0 auto; 
 }
 
