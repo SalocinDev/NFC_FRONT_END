@@ -17,7 +17,7 @@ function Dashboard() {
       </div>
 
     <div className={classes.container}>
-      <Button name="Back" use="BackButton" onClick={() => navigate(-2)}/>
+      <Button name="Back" use="BackButton" onClick={() => navigate("/")}/>
 
       <Blogo />
 
