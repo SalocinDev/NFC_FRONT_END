@@ -1,0 +1,45 @@
+.topbar {
+  height: 60px;
+  width: calc(100% - 60px); /* subtract sidebar width */
+  background-color: #ffffff;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  left: 60px; /* match sidebar width */
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.datetime {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  color: #444;
+}
+
+.date {
+  font-weight: 600;
+}
+
+.time {
+  font-size: 12px;
+}
+
+.userSection {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user {
+  font-weight: bold;
+  color: #333;
+}
+
+.settingsIcon {
+  color: #666;
+  cursor: pointer;
+}

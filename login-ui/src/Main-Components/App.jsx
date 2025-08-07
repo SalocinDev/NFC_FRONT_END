@@ -1,6 +1,6 @@
-import { Button, Wlogo, Blogo, Input } from '../Components';
 import classes from '/src/CSS-Folder/App.module.css';
 import { useNavigate } from 'react-router-dom';
+import { Button, Wlogo, Blogo, Input } from '../Components';
 import { handleLoginClick, handleNFCloginClick } from '../Services/LoginService.js';
 
 function App() {
