@@ -1,6 +1,8 @@
 import classes from '/src/CSS-Folder/AdminPage.module.css';
 import { MdDashboard } from 'react-icons/md';
-import { FaCompass, FaBookOpen, FaUser, FaCog } from 'react-icons/fa';
+import { FaCompass, FaBookOpen, FaUser, FaCog, FaHandPointer, FaReply} from 'react-icons/fa';
+import { Button, Wlogo, Blogo, Input, LogoComponent, Chart, ChartLegend } from '../Components';
+import { IconHeader } from '../Components';
 import { NavLink } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import WlogoSidebar from '/src/Logo/W-logo.png';
@@ -8,6 +10,9 @@ import WlogoSidebar from '/src/Logo/W-logo.png';
 function AdminPage() {
   const [currentTime, setCurrentTime] = useState('');
   const [currentDate, setCurrentDate] = useState('');
+  const borrowedBooks = 60;
+  const returnedBooks = 40;
+
 
   useEffect(() => {
     const updateTime = () => {
@@ -61,9 +66,9 @@ function AdminPage() {
         </NavLink>
       </div>
 
-      {/* Top Nav Bar */}
+     
       <div className={classes.NavBar}>
-        {/* LEFT SIDE: User Info */}
+        
         <div className={classes.LeftTopbar}>
           <NavLink to="/profile" className={classes.iconLink}>
             <FaUser className={classes.userIcon} size={32} />
@@ -74,7 +79,7 @@ function AdminPage() {
           </div>
         </div>
 
-        {/* RIGHT SIDE: Time + Gear + Date */}
+        
         <div className={classes.RightTopbar}>
           <div className={classes.TimeGear}>
             <span className={classes.Time}>{currentTime}</span>
@@ -82,6 +87,45 @@ function AdminPage() {
           </div>
           <div className={classes.Date}>{currentDate}</div>
         </div>
+        
+      </div>
+      <div className={classes.samplelang}>
+      <div className={classes.iconHeaderContainer}>
+        <IconHeader
+          icon={FaBookOpen}
+          headerTop="Your Borrowed"
+          headerBottom="Book List"
+        /> 
+    
+         <IconHeader
+          icon={ FaReply }
+          headerTop="Your Returned"
+          headerBottom="Book List"
+        />
+
+        <ChartLegend/>
+
+      </div>
+        
+      <div className={classes.iconHeaderContainer}>  
+          <IconHeader
+          icon={FaHandPointer}
+          headerTop="Browse Available"
+          headerBottom="Book Inventory"
+        />
+          
+          <span className={classes.BlogoGalaw}><LogoComponent className={classes.LogoUser}/></span>
+          <Chart borrowed={borrowedBooks} returned={returnedBooks}/>
+          
+        
+      </div>
+
+        <div className={classes.paragraphContainer}>
+          <p>"Embarking on the journey of reading fosters <br/>personal growth, nurturing a path <br/>towards excellence and the refinement of <br/>character."</p>
+          <footer>~Bookworm Team</footer>
+        </div>
+
+
       </div>
     </div>
   );

@@ -1,0 +1,12 @@
+.chartWrapper {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+}
+
+.pieChart {
+  flex-shrink: 0; 
+  margin-right: -40vw; 
+  margin-top: -14vh;
+}
+

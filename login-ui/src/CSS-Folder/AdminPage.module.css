@@ -10,6 +10,13 @@
   z-index: 1;
 }
 
+p{
+  color: #101540;
+  font-size: 3rem;
+  line-height: 2rem;
+
+}
+
 a{
   text-decoration: none;
   color: white;
@@ -27,7 +34,7 @@ a:hover{
   display: flex;
   align-items: center;
   padding: 0.8rem;
-  margin-left: 6rem; /* Leave space for sidebar */
+  margin-left: 6rem; 
   background-color: #f8f9fa;
   height: 4rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -169,3 +176,50 @@ a:hover{
   align-items: center;
   text-decoration: none;
 }
+
+.samplelang{
+  margin-left: 10rem;
+}
+
+
+
+.iconHeaderContainer {
+  display: flex;
+  gap: 4rem;            
+  align-items: flex-start;
+  flex-wrap: wrap;     
+  padding: 12px 0;
+  margin-bottom: 3rem
+}
+
+.BlogoGalaw{
+  margin-left: 5vw;
+}
+
+.LogoUser{
+  width: 13rem;
+  margin-left: 1rem;
+}
+
+.paragraphContainer{
+  justify-content: center;
+  float: center;
+  width: fit-content;
+  text-align: center;
+  margin-left: 10rem;
+  margin-top: -30vh;
+}
+
+footer{
+  text-align: right;
+  font-size: 1.5rem;
+}
+
+.Contents, 
+.TimeGear{
+  line-height: 1.2rem;
+  left: 0;
+}
+
+
+

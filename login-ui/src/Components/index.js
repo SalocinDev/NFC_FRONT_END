@@ -4,3 +4,6 @@ export { default as Blogo } from './Blogo';
 export { default as Input} from './Input';
 export { default as LogoComponent} from './BlueLogo';
 export { default as Topbar} from './Topbar';
+export { default as IconHeader} from './IconHeader';
+export { default as Chart} from './Chart';
+export { default as ChartLegend} from './ChartLegend';
