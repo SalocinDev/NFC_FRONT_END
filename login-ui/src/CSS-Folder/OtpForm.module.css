@@ -139,3 +139,15 @@
 
   
 }
+
+.tagline{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.5rem;
+  color: white;
+  line-height: 1.6;
+  text-align: center;
+  max-width: 400px;
+  margin: 0 auto;
+  font-weight: 400;
+  margin-top: 4rem;
+}

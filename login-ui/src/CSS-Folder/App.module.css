@@ -70,7 +70,7 @@
   max-width: 400px;
   padding: 4rem 2rem;
   transform: translateX(60%); 
-  margin-top: 5vw;
+  margin-top: 0.5vw;
 }
 
 @media (max-width: 1024px) {
@@ -137,5 +137,11 @@
   align-items: flex-end;
   gap: 20px;
 
+  
+}
+
+.attribute{
+  color: black;
+  font-size: 1.5rem;
   
 }
