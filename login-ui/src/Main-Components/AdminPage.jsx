@@ -6,8 +6,15 @@ import { IconHeader } from '../Components';
 import { NavLink } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import WlogoSidebar from '/src/Logo/W-logo.png';
+import { useNavigate } from 'react-router-dom';
+import { logOut, getInfo } from '../Services/SessionUtils';
+
 
 function AdminPage() {
+  const navigate = useNavigate(); 
+
+  const storedUser = JSON.parse(sessionStorage.getItem("userInfo"));
+
   const [currentTime, setCurrentTime] = useState('');
   const [currentDate, setCurrentDate] = useState('');
   const borrowedBooks = 60;
@@ -74,12 +81,13 @@ function AdminPage() {
             <FaUser className={classes.userIcon} size={32} />
           </NavLink>
           <div className={classes.Contents}>
-            <div className={classes.username}>Nicholas Longanigga</div>
-            <div className={classes.role}>Admin</div>
+            <div className={classes.username}>{storedUser.username}</div>
+            <div className={classes.role}>{storedUser.name}</div>
           </div>
         </div>
 
-        
+       {/* RIGHT SIDE: Time + Gear + Date */}
+        <Button name="Log Out" use="BackButton" onClick={() => {logOut().then(() => navigate('/'));}}/>
         <div className={classes.RightTopbar}>
           <div className={classes.TimeGear}>
             <span className={classes.Time}>{currentTime}</span>

@@ -1,9 +1,17 @@
 import classes from '/src/CSS-Folder/Dashboard.module.css';
-import { useNavigate } from 'react-router-dom';
 import { Wlogo, Input, Blogo, Button } from '../Components';
+import { useNavigate } from 'react-router-dom';
+import { logOut } from '../Services/SessionUtils';
 
 function Dashboard() {
   const navigate = useNavigate();
+  const LogOut = async () => {
+    await fetch(`http://${window.location.hostname}:3000/logout`, {
+      method: "POST",
+      credentials: "include"
+    });
+    navigate("/"); // redirect after logout
+  };
   return (
 
      <div className={classes.body}>
@@ -17,7 +25,8 @@ function Dashboard() {
       </div>
 
     <div className={classes.container}>
-      <Button name="Back" use="BackButton" onClick={() => navigate("/")}/>
+      <Button name="Log Out" use="BackButton" onClick={LogOut}/>
+
 
       <Blogo />
 

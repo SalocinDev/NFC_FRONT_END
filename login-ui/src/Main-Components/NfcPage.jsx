@@ -25,23 +25,27 @@ function NfcPage() {
     });
 
     const result = await Promise.race([toNFClogin(), timeout]);
+    sessionStorage.setItem("userInfo", JSON.stringify({
+      username: result.data.name,
+      role: result.data.role
+    }));
     console.log(result);
 
     if (result === "Timeout") {
       alert("NFC login timed out. Returning to login.");
-      navigate(-1);
-    } else if (result.success && result.role) {
-      alert(`Welcome, ${result.role} (via NFC)!`);
-      navigate("/Dashboard");
+      navigate('/');
+    } else if (result.success && result.data.role) {
+      alert(`Welcome, ${result.data.role} (via NFC)!`);
+      navigate("/AdminPage");
     } else if (result.success === false) {
       alert("NFC Login Failed. Returning to login.");
-      navigate(-1);
+      navigate('/');
     } else if (result === "Error") {
       alert("An error occurred. Returning to login.");
-      navigate(-1);
+      navigate('/');
     } else {
       alert("Unexpected response. Returning to login.");
-      navigate(-1);
+      navigate('/');
     }
 
     IsSigningIn(false);
