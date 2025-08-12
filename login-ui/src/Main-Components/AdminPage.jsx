@@ -71,6 +71,8 @@ function AdminPage() {
         >
           <FaBookOpen size={24} />
         </NavLink>
+
+        <Button name="Log Out" use="BackButton" onClick={() => {logOut().then(() => navigate('/'));}}/>
       </div>
 
      
@@ -87,7 +89,7 @@ function AdminPage() {
         </div>
 
        {/* RIGHT SIDE: Time + Gear + Date */}
-        <Button name="Log Out" use="BackButton" onClick={() => {logOut().then(() => navigate('/'));}}/>
+        
         <div className={classes.RightTopbar}>
           <div className={classes.TimeGear}>
             <span className={classes.Time}>{currentTime}</span>
