@@ -57,7 +57,7 @@ export async function handleLoginClick(navigate) {
       role: result.data.role
     }));
     alert(`Welcome, ${result.data.role}!`);
-    navigate("/Dashboard");
+    navigate("/AdminPage");
   } else if (result.success === false) {
     alert("Login Failed. Try again.");
   } else if (result.data === "Error") {

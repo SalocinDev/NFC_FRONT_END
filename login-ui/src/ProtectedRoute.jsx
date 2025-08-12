@@ -6,7 +6,7 @@ export default function ProtectedRoute({ children }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch('http://localhost:3000/get-session', {
+    fetch(`http://${window.location.hostname}:3000/get-session`, {
       method: 'GET',
       credentials: 'include',
     })
