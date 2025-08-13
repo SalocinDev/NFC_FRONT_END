@@ -2,7 +2,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "/index.css";
 import NotFoundPage from "./Components/NotFoundPage.jsx";
-import { App, Dashboard, NfcPage, OtpForm, ResetPasswordForm, SignUpForm, AdminPage } from "./Main-Components/";
+import { App, Dashboard, NfcPage, OtpForm, ResetPasswordForm, SignUpForm, AdminPage, BorrowedForm } from "./Main-Components/";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
 
@@ -12,9 +12,9 @@ const router = createBrowserRouter([
   { path: "ResetPasswordForm", element: <ResetPasswordForm /> },
   { path: "SignUpForm", element: <SignUpForm /> },
   { path: "NfcPage", element: <NfcPage /> },
-
   { path: "Dashboard", element: <ProtectedRoute><Dashboard /></ProtectedRoute> },
   { path: "AdminPage", element: <ProtectedRoute><AdminPage /></ProtectedRoute> },
+  { path: "AdminPage", element: <ProtectedRoute><BorrowedForm /></ProtectedRoute> },
 
   { path: "*", element: <NotFoundPage /> },
 ]);
