@@ -7,3 +7,6 @@ export { default as Topbar} from './Topbar';
 export { default as IconHeader} from './IconHeader';
 export { default as Chart} from './Chart';
 export { default as ChartLegend} from './ChartLegend';
+export { default as Table} from './Table';
+export { default as SearchID} from './SearchID';
+export { default as AiPopUp} from './AiPopUp';

@@ -179,6 +179,8 @@ a:hover{
 
 .samplelang{
   margin-left: 10rem;
+  display: flex;
+  flex-direction: block;
 }
 
 
@@ -265,4 +267,15 @@ footer{
 
 .CommentMedical{
   font-size: 2rem;
+}
+
+.AcquireContainer{
+    margin-left: 60vw;
+}
+
+.Header{
+    position: fixed;
+    font-size: 2.5rem;
+    line-height: 2.9rem;
+    color: #101540;
 }

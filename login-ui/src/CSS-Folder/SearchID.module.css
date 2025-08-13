@@ -1,0 +1,12 @@
+.SearchByID {
+  width: 14vw;
+  height: 3.5vh;
+  border-style: solid;
+  border-radius: 1.5rem;
+  border-color: black;
+  border-width: 1.5px;
+  float: right;
+  margin-right: 3vw;
+  padding: 1rem 1rem;
+  
+}

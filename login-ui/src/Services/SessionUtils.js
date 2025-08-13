@@ -16,9 +16,11 @@ export async function logOut() {
         method: "POST",
         credentials: "include"
     });
+    console.log(`Session Deleted`);
+    
 }
   
-export async function getInfo() {
+/* export async function getInfo() {
     const res = await fetch(`http://${window.location.hostname}:3000/get-info`, {
         method: "POST",
         credentials: "include",
@@ -36,7 +38,7 @@ export async function getInfo() {
     console.log("Session userID:", data.userID);
     return data.userID;
 }
-
+ */
 export async function getSession() {
     const res = await fetch(`http://${window.location.hostname}:3000/get-session`, {
         method: "GET",

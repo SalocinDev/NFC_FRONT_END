@@ -1,4 +1,4 @@
-import classes from '/src/CSS-Folder/BorrowedForm.module.css';
+import classes from '/src/CSS-Folder/LibraryLane.module.css';
 
 import { MdDashboard } from 'react-icons/md';
 import { FaCompass, FaBookOpen, FaUser, FaCog, FaHandPointer, FaReply, FaCommentMedical} from 'react-icons/fa';
@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import { logOut } from '../Services/SessionUtils';
 
 
-function BorrowedForm() {
+function LibraryLane() {
   const navigate = useNavigate(); 
   const columns = ["ID", "User ID", "Amount", "Due-date", "Date & Time"];
   const storedUser = JSON.parse(sessionStorage.getItem("userInfo"));
@@ -95,7 +95,6 @@ function BorrowedForm() {
           </div>
         </div>
 
-       {/* RIGHT SIDE: Time + Gear + Date */}
         
         <div className={classes.RightTopbar}>
           <div className={classes.TimeGear}>
@@ -107,9 +106,9 @@ function BorrowedForm() {
         
       </div>
       <div className={classes.samplelang}>
-          <Button name="Borrowed Books" use="BorrowedBooks" onClick={() => {logOut().then(() => navigate('/BorrowedForm'));}}/>
-          <Button name="Returned Books" use="ReturnedBooks" onClick={() => {logOut().then(() => navigate('/BorrowedForm'));}}/>
-          <SearchID placeholder="Search by ID"/>
+          <span className={classes.Header}>Library Lane Books</span>
+          <span className={classes.AcquireContainer}><Button name="Acquire" use="Acquire" onClick={() => {logOut().then(() => navigate('/BorrowedForm'));}}/></span>
+          <SearchID placeholder="Search by ID or Type"/>
       </div>
 
       <div className={classes.TableContainer}>
@@ -127,5 +126,5 @@ function BorrowedForm() {
   );
 }
 
-export default BorrowedForm;
+export default LibraryLane;
 

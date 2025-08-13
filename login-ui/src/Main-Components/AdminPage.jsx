@@ -7,7 +7,7 @@ import { NavLink } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import WlogoSidebar from '/src/Logo/W-logo.png';
 import { useNavigate } from 'react-router-dom';
-import { logOut, getInfo } from '../Services/SessionUtils';
+import { logOut } from '../Services/SessionUtils';
 
 
 function AdminPage() {
@@ -72,7 +72,7 @@ function AdminPage() {
           <FaBookOpen size={24} />
         </NavLink>
 
-        <Button name="Log Out" use="BackButton" onClick={() => {logOut().then(() => navigate('/'));}}/>
+        <Button name="Log Out" use="LogoutButton" onClick={() => {logOut().then(() => navigate('/'));}}/>
       </div>
 
      
@@ -105,6 +105,7 @@ function AdminPage() {
           icon={FaBookOpen}
           headerTop="Your Borrowed"
           headerBottom="Book List"
+          to="/BorrowedForm"
         /> 
     
          <IconHeader

@@ -1,12 +1,12 @@
-.ButtonSignIn, 
-.NfcSignIn, 
-.ButtonSignUp, 
+.ButtonSignIn,
+.NfcSignIn,
+.ButtonSignUp,
 .ButtonReset,
 .NfcButtonSignIn,
 .ButtonSignUpBlue,
 .NfcSignUp,
 .ButtonVerify,
-.ButtonSignUpForm{
+.ButtonSignUpForm {
   width: 100%;
   max-width: 25.75rem;
   height: 4rem;
@@ -18,115 +18,81 @@
   margin-bottom: 2px;
 }
 
-.ButtonVerify{
+.ButtonVerify {
   margin-top: 2rem;
 }
 
-.ButtonSignIn:hover, 
-.ButtonSignUp:hover, 
-.ButtonReset:hover,
 .ButtonSignIn:hover,
-.NfcSignUp:hover{
+.ButtonSignUp:hover,
+.ButtonReset:hover,
+.NfcSignUp:hover {
   cursor: pointer;
   background-color: lightblue;
   color: white;
   transition: 0.9s;
 }
 
-.ButtonSignIn,
-.ButtonVerify,
-.ButtonSignUpForm{
-  background-color: #101540;
-  border-style: solid;
-  border-color: #101540;
-  color: white;
-
-}
-
-@media (max-width: 480px) {
-  .ButtonSignIn {
-    max-width: 90%;           
-    font-size: 0.95rem;
-    padding: 0.4rem 0.75rem;
-  }
-}
-
-.ButtonSignUp,
-.NfcButtonSignIn{
-  background-color: transparent;
-  border-style: solid;
-  border-color: white;
-  color: white;
-}
-
-.NfcSignIn{
-  background-color: #222D8A;
-  border-style: solid;
-  border-color: #222D8A;
-  color: white;
-}
-
-.NfcSignIn:hover{
-  background-color: #222D8A;
-  cursor: pointer;
-  border-style: solid;
-  border-color: #222D8A;
-  color: white;
-}
-
-.ButtonReset{
-  background-color: #101540;
-  border-style: solid;
-  border-color: #101540;
-  color: white;
-  width: 100%;
-  max-width: 27.75rem;
-}
-
-.BackButton {
-  position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
-  padding: 0.4rem 1rem;
-  font-weight: bold;
-  border: 2px solid 101540;
-  border-style: solid;
-  border-radius: 20px;
-  border-color: #101540;
-  background: white;
-  color: #101540;
-  cursor: pointer;
-}
-
-.BackButton:hover{
-  background-color: #101540;
-  color: white;
-  cursor: pointer;
-  transition: 0.8s;
-}
-
-.NfcButtonSignIn:hover{
+.NfcButtonSignIn:hover {
   cursor: pointer;
   background-color: white;
   border-style: solid;
   transition: 0.8s;
-  color: #101540 ;
+  color: #101540;
 }
 
-.NfcSignUp{
-  background-color: transparent;
+.NfcSignIn:hover {
+  background-color: #222D8A;
+  cursor: pointer;
   border-style: solid;
+  border-color: #222D8A;
+  color: white;
+}
+
+.ButtonSignIn,
+.ButtonVerify,
+.ButtonSignUpForm,
+.ButtonReset {
+  background-color: #101540;
+  border-color: #101540;
+  color: white;
+}
+
+.ButtonSignUp,
+.NfcButtonSignIn {
+  background-color: transparent;
+  border-color: white;
+  color: white;
+}
+
+.NfcSignIn {
+  background-color: #222D8A;
+  border-color: #222D8A;
+  color: white;
+}
+
+.ButtonReset {
+  max-width: 27.75rem;
+}
+
+.NfcSignUp {
+  background-color: transparent;
   border-color: #101540;
   color: #101540;
   margin-top: 2rem;
 }
 
-.ButtonForm
-{
+@media (max-width: 480px) {
+  .ButtonSignIn {
+    max-width: 90%;
+    font-size: 0.95rem;
+    padding: 0.4rem 0.75rem;
+  }
+}
+
+.ButtonForm {
   background-color: transparent;
   border-style: solid;
   color: white;
-
   font-size: 1.4rem;
   padding: 1rem 5rem;
   border-radius: 1rem;
@@ -135,4 +101,76 @@
   width: 100%;
   max-width: 15.75rem;
   margin-top: 2rem;
+}
+
+.BackButton,
+.LogoutButton {
+  font-weight: bold;
+  border: 2px solid #101540;
+  border-radius: 20px;
+  background: white;
+  color: #101540;
+  cursor: pointer;
+  padding: 0.4rem 1rem;
+}
+
+.BackButton {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+}
+
+.LogoutButton {
+  display: flex;
+  align-items: center;
+  width: 6rem;
+  margin-left: 0.5rem;
+  margin-top: 50vh;
+}
+
+.BackButton:hover {
+  background-color: #101540;
+  color: white;
+  transition: 0.8s;
+}
+
+.BorrowedBooks,
+.ReturnedBooks {
+  border: none;
+  padding: 0.5rem 4rem;
+  background-color: #9c9393;
+  color: #101540;
+}
+
+.BorrowedBooks:hover,
+.ReturnedBooks:hover{
+  cursor: pointer;
+}
+
+.BorrowedBooks:active,
+.ReturnedBooks:active{
+  background-color:#101540;
+  color: white;
+} 
+
+.BorrowedBooks {
+  border-top-left-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+  margin-right: 1rem;
+}
+
+.ReturnedBooks {
+  border-top-right-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+}
+
+.Acquire{
+ border-radius: 0.5rem;
+ Background-color: #101540;
+ border-style: none;
+ font-size: 1rem;
+ color: white;
+ padding: 0.5rem 4rem;
+ margin-right: 2rem;
+ margin-left: 5vw;
 }
