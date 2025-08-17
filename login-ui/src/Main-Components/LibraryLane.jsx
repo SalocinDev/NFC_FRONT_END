@@ -53,7 +53,7 @@ function LibraryLane() {
         <img src={WlogoSidebar} alt="Logo" className={classes.WSidebar} />
 
         <NavLink
-          to="/dashboard"
+          to="/AdminPage"
           className={({ isActive }) =>
             isActive ? classes.activeIcon : classes.iconLink
           }
@@ -71,7 +71,7 @@ function LibraryLane() {
         </NavLink>
 
         <NavLink
-          to="/library"
+          to="/LibraryLane"
           className={({ isActive }) =>
             isActive ? classes.activeIcon : classes.iconLink
           }
