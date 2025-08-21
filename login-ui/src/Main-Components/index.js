@@ -7,3 +7,4 @@ export { default as ResetPasswordForm} from './ResetPasswordForm';
 export { default as SignUpForm} from './SignUpForm';
 export { default as BorrowedForm} from './BorrowedForm';
 export { default as LibraryLane} from './LibraryLane';
+export { default as Services} from './Services';
