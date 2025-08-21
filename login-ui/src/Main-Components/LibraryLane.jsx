@@ -13,11 +13,14 @@ import { logOut } from '../Services/SessionUtils';
 
 function LibraryLane() {
   const navigate = useNavigate(); 
-  const columns = ["ID", "User ID", "Amount", "Due-date", "Date & Time"];
+  const columns = ["ID", "User ID", "Name", "Email"];
   const storedUser = JSON.parse(sessionStorage.getItem("userInfo"));
     
   const records = [
     { id: 1, userid: "U001", name: "John Doe", email: "john@example.com" },
+    { id: 2, userid: "U002", name: "Jane Smith", email: "jane@example.com" },
+    { id: 2, userid: "U002", name: "Jane Smith", email: "jane@example.com" },
+    { id: 2, userid: "U002", name: "Jane Smith", email: "jane@example.com" },
     { id: 2, userid: "U002", name: "Jane Smith", email: "jane@example.com" }
   ];
 
@@ -53,7 +56,7 @@ function LibraryLane() {
         <img src={WlogoSidebar} alt="Logo" className={classes.WSidebar} />
 
         <NavLink
-          to="/dashboard"
+          to="/AdminPage"
           className={({ isActive }) =>
             isActive ? classes.activeIcon : classes.iconLink
           }
@@ -71,7 +74,7 @@ function LibraryLane() {
         </NavLink>
 
         <NavLink
-          to="/library"
+          to="/LibraryLane"
           className={({ isActive }) =>
             isActive ? classes.activeIcon : classes.iconLink
           }

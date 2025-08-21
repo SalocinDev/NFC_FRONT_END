@@ -1,5 +1,3 @@
-import classes from '/src/CSS-Folder/BorrowedForm.module.css';
-
 import { MdDashboard } from 'react-icons/md';
 import { FaCompass, FaBookOpen, FaUser, FaCog, FaHandPointer, FaReply, FaCommentMedical} from 'react-icons/fa';
 import { Button, Wlogo, Blogo, Input, LogoComponent, Chart, ChartLegend, Table, SearchID, AiPopUp } from '../Components';
@@ -9,6 +7,7 @@ import { useState, useEffect } from 'react';
 import WlogoSidebar from '/src/Logo/W-logo.png';
 import { useNavigate } from 'react-router-dom';
 import { logOut } from '../Services/SessionUtils';
+import classes from '/src/CSS-Folder/AdminPage.module.css';
 
 
 function BorrowedForm() {
@@ -53,7 +52,7 @@ function BorrowedForm() {
         <img src={WlogoSidebar} alt="Logo" className={classes.WSidebar} />
 
         <NavLink
-          to="/dashboard"
+          to="/AdminPage"
           className={({ isActive }) =>
             isActive ? classes.activeIcon : classes.iconLink
           }
@@ -71,7 +70,7 @@ function BorrowedForm() {
         </NavLink>
 
         <NavLink
-          to="/library"
+          to="/LibraryLane"
           className={({ isActive }) =>
             isActive ? classes.activeIcon : classes.iconLink
           }
