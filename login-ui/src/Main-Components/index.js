@@ -1,5 +1,5 @@
-export { default as AdminPage } from './AdminPage';
-export { default as App } from './App';
+export { default as UserPage } from './UserPage';
+export { default as LoginPage } from './LoginPage';
 export { default as Dashboard} from './Dashboard';
 export { default as NfcPage } from './NfcPage';
 export { default as OtpForm} from './OtpForm';

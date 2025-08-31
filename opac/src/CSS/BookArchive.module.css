@@ -1,0 +1,7 @@
+.Book{
+    height: 35vh;
+    width:  20vw;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 2rem;
+}

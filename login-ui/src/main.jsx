@@ -2,18 +2,18 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "/index.css";
 import NotFoundPage from "./Components/NotFoundPage.jsx";
-import { App, Dashboard, NfcPage, OtpForm, ResetPasswordForm, SignUpForm, AdminPage, BorrowedForm, LibraryLane, Services } from "./Main-Components/";
+import { LoginPage, Dashboard, NfcPage, OtpForm, ResetPasswordForm, SignUpForm, UserPage, BorrowedForm, LibraryLane, Services } from "./Main-Components/";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
 
 const router = createBrowserRouter([
-  { path: "/", element: <App /> },
+  { path: "/", element: <LoginPage /> },
   { path: "OtpForm", element: <OtpForm /> },
   { path: "ResetPasswordForm", element: <ResetPasswordForm /> },
   { path: "SignUpForm", element: <SignUpForm /> },
   { path: "NfcPage", element: <NfcPage /> },
   { path: "Dashboard", element: <ProtectedRoute><Dashboard /></ProtectedRoute> },
-  { path: "AdminPage", element: <ProtectedRoute><AdminPage /></ProtectedRoute> },
+  { path: "UserPage", element: <ProtectedRoute><UserPage /></ProtectedRoute> },
   { path: "BorrowedForm", element: <BorrowedForm />},
   { path: "LibraryLane", element: <LibraryLane />},
   { path: "Services", element: <Services />},

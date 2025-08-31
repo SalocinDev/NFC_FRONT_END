@@ -1,16 +1,16 @@
 import classes from '/src/CSS-Folder/Services.module.css';
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import { Button, Wlogo, Blogo, Input, Checkbox } from '../Components';
-import { handleLoginClick } from '../Services/LoginService.js';
+import { Checkbox, Modal } from '../Components';
 
 function Services() {
+
   const [accepted, setAccepted] = useState(false);
   const [subscribe, setSubscribe] = useState(true);
   
   return (
 
-      <div>
+      <div className={classes.Background}>
         <div className={classes.RectangleAbove}>
           
           <span className={classes.ManilaAbove}>MANILA</span>
@@ -20,7 +20,7 @@ function Services() {
         <div className={classes.CheckboxContainer}>
        
          <Checkbox/>
-      
+
         </div>
       
   

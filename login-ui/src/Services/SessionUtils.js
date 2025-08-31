@@ -12,12 +12,12 @@
     commented because not being used atm*/
 
 export async function logOut() {
-    await fetch(`http://${window.location.hostname}:3000/logout`, {
+    await fetch(`http://${window.location.hostname}:3000/acc/logout`, {
         method: "POST",
         credentials: "include"
     });
+    sessionStorage.clear();
     console.log(`Session Deleted`);
-    
 }
   
 /* export async function getInfo() {
@@ -40,7 +40,7 @@ export async function logOut() {
 }
  */
 export async function getSession() {
-    const res = await fetch(`http://${window.location.hostname}:3000/get-session`, {
+    const res = await fetch(`http://${window.location.hostname}:3000/acc/get-session`, {
         method: "GET",
         credentials: "include",
         headers: {

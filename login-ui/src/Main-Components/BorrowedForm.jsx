@@ -7,8 +7,7 @@ import { useState, useEffect } from 'react';
 import WlogoSidebar from '/src/Logo/W-logo.png';
 import { useNavigate } from 'react-router-dom';
 import { logOut } from '../Services/SessionUtils';
-import classes from '/src/CSS-Folder/AdminPage.module.css';
-
+import classes from '../CSS-Folder/UserPage.module.css';
 
 function BorrowedForm() {
   const navigate = useNavigate(); 
@@ -52,7 +51,7 @@ function BorrowedForm() {
         <img src={WlogoSidebar} alt="Logo" className={classes.WSidebar} />
 
         <NavLink
-          to="/AdminPage"
+          to="/UserPage"
           className={({ isActive }) =>
             isActive ? classes.activeIcon : classes.iconLink
           }
@@ -89,8 +88,8 @@ function BorrowedForm() {
             <FaUser className={classes.userIcon} size={32} />
           </NavLink>
           <div className={classes.Contents}>
-            <div className={classes.username}>{storedUser.username}</div>
-            <div className={classes.role}>{storedUser.name}</div>
+            <div className={classes.username}>{storedUser?.firstName || "Test"}</div>
+            <div className={classes.username}>{storedUser?.userID || "Test"}</div>
           </div>
         </div>
 

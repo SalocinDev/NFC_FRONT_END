@@ -6,7 +6,8 @@
 .ButtonSignUpBlue,
 .NfcSignUp,
 .ButtonVerify,
-.ButtonSignUpForm {
+.ButtonSignUpForm,
+.ButtonForm {
   width: 100%;
   max-width: 25.75rem;
   height: 4rem;
@@ -16,6 +17,7 @@
   border: 2px solid #727374;
   box-sizing: border-box;
   margin-bottom: 2px;
+  cursor: pointer;
 }
 
 .ButtonVerify {
@@ -23,13 +25,21 @@
 }
 
 .ButtonSignIn:hover,
-.ButtonSignUp:hover,
 .ButtonReset:hover,
-.NfcSignUp:hover {
+.NfcSignUp:hover,
+.ButtonSignUpForm:hover{
   cursor: pointer;
   background-color: lightblue;
   color: white;
   transition: 0.9s;
+}
+
+
+.ButtonSignUp:hover,
+.ButtonForm:hover{
+  background-color: white;
+  transition: 0.9s;
+  color: #101540;
 }
 
 .NfcButtonSignIn:hover {
@@ -58,7 +68,8 @@
 }
 
 .ButtonSignUp,
-.NfcButtonSignIn {
+.NfcButtonSignIn,
+.ButtonForm {
   background-color: transparent;
   border-color: white;
   color: white;
@@ -89,7 +100,7 @@
   }
 }
 
-.ButtonForm {
+/* .ButtonForm {
   background-color: transparent;
   border-style: solid;
   color: white;
@@ -102,7 +113,7 @@
   max-width: 15.75rem;
   margin-top: 2rem;
 }
-
+ */
 .BackButton,
 .LogoutButton {
   font-weight: bold;

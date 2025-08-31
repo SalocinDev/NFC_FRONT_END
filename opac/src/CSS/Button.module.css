@@ -1,0 +1,40 @@
+.SearchButton,
+.RandomButton{
+
+  height: 3.5rem;
+  font-size: 1rem;
+  padding: 1rem 3rem;
+  border-radius: 0.75rem;
+  box-sizing: border-box;
+  margin-right: 1.5rem;
+  border-style: solid;
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+}
+
+.SearchButton{
+  color: white;
+  background-color: #101540;
+  border-color: #101540;
+}
+
+.RandomButton{
+  color: #101540;
+  background-color: #D7D7D7;
+  border-color: #D7D7D7;
+}
+
+.ArrowButton{
+  border-radius: 2rem ;
+  padding: 1rem 1rem;
+  border-style: solid;
+  color: #101540;
+  border-color: #101540;
+}
+
+.ArrowButton:hover{
+  background-color: #101540;
+  color: white;
+  transition: 0.8s;
+  cursor: pointer;
+}

@@ -43,3 +43,10 @@ font-size: 5rem;
   margin-top: -1vh;
   text-align: left;
 }
+
+.Background{
+  background-image: url('./src/Logo/Background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+}

@@ -22,33 +22,36 @@ function NfcPage() {
 
     const timeout = new Promise((resolve) => {
       setTimeout(() => resolve("Timeout"), 5000);
-    });
+    }); 
 
     const result = await Promise.race([toNFClogin(), timeout]);
-    sessionStorage.setItem("userInfo", JSON.stringify({
-      username: result.data.name,
-      role: result.data.role
-    }));
-    console.log(result);
+    const firstName = result?.result?.data?.user_firstname;
+    const userID = result?.result?.data?.user_id;
 
+    sessionStorage.setItem("userInfo", JSON.stringify({
+      firstName,
+      userID
+    }));
     if (result === "Timeout") {
       alert("NFC login timed out. Returning to login.");
       navigate('/');
-    } else if (result.success && result.data.role) {
-      alert(`Welcome, ${result.data.role} (via NFC)!`);
-      navigate("/AdminPage");
-    } else if (result.success === false) {
+    } else if (result.success && firstName) {
+      alert(`Welcome, ${firstName} (via NFC)!`);
+      navigate("/UserPage");
+    } else if (result.valid === false) {
       alert("NFC Login Failed. Returning to login.");
       navigate('/');
     } else if (result === "Error") {
       alert("An error occurred. Returning to login.");
       navigate('/');
     } else {
+      console.warn("Unexpected response format:", result);
       alert("Unexpected response. Returning to login.");
       navigate('/');
     }
 
     IsSigningIn(false);
+
   };
 
   return (

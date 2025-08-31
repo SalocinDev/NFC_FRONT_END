@@ -2,7 +2,7 @@ import classes from '/src/CSS-Folder/LibraryLane.module.css';
 
 import { MdDashboard } from 'react-icons/md';
 import { FaCompass, FaBookOpen, FaUser, FaCog, FaHandPointer, FaReply, FaCommentMedical} from 'react-icons/fa';
-import { Button, Wlogo, Blogo, Input, LogoComponent, Chart, ChartLegend, Table, SearchID, AiPopUp } from '../Components';
+import { Button, Table, SearchID, AiPopUp } from '../Components';
 import { IconHeader } from '../Components';
 import { NavLink } from 'react-router-dom';
 import { useState, useEffect } from 'react';
@@ -56,7 +56,7 @@ function LibraryLane() {
         <img src={WlogoSidebar} alt="Logo" className={classes.WSidebar} />
 
         <NavLink
-          to="/AdminPage"
+          to="/UserPage"
           className={({ isActive }) =>
             isActive ? classes.activeIcon : classes.iconLink
           }
@@ -93,8 +93,8 @@ function LibraryLane() {
             <FaUser className={classes.userIcon} size={32} />
           </NavLink>
           <div className={classes.Contents}>
-            <div className={classes.username}>{storedUser.username}</div>
-            <div className={classes.role}>{storedUser.name}</div>
+            <div className={classes.username}>{storedUser?.firstName || "Test"}</div>
+            <div className={classes.username}>{storedUser?.userID || "Test"}</div>
           </div>
         </div>
 

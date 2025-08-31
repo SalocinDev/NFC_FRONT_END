@@ -11,3 +11,4 @@ export { default as Table} from './Table';
 export { default as SearchID} from './SearchID';
 export { default as AiPopUp} from './AiPopUp';
 export { default as Checkbox} from './Checkbox';
+export { default as Modal} from './Modal';

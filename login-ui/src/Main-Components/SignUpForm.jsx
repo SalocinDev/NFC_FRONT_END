@@ -1,9 +1,22 @@
 import classes from '/src/CSS-Folder/SignUpForm.module.css';
 import { useNavigate } from 'react-router-dom';
+import { useState } from "react";
 import { Wlogo, Input, Blogo, Button } from '../Components';
 import BlogoImg from '/src/Logo/B-logo.png';
+import { signUp } from '../Services/SignUpService'
 function ResetPasswordForm() {
   const navigate = useNavigate();
+
+  const [FN, setFN] = useState("");
+  const [MN, setMN] = useState("");
+  const [LN, setLN] = useState("");
+  const [Email, setEmail] = useState("");
+  const [Pass, setPass] = useState("");
+  const [DoB, setDoB] = useState("");
+  const [Gender, setGender] = useState("");
+  const [Contact, setContact] = useState("");
+  const [School, setSchool] = useState("");
+
   return (
 
      <div className={classes.body}>
@@ -12,8 +25,8 @@ function ResetPasswordForm() {
           <Wlogo />
           <p className={classes.tagline}>
             Already have an account? Sign in now
-          </p>
-          <Button name="SIGN IN" use="ButtonForm" />
+          </p><br/>
+          <Button name="SIGN IN" use="ButtonForm" onClick={() => navigate("/")}/>
         </div>
       </div>
 
@@ -28,17 +41,18 @@ function ResetPasswordForm() {
             Please provide your information to sign up.
           </p>
      
-       
+      <Input required type="text" placeholder="First Name" value={FN} onChange={(e) => setFN(e.target.value)} />
+      <Input type="text" placeholder="Middle Name (N/A if not Applicable)" value={MN} onChange={(e) => setMN(e.target.value)} />
+      <Input required type="text" placeholder="Last Name" value={LN} onChange={(e) => setLN(e.target.value)} />
+      <Input required type="email" placeholder="Email" value={Email} onChange={(e) => setEmail(e.target.value)} />
+      <Input required type="password" placeholder="Password" value={Pass} onChange={(e) => setPass(e.target.value)} />
+      <Input required type="date" value={DoB} onChange={(e) => setDoB(e.target.value)} />
+      <Input required type="select" placeholder="Gender" value={Gender} options={["Male", "Female"]} onChange={(e) => setGender(e.target.value)} />
+      <Input required type="text" placeholder="Contact#" value={Contact} onChange={(e) => setContact(e.target.value)} />
+      <Input required type="text" placeholder="School" value={School} onChange={(e) => setSchool(e.target.value)} />
 
-      <Input placeholder="Name" />
-      <Input placeholder="Email"  type='password' />
-      
-      <div className={classes.InputMagkatabi}>
-        <input placeholder="Username"  className={classes.SmallInput} />
-        <input placeholder="Password" className={classes.SmallInput} />
-      </div>
-      <Button name="SIGN UP" use="ButtonSignUpForm" />
-      
+      <Button name="SIGN UP" use="ButtonSignUpForm" onClick={() => signUp(Email, Pass, FN, MN, LN, DoB, Gender, Contact, School)} />
+
       
     </div>
 

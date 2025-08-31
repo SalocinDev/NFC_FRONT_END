@@ -1,0 +1,28 @@
+.InputWrapper{
+    border-radius: 10px;
+    height: 2.5rem;
+    width: 35vw;
+    padding: 0 15px;
+    background-color: #D9D9D9;
+    box-shadow: 2px 2px 3px black;
+    display: flex;
+    align-items: center;
+}
+
+.SearchInput{
+    background-color: transparent;
+    border: none;
+    height: 100%;
+    font-size: 1.25rem;
+    width: 100%;
+}
+
+.SearchInput:focus{
+    outline: none;
+}
+
+#SearchIcon{
+    color: black;
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+}

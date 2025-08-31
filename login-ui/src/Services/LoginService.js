@@ -1,12 +1,12 @@
-async function toLogin(username, password) {
+async function toLogin(email, password) {
   try {
-    const response = await fetch(`http://${window.location.hostname}:3000/login-verify`, {
+    const response = await fetch(`http://${window.location.hostname}:3000/acc/login-verify`, {
       method: "POST",
       credentials: "include",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ name: username, password })
+      body: JSON.stringify({ email: email, password: password })
     });
     
     const result = await response.json();
@@ -16,48 +16,16 @@ async function toLogin(username, password) {
     return "Error";
   }
 }
-  
-export async function toNFClogin() {
-  try {
-    const nfcResponse = await fetch(`http://${window.location.hostname}:3000/read-nfc`, {credentials:"include"});
-    const nfcData = await nfcResponse.json();
-    const hash = nfcData?.data?.hash;
-
-    if (!hash) {
-      throw new Error("No hash returned from NFC data");
-    }
-
-    const response = await fetch(`http://${window.location.hostname}:3000/login-verify`, {
-      method: "POST",
-      credentials:"include",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ hash })
-    });
-
-    const result = await response.json();
-    return result;
-  } catch (error) {
-    console.error("NFC Login Error:", error.message);
-    return "Error";
-  }
-}
 
 export async function handleLoginClick(navigate) {
-  const name = document.getElementById("username").value;
+  const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
   
-  const result = await toLogin(name, password);
+  const result = await toLogin(email, password);
   console.log(result);
-  
-  if (result.success && result.data.role) {
-    sessionStorage.setItem("userInfo", JSON.stringify({
-      username: result.data.name,
-      role: result.data.role
-    }));
-    alert(`Welcome, ${result.data.role}!`);
-    navigate("/AdminPage");
+  if (result.success && result.data.user_id) {
+    alert(`Welcome, ${result.data.user_firstname}!`);
+    navigate("/UserPage");
   } else if (result.success === false) {
     alert("Login Failed. Try again.");
   } else if (result.data === "Error") {
@@ -66,7 +34,66 @@ export async function handleLoginClick(navigate) {
     alert("Unexpected server response: " + JSON.stringify(result));
   }
 }
+
+export async function toNFClogin() {
+  try {
+    const nfcResponse = await fetch(`http://${window.location.hostname}:3000/nfc/read`, {credentials:"include"});
+    const nfcData = await nfcResponse.json();
+    const token = nfcData?.token;
+
+    if (!token) {
+      throw new Error("No token returned from NFC data");
+    }
+
+    const response = await fetch(`http://${window.location.hostname}:3000/acc/login-verify`, {
+      method: "POST",
+      credentials:"include",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ token })
+    });
+
+    const result = await response.json();
+    return { success: true, result};
+  } catch (error) {
+    console.error("NFC Login Error:", error.message);
+    return { success: false, error };
+  }
+}
+
   
+export async function signIn(email, password, navigate){
+  try {
+    console.log(email, password);
+    const response = await fetch(`http://${window.location.hostname}:3000/acc/login-verify`, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ email: email, password: password })
+    });
+    const result = await response.json()
+    if (result.success){
+      sessionStorage.setItem("userInfo", JSON.stringify({
+        firstName: result.data.user_firstname,
+        userID: result.data.user_id,
+    }));
+      alert("Welcome!, "+ result.data.user_firstname);
+      navigate("/UserPage");
+    } else if (result.success === false) {
+      alert("Login Failed. Try again.");
+    } else if (result.data === "Error") {
+      alert("An error occurred. Check console.");
+    } else {
+      alert("Unexpected server response: " + JSON.stringify(result));
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 /* export async function handleNFCloginClick(navigate) {
   const result = await toNFClogin();
   console.log(result);

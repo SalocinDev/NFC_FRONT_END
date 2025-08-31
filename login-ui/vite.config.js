@@ -8,6 +8,6 @@ export default defineConfig({
       'resolved-muskox-verbally.ngrok-free.app'
     ],
     host: '0.0.0.0',
-    port: 5173,
+    port: 5000,
   }
 })
