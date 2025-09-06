@@ -1,10 +1,11 @@
 import { SearchBar, SearchResultList, Button, BookArchive } from '../Components';
 
-import Johnrey from '../Logo/Johnrey.jpg';
+import Johnrey from '../Bookcovers/Johnrey.jpg';
 import { FaArrowDown } from 'react-icons/fa';
 import React, { useState, useRef, useEffect } from 'react';
 import classes from '../CSS/MainPage.module.css';
 import { Parallax, ParallaxLayer } from '@react-spring/parallax';
+import { fetchBooks } from '../Services/fetchBooks'; 
 
 function MainPage() {
   const [results, setResults] = useState([]);
@@ -22,7 +23,7 @@ function MainPage() {
 
   /* WE NEED TO FETCH DATA FROM DB THAT WILL DISPLAY BOOK_TITLE, BOOK_AUTHOR AND BOOK_IMG */
   /* ATTEMPT FOR PLACEHOLDER: */
-
+  /*  */
   
   return (
     <div className={classes.MainDiv}>

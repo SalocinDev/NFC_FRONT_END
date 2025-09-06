@@ -25,8 +25,8 @@ function NfcPage() {
     }); 
 
     const result = await Promise.race([toNFClogin(), timeout]);
-    const firstName = result?.result?.data?.user_firstname;
-    const userID = result?.result?.data?.user_id;
+    const firstName = result?.result?.user_firstname;
+    const userID = result?.result?.user_id;
 
     sessionStorage.setItem("userInfo", JSON.stringify({
       firstName,

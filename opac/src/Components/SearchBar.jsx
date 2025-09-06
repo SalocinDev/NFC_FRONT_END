@@ -6,17 +6,17 @@ function SearchBar({ setResults }) {
   
     const [input, setInput] = useState("")
     const fetchData = (value) => {
-        fetch("https://jsonplaceholder.typicode.com/users")
+        fetch("http://172.26.13.248:3000/sql/get-books")
         .then((response) => response.json())
         .then((json) => {
             console.log(json);
             
-            const results = json.filter((user) => {
+            const results = json.filter((book) => {
                 return ( 
                 value && 
-                user && 
-                user.name && 
-                user.name.toLowerCase().includes(value)
+                book && 
+                book.book_title && 
+                book.book_title.toLowerCase().includes(value)
                 );
             });
 

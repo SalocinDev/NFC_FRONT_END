@@ -1,9 +1,17 @@
+import { useState } from 'react';
 import { Button, Wlogo, Blogo, Input } from '../Components';
 import classes from '/src/CSS-Folder/OtpForm.module.css';
 import { useNavigate } from 'react-router-dom';
+import { verifyOTP } from '../Services/SignUpService';
+import { useSearchParams } from "react-router-dom";
 
 function OtpForm() {
   const navigate = useNavigate();
+
+  const [OTP, setOTP] = useState("");
+  const [searchParams] = useSearchParams();
+  const email = searchParams.get("email");
+
   return (
 
         <div className='App'>
@@ -26,8 +34,8 @@ function OtpForm() {
                 <p className={classes.Credentials}>Please Enter the OTP to proceed</p>
               </div>
               <div>
-                <Input placeholder="OTP" />
-                <Button name="VERIFY" use="ButtonVerify" onClick={() => handleLoginClick(navigate)} />
+                <Input required type="text" placeholder="OTP" value={OTP} onChange={(e) => setOTP(e.target.value)} />
+                <Button name="VERIFY" use="ButtonVerify" onClick={() => verifyOTP(email, OTP, navigate)} />
               </div>
       
         

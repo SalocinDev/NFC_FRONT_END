@@ -105,8 +105,8 @@ function BorrowedForm() {
         
       </div>
       <div className={classes.samplelang}>
-          <Button name="Borrowed Books" use="BorrowedBooks" onClick={() => {logOut().then(() => navigate('/BorrowedForm'));}}/>
-          <Button name="Returned Books" use="ReturnedBooks" onClick={() => {logOut().then(() => navigate('/BorrowedForm'));}}/>
+          <Button name="Borrowed Books" use="BorrowedBooks" /* onClick={() => {logOut().then(() => navigate('/BorrowedForm'));}} *//>
+          <Button name="Returned Books" use="ReturnedBooks" /* onClick={() => {logOut().then(() => navigate('/BorrowedForm'));}} *//>
           <SearchID placeholder="Search by ID"/>
       </div>
 

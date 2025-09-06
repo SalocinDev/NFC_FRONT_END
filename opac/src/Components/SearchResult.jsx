@@ -5,7 +5,7 @@ function SearchResult({result}) {
   
   return (
     <>
-      <div className={classes.SearchResult} onClick={(e) => alert(`Gipindot mo ang book na ito: ${result.name}`)}>{result.name}</div> 
+      <div className={classes.SearchResult} onClick={(e) => alert(`Gipindot mo ang book na ito: ${result.book_title}`)}>{result.book_title}</div> 
       {/*sa onlick mo ilalagay ngayon either yung popup or yung redirect page  */}
     </>
   )

@@ -118,25 +118,57 @@ html,
   font-family: 'Montserrat', sans-serif;
 }
 
-.InputMagkatabi {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-.SmallInput {
-  flex: 1;
-  max-width: 100%; /* you can adjust this */
-  font-size: 1.3rem;
-  padding: 0.5rem 0.75rem;
-  margin-bottom: 2rem;
-  margin-top: 2rem;
-
-}
 
 .info{
   font-size: 1.3rem;
   color: #101540;
   font-family: 'Montserrat';
 }
+
+.SignUpContainer{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 1rem 2rem;
+  margin-right: -17vw;
+}
+
+.NameContainer,
+.InfoContainer{
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.SmallInput{
+  width: 20vw;
+  max-width: 37.75rem;
+  height: 4rem;
+  font-size: 1.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  border: 2px solid #727374;
+  box-sizing: border-box;
+  margin-bottom: 2rem;
+  display: block;
+}
+
+.InputMagkatabi {
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+
+}
+
+.ContactContainer{
+  margin-left: -11rem;
+}
+
+.SignContainer{
+  margin-left: -11rem;
+}
+
+.Gender{
+  margin-left: -11rem;
+}
+
+
