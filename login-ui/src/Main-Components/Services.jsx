@@ -1,4 +1,4 @@
-import classes from '/src/CSS-Folder/Services.module.css';
+import classes from '../CSS-Folder/Services.module.css';
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { Checkbox, Modal } from '../Components';

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button, Wlogo, Blogo, Input } from '../Components';
-import classes from '/src/CSS-Folder/OtpForm.module.css';
+import classes from '../CSS-Folder/OtpForm.module.css';
 import { useNavigate } from 'react-router-dom';
 import { verifyOTP } from '../Services/SignUpService';
 import { useSearchParams } from "react-router-dom";

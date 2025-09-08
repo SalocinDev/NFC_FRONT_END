@@ -1,4 +1,4 @@
-import bStyles from '/src/CSS/Button.module.css';
+import bStyles from '../CSS/Button.module.css';
 
 function Button(props) {
   const { name, use, onClick } = props;

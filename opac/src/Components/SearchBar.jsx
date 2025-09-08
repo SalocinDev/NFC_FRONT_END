@@ -6,7 +6,7 @@ function SearchBar({ setResults }) {
   
     const [input, setInput] = useState("")
     const fetchData = (value) => {
-        fetch("http://172.26.13.248:3000/sql/get-books")
+        fetch(`http://${window.location.hostname}:3000/sql/get-books`)
         .then((response) => response.json())
         .then((json) => {
             console.log(json);

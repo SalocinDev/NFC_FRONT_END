@@ -1,4 +1,4 @@
-import classes from '/src/CSS-Folder/Topbar.module.css';
+import classes from '../CSS-Folder/Topbar.module.css';
 import { MdSettings } from 'react-icons/md';
 import { useEffect, useState } from 'react';
 

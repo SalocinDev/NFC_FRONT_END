@@ -1,5 +1,5 @@
 import React from "react";
-import classes from '/src/CSS-Folder/Table.module.css';
+import classes from '../CSS-Folder/Table.module.css';
 
 const Table = ({ columns = [], records = [] }) => {
   return (

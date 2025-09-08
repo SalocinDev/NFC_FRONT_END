@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { toNFClogin } from '../Services/LoginService';
-import classes from '/src/CSS-Folder/NfcPage.module.css';
-import NfcLogo from '/src/Logo/NFC-logo.png';
+import classes from '../CSS-Folder/NfcPage.module.css';
+import NfcLogo from '../Logo/NFC-logo.png';
 import { Button, LogoComponent} from '../Components';
 import { useState, useEffect, useRef } from 'react';
 

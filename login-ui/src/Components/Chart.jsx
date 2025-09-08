@@ -1,5 +1,5 @@
 import { PieChart, Pie, Tooltip, Cell } from "recharts";
-import classes from '/src/CSS-Folder/Chart.module.css';
+import classes from '../CSS-Folder/Chart.module.css';
 
 function Chart({ borrowed, returned }) {
   const data = [

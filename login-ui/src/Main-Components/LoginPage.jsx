@@ -1,4 +1,4 @@
-import classes from '/src/CSS-Folder/LoginPage.module.css';
+import classes from '../CSS-Folder/LoginPage.module.css';
 import { useNavigate } from 'react-router-dom';
 import { Button, Wlogo, Blogo, Input } from '../Components/index.js';
 import { signIn } from '../Services/LoginService.js';

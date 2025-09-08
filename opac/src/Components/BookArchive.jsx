@@ -1,4 +1,4 @@
-import classes from '/src/CSS/BookArchive.module.css';
+import classes from '../CSS/BookArchive.module.css';
 import { Button } from '../Components';
 
 function BookArchive({ image, name, description }) {

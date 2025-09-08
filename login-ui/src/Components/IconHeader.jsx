@@ -1,4 +1,4 @@
-import classes from '/src/CSS-Folder/IconHeader.module.css';
+import classes from '../CSS-Folder/IconHeader.module.css';
 import { NavLink } from 'react-router-dom';
 
 function IconText({ icon: Icon, headerTop, headerBottom, to }) {

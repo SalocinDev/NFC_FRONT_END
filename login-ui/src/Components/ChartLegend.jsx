@@ -1,4 +1,4 @@
-import classes from '/src/CSS-Folder/ChartLegend.module.css';
+import classes from '../CSS-Folder/ChartLegend.module.css';
 import { FaCircle } from 'react-icons/fa';
 
 function ChartLegend() {

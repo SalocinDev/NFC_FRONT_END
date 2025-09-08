@@ -1,4 +1,4 @@
-import classes from '/src/CSS-Folder/ResetPasswordForm.module.css';
+import classes from '../CSS-Folder/ResetPasswordForm.module.css';
 import { useNavigate } from 'react-router-dom';
 import { Wlogo, Input, Blogo, Button } from '../Components';
 

@@ -1,4 +1,4 @@
-import classes from '/src/CSS-Folder/Dashboard.module.css';
+import classes from '../CSS-Folder/Dashboard.module.css';
 import { Wlogo, Input, Blogo, Button } from '../Components';
 import { useNavigate } from 'react-router-dom';
 import { logOut } from '../Services/SessionUtils';

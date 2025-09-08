@@ -1,5 +1,5 @@
-import BlueLogo from '/src/CSS-Folder/Logo.module.css';
-import BlogoImg from '/src/Logo/B-logo.png';
+import BlueLogo from '../CSS-Folder/Logo.module.css';
+import BlogoImg from '../Logo/B-logo.png';
 
 function Blogo() {
   return (

@@ -1,8 +1,8 @@
-import classes from '/src/CSS-Folder/SignUpForm.module.css';
+import classes from '../CSS-Folder/SignUpForm.module.css';
 import { useNavigate } from 'react-router-dom';
 import { useState } from "react";
 import { Wlogo, Input, Blogo, Button } from '../Components';
-import BlogoImg from '/src/Logo/B-logo.png';
+import BlogoImg from '../Logo/B-logo.png';
 import { signUp, sendOTP } from '../Services/SignUpService'
 function ResetPasswordForm() {
   const navigate = useNavigate();

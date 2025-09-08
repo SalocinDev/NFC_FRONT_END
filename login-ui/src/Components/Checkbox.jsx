@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import classes from "/src/CSS-Folder/Checkbox.module.css";
-import Button from "/src/components/Button"; // adjust path if needed
+import classes from "../CSS-Folder/Checkbox.module.css";
+import Button from "./Button"; // adjust path if needed
 import { useNavigate } from "react-router-dom";
 
 const Checkbox = () => {

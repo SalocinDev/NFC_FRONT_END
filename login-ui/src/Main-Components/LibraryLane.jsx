@@ -1,4 +1,4 @@
-import classes from '/src/CSS-Folder/LibraryLane.module.css';
+import classes from '../CSS-Folder/LibraryLane.module.css';
 
 import { MdDashboard } from 'react-icons/md';
 import { FaCompass, FaBookOpen, FaUser, FaCog, FaHandPointer, FaReply, FaCommentMedical} from 'react-icons/fa';

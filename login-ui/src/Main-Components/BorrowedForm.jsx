@@ -4,7 +4,7 @@ import { Button, Wlogo, Blogo, Input, LogoComponent, Chart, ChartLegend, Table, 
 import { IconHeader } from '../Components';
 import { NavLink } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import WlogoSidebar from '/src/Logo/W-logo.png';
+import WlogoSidebar from '../Logo/W-logo.png';
 import { useNavigate } from 'react-router-dom';
 import { logOut } from '../Services/SessionUtils';
 import classes from '../CSS-Folder/UserPage.module.css';

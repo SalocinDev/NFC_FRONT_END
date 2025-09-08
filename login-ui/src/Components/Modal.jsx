@@ -1,4 +1,4 @@
-import classes from '/src/CSS-Folder/Modal.module.css';
+import classes from '../CSS-Folder/Modal.module.css';
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { handleLoginClick } from '../Services/LoginService.js';
