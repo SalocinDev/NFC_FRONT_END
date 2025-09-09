@@ -95,10 +95,10 @@ function MainPage() {
         name="The Great Gatsby"
         description="A novel by F. Scott Fitzgerald."
       />
+      
       <BookArchive
         image={Johnrey}
         name="The Great Gatsby"
-        description="A novel by F. Scott Fitzgerald."
       />
       </div>
       <div className={classes.FirstLayerBook}>
