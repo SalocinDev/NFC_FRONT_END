@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 
-function Testing() 
+export default function Testing() 
 {
 const Product = ({ product }) => {
 const [pageURL, setPageURL] = useState(0);
@@ -21,4 +21,3 @@ const [pageURL, setPageURL] = useState(0);
   );
 }
 
-export default Testing;
