@@ -1,5 +1,5 @@
 import classes from '../CSS/BookArchive.module.css';
-import { Button } from '../Components';
+
 
 function BookArchive({ image, name, description }) {
   return (
@@ -9,8 +9,7 @@ function BookArchive({ image, name, description }) {
     >
       <div className={classes.Content}>
         <div className={classes.BookTitle}>{name}</div>
-        <div className={classes.Des}>{description}</div>
-        <Button name="Click for Details" use="Details"/>
+        <div className={classes.Des}>{description}</div>       
       </div>
     </div>
   );
