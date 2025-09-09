@@ -1,6 +1,6 @@
 import { SearchBar, SearchResultList, Button, BookArchive } from '../Components';
 
-import Johnrey from '../Bookcovers/Johnrey.jpg';
+import Johnrey from '../Bookcovers/TheGreatGatsby.jpg';
 import { FaArrowDown } from 'react-icons/fa';
 import React, { useState, useRef, useEffect } from 'react';
 import classes from '../CSS/MainPage.module.css';
