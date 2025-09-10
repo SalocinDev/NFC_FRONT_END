@@ -90,7 +90,17 @@ const Checkbox = () => {
         <Button
           name="SUBMIT"
           use="NfcSignIn"
-          onClick={() => navigate("/NfcPage")} /* paralang makita na gumagana button, this aint supposed to be a navigate function. */
+            onClick={() => {
+              const selected = Object.keys(checkedItems).filter(
+                (key) => checkedItems[key]
+              );
+
+              alert(
+                "Gipindot mo ang butones. Selected: " +
+                  (selected.length > 0 ? selected.join(", ") : "None") +
+                  (others ? ` | Others: ${others}` : "")
+              );
+            }}
         />
       </div>
     </div>

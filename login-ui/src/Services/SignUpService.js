@@ -1,5 +1,6 @@
 export async function signUp (email, password, firstName, middleName, lastName, dob, gender, contactNumber, school, navigate) {
     console.log("Signing up with:", { email, password, firstName, middleName, lastName, dob, gender, contactNumber, school });
+    alert(`Signing up with:, ${email}, ${password}, ${firstName}, ${middleName}, ${lastName}, ${dob}, ${gender}, ${contactNumber}, ${school}`);
     try {
         const response = await fetch(`http://${window.location.hostname}:3000/acc/sign-up`, {
             method: "POST",
@@ -14,11 +15,13 @@ export async function signUp (email, password, firstName, middleName, lastName, 
             console.log(result);
             alert("Success Signing up!");
             sendOTP(email, navigate)
-        } else if (!result.success && result.message === "User already registered!"){
+        } else if (!result.success && result.message === "Account already registered"){
             alert(result.message);
         }
     } catch (error) {
-        return alert(error)
+        alert(error);
+        console.log(error);
+        return
     }
 }
 

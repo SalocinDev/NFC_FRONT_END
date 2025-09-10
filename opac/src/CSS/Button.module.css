@@ -16,6 +16,11 @@
   color: white;
   background-color: #101540;
   border-color: #101540;
+  cursor: pointer;
+}
+
+.SearchButton:Active{
+  background-color: red;
 }
 
 .RandomButton{

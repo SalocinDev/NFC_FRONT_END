@@ -1,8 +1,9 @@
 import classes from '../CSS/BookArchive.module.css';
-
+import { NavLink } from 'react-router-dom';
 
 function BookArchive({ image, name, description }) {
   return (
+    <NavLink>
     <div
       className={classes.Book}
       style={{ backgroundImage: `url(${image})` }}
@@ -12,6 +13,7 @@ function BookArchive({ image, name, description }) {
         <div className={classes.Des}>{description}</div>       
       </div>
     </div>
+    </NavLink>
   );
 }
 

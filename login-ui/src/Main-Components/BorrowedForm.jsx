@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 import WlogoSidebar from '../Logo/W-logo.png';
 import { useNavigate } from 'react-router-dom';
 import { logOut } from '../Services/SessionUtils';
-import classes from '../CSS-Folder/UserPage.module.css';
+import classes from '../CSS-Folder/BorrowedForm.module.css';
 
 function BorrowedForm() {
   const navigate = useNavigate(); 
@@ -60,7 +60,7 @@ function BorrowedForm() {
         </NavLink>
 
         <NavLink
-          to="/NfcPage"
+          to="/BorrowedForm"
           className={({ isActive }) =>
             isActive ? classes.activeIcon : classes.iconLink
           }

@@ -17,6 +17,44 @@ function ResetPasswordForm() {
   const [Contact, setContact] = useState("");
   const [School, setSchool] = useState("");
 
+  const handleSignUp = () => {
+  //required fields check
+  if (!FN || !LN || !Email || !Pass || !DoB || !Gender || !Contact || !School) {
+    alert("Please fill in all required fields.");
+    return;
+  }
+
+  //email format validation
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(Email)) {
+    alert("Please enter a valid email address.");
+    return;
+  }
+
+  //password length check
+  if (Pass.length < 6) {
+    alert("Password must be at least 6 characters long.");
+    return;
+  }
+
+  //contact number validation (10–15 digits)
+  const contactRegex = /^[0-9]{10,15}$/;
+  if (!contactRegex.test(Contact)) {
+    alert("Contact number must be 10–15 digits.");
+    return;
+  }
+
+  //date of Birth not in future
+  const today = new Date();
+  if (new Date(DoB) > today) {
+    alert("Date of birth cannot be in the future.");
+    return;
+  }
+
+  //if all validations pass, call your signUp function
+  signUp(Email, Pass, FN, MN, LN, DoB, Gender, Contact, School, navigate);
+};
+
   return (
 
      <div className={classes.body}>
@@ -59,12 +97,16 @@ function ResetPasswordForm() {
   </div>
 
     <div className={classes.InputGender}>
-      <Input  className={classes.SmallInput} required type="select" placeholder="Gender" value={Gender} options={["Male", "Female", "Mayonnaise"]} onChange={(e) => setGender(e.target.value)} />
-      <Button name="SIGN UP" use="ButtonSignUpForm" onClick={() => signUp(Email, Pass, FN, MN, LN, DoB, Gender, Contact, School, navigate)} />
+      <Input  className={classes.SmallInput} required type="select" placeholder="Gender" value={Gender} options={["Male", "Female"]} onChange={(e) => setGender(e.target.value)} />
+      <Button name="SIGN UP" use="ButtonSignUpForm" onClick={handleSignUp} />
     </div>
     </div>
 
+    
+
     </div>
+
+    
     
   );
 }

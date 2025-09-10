@@ -88,6 +88,7 @@ a:hover{
   gap: 4px;
 }
 
+
 .timeRow {
   display: flex;
   align-items: center;
@@ -102,6 +103,10 @@ a:hover{
 .dateText {
   font-size: 0.8rem;
   color: #101540;
+}
+
+.Date{
+  margin-top: -5vh;
 }
 
 .gearIcon {
@@ -178,6 +183,7 @@ a:hover{
 .GearIcon {
   color: #101540;
   cursor: pointer;
+  margin-left: -2vw;
 }
 
 .iconLink {
@@ -386,24 +392,26 @@ a:hover{
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 4px;
+  margin-top: 3vh;
 }
 
 .TimeGear {
   display: flex;
   align-items: center;
   gap: 8px;
-}
+} 
 
 .Time {
   font-size: 0.95rem;
   font-weight: 500;
-}
+} 
 
 .GearIcon {
   color: #101540;
   cursor: pointer;
 }
+ 
+
 
 .iconLink {
   display: flex;
