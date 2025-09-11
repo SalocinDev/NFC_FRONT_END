@@ -10,5 +10,5 @@ export default defineConfig({
     host: '0.0.0.0',
     port: 5001,
   },
-  /* base: "/NFC_FRONT_END/opac/" */
+  base: "/NFC_FRONT_END/opac/"
 })
