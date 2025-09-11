@@ -102,7 +102,9 @@ function LibraryLane() {
         <div className={classes.RightTopbar}>
           <div className={classes.TimeGear}>
             <span className={classes.Time}>{currentTime}</span>
+            <NavLink to="/SettingPage">
             <FaCog className={classes.GearIcon} size={16} />
+            </NavLink>
           </div>
           <div className={classes.Date}>{currentDate}</div>
         </div>

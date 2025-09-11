@@ -7,27 +7,35 @@ export default function ProtectedRoute({ children }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://${window.location.hostname}:3000/session/get-session`, {
-      method: 'GET',
-      credentials: 'include',
-    })
-      .then(res => res.json())
-      .then(data => {
+    const checkSession = async () => {
+      try {
+        const res = await fetch(`http://${window.location.hostname}:3000/session/get-session`, {
+          method: 'GET',
+          credentials: 'include',
+        });
+        const data = await res.json();
         console.log("Session data:", data);
+
         if (data?.loggedIn) {
           setLoggedIn(true);
         } else {
-          navigate('/');
+          setLoggedIn(false);
+          navigate('/', { replace: true }); // replace ensures no back button
         }
-      })
-      .catch(err => {
+      } catch (err) {
         console.error("Session check failed:", err);
-        navigate('/');
-      })
-      .finally(() => setLoading(false));
+        setLoggedIn(false);
+        navigate('/', { replace: true });
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    checkSession();
   }, [navigate]);
 
   if (loading) return <div>Checking session...</div>;
+  if (!loggedIn) return null; // don’t render children if not logged in
 
-  return loggedIn ? children : <div>Not logged in.</div>;
+  return children;
 }

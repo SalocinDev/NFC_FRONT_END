@@ -1,49 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import classes from "../CSS-Folder/Checkbox.module.css";
-import Button from "./Button"; // adjust path if needed
-import { useNavigate } from "react-router-dom";
 
-const Checkbox = () => {
-  const navigate = useNavigate();
-
-  const optionsLeft = [
-    "Books",
-    "Fiction",
-    "Special Collection",
-    "Library Orientation",
-    "Periodicals",
-    "Reading Buddy",
-    "Tutorial(s)",
-    "Use of Library Space",
-  ];
-
-  const optionsRight = [
-    "Computer User",
-    "Computer With Internet",
-    "E-Books",
-    "E-Gov User",
-    "E-Resources",
-    "Digital Literacy",
-    "Wi-Fi User",
-  ];
+const Checkbox = ({ onChange }) => {
+  const optionsLeft = ["Books", "Fiction", "Special Collection", "Library Orientation", "Periodicals", "Reading Buddy", "Tutorial(s)", "Use of Library Space"];
+  const optionsRight = ["Computer User", "Computer With Internet", "E-Books", "E-Gov User", "E-Resources", "Digital Literacy", "Wi-Fi User"];
 
   const [checkedItems, setCheckedItems] = useState({});
   const [others, setOthers] = useState("");
 
   const handleChange = (option) => {
-    setCheckedItems((prev) => ({
-      ...prev,
-      [option]: !prev[option],
-    }));
+    setCheckedItems(prev => ({ ...prev, [option]: !prev[option] }));
   };
+
+  const handleOthersChange = (e) => {
+    setOthers(e.target.value);
+  };
+
+  // call onChange safely after state updates
+  useEffect(() => {
+    if (onChange) {
+      const selected = Object.keys(checkedItems).filter(key => checkedItems[key]);
+      onChange(selected, others);
+    }
+  }, [checkedItems, others, onChange]);
 
   return (
     <div className={classes.container}>
-    
       <div className={classes.checkboxWrapper}>
-        
         <div className={classes.column}>
-          {optionsLeft.map((option) => (
+          {optionsLeft.map(option => (
             <label key={option} className={classes.checkbox}>
               <input
                 type="checkbox"
@@ -56,9 +41,8 @@ const Checkbox = () => {
           ))}
         </div>
 
-        
         <div className={classes.column}>
-          {optionsRight.map((option) => (
+          {optionsRight.map(option => (
             <label key={option} className={classes.checkbox}>
               <input
                 type="checkbox"
@@ -70,38 +54,18 @@ const Checkbox = () => {
             </label>
           ))}
 
-         
           <div className={classes.others}>
             <label>
               Others:{" "}
               <input
                 type="text"
                 value={others}
-                onChange={(e) => setOthers(e.target.value)}
+                onChange={handleOthersChange}
                 className={classes.inputText}
               />
             </label>
           </div>
         </div>
-      </div>
-
-      
-      <div className={classes.buttonWrapper}>
-        <Button
-          name="SUBMIT"
-          use="NfcSignIn"
-            onClick={() => {
-              const selected = Object.keys(checkedItems).filter(
-                (key) => checkedItems[key]
-              );
-
-              alert(
-                "Gipindot mo ang butones. Selected: " +
-                  (selected.length > 0 ? selected.join(", ") : "None") +
-                  (others ? ` | Others: ${others}` : "")
-              );
-            }}
-        />
       </div>
     </div>
   );
