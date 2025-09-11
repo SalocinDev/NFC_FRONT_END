@@ -37,7 +37,7 @@ function NfcPage() {
       navigate('/');
     } else if (result.success && firstName) {
       alert(`Welcome, ${firstName} (via NFC)!`);
-      navigate("/UserPage");
+      navigate("/Intermediary");
     } else if (result.valid === false) {
       alert("NFC Login Failed. Returning to login.");
       navigate('/');

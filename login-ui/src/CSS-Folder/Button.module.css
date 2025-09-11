@@ -27,7 +27,8 @@
 .ButtonSignIn:hover,
 .ButtonReset:hover,
 .NfcSignUp:hover,
-.ButtonSignUpForm:hover{
+.ButtonSignUpForm:hover,
+.UpdateProfileButton:hover{
   cursor: pointer;
   background-color: lightblue;
   color: white;
@@ -42,7 +43,7 @@
   color: #101540;
 }
 
-.NfcButtonSignIn:hover {
+.NfcButtonSignIn:hover{
   cursor: pointer;
   background-color: white;
   border-style: solid;
@@ -185,3 +186,22 @@
  margin-right: 2rem;
  margin-left: 5vw;
 }
+
+.UpdateProfileButton{
+  width: 100%;
+  max-width: 20.75rem;
+  height: 4rem;
+  font-size: 1.5rem;
+  padding: 1rem 5rem;
+  border-radius: 0.75rem;
+  border: 2px solid #727374;
+  box-sizing: border-box;
+  margin-bottom: 2px;
+  cursor: pointer;
+   Background-color: #101540;
+   color: white;
+   border-style: none;
+}
+
+
+

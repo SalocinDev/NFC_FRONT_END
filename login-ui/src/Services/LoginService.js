@@ -82,7 +82,7 @@ export async function signIn(email, password, navigate){
         userID: result.result.user_id,
     }));
       alert("Welcome!, "+ result.result.user_firstname);
-      navigate("/UserPage");
+      navigate("/Intermediary");
     } else if (result.success === false) {
       alert("Login Failed. Try again.");
     } else if (result.result === "Error") {
