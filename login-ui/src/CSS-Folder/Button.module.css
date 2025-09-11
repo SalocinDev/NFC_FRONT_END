@@ -32,9 +32,10 @@
   box-sizing: border-box;
   margin-bottom: 2px;
   cursor: pointer;
-  border-style: none;
+  border-color: white;
+  background-color: transparent;
   color: white;
-  
+
 }
 
 .ButtonUserPage{
@@ -59,9 +60,6 @@
   color: #101540;
   transition: 0.8s;
 }
-
-
-
 
 .ButtonVerify {
   margin-top: 2rem;

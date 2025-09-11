@@ -77,11 +77,12 @@ html,
   height: 40vh;
   display: block;
   margin: 0 auto 0 auto; 
-  transform: translate(0.8rem, -5rem);
+  transform: translate(0.4rem, -2rem);
 }
 
 .tagline{
-    
+    margin-left: 2vw;
+    margin-top: -5.2vh;
 }
 
 /*BELOW THIS PART IS UNFINISHED*/
