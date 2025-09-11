@@ -7,7 +7,8 @@
 .NfcSignUp,
 .ButtonVerify,
 .ButtonSignUpForm,
-.ButtonForm {
+.ButtonForm,
+.ButtonServices{
   width: 100%;
   max-width: 25.75rem;
   height: 4rem;
@@ -19,6 +20,46 @@
   margin-bottom: 2px;
   cursor: pointer;
 }
+
+.ButtonServices{
+  
+  width: 25.75rem;
+  height: 4rem;
+  font-size: 1.5rem;
+  padding: 1rem 5rem;
+  border-radius: 0.75rem;
+  border: 2px solid #727374;
+  box-sizing: border-box;
+  margin-bottom: 2px;
+  cursor: pointer;
+  border-style: none;
+}
+
+.ButtonUserPage{
+  margin-top: 2vh;
+  color: white;
+  background-color: #101540;
+  border-style: none;
+  width: 25.75rem;
+  height: 4rem;
+  font-size: 1.5rem;
+  padding: 1rem 5rem;
+  border-radius: 0.75rem;
+  box-sizing: border-box;
+  margin-bottom: 2px;
+  cursor: pointer;
+}
+
+.ButtonUserPage:hover{
+  border-color: #101540;
+  border-style: solid;
+  background-color: lightblue;
+  color: #101540;
+  transition: 0.8s;
+}
+
+
+
 
 .ButtonVerify {
   margin-top: 2rem;
