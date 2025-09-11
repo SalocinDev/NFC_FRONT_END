@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+const apiUrl = import.meta.env.VITE_API_URL;
 
 export default function ProtectedRoute({ children }) {
   const [loading, setLoading] = useState(true);
@@ -9,7 +10,7 @@ export default function ProtectedRoute({ children }) {
   useEffect(() => {
     const checkSession = async () => {
       try {
-        const res = await fetch(`http://${window.location.hostname}:3000/session/get-session`, {
+        const res = await fetch(`${apiUrl}/session/get-session`, {
           method: 'GET',
           credentials: 'include',
         });

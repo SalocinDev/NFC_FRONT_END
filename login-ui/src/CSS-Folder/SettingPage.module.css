@@ -266,13 +266,6 @@ footer{
   gap: 1.5rem;
 }
 
-.InputGrid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 inputs per row */
-  gap: 1.5rem; /* space between grid items */
-  margin-top: 1rem;
-}
-
 .InputField {
   display: flex;
   flex-direction: column; /* label above input */
@@ -301,3 +294,15 @@ footer{
     margin-left: 2.7vw;
 }
 
+.InputGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 inputs per row */
+  gap: 1.5rem; /* space between grid items */
+  margin-top: 1rem;
+}
+
+.ButtonContainer,
+.ConfirmPassButton {
+  grid-column: 2;
+  justify-self: start; /* use end if you want it right-aligned */
+}
