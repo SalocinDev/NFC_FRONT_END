@@ -206,7 +206,8 @@ function SettingPage() {
       <Input required type="text" placeholder="Please Enter Your Zip Code"/>
       <br/>   
     </div>
-<div className={classes.UpdateButton}>
+
+<div className={classes.ButtonContainer}>
     <Button name="Update Profile" use="UpdateProfileButton"/>
     
 </div>
