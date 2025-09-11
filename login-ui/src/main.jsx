@@ -20,7 +20,10 @@ const router = createBrowserRouter([
   { path: "Intermediary", element: <ProtectedRoute><Intermediary /></ProtectedRoute>},
   { path: "SettingPage", element: <ProtectedRoute><SettingPage /></ProtectedRoute>},
   { path: "*", element: <NotFoundPage /> },
-]);
+],
+  {
+    basename: "/NFC_FRONT_END/login-ui",
+  });
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>

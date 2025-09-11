@@ -9,14 +9,11 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
 concurrency:
   group: "pages"
   cancel-in-progress: false
@@ -34,17 +31,23 @@ jobs:
           node-version: 20
 
       # Build login-ui
-      - run: cd NFC_FRONT_END/login-ui && npm install && npm run build
+      - run: |
+          cd login-ui
+          npm install
+          npm run build
 
       # Build opac
-      - run: cd NFC_FRONT_END/opac && npm install && npm run build
+      - run: |
+          cd opac
+          npm install
+          npm run build
 
       # Prepare combined folder for deployment
       - run: |
-          mkdir -p public/NFC_FRONT_END/login-ui
-          mkdir -p public/NFC_FRONT_END/opac
-          cp -r NFC_FRONT_END/login-ui/dist/* public/NFC_FRONT_END/login-ui/
-          cp -r NFC_FRONT_END/opac/dist/* public/NFC_FRONT_END/opac/
+          mkdir -p public/login-ui
+          mkdir -p public/opac
+          cp -r login-ui/dist/* public/login-ui/
+          cp -r opac/dist/* public/opac/
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
