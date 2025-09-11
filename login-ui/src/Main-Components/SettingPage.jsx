@@ -139,11 +139,10 @@ function SettingPage() {
       <label>Middle Name</label>
       <Input required type="email" placeholder="Middle Name" value={MN} onChange={(e) => setMN(e.target.value)} />
     </div>
-
     
     <div className={classes.InputField}>
-      <label>Email</label>
-      <Input required type="email" placeholder="Email" value={Email} onChange={(e) => setEmail(e.target.value)} />
+      <label>University</label>
+      <Input required type="text" placeholder="Your University" value={School} onChange={(e) => setUniversity(e.target.value)} />
     </div>
 
   </div>
