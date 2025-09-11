@@ -1,7 +1,8 @@
+const apiUrl = import.meta.env.VITE_API_URL;
 //////////////////////////////////////////////////////////////////////////////////////////////
 async function toLogin(email, password) {
   try {
-    const response = await fetch(`http://${window.location.hostname}:3000/acc/login-verify`, {
+    const response = await fetch(`http://${ip}:3000/acc/login-verify`, {
       method: "POST",
       credentials: "include",
       headers: {
@@ -38,7 +39,7 @@ export async function handleLoginClick(navigate) {
 //////////////////////////////////////////////////////////////////////////////////////////////
 export async function toNFClogin() {
   try {
-    const nfcResponse = await fetch(`http://${window.location.hostname}:3000/nfc/read`, { credentials: "include" });
+    const nfcResponse = await fetch(`${apiUrl}/nfc/read`, { credentials: "include" });
     const nfcData = await nfcResponse.json();
     const token = nfcData?.token;
 
@@ -46,7 +47,7 @@ export async function toNFClogin() {
       throw new Error("No token returned from NFC data");
     }
 
-    const response = await fetch(`http://${window.location.hostname}:3000/acc/login-verify`, {
+    const response = await fetch(`${apiUrl}/acc/login-verify`, {
       method: "POST",
       credentials: "include",
       headers: {
@@ -63,11 +64,10 @@ export async function toNFClogin() {
   }
 }
 
-  
 export async function signIn(email, password, navigate){
   try {
     console.log(email, password);
-    const response = await fetch(`http://${window.location.hostname}:3000/acc/login-verify`, {
+    const response = await fetch(`${apiUrl}/acc/login-verify`, {
       method: "POST",
       credentials: "include",
       headers: {

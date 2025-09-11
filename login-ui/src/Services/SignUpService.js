@@ -1,8 +1,10 @@
+const apiUrl = import.meta.env.VITE_API_URL;
+
 export async function signUp (email, password, firstName, middleName, lastName, dob, gender, contactNumber, school, navigate) {
     console.log("Signing up with:", { email, password, firstName, middleName, lastName, dob, gender, contactNumber, school });
     alert(`Signing up with:, ${email}, ${password}, ${firstName}, ${middleName}, ${lastName}, ${dob}, ${gender}, ${contactNumber}, ${school}`);
     try {
-        const response = await fetch(`http://${window.location.hostname}:3000/acc/sign-up`, {
+        const response = await fetch(`${apiUrl}/acc/sign-up`, {
             method: "POST",
             credentials: "include",
             headers: {
@@ -27,7 +29,7 @@ export async function signUp (email, password, firstName, middleName, lastName, 
 
 export async function sendOTP(email, navigate){
     try {
-        const response = await fetch(`http://${window.location.hostname}:3000/acc/send-otp`, {
+        const response = await fetch(`${apiUrl}/acc/send-otp`, {
             method: "POST",
             credentials: "include",
             headers: {
@@ -50,7 +52,7 @@ export async function sendOTP(email, navigate){
 
 export async function verifyOTP(email, OTP, navigate){
     try {
-        const response = await fetch(`http://${window.location.hostname}:3000/acc/verify-otp`, {
+        const response = await fetch(`${apiUrl}/acc/verify-otp`, {
             method: "POST",
             credentials: "include",
             headers: {

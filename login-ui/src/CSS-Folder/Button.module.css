@@ -8,7 +8,8 @@
 .ButtonVerify,
 .ButtonSignUpForm,
 .ButtonForm,
-.ButtonServices{
+.ButtonServices,
+.ButtonSubmit{
   width: 100%;
   max-width: 25.75rem;
   height: 4rem;
@@ -19,6 +20,13 @@
   box-sizing: border-box;
   margin-bottom: 2px;
   cursor: pointer;
+}
+
+.ButtonSubmit {
+  background-color: #101540;
+  border-color: #101540;
+  color: white;
+  margin-left: 40vw;
 }
 
 .ButtonServices{
@@ -69,7 +77,8 @@
 .ButtonReset:hover,
 .NfcSignUp:hover,
 .ButtonSignUpForm:hover,
-.UpdateProfileButton:hover{
+.UpdateProfileButton:hover,
+.ConfirmPassButton{
   cursor: pointer;
   background-color: lightblue;
   color: white;
@@ -103,7 +112,8 @@
 .ButtonSignIn,
 .ButtonVerify,
 .ButtonSignUpForm,
-.ButtonReset {
+.ButtonReset,
+.ButtonSubmit {
   background-color: #101540;
   border-color: #101540;
   color: white;
@@ -156,6 +166,7 @@
   margin-top: 2rem;
 }
  */
+
 .BackButton,
 .LogoutButton {
   font-weight: bold;
@@ -228,7 +239,8 @@
  margin-left: 5vw;
 }
 
-.UpdateProfileButton{
+.UpdateProfileButton,
+.ConfirmPassButton{
   width: 100%;
   max-width: 20.75rem;
   height: 4rem;
@@ -243,6 +255,12 @@
    color: white;
    border-style: none;
 }
+
+.ConfirmPassButton{
+  margin-right: -100vw;
+}
+
+
 
 
 

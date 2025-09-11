@@ -1,3 +1,4 @@
+const apiUrl = import.meta.env.VITE_API_URL;
 /* export async function getAuth() {
     try {
         const res = await fetch(`http://${window.location.hostname}:3000/api/auth`, {
@@ -12,7 +13,7 @@
     commented because not being used atm*/
 
 export async function logOut() {
-    await fetch(`http://${window.location.hostname}:3000/acc/logout`, {
+    await fetch(`${apiUrl}/acc/logout`, {
         method: "POST",
         credentials: "include"
     });
@@ -40,7 +41,7 @@ export async function logOut() {
 }
  */
 export async function getSession() {
-    const res = await fetch(`http://${window.location.hostname}:3000/acc/get-session`, {
+    const res = await fetch(`${apiUrl}/acc/get-session`, {
         method: "GET",
         credentials: "include",
         headers: {

@@ -10,5 +10,5 @@ export default defineConfig({
     host: '0.0.0.0',
     port: 5000,
   },
-  base: "/NFC_FRONT_END/login-ui/"
+  base: "/NFC_FRONT_END/login-ui"
 })

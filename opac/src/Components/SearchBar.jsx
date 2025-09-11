@@ -1,12 +1,13 @@
 import React, { useState} from 'react';
 import classes from '../CSS/SearchBar.module.css';
 import { FaSearch } from "react-icons/fa";
+const apiUrl = import.meta.env.VITE_API_URL;
 
 function SearchBar({ setResults }) {
   
     const [input, setInput] = useState("")
     const fetchData = (value) => {
-        fetch(`http://${window.location.hostname}:3000/sql/get-books`)
+        fetch(`${apiUrl}/sql/get-books`)
         .then((response) => response.json())
         .then((json) => {
             console.log(json);

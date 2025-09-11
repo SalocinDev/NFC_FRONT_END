@@ -1,5 +1,5 @@
 import classes from '../CSS-Folder/SettingPage.module.css';
-
+import PhoneInput from 'react-phone-input-2';
 import { MdDashboard } from 'react-icons/md';
 import { FaCompass, FaBookOpen, FaUser, FaCog, FaHandPointer, FaReply, FaCommentMedical} from 'react-icons/fa';
 import { Button, Table, SearchID, AiPopUp, Input } from '../Components';
@@ -10,12 +10,11 @@ import WlogoSidebar from '/src/Logo/W-logo.png';
 import { useNavigate } from 'react-router-dom';
 import { logOut } from '../Services/SessionUtils';
 
-
 function SettingPage() {
   const navigate = useNavigate(); 
   const columns = ["ID", "User ID", "Name", "Email"];
   const storedUser = JSON.parse(sessionStorage.getItem("userInfo"));
-
+  
   const [currentTime, setCurrentTime] = useState('');
   const [currentDate, setCurrentDate] = useState('');
   const borrowedBooks = 60;
@@ -25,11 +24,14 @@ function SettingPage() {
   const [LN, setLN] = useState("");
   const [Email, setEmail] = useState("");
   const [Pass, setPass] = useState("");
+  const [NewPass, newSetPass] = useState("");
   const [DoB, setDoB] = useState("");
   const [Gender, setGender] = useState("");
   const [Contact, setContact] = useState("");
   const [School, setSchool] = useState("");
 
+
+  const [phone, setPhone] = useState('');
   useEffect(() => {
     const updateTime = () => {
       const now = new Date();
@@ -122,8 +124,12 @@ function SettingPage() {
     </div>
 
     <div className={classes.InputField}>
-      <label>Phone Number</label>
-      <Input/>
+       <PhoneInput
+      country={'ph'}            
+      value={phone}
+      onChange={setPhone}
+      enableSearch={true}    
+    />
     </div>
 
     <div className={classes.InputField}>
@@ -145,12 +151,14 @@ function SettingPage() {
       <Input required type="text" placeholder="Your University" value={School} onChange={(e) => setUniversity(e.target.value)} />
     </div>
 
-  </div>
-  
-          
-  <div className={classes.InputField}>
+    <div className={classes.InputField}>
       <label>Birth Date</label>
       <Input required type="date" value={DoB} onChange={(e) => setDoB(e.target.value)} />
+    </div>
+
+    <div className={classes.InputField}>
+      <label>Old Password</label>
+      <Input required type="password" placeholder="Enter Your Old Password" value={Pass} onChange={(e) => setPass(e.target.value)} />
     </div>
 
     <div className={classes.InputField}>
@@ -167,6 +175,20 @@ function SettingPage() {
       />
       </span>
     </div>
+
+     <div className={classes.InputField}>
+      <label>New Password</label>
+      <Input required type="password" placeholder="Enter Your Old Password" value={Pass} onChange={(e) => setPass(e.target.value)} />
+    </div>
+
+     <Button name="Update Profile" use="ConfirmPassButton"/>
+
+  </div>
+  
+          
+  
+
+    
 
     <h1>LOCATION SETTING</h1>
    <div className={classes.InputField}>

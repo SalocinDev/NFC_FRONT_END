@@ -19,6 +19,7 @@
 
 .CheckboxContainer{
     margin-top: 20vh;
+    margin-left: -3vw;
     z-index: -1;
 }
 
@@ -45,10 +46,13 @@ font-size: 5rem;
 }
 
 .Background{
-  background-image: url('./src/Logo/Background.png');
+  background-image: url('../Logo/Background.png');
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
 }
 
 .buttonWrapper {
@@ -57,4 +61,11 @@ font-size: 5rem;
   margin-top: 3rem;
   width: 100%;
   margin-left: -13vw;
+}
+
+.ServicesSubmitted{
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: #0d1046;
+  margin-left: 40vw;
 }

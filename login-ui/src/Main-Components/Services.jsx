@@ -52,12 +52,12 @@ function Services() {
         <Checkbox onChange={handleServicesChange} />
 
         {/* Live display of selected services */}
-        <div style={{ marginTop: "1rem", fontSize: "1rem", color: "#101540" }}>
+        <div className={classes.ServicesSubmitted} style={{ marginTop: "1rem", fontSize: "1rem", color: "#101540" }}>
           <strong>Selected Services:</strong> {availedServices.selectedServices.join(", ")}
           {availedServices.others ? ` | Others: ${availedServices.others}` : ""}
         </div>
 
-        <Button name="Submit" onClick={handleSubmit} />
+        <Button name="Submit" use="ButtonSubmit" onClick={handleSubmit} />
       </div>
     </div>
   );

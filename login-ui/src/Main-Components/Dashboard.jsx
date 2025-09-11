@@ -2,11 +2,12 @@ import classes from '../CSS-Folder/Dashboard.module.css';
 import { Wlogo, Input, Blogo, Button } from '../Components';
 import { useNavigate } from 'react-router-dom';
 import { logOut } from '../Services/SessionUtils';
+const apiUrl = import.meta.env.VITE_API_URL;
 
 function Dashboard() {
   const navigate = useNavigate();
   const LogOut = async () => {
-    await fetch(`http://${window.location.hostname}:3000/logout`, {
+    await fetch(`${apiUrl}/logout`, {
       method: "POST",
       credentials: "include"
     });
