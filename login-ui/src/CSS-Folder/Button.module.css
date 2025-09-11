@@ -257,7 +257,8 @@
 }
 
 .ConfirmPassButton{
-  margin-right: -100vw;
+  display: flex;
+  justify-content: flex-end;
 }
 
 
