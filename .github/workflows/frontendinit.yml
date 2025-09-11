@@ -1,0 +1,62 @@
+# Simple workflow for deploying static content to GitHub Pages
+name: Capstone CYB41
+
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches: ["main"]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # Build login-ui
+      - run: |
+          cd login-ui
+          npm install
+          npm run build
+
+      # Build opac
+      - run: |
+          cd opac
+          npm install
+          npm run build
+
+      # Prepare combined folder for deployment
+      - run: |
+          mkdir -p public/login-ui
+          mkdir -p public/opac
+          cp -r login-ui/dist/* public/login-ui/
+          cp -r opac/dist/* public/opac/
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
