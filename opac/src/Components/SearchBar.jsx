@@ -7,7 +7,13 @@ function SearchBar({ setResults }) {
   
     const [input, setInput] = useState("")
     const fetchData = (value) => {
-        fetch(`${apiUrl}/sql/get-books`)
+        fetch(`${apiUrl}/lib/get-books`, {
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json"
+        },
+        })
         .then((response) => response.json())
         .then((json) => {
             console.log(json);

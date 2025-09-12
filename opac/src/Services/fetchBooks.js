@@ -2,7 +2,7 @@ const apiUrl = import.meta.env.VITE_API_URL;
 
 export async function fetchBooks(){
     try {
-        const response = await fetch(`${apiUrl}/sql//get-books`, {
+        const response = await fetch(`${apiUrl}/lib/get-books`, {
             method: "POST",
             credentials: "include",
             headers: {
