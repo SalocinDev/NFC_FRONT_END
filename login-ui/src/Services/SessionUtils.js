@@ -42,7 +42,7 @@ export async function logOut() {
  */
 export async function getSession() {
     const res = await fetch(`${apiUrl}/acc/get-session`, {
-        method: "GET",
+        method: "POST",
         credentials: "include",
         headers: {
             "Content-Type": "application/json"
