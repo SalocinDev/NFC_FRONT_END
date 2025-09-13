@@ -1,0 +1,14 @@
+import BlueLogo2 from '../CSS/Logo.module.css';
+import BlueLogo from '../Logo/B-logo2.png';
+
+function LogoComponent({ className }) {
+  return (
+    <img 
+      src={BlueLogo} 
+      alt="BlueLogo" 
+      className={`${BlueLogo2["BlueLogo2"]} ${className || ""}`} 
+    />
+  );
+}
+
+export default LogoComponent;

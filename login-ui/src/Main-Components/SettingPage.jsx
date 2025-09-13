@@ -184,11 +184,6 @@ function SettingPage() {
      <Button name="Update Profile" use="ConfirmPassButton"/>
 
   </div>
-  
-          
-  
-
-    
 
     <h1>LOCATION SETTING</h1>
    <div className={classes.InputField}>

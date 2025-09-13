@@ -1,0 +1,20 @@
+.WhiteLogo{
+  transform: scale(1.5); 
+  top: -5vw;
+}
+
+.Bluelogo{
+  transform: scale(1); 
+  transform-origin: center;
+  position: relative;
+  top: 50px;
+}
+
+.BlueLogo2{
+  transform: scale(1.5); 
+}
+
+.SidebarLogo{
+  transform: scale(0.5); 
+  position: relative;
+}

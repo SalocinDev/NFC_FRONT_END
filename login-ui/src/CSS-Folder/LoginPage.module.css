@@ -14,18 +14,10 @@
   align-items: center;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 480px) {
   .RightRectangle {
-    width: 100vw;
-    height: 40vh;
-    border-radius: 0;
-    top: auto;
-    bottom: 0;
-    right: 0;
-    border-top-left-radius: 50px;
-    border-top-right-radius: 50px;
+    display: none; 
   }
-
 }
 
 .RightContent {
