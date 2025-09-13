@@ -16,7 +16,7 @@
 
 @media (max-width: 480px) {
   .RightRectangle {
-    display: none; 
+    display: none; /* hides the div AND all its children */
   }
 }
 
