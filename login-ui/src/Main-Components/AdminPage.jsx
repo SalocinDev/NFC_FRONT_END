@@ -1,7 +1,7 @@
-import classes from '../CSS/AdminPage.module.css';
+import classes from '../CSS-Folder/AdminPage.module.css';
 import { MdDashboard } from 'react-icons/md';
 import { FaCompass, FaBookOpen, FaUser, FaCog, FaHandPointer, FaReply} from 'react-icons/fa';
-import { Button, SearchBar, Graphs, Catalog, Books, UserManagement, NfcUserManagement} from '../Components';
+import { Button, Graphs, Catalog, Books, UserManagement, NfcUserManagement} from '../Components';
 import { NavLink } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import WlogoSidebar from '../Logo/W-logo.png';
@@ -101,14 +101,12 @@ function AdminPage() {
         </div>
         
       </div>
-
-      <div className={classes.samplelang}>
-
-      <main style={{ flex: 1, padding: "20px", background: "#fff" }}>
+      <div className={classes.SampleLangTo}>
+      <main>
         {renderContent()}
       </main>
-      
       </div>
+    
 
     </div>
   );

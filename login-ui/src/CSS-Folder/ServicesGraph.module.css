@@ -1,13 +1,13 @@
 .BarChart{
     width: 25rem;
     height: 20rem;
-    background-color: #11151A;
+    background-color: white;
     margin-left: 5rem;
     border-radius: 2rem;
-    border-color: #E8E8E8;
+    border-color: #101540;
     border-style: solid;
-    border-width: 1px;    margin-top: 3rem;
-    color: white;
+    border-width: 2px;   
+    margin-top: -1vh;
 }
 .BarChartDesign{
     margin-left: -2rem;

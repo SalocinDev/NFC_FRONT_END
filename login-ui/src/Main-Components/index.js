@@ -10,5 +10,6 @@ export { default as LibraryLane} from './LibraryLane';
 export { default as Services} from './Services';
 export { default as Intermediary } from './Intemediary';
 export { default as SettingPage } from './SettingPage';
+export { default as AdminPage} from './AdminPage';
 
 

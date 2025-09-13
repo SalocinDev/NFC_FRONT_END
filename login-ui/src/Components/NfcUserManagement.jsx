@@ -1,10 +1,10 @@
-import classes from '../CSS/Catalog.module.css';
+import classes from '../CSS-Folder/NfcUserManagement.module.css';
 import { Button, Table} from '../Components';
 import { useNavigate } from 'react-router-dom';
 /* import { logOut } from '../Services/SessionUtils'; */
 
 
-function Catalog() {
+function NfcUserManagement() {
   const navigate = useNavigate(); 
   const columns = ["ID", "User ID", "Amount", "Date", "Action"];
   const storedUser = JSON.parse(sessionStorage.getItem("userInfo"));
@@ -20,16 +20,15 @@ function Catalog() {
   return (
     <div>
       <div className={classes.samplelang}>
-          <Button name="Borrowed Books" use="BorrowedBooks" /* onClick={() => {logOut().then(() => navigate('/BorrowedForm'));}} *//>
-          <Button name="Returned Books" use="ReturnedBooks" /* onClick={() => {logOut().then(() => navigate('/BorrowedForm'));}} *//>
+          <h2>Nfc User Management</h2>
       </div>
 
-      <div className={classes.TableContainer}>
+      <div className={classes.TableContainerBooks}>
         <Table columns={columns} records={records} />
       </div>
     </div>
   );
 }
 
-export default Catalog;
+export default NfcUserManagement;
 

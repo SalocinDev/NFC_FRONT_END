@@ -1,7 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import NotFoundPage from "./Components/NotFoundPage.jsx";
-import { MainPage, AdminPage} from "./Main-Components/";
+import { MainPage} from "./Main-Components/";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "/index.css";
 
@@ -9,9 +9,7 @@ import "/index.css";
 
 const router = createBrowserRouter([
   { path: "/", element: <MainPage /> },
-  { path: "*", element: <NotFoundPage /> },
-  { path: "/AdminPage", element: <AdminPage /> }
-
+  { path: "*", element: <NotFoundPage /> }
 ],
   {
     basename: "/NFC_FRONT_END/opac",

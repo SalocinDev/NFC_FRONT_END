@@ -53,26 +53,7 @@
   color:white;
 }
 
-.Sample{
-  width: 100%;
-  height: 5vh;
-  margin-bottom: 0.5rem;
-  background-color: transparent;
-  border-style: none;
-  color: white;
-  cursor: pointer;
-}
 
-.Sample:hover{
-  width: 100%;
-  height: 5vh;
-  margin-bottom: 0.5rem;
-  background-color: white;
-  color: #101540;
-  border-style: solid;
-  border-color: white;
-  transition: 0.5s;
-}
 
 .LogoutButton {
   font-weight: bold;

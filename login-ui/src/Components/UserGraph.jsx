@@ -1,6 +1,6 @@
 import * as React from "react";
 import { PieChart } from "@mui/x-charts/PieChart";
-import classes from "../CSS/UserGraph.module.css";
+import classes from "../CSS-Folder/UserGraph.module.css";
 import {Button} from '../Components';  
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 

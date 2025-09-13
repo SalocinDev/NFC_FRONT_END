@@ -12,3 +12,13 @@ export { default as SearchID} from './SearchID';
 export { default as AiPopUp} from './AiPopUp';
 export { default as Checkbox} from './Checkbox';
 export { default as Modal} from './Modal';
+
+/* AdminPage related imports */
+export { default as Books} from './Books';
+export { default as Catalog} from './Catalog';
+export { default as Graphs} from './Graphs';
+export { default as UserGraph} from './UserGraph';
+export { default as UserLoggedMonth} from './UserLoggedMonth';
+export { default as NfcUserManagement} from './NfcUserManagement';
+export { default as UserManagement} from './UserManagement';
+export { default as ServicesGraph} from './ServicesGraph';

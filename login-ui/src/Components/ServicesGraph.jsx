@@ -1,5 +1,5 @@
 import * as React from 'react';
-import classes from '../CSS/ServicesGraph.module.css';
+import classes from '../CSS-Folder/ServicesGraph.module.css';
 import { BarChart } from '@mui/x-charts/BarChart';
 
 function ServicesGraph() {

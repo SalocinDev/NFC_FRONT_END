@@ -1,10 +1,10 @@
-import classes from '../CSS/UserManagement.module.css';
+import classes from '../CSS-Folder/Catalog.module.css';
 import { Button, Table} from '../Components';
 import { useNavigate } from 'react-router-dom';
 /* import { logOut } from '../Services/SessionUtils'; */
 
 
-function UserManagement() {
+function Catalog() {
   const navigate = useNavigate(); 
   const columns = ["ID", "User ID", "Amount", "Date", "Action"];
   const storedUser = JSON.parse(sessionStorage.getItem("userInfo"));
@@ -20,15 +20,16 @@ function UserManagement() {
   return (
     <div>
       <div className={classes.samplelang}>
-          <h2>User Management</h2>
+          <Button name="Borrowed Books" use="BorrowedBooks" /* onClick={() => {logOut().then(() => navigate('/BorrowedForm'));}} *//>
+          <Button name="Returned Books" use="ReturnedBooks" /* onClick={() => {logOut().then(() => navigate('/BorrowedForm'));}} *//>
       </div>
 
-      <div className={classes.TableContainerBooks}>
+      <div className={classes.TableContainer}>
         <Table columns={columns} records={records} />
       </div>
     </div>
   );
 }
 
-export default UserManagement;
+export default Catalog;
 

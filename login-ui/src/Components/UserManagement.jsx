@@ -1,10 +1,10 @@
-import classes from '../CSS/NfcUserManagement.module.css';
+import classes from '../CSS-Folder/UserManagement.module.css';
 import { Button, Table} from '../Components';
 import { useNavigate } from 'react-router-dom';
 /* import { logOut } from '../Services/SessionUtils'; */
 
 
-function NfcUserManagement() {
+function UserManagement() {
   const navigate = useNavigate(); 
   const columns = ["ID", "User ID", "Amount", "Date", "Action"];
   const storedUser = JSON.parse(sessionStorage.getItem("userInfo"));
@@ -20,7 +20,7 @@ function NfcUserManagement() {
   return (
     <div>
       <div className={classes.samplelang}>
-          <h2>Nfc User Management</h2>
+          <h2>User Management</h2>
       </div>
 
       <div className={classes.TableContainerBooks}>
@@ -30,5 +30,5 @@ function NfcUserManagement() {
   );
 }
 
-export default NfcUserManagement;
+export default UserManagement;
 

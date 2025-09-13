@@ -14,7 +14,8 @@
   align-items: center;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 480px) and (min-resolution: 2dppx) 
+{
   .RightRectangle {
     display: none;
   }
