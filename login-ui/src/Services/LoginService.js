@@ -41,7 +41,7 @@ export async function toNFClogin() {
   console.log("API URL:", apiUrl);
   try {
     const nfcResponse = await fetch(`${apiUrl}/nfc/read`, {
-      method: "GET",
+      method: "POST",
       headers: { "Accept": "application/json" }
     });
     const nfcData = await nfcResponse.json();
