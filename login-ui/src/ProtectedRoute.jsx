@@ -11,7 +11,7 @@ export default function ProtectedRoute({ children }) {
     const checkSession = async () => {
       try {
         const res = await fetch(`${apiUrl}/session/get-session`, {
-          method: "POST",
+          method: "GET",
           credentials: 'include',
         });
         const data = await res.json();

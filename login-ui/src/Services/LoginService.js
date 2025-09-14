@@ -48,8 +48,7 @@ export async function toNFClogin() {
     }
 
     const response = await fetch(`${apiUrl}/acc/login-verify`, {
-      method: "POST",
-      credentials: "include",
+      method: "GET",
       headers: {
         "Content-Type": "application/json"
       },
