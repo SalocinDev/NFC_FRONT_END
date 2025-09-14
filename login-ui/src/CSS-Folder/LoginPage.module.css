@@ -21,12 +21,6 @@
   }
 }
 
-@media (max-width: 980px) and (min-resolution: 2dppx) {
-  .RightRectangle{
-    background: red;
-  }
-}
-
 .RightContent {
   text-align: center;
   padding: 2rem;

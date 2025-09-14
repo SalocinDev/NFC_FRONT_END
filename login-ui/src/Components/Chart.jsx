@@ -11,25 +11,39 @@ function Chart({ borrowed, returned }) {
 
   return (
     <div className={classes.chartWrapper}>
-      <PieChart width={650} height={650} className={classes.pieChart}>
-        <Pie
-          data={data}
-          cx="50%"
-          cy="50%"
-          labelLine={false}
-          outerRadius={280}
-          fill="#8884d8"
-          dataKey="value"
-        >
-          {data.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={COLORS[index]} />
-          ))}
-        </Pie>
-        <Tooltip
-          formatter={(value, name) => [`${value} books`, name]}
-          contentStyle={{ backgroundColor: "#f0f0f0", borderRadius: "5px" }}
-        />
-      </PieChart>
+      {/* ✅ Legend always on top */}
+      <div className={classes.customLegend}>
+        <div className={classes.legendItem}>
+          <span className={classes.legendCircle} style={{ backgroundColor: COLORS[0] }}></span>
+          <span>Borrowed Books</span>
+        </div>
+        <div className={classes.legendItem}>
+          <span className={classes.legendCircle} style={{ backgroundColor: COLORS[1] }}></span>
+          <span>Returned Books</span>
+        </div>
+      </div>
+
+      <div className={classes.chartBox}>
+        <PieChart width={190} height={190}>
+          <Pie
+            data={data}
+            cx="50%"
+            cy="50%"
+            labelLine={false}
+            outerRadius={80}
+            fill="#8884d8"
+            dataKey="value"
+          >
+            {data.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={COLORS[index]} />
+            ))}
+          </Pie>
+          <Tooltip
+            formatter={(value, name) => [`${value} books`, name]}
+            contentStyle={{ backgroundColor: "#f0f0f0", borderRadius: "5px" }}
+          />
+        </PieChart>
+      </div>
     </div>
   );
 }

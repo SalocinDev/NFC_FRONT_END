@@ -166,7 +166,8 @@
  */
 
 .BackButton,
-.LogoutButton {
+.LogoutButton,
+.LogoutUser {
   font-weight: bold;
   border: 2px solid #101540;
   border-radius: 20px;
@@ -187,7 +188,6 @@
   align-items: center;
   width: 6rem;
   margin-left: 0.5rem;
-  margin-top: 50vh;
 }
 
 .BackButton:hover {
@@ -246,6 +246,11 @@
   border-style: none;
   color: white;
   cursor: pointer;
+  align-items: center; /* vertically center icon and text */
+  gap: 0.5rem;        /* space between icon and text */
+  justify-content: flex-start; /* keep text aligned to left */
+  padding: 0.5rem 1rem;
+  display: flex;
 }
 
 .Sample:hover{
@@ -288,10 +293,3 @@
     margin-left: 3rem;
   }
 }
-
-
-
-
-
-
-

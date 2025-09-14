@@ -1,11 +1,19 @@
 import classes from '../CSS-Folder/AdminPage.module.css';
-import { MdDashboard } from 'react-icons/md';
-import { FaCompass, FaBookOpen, FaUser, FaCog, FaHandPointer, FaReply} from 'react-icons/fa';
+import { FaUser, FaCog } from 'react-icons/fa';
 import { Button, Graphs, Catalog, Books, UserManagement, NfcUserManagement} from '../Components';
 import { NavLink } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import WlogoSidebar from '../Logo/W-logo.png';
 import { useNavigate } from 'react-router-dom';
+import { 
+  MdDashboard, 
+  MdBook, 
+  MdPeople, 
+  MdLibraryBooks, 
+  MdReport, 
+  MdPeopleAlt 
+} from "react-icons/md";
+import { FaBookReader } from "react-icons/fa";
 /* import { logOut } from '../Services/SessionUtils'; */
 
 function AdminPage() {
@@ -39,7 +47,7 @@ function AdminPage() {
 
   /* eto yung bago: */
 
-  const [active, setActive] = useState("home"); // default section
+  const [active, setActive] = useState("DashBoard"); // default section
 
   const renderContent = () => {
     switch (active) {
@@ -65,13 +73,49 @@ function AdminPage() {
       <aside className={classes.Sidebar}>
         <img src={WlogoSidebar} alt="Logo" className={classes.WSidebar} />
         <ul className={classes.ulstyling}>
-          <li><Button name="Dashboard" use="Sample" onClick={() => setActive("Dashboard")}/></li>
-          <li><Button name="Catalog" use="Sample" onClick={() => setActive("Catalog")}/></li>
-          <li><Button name="Books" use="Sample" onClick={() => setActive("Books")}/></li>
-          <li><Button name="Users" use="Sample" onClick={() => setActive("Users")}/></li>
-          <li><Button name="NFC Users" use="Sample" onClick={() => setActive("NfcUsers")}/></li>
-          <li><Button name="Reports" use="Sample" onClick={() => setActive("Sample6")}/></li>
-        </ul>
+  <li>
+    <Button 
+      name={<><MdDashboard size={24} />Home</>} 
+      use="Sample" 
+      onClick={() => setActive("Dashboard")} 
+    />
+  </li>
+  <li>
+    <Button 
+      name={<><MdLibraryBooks size={24} /> Catalog</>} 
+      use="Sample" 
+      onClick={() => setActive("Catalog")} 
+    />
+  </li>
+  <li>
+    <Button 
+      name={<><MdBook size={24} /> Books</>} 
+      use="Sample" 
+      onClick={() => setActive("Books")} 
+    />
+  </li>
+  <li>
+    <Button 
+      name={<><MdPeople size={24} /> Users</>} 
+      use="Sample" 
+      onClick={() => setActive("Users")} 
+    />
+  </li>
+  <li>
+    <Button 
+      name={<><MdPeopleAlt size={24} /> NFC Users</>} 
+      use="Sample" 
+      onClick={() => setActive("NfcUsers")} 
+    />
+  </li>
+  <li>
+    <Button 
+      name={<><MdReport size={24} /> Reports</>} 
+      use="Sample" 
+      onClick={() => setActive("Sample6")} 
+    />
+  </li>
+</ul>
 
            <Button name="Log Out" use="LogoutButton" onClick={() => {logOut().then(() => navigate('/'));}}/>
       </aside>
@@ -111,22 +155,5 @@ function AdminPage() {
     </div>
   );
 }
-
-function Sample1() {
-  return <Graphs/>;
-}
-
-function Sample2() {
-  return <Catalog/>;
-}
-
-function Sample3() {
-  return <Graphs/>;
-}
-
-function Sample4() {
-  return <h1>Sample4</h1>;
-}
-
 
 export default AdminPage;

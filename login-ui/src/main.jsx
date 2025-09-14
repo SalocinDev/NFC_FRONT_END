@@ -4,7 +4,7 @@ import "/index.css";
 import NotFoundPage from "./Components/NotFoundPage.jsx";
 import{ 
   LoginPage, Dashboard, NfcPage, OtpForm, ResetPasswordForm, SignUpForm, 
-  UserPage, BorrowedForm, LibraryLane, Services, Intermediary, SettingPage,
+  UserPage, Services, Intermediary, SettingPage,
   AdminPage
       } 
 from "./Main-Components/";
@@ -19,8 +19,6 @@ const router = createBrowserRouter([
   { path: "NfcPage", element: <NfcPage /> },
   { path: "Dashboard", element: <ProtectedRoute><Dashboard /></ProtectedRoute> },
   { path: "UserPage", element: <ProtectedRoute><UserPage /></ProtectedRoute> },
-  { path: "BorrowedForm", element: <ProtectedRoute><BorrowedForm /></ProtectedRoute>},
-  { path: "LibraryLane", element: <ProtectedRoute><LibraryLane /></ProtectedRoute>},
   { path: "Services", element: <ProtectedRoute><Services /></ProtectedRoute>},
   { path: "Intermediary", element: <ProtectedRoute><Intermediary /></ProtectedRoute>},
   { path: "SettingPage", element: <ProtectedRoute><SettingPage /></ProtectedRoute>},

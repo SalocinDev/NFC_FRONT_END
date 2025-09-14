@@ -1,7 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import NotFoundPage from "./Components/NotFoundPage.jsx";
-import { MainPage} from "./Main-Components/";
+import { MainPage, AboutPage} from "./Main-Components/";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "/index.css";
 
@@ -9,6 +9,7 @@ import "/index.css";
 
 const router = createBrowserRouter([
   { path: "/", element: <MainPage /> },
+  { path: "/AboutPage", element: <AboutPage /> },
   { path: "*", element: <NotFoundPage /> }
 ],
   {

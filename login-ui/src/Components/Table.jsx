@@ -1,10 +1,10 @@
 import React from "react";
 import classes from '../CSS-Folder/Table.module.css';
 
-const Table = ({ columns = [], records = [] }) => {
+const Table = ({ columns = [], records = [], wrapperClass = "", containerClass = "" }) => {
   return (
-    <div className={classes.tableWrapper}>
-      <div className={classes.tableContainer}>
+    <div className={`${classes.tableWrapper} ${wrapperClass}`}>
+      <div className={`${classes.tableContainer} ${containerClass}`}>
         <table>
           <thead>
             <tr>
@@ -38,5 +38,6 @@ const Table = ({ columns = [], records = [] }) => {
     </div>
   );
 };
+
 
 export default Table;

@@ -22,3 +22,8 @@ export { default as UserLoggedMonth} from './UserLoggedMonth';
 export { default as NfcUserManagement} from './NfcUserManagement';
 export { default as UserManagement} from './UserManagement';
 export { default as ServicesGraph} from './ServicesGraph';
+
+/* UserPage related imports */
+export { default as UserDashboard} from './UserDashboard';
+export { default as LibraryLane} from './LibraryLane';
+export { default as BorrowedForm} from '../Components/BorrowedForm';
