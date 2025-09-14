@@ -15,7 +15,7 @@ function AboutPage() {
         </div>
 
        <main className={classes.main}>
-        <img src="/src/Images/MCL.jpg" alt="Library" className={classes.backgroundImage} />
+        <img src="/Images/MCL.jpg" alt="Library" className={classes.backgroundImage} />
         <div className={classes.overlayText}>
          <h2>About Us</h2>
           <p>
@@ -27,14 +27,14 @@ function AboutPage() {
 
         <div className={classes.bar}></div>
 
-        <section className={classes.section}>
+        <section className={classes.section1}>
           <h2>Our Vision</h2>
           <p>
             The Manila City Library aspires to provide an assortment of cultural, informational, and recreational needs to sustain literacy among citizens of the City of Manila.
           </p>
         </section>
 
-        <section className={classes.section}>
+        <section className={classes.section2}>
           <h2>Our Mission</h2>
           <p>
             The Manila City Library is committed to provide free access to materials, resources, and excellent services to support lifelong learning, opportunities to read and connect, and the educational and leisure needs of the people in the City of Manila.
