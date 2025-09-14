@@ -39,7 +39,10 @@ export async function handleLoginClick(navigate) {
 //////////////////////////////////////////////////////////////////////////////////////////////
 export async function toNFClogin() {
   try {
-    const nfcResponse = await fetch(`${apiUrl}/nfc/read`);
+    const nfcResponse = await fetch(`${apiUrl}/nfc/read`, {
+      method: "GET",
+      headers: { "Accept": "application/json" }
+    });
     const nfcData = await nfcResponse.json();
     const token = nfcData?.token;
 
