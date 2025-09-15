@@ -13,17 +13,17 @@ function LoginPage() {
   return (
 
       <div>
-
+         
         <div className={classes.RightRectangle}>
           <div className={classes.RightContent}>
-
+           
               <Wlogo />
 
             <div className={classes.SignUpContainer}>
               <p>New to our platform? Sign up now.</p>
               <Button name="SIGN UP" use="ButtonSignUp" onClick={() => navigate("/SignUpForm")}/>
+            
             </div>
-
           </div>
         </div>
     

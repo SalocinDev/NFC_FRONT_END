@@ -1,0 +1,16 @@
+.BookGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* always 4 columns */
+}
+
+.BookContainer{
+  padding: 5rem;
+  margin-left: 4rem;
+}
+
+@media (max-width: 480px) {
+  .BookContainer {
+
+  
+  }
+}

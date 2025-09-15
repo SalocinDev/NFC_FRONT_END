@@ -46,7 +46,7 @@
   box-sizing: border-box;
   margin-bottom: 2px;
   cursor: pointer;
-  border-color: white;
+  border-color: rgb(255, 255, 255);
   background-color: transparent;
   color: white;
 
@@ -284,7 +284,8 @@
 /* Everything below is buttons for the sidebar */
 
 @media (max-width: 480px) {
-  .ButtonSignIn {
+  .ButtonSignIn 
+  {
     background-color: #101540;
     border-color: #101540;
     max-width: 65%;
@@ -292,4 +293,7 @@
     padding: 0.4rem 0.75rem;
     margin-left: 3rem;
   }
+
+  
 }
+

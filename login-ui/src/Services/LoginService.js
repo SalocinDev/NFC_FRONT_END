@@ -87,12 +87,16 @@ export async function signIn(email, password, navigate){
     }));
       alert("Welcome!, "+ result.result.user_firstname);
       navigate("/Intermediary");
-    } else if (result.success === false) {
-      alert("Login Failed. Try again.");
-    } else if (result.result === "Error") {
-      alert("An error occurred. Check console.");
+    } else if (result.success === false && result.message === "Email is not verified") {
+      alert(result.message+" Please wait");
+      const resendOTP = await fetch(`${apiUrl}/acc/send-otp`, { method: "POST", credentials: "include", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email: email})});
+      const resultResend = await resendOTP.json();
+      alert("Check your Email for the OTP");
+      if (resultResend.success){ navigate(`/OtpForm?email=${result.email}`); } 
+    } else if (result.success === false && result.error === "Invalid credentials") {
+      alert(result.error);
     } else {
-      alert(JSON.stringify(result.error));
+      alert("Input Credentials");
     }
   } catch (error) {
     console.log(error);

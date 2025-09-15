@@ -1,1 +1,0 @@
-export default "https://seriously-trusting-octopus.ngrok-free.app/";

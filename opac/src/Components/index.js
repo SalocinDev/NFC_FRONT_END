@@ -10,3 +10,7 @@ export { default as LogoComponent} from './BlueLogo';
 export { default as AiPopUp} from './AiPopUp';
 export { default as IconHeader} from './IconHeader';
 export { default as SearchID} from './SearchID';
+
+export { default as BookArchiveList} from '../Bookcovers/BookArchiveList';
+
+

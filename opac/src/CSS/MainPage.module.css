@@ -143,3 +143,121 @@
   margin: 0;
   width: 100vw;
 }
+
+
+/* Large tablets and small laptops (≤1024px) */
+@media (max-width: 1024px) {
+  .ManilaAbove {
+    font-size:  3rem;
+    letter-spacing: 0.6rem;
+  }
+
+  .LibraryAbove {
+    font-size: 1.3rem;
+  }
+
+  .SearchContainer {
+    width: 60%;
+    padding-top: 30vh;
+  }
+
+  .SearchContainer.active {
+    gap: 25vw;
+  }
+}
+
+/* Tablets (≤768px) */
+@media (max-width: 768px) {
+  .ManilaAbove {
+    font-size:  3rem;
+    letter-spacing: 0.4rem;
+    text-align: center;
+  }
+  .LibraryAbove {
+    font-size: 1.1rem;
+    text-align: center;
+  }
+
+  .SearchContainer {
+    width: 100%;
+    padding-top: 25vh;
+    gap: 1rem ;
+  }
+
+  .SearchContainer.active {
+    flex-direction: column;
+    height: auto;
+    gap: 1rem;
+  }
+
+  .SearchContainer.active input {
+    width: 100%;
+  }
+
+  .ButtonContainer {
+    flex-direction: column;
+    gap: 0.75rem;
+    padding-top: 1vh;
+  }
+}
+
+/* Large phones (≤600px) */
+@media (max-width: 600px) {
+  .ManilaAbove {
+    font-size:  3rem;
+    letter-spacing: 0.3rem;
+  }
+
+  .LibraryAbove {
+    font-size: 1rem;
+  }
+
+  .SearchContainer {
+    width: 90%;
+    padding-top: 20vh;
+  }
+
+  .SearchContainer.active {
+    padding: 1rem;
+  }
+
+  .FirstLayerBook {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+ 
+}
+
+/* Small phones (≤480px) */
+@media (max-width: 480px) {
+  .ManilaAbove {
+    font-size:  3rem;
+    letter-spacing: 0.2rem;
+  }
+
+  .LibraryAbove {
+    font-size: 0.9rem;
+  }
+
+  .SearchContainer {
+    width: 95%;
+    padding-top: 15vh;
+  }
+
+  .SearchContainer.active {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .SearchWrapper {
+    transform: none !important;
+  }
+
+  .HeaderContainer {
+    transform: none !important;
+  }
+
+  .ButtonContainer {
+    padding-top: 1vh;
+  }
+}

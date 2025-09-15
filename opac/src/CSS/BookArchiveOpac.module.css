@@ -1,0 +1,58 @@
+.MainBody {
+   background-color: #101540;
+  min-height: 100vh;   /* grow with content instead of fixed */
+  width: 100%;         /* avoid horizontal overflow */
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;  /* prevent sideways gaps */
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.HeaderNavBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  background-color: white;
+  width: 100%;
+}
+
+.ManilaAbove {
+  font-size: 3rem;
+  font-weight: bold;
+  letter-spacing: 0.8rem;
+  color: #101540;
+  line-height: 3.5rem;
+  text-align: left;
+}
+
+.LibraryAbove {
+  font-size: 1.5rem;
+  letter-spacing: 0.5rem;
+  color: #101540;
+  line-height: 2rem;
+  text-align: left;
+}
+
+.LogoGroup {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.BookContainer{
+    width: 100vw;
+    height: 100%;
+    background-color: white;
+    margin-top: 0.5rem;
+}
+.BookGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 per row */
+  gap: 20px; /* spacing between cards */
+}

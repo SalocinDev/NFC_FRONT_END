@@ -2,35 +2,30 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "/index.css";
 import NotFoundPage from "./Components/NotFoundPage.jsx";
-import{ 
+import { 
   LoginPage, Dashboard, NfcPage, OtpForm, ResetPasswordForm, SignUpForm, 
-  UserPage, Services, Intermediary, SettingPage,
-  AdminPage
-      } 
-from "./Main-Components/";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+  UserPage, Services, Intermediary, SettingPage, AdminPage
+} from "./Main-Components/";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
-
-const router = createBrowserRouter([
-  { path: "/", element: <LoginPage /> },
-  { path: "OtpForm", element: <OtpForm /> },
-  { path: "ResetPasswordForm", element: <ResetPasswordForm /> },
-  { path: "SignUpForm", element: <SignUpForm /> },
-  { path: "NfcPage", element: <NfcPage /> },
-  { path: "Dashboard", element: <ProtectedRoute><Dashboard /></ProtectedRoute> },
-  { path: "UserPage", element: <ProtectedRoute><UserPage /></ProtectedRoute> },
-  { path: "Services", element: <ProtectedRoute><Services /></ProtectedRoute>},
-  { path: "Intermediary", element: <ProtectedRoute><Intermediary /></ProtectedRoute>},
-  { path: "SettingPage", element: <ProtectedRoute><SettingPage /></ProtectedRoute>},
-  { path: "/AdminPage", element: <AdminPage /> },
-  { path: "*", element: <NotFoundPage /> },
-],
-  {
-    basename: "/NFC_FRONT_END/login-ui",
-  });
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <HashRouter hashType="slash">
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
+        <Route path="OtpForm" element={<OtpForm />} />
+        <Route path="ResetPasswordForm" element={<ResetPasswordForm />} />
+        <Route path="SignUpForm" element={<SignUpForm />} />
+        <Route path="NfcPage" element={<NfcPage />} />
+        <Route path="Dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+        <Route path="UserPage" element={<ProtectedRoute><UserPage /></ProtectedRoute>} />
+        <Route path="Services" element={<ProtectedRoute><Services /></ProtectedRoute>} />
+        <Route path="Intermediary" element={<ProtectedRoute><Intermediary /></ProtectedRoute>} />
+        <Route path="SettingPage" element={<ProtectedRoute><SettingPage /></ProtectedRoute>} />
+        <Route path="AdminPage" element={<AdminPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </HashRouter>
   </StrictMode>
 );

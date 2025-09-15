@@ -14,12 +14,7 @@
   align-items: center;
 }
 
-@media (max-width: 480px) and (min-resolution: 2dppx) 
-{
-  .RightRectangle {
-    display: none;
-  }
-}
+
 
 .RightContent {
   text-align: center;
@@ -29,17 +24,17 @@
 
 .RightContent p {
 
-  margin: rem 100;
-  font-size: 1.5rem;
-  color: white;
+ margin: 0 auto;
   font-size: 2rem;
+  color: white;
 }
 
 .SignUpContainer{
   margin-top: 4rem;
   z-index: 5;
-  
 }
+
+
 
 .Line {
   flex: 1;
@@ -54,11 +49,11 @@
   margin: 10px auto;
 }
 
-@media (max-width: 480px) {
+/* @media (max-width: 480px) {
   .LineContainer {
    display: none;
   }
-}
+} */
 
 
 .Left {
@@ -75,20 +70,21 @@
   padding: 4rem 2rem;
   margin-left: 20rem;
   margin-top: 0.5vw;
+  align-self: center;
+}
+.Header{
+  text-align: center;
+  position: relative;
 }
 
-@media (max-width: 480px) {
+/* @media (max-width: 480px) {
   .LoginContainer {
    margin-left: 6vw;
    
   }
 }
 
-.Header{
-  text-align: center;
-  position: relative;
-  margin-top: -40px;
-}
+
 
 @media (max-width: 480px) {
   .Header{
@@ -101,7 +97,7 @@
    display: none;
    
   }
-}
+} */
 
 .WelcomeHeader{
   color: #101540;
@@ -146,11 +142,171 @@
   align-items: flex-end;
   gap: 20px;
 }
+@media (max-width: 1500px) {
 
-@media (max-width: 480px) {
-  .LoginInput {
-   width: 23.5rem;
-   margin-left: -2rem;
-   margin-bottom: 2rem;
+  .RightRectangle {
+    display: none;
+  }
+
+  .BottomCurve {
+    width: 100%;
+    height: 120px;
+    background: linear-gradient(to top right, #101540, #2c2f5a);
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+  }
+
+  .LoginContainer {
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    position: relative;
+    z-index: 5;
   }
 }
+
+/* 💻 Large tablets and small laptops (≤1024px) */
+@media (max-width: 1024px) {
+  .RightRectangle {
+    width: 40vw;
+    border-radius: 80px 0 0 80px;
+  }
+
+  .LoginContainer {
+    margin-left: 10rem;
+    padding: 3rem 2rem;
+  }
+
+  .WelcomeHeader {
+    font-size: 2.5em;
+  }
+
+  .LoginInput {
+    gap: 16px;
+  }
+}
+
+/* 📒 Tablets (≤768px) */
+@media (max-width: 768px) {
+
+  .RightRectangle {
+    display:none;
+  }
+
+  .LoginContainer {
+    margin-left: 5rem;
+    padding: 2rem 1.5rem;
+    width: 90%;
+    position:center;
+  }
+
+  .WelcomeHeader {
+    font-size: 2rem;
+  }
+
+  .LoginInput {
+    width: 100%;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .RightContent p {
+    font-size: 1.5rem;
+  }
+
+  .SignUpContainer {
+    margin-top: 2rem;
+  }
+
+}
+
+/* 📱 Large phones (≤600px) */
+@media (max-width: 600px) {
+  .RightRectangle {
+    display: none;
+  }
+
+  .LoginContainer {
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    width: 95%;
+  }
+
+  .Header {
+    margin-left: 0;
+    margin-top: 0;
+    text-align: center;
+  }
+
+  .WelcomeHeader {
+    font-size: 1.8rem;
+  }
+
+  .LoginInput {
+    width: 100%;
+    margin: 1rem 0;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .LineContainer,
+  .attribute {
+    display: none;
+  }
+
+  .SignUpContainer {
+    text-align: center;
+    margin-top: 1.5rem;
+  }
+
+  .RightContent {
+    padding: 1rem;
+  }
+
+  .RightContent p {
+    font-size: 1.3rem;
+  }
+}
+
+/* 📳 Small phones (≤480px) */
+@media (max-width: 480px) {
+  .LoginContainer {
+    margin: 0 auto;
+    padding: 1.5rem 1rem;
+    width: 100%;
+  }
+  
+ 
+  .WelcomeHeader {
+    font-size: 1.5rem;
+  }
+
+  .LoginInput {
+    width: 100%;
+    margin: 1rem 0;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .SignUpContainer Button {
+    outline-color: black;
+    margin-top: 0;
+    text-align: center;
+  }
+
+  .RightContent p,
+  .Text {
+    font-size: 1.2rem;
+  }
+
+  .Credentials {
+    font-size: 1rem;
+  }
+  
+}
+
+
+
