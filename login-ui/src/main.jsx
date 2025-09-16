@@ -4,7 +4,7 @@ import "/index.css";
 import NotFoundPage from "./Components/NotFoundPage.jsx";
 import { 
   LoginPage, Dashboard, NfcPage, OtpForm, ResetPasswordForm, SignUpForm, 
-  UserPage, Services, Intermediary, SettingPage, AdminPage
+  UserPage, Services, Intermediary, AdminPage
 } from "./Main-Components/";
 import { HashRouter, Routes, Route } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
@@ -22,7 +22,6 @@ createRoot(document.getElementById("root")).render(
         <Route path="UserPage" element={<ProtectedRoute><UserPage /></ProtectedRoute>} />
         <Route path="Services" element={<ProtectedRoute><Services /></ProtectedRoute>} />
         <Route path="Intermediary" element={<ProtectedRoute><Intermediary /></ProtectedRoute>} />
-        <Route path="SettingPage" element={<ProtectedRoute><SettingPage /></ProtectedRoute>} />
         <Route path="AdminPage" element={<AdminPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

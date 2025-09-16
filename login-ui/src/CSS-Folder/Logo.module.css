@@ -18,3 +18,33 @@
   transform: scale(0.5); 
   position: relative;
 }
+
+@media (max-width: 480px), (max-width: 600px) {
+  .WhiteLogo{
+    display: none;
+  }
+}
+
+/* Small screens: phones */
+@media (max-width: 480px) {
+  .Bluelogo {
+    transform: scale(0.8);
+    top: 30px;
+  }
+}
+
+/* Medium screens: tablets */
+@media (min-width: 481px) and (max-width: 768px) {
+  .Bluelogo {
+    transform: scale(0.9);
+    top: 40px;
+  }
+}
+
+/* Large screens: desktops */
+@media (min-width: 769px) {
+  .Bluelogo {
+    transform: scale(1);
+    top: 50px;
+  }
+}

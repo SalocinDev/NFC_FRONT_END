@@ -42,13 +42,15 @@ function LoginPage() {
               <Input required type="password" placeholder="Password" value={Pass} onChange={(e) => setPass(e.target.value)} />
           
         </div>
-        
-              <a href="#" className={classes.attribute}>
-                Forgot password?
-              </a>
-              
-              <Button name="SIGN-IN" use="ButtonSignIn" onClick={() => signIn(Email, Pass, navigate)} />
 
+        <div className={classes.ForgotPassContainer}>  
+              <a className={classes.attribute}
+  href="/ForgotPassword"
+>
+  Forgot password?
+</a>
+              <Button name="SIGN-IN" use="ButtonSignIn" onClick={() => signIn(Email, Pass, navigate)} />
+        </div>
         <div className={classes.LineContainer}>
           <div className={`${classes.Line} ${classes.Left}`}></div>
             <span className={classes.Text}>or</span>

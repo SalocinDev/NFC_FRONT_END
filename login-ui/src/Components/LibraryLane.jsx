@@ -28,22 +28,12 @@ function LibraryLane() {
     <div>
     
       <div className={classes.samplelang}>
-          <span className={classes.Header}>Library Lane Books</span>
-          <span className={classes.AcquireContainer}><Button name="Acquire" use="Acquire" onClick={() => {logOut().then(() => navigate('/BorrowedForm'));}}/></span>
-          <SearchID placeholder="Search by ID or Type"/>
+          <span className={classes.Header}>Services Availed</span>
       </div>
 
       <div className={classes.TableContainer}>
         <Table columns={columns} records={records} />
       </div>
-
-       <div className={classes.DesignRectangle}>
-    <span className={classes.VerticalManila}>MANILA</span>
-    <span className={classes.VerticalLibrary}>City <br/>Library</span>
-    <div className={classes.CircleIcon}>
-          <AiPopUp/>
-    </div>
-        </div>
     </div>
   );
 }

@@ -160,10 +160,24 @@ body {
 }
 .MissionImage,
 .VisionImage{
-  background-color: red;
   width: 100%;
   height: 100%;
    border-radius: 16px;
+}
+
+.VisionImage
+{
+  background-image: url('../Logo/Vision.png');
+  background-size: cover;   /* Cover entire div */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Don't repeat */
+}
+
+.MissionImage{
+  background-image: url('../Logo/Mission.png');
+  background-size: cover;   /* Cover entire div */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Don't repeat */
 }
 
 .MissionParagraph,

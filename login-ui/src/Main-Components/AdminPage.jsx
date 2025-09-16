@@ -1,6 +1,6 @@
 import classes from '../CSS-Folder/AdminPage.module.css';
 import { FaUser, FaCog } from 'react-icons/fa';
-import { Button, Graphs, Catalog, Books, UserManagement, NfcUserManagement} from '../Components';
+import { Button, Graphs, Catalog, Books, UserManagement, NfcUserManagement, SettingPage} from '../Components';
 import { NavLink } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import WlogoSidebar from '../Logo/W-logo.png';
@@ -61,6 +61,8 @@ function AdminPage() {
         return <UserManagement />;
         case "NfcUsers":
         return <NfcUserManagement />;
+         case "SettingPage":
+        return <SettingPage />;
       default:
         return <Graphs />;
     }
@@ -129,15 +131,15 @@ function AdminPage() {
             <FaUser className={classes.userIcon} size={32} />
           </NavLink>
           <div className={classes.Contents}>
-            <div className={classes.username}>{storedUser?.firstName|| "Test"}</div>
-            <div className={classes.username}>{storedUser?.userID || "Test"}</div>
+            <div className={classes.UserName}>{storedUser?.firstName|| "Test"}</div>
+            <div className={classes.UserRole}>{storedUser?.userID || "Test"}</div>
           </div>
         </div>
         
         <div className={classes.RightTopbar}>
           <div className={classes.TimeGear}>
             <span className={classes.Time}>{currentTime}</span>
-            <NavLink to="/SettingPage">
+            <NavLink onClick={() => setActive("SettingPage")}>
             <FaCog className={classes.GearIcon} size={16} />
             </NavLink>
           </div>
@@ -146,7 +148,7 @@ function AdminPage() {
         
       </div>
       <div className={classes.SampleLangTo}>
-      <main>
+      <main className={classes.RenderComponents}>
         {renderContent()}
       </main>
       </div>

@@ -24,7 +24,7 @@ function SettingPage() {
   const [LN, setLN] = useState("");
   const [Email, setEmail] = useState("");
   const [Pass, setPass] = useState("");
-  const [NewPass, newSetPass] = useState("");
+  const [newPass, setNewPass] = useState("");
   const [DoB, setDoB] = useState("");
   const [Gender, setGender] = useState("");
   const [Contact, setContact] = useState("");
@@ -52,66 +52,6 @@ function SettingPage() {
 
   return (
     <div>
-      {/* Sidebar */}
-      <div className={classes.Sidebar}>
-        <img src={WlogoSidebar} alt="Logo" className={classes.WSidebar} />
-
-        <NavLink
-          to="/UserPage"
-          className={({ isActive }) =>
-            isActive ? classes.activeIcon : classes.iconLink
-          }
-        >
-          <MdDashboard size={24} />
-        </NavLink>
-
-        <NavLink
-          to="/BorrowedForm"
-          className={({ isActive }) =>
-            isActive ? classes.activeIcon : classes.iconLink
-          }
-        >
-          <FaCompass size={24} />
-        </NavLink>
-
-        <NavLink
-          to="/LibraryLane"
-          className={({ isActive }) =>
-            isActive ? classes.activeIcon : classes.iconLink
-          }
-        >
-          <FaBookOpen size={24} />
-        </NavLink>
-
-        <Button name="Log Out" use="LogoutButton" onClick={() => {logOut().then(() => navigate('/'));}}/>
-      </div>
-
-     
-      <div className={classes.NavBar}>
-        
-        <div className={classes.LeftTopbar}>
-          <NavLink to="/profile" className={classes.iconLink}>
-            <FaUser className={classes.userIcon} size={32} />
-          </NavLink>
-          <div className={classes.Contents}>
-            <div className={classes.username}>{storedUser?.firstName || "Test"}</div>
-            <div className={classes.username}>{storedUser?.userID || "Test"}</div>
-          </div>
-        </div>
-
-        
-        <div className={classes.RightTopbar}>
-          <div className={classes.TimeGear}>
-            <span className={classes.Time}>{currentTime}</span>
-            <NavLink to="/SettingPage">
-            <FaCog className={classes.GearIcon} size={16} />
-            </NavLink>
-          </div>
-          <div className={classes.Date}>{currentDate}</div>
-        </div>
-        
-      </div>
-
 
         <div className={classes.PersonalDetail}>
   <h1>ACCOUNT SETTING</h1>
@@ -148,7 +88,7 @@ function SettingPage() {
     
     <div className={classes.InputField}>
       <label>University</label>
-      <Input required type="text" placeholder="Your University" value={School} onChange={(e) => setUniversity(e.target.value)} />
+      <Input required type="text" placeholder="Your University" value={School} onChange={(e) => setSchool(e.target.value)} />
     </div>
 
     <div className={classes.InputField}>
@@ -178,10 +118,10 @@ function SettingPage() {
 
      <div className={classes.InputField}>
       <label>New Password</label>
-      <Input required type="password" placeholder="Enter Your Old Password" value={Pass} onChange={(e) => setPass(e.target.value)} />
+      <Input required type="password" placeholder="Enter Your New Password" value={newPass} onChange={(e) => setNewPass(e.target.value)} />
     </div>
 
-     <Button name="Update Profile" use="ConfirmPassButton"/>
+     <Button name="Update Account" use="ConfirmPassButton"/>
 
   </div>
 
@@ -203,19 +143,11 @@ function SettingPage() {
     </div>
 
 <div className={classes.ButtonContainer}>
-    <Button name="Update Profile" use="UpdateProfileButton"/>
+    <Button name="Update Address" use="UpdateProfileButton"/>
     
 </div>
 <br/>
-</div>
 
-        <div className={classes.DesignRectangle}>
-          <span className={classes.VerticalManila}>MANILA</span>
-          <span className={classes.VerticalLibrary}>City <br/>Library</span>
-        
-        <div className={classes.CircleIcon}>
-          <AiPopUp/>
-        </div>
       </div>
     </div>
   );

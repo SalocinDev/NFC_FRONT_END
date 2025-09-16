@@ -8,7 +8,6 @@ export { default as SignUpForm} from './SignUpForm';
 
 export { default as Services} from './Services';
 export { default as Intermediary } from './Intemediary';
-export { default as SettingPage } from './SettingPage';
 export { default as AdminPage} from './AdminPage';
 
 

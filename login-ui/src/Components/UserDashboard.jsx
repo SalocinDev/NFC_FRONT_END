@@ -44,13 +44,6 @@ function UserDashboard() {
                 character."</p>
         </div>
       </div>
-      <div className={classes.DesignRectangle}>
-          <span className={classes.VerticalManila}>MANILA</span>
-          <span className={classes.VerticalLibrary}>City <br/>Library</span>
-          <div className={classes.CircleIcon}>
-                <AiPopUp/>
-          </div>
-              </div>
     </div>
   );
 }

@@ -77,6 +77,15 @@
   position: relative;
 }
 
+.attribute{
+  text-decoration: none;
+  display: inline-block;
+  color: #101540;
+  padding: 0;
+  margin: 0;
+  margin-top: 2rem;
+}
+
 /* @media (max-width: 480px) {
   .LoginContainer {
    margin-left: 6vw;
@@ -173,11 +182,13 @@
   .RightRectangle {
     width: 40vw;
     border-radius: 80px 0 0 80px;
+    opacity: 100%;
   }
 
   .LoginContainer {
     margin-left: 10rem;
     padding: 3rem 2rem;
+    padding-bottom: 10cm;
   }
 
   .WelcomeHeader {
@@ -193,7 +204,7 @@
 @media (max-width: 768px) {
 
   .RightRectangle {
-    display:none;
+  display: none;
   }
 
   .LoginContainer {
@@ -225,14 +236,43 @@
 
 /* 📱 Large phones (≤600px) */
 @media (max-width: 600px) {
-  .RightRectangle {
-    display: none;
+   .RightRectangle{
+   display: flex;
+    margin-top: 15cm;
+  
+  width: 100%;
+  height: 40vh;
+  background-color: #fafbff;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 0;
+  border-top-left-radius: 60px;
+  border-top-right-radius: 60px;
+  border-bottom-left-radius: 0px;
+
+  justify-content: center;
+  align-items: center;
+  
+  
   }
+  .RightContent{
+    padding-bottom: 10vh;
+  
+  }
+
+  .RightContent p {
+
+ margin: 0 auto;
+  font-size: 2rem;
+  color: black;
+}
+ 
 
   .LoginContainer {
     margin: 0 auto;
     padding: 2rem 1rem;
-    width: 95%;
+    width: 90%;
   }
 
   .Header {
@@ -252,8 +292,7 @@
     gap: 12px;
   }
 
-  .LineContainer,
-  .attribute {
+  .LineContainer{
     display: none;
   }
 
@@ -273,6 +312,33 @@
 
 /* 📳 Small phones (≤480px) */
 @media (max-width: 480px) {
+    .RightRectangle {
+    display: flex !important; /* Override earlier display:none */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 35vh;
+    background-color:white;
+    z-index: 1;
+
+    border-top-left-radius: 60px;
+    border-top-right-radius: 60px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+
+    justify-content: center;
+    align-items: center;
+  }
+  .RightContent{
+    
+  background-color: #ffffff;
+  width: 100%;
+  height: 75%;
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
+  }
+ 
   .LoginContainer {
     margin: 0 auto;
     padding: 1.5rem 1rem;
@@ -291,7 +357,8 @@
     gap: 10px;
   }
 
-  .SignUpContainer Button {
+  .SignUpContainer {
+    
     outline-color: black;
     margin-top: 0;
     text-align: center;

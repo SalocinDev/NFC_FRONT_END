@@ -65,6 +65,7 @@ a:hover{
 .samplelang{
   display: flex;
   flex-direction: block;
+  margin-bottom: 2rem;
 }
 
 

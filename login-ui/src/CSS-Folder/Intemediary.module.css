@@ -73,7 +73,7 @@ html,
 }
 
 .NfcLogo {
-  width: 15vw;
+  /* width: 15vw; */
   height: 40vh;
   display: block;
   margin: 0 auto 0 auto; 
@@ -147,47 +147,90 @@ html,
 }
 
 
-@media (max-width: 720px), (max-width: 480px) {
+@media (max-width: 720px) {
   .curvedRectangle {
-    display: none;
+       display: flex;
+    margin-top: 15cm;
+  
+  width: 100%;
+  height: 40vh;
+  background-color: #101540;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 0;
+  border-top-left-radius: 60px;
+  border-top-right-radius: 60px;
+  border-bottom-left-radius: 0px;
+
+  justify-content: center;
+  align-items: center;
   }
 
   .Ewan {
     width: 100vw;
     padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  
+  .NfcLogo{
+    display: none;
+  }
+  .Logo {
+    padding-top: 10vh; /* More fluid than cm */
+    transform: scale(0.8); /* Responsive scaling */
+    margin-bottom: 1rem;
+  }
+
+  .Text {
+    font-size: clamp(0.85rem, 2vw, 1rem); /* Fluid font sizing */
+    margin-top: 2rem;
+    text-align: center;
+  }
+
+
+@media (max-width: 480px) {
+  .curvedRectangle {
+   display: flex;
+    position: fixed; /* Sticks to viewport */
+    bottom: 0;        /* Anchors to bottom */
+    left: 0;
+    width: 100%;
+    height: 50vh;
+    background-color: #101540;
+    z-index: 0;
+
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+
+    justify-content: center;
+    align-items: center;
+  }
+
+  .Ewan {
+    width: 100vw;
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: flex-start;
   }
 
   .Logo {
-    padding-top: 5cm;
-    transform-box: 1rem;
+    padding-top: 8vh;
+    transform: scale(0.7);
     margin-bottom: 1rem;
   }
 
   .Text {
-    font-size: 0.9rem;
-    margin-top: 2rem;
+    font-size: clamp(0.8rem, 2.5vw, 0.95rem);
+    margin-top: 1.5rem;
+    text-align: center;
   }
-
-
-  /* .ButtonGroup {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    margin-top: 2rem;
-  }
-
-  .AccountButton {
-    order: 1;
-    width: 100%;
-    max-width: 300px;
-  }
-
-  .ServicesButton {
-    order: 2;
-    width: 100%;
-    max-width: 300px;
-  } */
+}
 }

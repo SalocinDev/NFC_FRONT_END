@@ -1,7 +1,7 @@
 import classes from '../CSS-Folder/UserPage.module.css';
 import { FaUser, FaCog, FaCompass, FaBookOpen} from 'react-icons/fa';
 
-import { Button, UserDashboard, LibraryLane, BorrowedForm} from '../Components';
+import { Button, UserDashboard, LibraryLane, BorrowedForm, SettingPage, AiPopUp} from '../Components';
 import { NavLink } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import WlogoSidebar from '../Logo/W-logo.png';
@@ -28,6 +28,8 @@ function UserPage() {
         return <BorrowedForm />;
         case "LibraryLane":
         return <LibraryLane />;
+        case "SettingPage":
+        return <SettingPage />;
       default:
         return <UserDashboard />;
     }
@@ -66,14 +68,14 @@ function UserPage() {
   </li>
   <li>
     <Button 
-      name={<><FaCompass size={24} />Borrowed Books</>} 
+      name={<><FaBookOpen size={24} />Borrowed Books</>} 
       use="Sample" 
       onClick={() => setActive("BorrowedForm")} 
     />
   </li>
   <li>
     <Button 
-      name={<><FaBookOpen size={24} />Library Lane</>} 
+      name={<><FaCompass size={24} />Services Used</>} 
       use="Sample" 
       onClick={() => setActive("LibraryLane")} 
     />
@@ -87,19 +89,19 @@ function UserPage() {
     <div className={classes.NavBar}>
         
     <div className={classes.LeftTopbar}>
-        <NavLink to="/profile" className={classes.iconLink}>
+        <NavLink className={classes.iconLink}>
           <FaUser className={classes.userIcon} size={32} />
         </NavLink>
       <div className={classes.Contents}>
-        <div className={classes.username}>{storedUser?.firstName|| "Test"}</div>
-        <div className={classes.username}>{storedUser?.userID || "Test"}</div>
+        <div className={classes.UserName}>{storedUser?.firstName|| "Test"}</div>
+        <div className={classes.UserRole}>{storedUser?.userID || "Test"}</div>
       </div>
     </div>
         
     <div className={classes.RightTopbar}>
       <div className={classes.TimeGear}>
         <span className={classes.Time}>{currentTime}</span>
-            <NavLink to="/SettingPage">
+            <NavLink onClick={() => setActive("SettingPage")}>
             <FaCog className={classes.GearIcon} size={16} />
             </NavLink>
         </div>
@@ -110,11 +112,18 @@ function UserPage() {
     
 
      <div className={classes.SampleLangTo}>
-        <main>
+        <main className={classes.RenderComponents}>
           {renderContent()}
         </main>
       </div>
 
+      <div className={classes.DesignRectangle}>
+          <span className={classes.VerticalManila}>MANILA</span>
+          <span className={classes.VerticalLibrary}>City <br/>Library</span>
+          <div className={classes.CircleIcon}>
+                <AiPopUp/>
+          </div>
+              </div>
     </div>
   );
 }

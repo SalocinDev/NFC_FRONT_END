@@ -281,9 +281,107 @@
    border-style: none;
 }
 
+
+
 /* Everything below is buttons for the sidebar */
 
+@media (max-width: 1080){
+    .ButtonSubmit{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .ButtonServices {
+    margin-bottom: 6rem;
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+}
+
+@media(max-width: 720px){
+  .ButtonSubmit{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+    }
+   .ButtonServices {
+    margin-bottom: 8rem;
+    flex-direction: row;
+    gap: 2rem;
+  }
+
+  .ButtonSignIn 
+  {
+    position: flex;
+    background-color: #101540;
+    border-color: #101540;
+    max-width: 60%;
+    font-size: 0.95rem;
+    padding: 0.4rem 0.75rem;
+    margin-left: 4rem;
+    top: 0;
+    bottom: 100; 
+    margin-bottom:0;
+  }
+
+    .ButtonSignUp{
+    background-color: #101540;
+    border-color: #101540;
+    max-width: 95%;
+    font-size: 0.95rem;
+    padding: 0;
+    margin-left: 0rem;
+    margin-bottom: 16vw;
+    
+  }
+
+  .ButtonSignUp{
+  background-color: transparent;
+  border-color: #101540;
+  color: #101540;
+  }
+}
+
+@media(max-width: 600px){
+  .NfcSignIn{
+    display: none;
+  }
+
+}
+
 @media (max-width: 480px) {
+  .ButtonSignUp{
+    background-color: #ffffffff;
+    border-color: #101540;
+    max-width: 95%;
+    font-size: 0.95rem;
+    padding: 0;
+    margin-left: 0rem;
+    
+  }
+  .ButtonServices{
+    position: flex;
+    margin-bottom: 12rem;
+  }
+
+    .ButtonServices {
+    margin-bottom: 12rem;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .ButtonSignUp{
+  background-color:#101540;
+  border-color:#101540;
+  
+  width: 15.5rem;
+  color: #101540;
+  }
+
   .ButtonSignIn 
   {
     background-color: #101540;
@@ -291,7 +389,7 @@
     max-width: 65%;
     font-size: 0.95rem;
     padding: 0.4rem 0.75rem;
-    margin-left: 3rem;
+    margin-left: 4rem;
   }
 
   
