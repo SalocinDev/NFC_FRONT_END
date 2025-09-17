@@ -12,7 +12,8 @@ import { logOut } from '../Services/SessionUtils';
 function UserPage() {
   const navigate = useNavigate(); 
 
-  const storedUser = JSON.parse(sessionStorage.getItem("userInfo"));
+  const storedUser = JSON.parse(sessionStorage.getItem("userInfo") || "{}");
+  console.log(storedUser);
 
   const [currentTime, setCurrentTime] = useState('');
   const [currentDate, setCurrentDate] = useState('');
@@ -93,8 +94,8 @@ function UserPage() {
           <FaUser className={classes.userIcon} size={32} />
         </NavLink>
       <div className={classes.Contents}>
-        <div className={classes.UserName}>{storedUser?.firstName|| "Test"}</div>
-        <div className={classes.UserRole}>{storedUser?.userID || "Test"}</div>
+        <div className={classes.UserName}>{storedUser?.user_firstname|| "Test"}</div>
+        <div className={classes.UserRole}>{storedUser?.user_id || "Test"}</div>
       </div>
     </div>
         

@@ -81,7 +81,7 @@ export async function signIn(email, password, navigate){
     });
     const result = await response.json()
     if (result.success){
-      sessionStorage.setItem("userInfo", JSON.stringify(result.userInfo));
+      sessionStorage.setItem("userInfo", JSON.stringify(result.result));
       alert("Welcome!, "+ result.result.user_firstname);
       navigate("/Intermediary");
     } else if (result.success === false && result.message === "Email is not verified") {

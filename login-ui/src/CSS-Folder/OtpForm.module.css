@@ -14,19 +14,7 @@
   align-items: center;
 }
 
-@media (max-width: 768px) {
-  .RightRectangle {
-    width: 100vw;
-    height: 40vh;
-    border-radius: 0;
-    top: auto;
-    bottom: 0;
-    right: 0;
-    border-top-left-radius: 50px;
-    border-top-right-radius: 50px;
-  }
 
-}
 
 .RightContent {
   text-align: center;
@@ -73,21 +61,7 @@
   margin-top: 5vw;
 }
 
-@media (max-width: 1024px) {
-  .loginContainer {
-    top: 10%;
-    left: 5%;
-  }
-}
 
-@media (max-width: 768px) {
-  .loginContainer {
-    top: 5%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
-  }
-}
 
 .Header{
   text-align: center;
@@ -150,4 +124,113 @@
   margin: 0 auto;
   font-weight: 400;
   margin-top: 4rem;
+}
+
+@media (max-width: 1024px) {
+
+  .RightRectangle{
+    display: none;
+  }
+  .loginContainer {
+    top: 10%;
+    left: 5%;
+  }
+  .WelcomeHeader {
+    font-size: 2.5em;
+  }
+
+  .Text {
+    font-size: 1.8rem;
+  }
+
+  .LoginContainer {
+    transform: translateX(40%);
+    padding: 3rem 2rem;
+  }
+
+}
+
+@media (max-width: 768px) {
+  .RightRectangle {
+    display:none;
+  
+  }
+
+  .RightContent {
+    padding: 1.5rem;
+  }
+
+  .LoginContainer {
+    transform: none;
+    margin: 2rem auto;
+    width: 90%;
+  }
+
+  .WelcomeHeader {
+    font-size: 2rem;
+  }
+
+  .Text {
+    font-size: 1.5rem;
+    white-space: normal;
+  }
+
+  .tagline {
+    font-size: 1.8rem;
+    margin-top: 2rem;
+  }
+
+  .Credentials {
+    font-size: 18px;
+  }
+
+  .LoginInput {
+    align-items: center;
+  }
+}
+
+
+
+
+@media (max-width: 768px) {
+  .loginContainer {
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    margin-top: 15vh;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .RightRectangle {
+    display: none;
+  }
+  .LoginContainer {
+    width: 90%;
+    padding: 1.5rem 1rem;
+    margin-top: 15vh;
+  }
+
+  .WelcomeHeader {
+    font-size: 1.6rem;
+  }
+
+  .Text {
+    font-size: 1.2rem;
+  }
+
+  .tagline {
+    font-size: 1.5rem;
+  }
+
+  .Credentials {
+    font-size: 16px;
+  }
+
+  .LoginInput {
+    gap: 16px;
+    align-items: center;
+  }
 }

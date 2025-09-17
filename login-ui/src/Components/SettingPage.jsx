@@ -29,14 +29,14 @@ function SettingPage() {
 
   useEffect(() => {
     if (storedUser) {
-      setFN(storedUser.firstName || "");
-      setMN(storedUser.middleName || "");
-      setLN(storedUser.lastName || "");
-      setEmail(storedUser.email || "");
-      setDoB(storedUser.dob || "");
-      setGender(storedUser.gender || "");
-      setContact(storedUser.contact || "");
-      setSchool(storedUser.school || "");
+      setFN(storedUser.user_firstname || "");
+      setMN(storedUser.user_middlename || "");
+      setLN(storedUser.user_lastname || "");
+      setEmail(storedUser.user_email || "");
+      setDoB(storedUser.user_date_of_birth ? storedUser.user_date_of_birth.split("T")[0] : "");
+      setGender(storedUser.user_gender || "");
+      setContact(storedUser.user_contact_number || "");
+      setSchool(storedUser.user_school || "");
     }
   }, []);
 
@@ -48,7 +48,8 @@ function SettingPage() {
     if (FN !== storedUser.firstName) updatedFields.firstName = FN;
     if (MN !== storedUser.middleName) updatedFields.middleName = MN;
     if (Email !== storedUser.email) updatedFields.email = Email;
-    if (DoB !== storedUser.dob) updatedFields.dob = DoB;
+    const storedDoB = storedUser.user_date_of_birth ? storedUser.user_date_of_birth.split("T")[0] : "";
+    if (DoB !== storedDoB) { updatedFields.dob = new Date(DoB).toISOString(); }
     if (Gender !== storedUser.gender) updatedFields.gender = Gender;
     if (Contact !== storedUser.contact) updatedFields.contact = Contact;
     if (School !== storedUser.school) updatedFields.school = School;
