@@ -318,6 +318,10 @@ html,
 
 @media (max-width: 480px) {
   
+.icon{
+  display: none;
+}
+
   body{
     height: 100vh;
   }
@@ -334,12 +338,11 @@ html,
   .NameContainer{
     width: 90%;
   display: grid;
-  grid-template-columns: 1fr 1fr; /* 2 columns of equal width */
-  gap: 1rem;                       /* optional spacing between items */
+  grid-template-columns: 1fr 1fr; 
+  gap: 1rem;                       
 
   }
 
-  
  .SignUpContainer {
     display: flex;
     flex-direction: column;

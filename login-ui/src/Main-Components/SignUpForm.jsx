@@ -85,7 +85,7 @@ function ResetPasswordForm() {
 
       <h1 className={classes.LogoContainer}>
         <span className={classes.title}>Sign Up</span>
-        <img src={BlogoImg} alt="Logo" className={classes.icon} />
+        <img  src={BlogoImg} alt="Logo" className={classes.icon} />
       </h1>
        <p className={classes.info}>
             Please provide your information to sign up.
