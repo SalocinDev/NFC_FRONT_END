@@ -1,3 +1,5 @@
+/* Everything from here is about the sidebar */
+
 .Sidebar {
   background-color: #101540;
   position: fixed;
@@ -7,8 +9,73 @@
   flex-direction: column;
   top: 0;
   left: 0;
-  z-index: 1;
+  z-index: 100; /* higher so it overlays on mobile */
+  transition: transform 0.3s ease;
 }
+
+/* Hidden state */
+.hidden {
+  transform: translateX(-100%);
+}
+
+.ToggleButton {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  color: #101540;
+  border: none;
+  cursor: pointer;
+  z-index: 200;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+@media (min-width: 481px) {
+  .ToggleButton {
+    display: none; /* Hide button on larger screens */
+  }
+}
+
+
+/* On mobile, sidebar is hidden by default */
+@media (max-width: 480px) {
+  .Sidebar {
+    transform: translateX(-100%);
+    position: absolute; /* so it slides over content */
+  }
+
+  .Sidebar.open {
+    transform: translateX(0);
+  }
+}
+
+.WSidebar {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  margin: 1rem 0;
+}
+
+.ulstyling {
+  list-style: none;
+  padding: 0;
+  margin-top: 2rem;
+}
+
+.ulstyling li {
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 480px) {
+  .WSidebar{
+    display: none;
+  }
+  
+
+}
+
+
+
 
 a {
   text-decoration: none;
@@ -63,16 +130,6 @@ a:hover {
 
 .SampleLangTo {
   margin-left: 10rem;
-}
-
-.ulstyling {
-  list-style: none;
-  padding: 0;
-  margin-top: 2rem;
-}
-
-.ulstyling li {
-  margin-bottom: 2rem;
 }
 
 /* MANILA CITY ON THE SIDE */
@@ -177,13 +234,7 @@ a:hover {
   margin-bottom: 1vh;
 }
 
-/* Missing class used in React */
-.WSidebar {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  margin: 1rem 0;
-}
+
 
 
 /* ✅ 1080px and below — Large screens */
@@ -291,74 +342,77 @@ a:hover {
   } 
 }
 
-/* ✅ 480px and below — Mobile */
 @media (max-width: 480px) {
   .DesignRectangle{
     display: none;
   }
 
-  /* .Sidebar {
-    position: relative;
-    width: 100%;
-    height: auto;
-    flex-direction: row;
-    justify-content: space-around;
-    padding: 0.5rem 0;
+  .NavBar{
+    padding: 0;
   }
 
-  a {
-    padding: 0.5rem;
-    font-size: 0.8rem;
-    text-align: center;
+  .iconLink{
+   
+    padding: 0; 
   }
 
-  .NavBar {
-    margin-left: 0;
-    flex-direction: column;
-    height: auto;
-    padding: 0.5rem;
-  }
-
-  .SampleLangTo {
-    margin-left: 0;
-    margin-top: 1rem;
-  }
-*/
-
-
-/* 
-  .DesignRectangle {
-    display: none; /* Hide decorative element on small screens 
-  }
- */
-
-
-/* 
-  .Time {
-    font-size: 1.5rem;
-    margin-right: 0;
-    margin-bottom: 1vh;
-  }
-
-  .Date {
-    font-size: 0.9rem;
-    margin-top: -2vh;
-  }
-
-  .UserName {
-    font-size: 1.2rem;
-  }
-
-  .UserRole {
+  .UserName{
+    display: flex;
+    line-height: 1rem;
     font-size: 1rem;
   }
 
-  .GearIcon {
-    margin-right: 0;
-    margin-bottom: 1vh;
-  }
+.RightTopbar {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 1rem;
+ 
+}
 
-  .RenderComponents {
-    padding: 0.5rem;
-  } */
+.TimeGear {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%; 
+  gap: 2rem;
+ 
+
+}
+
+.Time {
+  font-size: 1rem;
+  
+  font-weight: bold;
+}
+
+.Date {
+  font-size: 0.9rem;
+  line-height: 5rem;
+  margin-right: 12vw;
+  
+}
+
+.GearIcon{
+    
+  width: 25px;             
+  height: 25px;
+  margin-bottom: -2vh ;
+}
+
+.GearButton{
+  padding: 0;
+}
+
+.ToggleButton{
+  margin-top: 1vh;
+  margin-left: 2vw;
+  background-color: transparent;
+}
+
+.SampleLangTo{
+  margin: 0;
+  padding: 0;
+}
+
 }

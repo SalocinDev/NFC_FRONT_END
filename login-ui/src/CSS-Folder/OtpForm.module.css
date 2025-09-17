@@ -61,8 +61,6 @@
   margin-top: 5vw;
 }
 
-
-
 .Header{
   text-align: center;
   position: relative;
@@ -71,7 +69,7 @@
 
 .WelcomeHeader{
   color: #101540;
-  font-size: 3em;  
+  font-size: 3em;     
   font-family: 'Montserrat';
   font-weight: bold;
   margin-bottom: 16px;
@@ -125,15 +123,29 @@
   font-weight: 400;
   margin-top: 4rem;
 }
-
+@media (max-width: 1400px){
+    .RightRectangle {
+      display: none;
+  }
+      .loginContainer {
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    margin-top: 15vh;
+  }
+}
 @media (max-width: 1024px) {
 
   .RightRectangle{
-    display: none;
-  }
+   display:none;
+    }
   .loginContainer {
-    top: 10%;
-    left: 5%;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    margin-top: 15vh;
   }
   .WelcomeHeader {
     font-size: 2.5em;

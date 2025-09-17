@@ -1,38 +1,42 @@
 import classes from '../CSS-Folder/UserPage.module.css';
-import { FaUser, FaCog, FaCompass, FaBookOpen} from 'react-icons/fa';
-
-import { Button, UserDashboard, LibraryLane, BorrowedForm, SettingPage, AiPopUp} from '../Components';
-import { NavLink } from 'react-router-dom';
+import { FaUser, FaCog, FaCompass, FaBookOpen, FaSignOutAlt  } from 'react-icons/fa';
+import { MdMenu, MdDashboard, MdLogout } from "react-icons/md"; // ⭐ added MdDashboard here
 import { useState, useEffect } from 'react';
-import WlogoSidebar from '../Logo/W-logo.png';
-import { useNavigate } from 'react-router-dom';
-import { logOut } from '../Services/SessionUtils';
+import { NavLink, useNavigate } from 'react-router-dom';
 
+import { Button, UserDashboard, LibraryLane, BorrowedForm, SettingPage, AiPopUp } from '../Components';
+import WlogoSidebar from '../Logo/W-logo.png';
+import { logOut } from '../Services/SessionUtils';
 
 function UserPage() {
   const navigate = useNavigate(); 
-
   const storedUser = JSON.parse(sessionStorage.getItem("userInfo") || "{}");
 
   const [currentTime, setCurrentTime] = useState('');
   const [currentDate, setCurrentDate] = useState('');
-  
-
+  const [collapsed, setCollapsed] = useState(false); // ⭐ toggle state
   const [active, setActive] = useState("UserDashboard");
- const renderContent = () => {
+
+  const renderContent = () => {
     switch (active) {
       case "UserDashboard":
         return <UserDashboard/>;
       case "BorrowedForm":
         return <BorrowedForm />;
-        case "LibraryLane":
+      case "LibraryLane":
         return <LibraryLane />;
-        case "SettingPage":
+      case "SettingPage":
         return <SettingPage />;
       default:
         return <UserDashboard />;
     }
   }; 
+
+  useEffect(() => {
+    if (window.innerWidth <= 480) {
+      setCollapsed(true); 
+    }
+  }, []);
 
   useEffect(() => {
     const updateTime = () => {
@@ -46,88 +50,100 @@ function UserPage() {
       }));
     };
 
-    updateTime(); // initial run
-    const interval = setInterval(updateTime, 60000); // every 60s
-
-    return () => clearInterval(interval); // cleanup
+    updateTime();
+    const interval = setInterval(updateTime, 60000);
+    return () => clearInterval(interval);
   }, []);
 
   return (
     <div>
-      <aside className={classes.Sidebar}>
+      <aside className={`${classes.Sidebar} ${collapsed ? classes.hidden : classes.open}`}>
+        <Button 
+              name={<><MdMenu size={24} /></>} 
+              use="BurgerIcon" 
+              onClick={() => setCollapsed(true)}    
+            />
         <img src={WlogoSidebar} alt="Logo" className={classes.WSidebar} />
 
-       <ul className={classes.ulstyling}>
-  <li>
-    <Button 
-      name={<><MdDashboard size={24} />Home</>} 
-      use="Sample" 
-      onClick={() => setActive("UserDashboard")} 
-    />
-  </li>
-  <li>
-    <Button 
-      name={<><FaBookOpen size={24} />Borrowed Books</>} 
-      use="Sample" 
-      onClick={() => setActive("BorrowedForm")} 
-    />
-  </li>
-  <li>
-    <Button 
-      name={<><FaCompass size={24} />Services Used</>} 
-      use="Sample" 
-      onClick={() => setActive("LibraryLane")} 
-    />
-  </li>
-</ul>
+        <ul className={classes.ulstyling}>
+          <li>
+            <Button 
+              name={<><MdDashboard size={24} /><span>Home</span></>} 
+              use="Sample" 
+              onClick={() => setActive("UserDashboard")} 
+            />
+          </li>
+          <li>
+            <Button 
+              name={<><FaBookOpen size={24} /><span>Borrowed Books</span></>} 
+              use="Sample" 
+              onClick={() => setActive("BorrowedForm")} 
+            />
+          </li>
+          <li>
+            <Button 
+              name={<><FaCompass size={24} /><span>Services Used</span></>} 
+              use="Sample" 
+              onClick={() => setActive("LibraryLane")} 
+            />
+          </li>
+        </ul>
 
-      <Button name="Log Out" use="LogoutUser" onClick={() => {logOut().then(() => navigate('/'));}}/>
+        <Button 
+          name={<><MdLogout size={24} /><span>Logout</span></>} 
+          use="Sample" 
+          onClick={() => {
+            logOut().then(() => navigate('/'));
+          }}
+        />
       </aside>
 
-     
-    <div className={classes.NavBar}>
-        
-    <div className={classes.LeftTopbar}>
-        <NavLink className={classes.iconLink}>
-          <FaUser className={classes.userIcon} size={32} />
-        </NavLink>
-      <div className={classes.Contents}>
-        <div className={classes.UserName}>{storedUser?.user_firstname|| "Test"}</div>
-        <div className={classes.UserRole}>{storedUser?.user_id || "Test"}</div>
-      </div>
-    </div>
-        
-    <div className={classes.RightTopbar}>
-      <div className={classes.TimeGear}>
-        <span className={classes.Time}>{currentTime}</span>
-            <NavLink onClick={() => setActive("SettingPage")}>
-            <FaCog className={classes.GearIcon} size={16} />
-            </NavLink>
-        </div>
-      <div className={classes.Date}>{currentDate}</div>
-    </div>
-        
-    </div>
-    
+      {collapsed && (
+        <button 
+          className={classes.ToggleButton}
+          onClick={() => setCollapsed(false)}
+        >
+          <MdMenu size={22} color="#101540" />
+        </button>
+      )}
 
-     <div className={classes.SampleLangTo}>
+      <div className={classes.NavBar}>
+        <div className={classes.LeftTopbar}>
+          <NavLink className={classes.iconLink}>
+            <FaUser className={classes.userIcon} size={32} />
+          </NavLink>
+          <div className={classes.Contents}>
+            <div className={classes.UserName}>{storedUser?.user_firstname|| "Test"}</div>
+            <div className={classes.UserRole}>{storedUser?.user_id || "Test"}</div>
+          </div>
+        </div>
+        
+        <div className={classes.RightTopbar}>
+          <div className={classes.TimeGear}>
+            <span className={classes.Time}>{currentTime}</span>
+            <NavLink className={classes.GearButton} onClick={() => setActive("SettingPage")}>
+              <FaCog className={classes.GearIcon} size={16} />
+            </NavLink>
+          </div>
+          <div className={classes.Date}>{currentDate}</div>
+        </div>
+      </div>
+
+      <div className={classes.SampleLangTo}>
         <main className={classes.RenderComponents}>
           {renderContent()}
         </main>
       </div>
 
       <div className={classes.DesignRectangle}>
-          <span className={classes.VerticalManila}>MANILA</span>
-          <span className={classes.VerticalLibrary}>City <br/>Library</span>
-          <div className={classes.CircleIcon}>
-                <AiPopUp/>
-          </div>
-              </div>
+        <span className={classes.VerticalManila}>MANILA</span>
+        <span className={classes.VerticalLibrary}>City <br/>Library</span>
+        <div className={classes.CircleIcon}>
+          <AiPopUp/>
+        </div>
+      </div>
     </div>
   );
 }
 
 export default UserPage;
-
-
-import { MdDashboard } from 'react-icons/md';

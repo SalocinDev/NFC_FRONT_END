@@ -278,7 +278,8 @@
 }
 
 /* The buttons for adminpage sidebar */
-.Sample{
+.Sample,
+.BurgerIcon{
   width: 100%;
   height: 5vh;
   margin-bottom: 0.5rem;
@@ -291,6 +292,10 @@
   justify-content: flex-start; /* keep text aligned to left */
   padding: 0.5rem 1rem;
   display: flex;
+}
+
+.BurgerIcon{
+  display: none;
 }
 
 .Sample:hover{
@@ -324,13 +329,6 @@
 
 
 /* Everything below is buttons for the sidebar */
-
-@media (max-width: 480px) {
-  .NfcSignIn {
-  display: none;
-  }
-
-}
 
 @media (max-width: 1080){
     .ButtonSubmit{
@@ -410,8 +408,6 @@
 
 }
 
-
-
 @media (max-width: 480px) {
   .ButtonSignUp{
     background-color: #ffffffff;
@@ -419,8 +415,25 @@
     max-width: 95%;
     font-size: 0.95rem;
     padding: 0;
-    margin-left: 0rem;
-    
+    margin-left: 0rem; 
+  }
+  .BurgerIcon{
+  display: flex;
+  justify-content: center;
+  margin-top: 2vh;
+  
+}
+  .NfcSignIn {
+  display: none;
+  }
+
+  .Sample{
+    justify-content: center;
+    margin: 0;
+  }
+
+  .Sample span{
+    display: none;
   }
 
   .ButtonReset{

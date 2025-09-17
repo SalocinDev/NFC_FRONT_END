@@ -47,7 +47,9 @@
 
 /* Tablets (720px and below) */
 @media (max-width: 720px) {
+
   .header {
+
     flex-direction: column;
     font-size: 2rem;
     margin-left: 0.5rem;
@@ -58,9 +60,14 @@
     align-items: center;
   }
   .card{
+    
+    display: block;
     width: 90%; /* or 100% if you want full width */
-    max-width: 400vw;
+    max-width: 100vw;
+    flex: column;
   }
+  .iconContainer{
 
+  }
 }
 

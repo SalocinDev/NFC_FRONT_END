@@ -257,3 +257,28 @@ footer{
     margin-top: 15rem;
 }
 
+
+@media (max-width: 480px) {
+  .iconHeaderContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    gap: 1rem;
+  }
+
+  .samplelang{
+    display: flex;             
+  justify-content: center;    
+  align-items: center;
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+  
+  }
+
+  .ChartContainer{
+    display: none;
+  }
+}
