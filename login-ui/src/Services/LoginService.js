@@ -89,7 +89,7 @@ export async function signIn(email, password, navigate){
       const resendOTP = await fetch(`${apiUrl}/acc/send-otp`, { method: "POST", credentials: "include", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email: email})});
       const resultResend = await resendOTP.json();
       alert("Check your Email for the OTP");
-      if (resultResend.success){ navigate(`/OtpForm?email=${result.email}`); } 
+      if (resultResend.success){ navigate(`/OtpForm`, { state: { email, resetPass: false } }); } 
     } else if (result.success === false && result.error === "Invalid credentials") {
       alert(result.error);
     } else {
