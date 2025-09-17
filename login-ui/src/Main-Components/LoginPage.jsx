@@ -48,7 +48,7 @@ function LoginPage() {
         <div className={classes.ForgotPassContainer}>  
               <a 
               className={classes.attribute}
-              onClick={() => navigate("/NFC_FRONT_END/login-ui/#/ResetPasswordEmailCheck")}
+              onClick={() => navigate("/#/ResetPasswordEmailCheck")}
                 >
                 Forgot password?
               </a>
