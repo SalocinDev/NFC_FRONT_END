@@ -40,6 +40,7 @@ function LoginPage() {
 
               <Input id="EmailInput" required type="email" placeholder="Email" value={Email} onChange={(e) => setEmail(e.target.value)} />
               <Input id="PasswordInput" required type="password" placeholder="Password" value={Pass} onChange={(e) => setPass(e.target.value)} />
+              
               <Button name="SIGN-IN" use="ButtonSignInMobile" onClick={() => signIn(Email, Pass, navigate)} />
               <Button name="LOGIN WITH NFC" use="NfcSignInMobile" onClick={() => navigate("/NfcPage")}/>
           
@@ -48,7 +49,7 @@ function LoginPage() {
         <div className={classes.ForgotPassContainer}>  
               <a 
               className={classes.attribute}
-              onClick={() => navigate("/#/ResetPasswordEmailCheck")}
+              onClick={() => navigate("/ResetPasswordEmailCheck")}
                 >
                 Forgot password?
               </a>
