@@ -192,6 +192,11 @@
 }
  */
 
+ .ButtonSignInMobile,
+ .NfcSignInMobile{
+  display: none;
+ }
+
 .BackButton,
 .BackButtonOtp,
 .LogoutButton,
@@ -322,11 +327,11 @@
 
 @media (max-width: 480px) {
   .NfcSignIn {
-   display: none;
+  display: none;
   }
 
   .ButtonSignIn{
-    display: none;
+    
   }
 }
 
@@ -360,7 +365,7 @@
     gap: 2rem;
   }
 
-  .ButtonSignIn 
+  /* .ButtonSignIn 
   {
     position: flex;
     background-color: #101540;
@@ -371,7 +376,7 @@
     top: 0;
     bottom: 100; 
     margin-bottom:0;
-  }
+  } */
 
 
     .ButtonSignUp{
@@ -464,6 +469,34 @@
     padding: 0.4rem 0.75rem;
   }
 
+  .ButtonSignInMobile,
+ .NfcSignInMobile{
+  display: flex;
+  max-width: 90%;
+  width: 100%;
+  padding: 0.4rem 0.75rem;
+  border-style: solid;
+  
+  cursor: pointer;
+
+  color: white;
+  height: 3.5rem;
+  border-radius: 0.75rem;
+  margin-bottom: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+ }
+
+ .ButtonSignInMobile{
+  background-color: #101540;
+  border-color: #101540;
+ }
+
+ .NfcSignInMobile{
+  background-color: #222D8A;
+  border-color: #222D8A;
+ }
   
 }
 

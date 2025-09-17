@@ -40,6 +40,8 @@ function LoginPage() {
 
               <Input id="EmailInput" required type="email" placeholder="Email" value={Email} onChange={(e) => setEmail(e.target.value)} />
               <Input id="PasswordInput" required type="password" placeholder="Password" value={Pass} onChange={(e) => setPass(e.target.value)} />
+              <Button name="SIGN-IN" use="ButtonSignInMobile" onClick={() => signIn(Email, Pass, navigate)} />
+              <Button name="LOGIN WITH NFC" use="NfcSignInMobile" onClick={() => navigate("/NfcPage")}/>
           
         </div>
 
@@ -52,6 +54,7 @@ function LoginPage() {
               </a>
               <Button name="SIGN-IN" use="ButtonSignIn" onClick={() => signIn(Email, Pass, navigate)} />
         </div>
+
         <div className={classes.LineContainer}>
           <div className={`${classes.Line} ${classes.Left}`}></div>
             <span className={classes.Text}>or</span>
