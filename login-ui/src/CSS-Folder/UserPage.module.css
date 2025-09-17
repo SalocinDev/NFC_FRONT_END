@@ -104,7 +104,7 @@ a:hover {
   writing-mode: vertical-rl;
   transform: rotate(360deg);
   font-size: 2rem;
-  letter-spacing: 1.2rem;
+  letter-spacing: 1rem;
   color: white;
   line-height: 2rem;
   margin-top: -4vh;
@@ -202,18 +202,18 @@ a:hover {
   }
 
   .VerticalManila {
-    font-size: 3rem;
+    font-size: 3.9rem;
     letter-spacing: 1.2rem;
   }
 
   .VerticalLibrary {
     font-size: 1.8rem;
-    letter-spacing: 1rem;
-    
+    letter-spacing: 1rem ;
   }
 
   .Time {
     font-size: 2rem;
+    margin: 0;
   }
 
   .UserName {
@@ -228,7 +228,7 @@ a:hover {
     position: fixed;
   bottom: 0;
   right: 0;
-  width: 5vw;
+  width: 6vw;
   height: 65vh;
   background-color: #101540;
   border-radius: 0.5rem 0 0 0;

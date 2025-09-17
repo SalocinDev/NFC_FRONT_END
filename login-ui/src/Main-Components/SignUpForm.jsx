@@ -115,8 +115,13 @@ function ResetPasswordForm() {
       <Input required type="email" placeholder="Email" value={Email} onChange={(e) => setEmail(e.target.value)} />
       <Input required type="password" placeholder="Password" value={Pass} onChange={(e) => setPass(e.target.value)} />
       <Input required type="password" placeholder="Confirm Password" value={ConfirmPass} onChange={(e) => setconfirmPass(e.target.value)} />
+      <Input className={classes.HiddenOnMobile}required type="password" placeholder="Confirm Password" value={ConfirmPass} onChange={(e) => setconfirmPass(e.target.value)} />
       <Input className={classes.DateInput} required type="date" value={DoB} onChange={(e) => setDoB(e.target.value)} />
       <Input required type="text" placeholder="School" value={School} onChange={(e) => setSchool(e.target.value)} />
+
+      {/* mobile view ito naka display: none; */}
+      <Input  className={classes.GenderInput} required type="select" placeholder="Gender" value={Gender} options={["Male", "Female"]} onChange={(e) => setGender(e.target.value)} />
+
     </div>
   </div>
 
