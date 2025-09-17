@@ -81,10 +81,10 @@ function SettingPage() {
   };
 
   return (
-    <div>
+    <div className={classes.SettingMain}>
       <div className={classes.PersonalDetail}>
         <h1>ACCOUNT SETTING</h1>
-        <h2>Your Profile Picture</h2>
+        <h2>Change Profile Picture</h2>
 
         <div className={classes.InputGrid}>
           <div className={classes.InputField}>
@@ -139,7 +139,7 @@ function SettingPage() {
 
           <div className={classes.InputField}>
             <label>Gender Identity</label>
-            <select value={Gender} onChange={(e) => setGender(e.target.value)} className={classes.SmallInput}>
+            <select value={Gender} onChange={(e) => setGender(e.target.value)} className={classes.GenderInput}>
               <option value="" disabled hidden>Choose gender</option>
               {genderOptions.map((g, i) => (
                 <option key={i} value={g}>{g}</option>
@@ -169,11 +169,10 @@ function SettingPage() {
         <div className={classes.InputField}>
           <label>Zip Code</label>
           <Input type="text" placeholder="Please Enter Your Zip Code" value={Zip} onChange={(e) => setZip(e.target.value)} />
-        </div>
-
-        <div className={classes.ButtonContainer}>
+        </div>   
+       
           <Button name="Update Address" use="UpdateProfileButton" onClick={handleUpdateAddress}/>
-        </div>
+          
       </div>
     </div>
   );

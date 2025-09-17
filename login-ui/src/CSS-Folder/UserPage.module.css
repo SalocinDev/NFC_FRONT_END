@@ -30,7 +30,7 @@
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
-@media (min-width: 481px) {
+@media (min-width: 768px) {
   .ToggleButton {
     display: none; /* Hide button on larger screens */
   }
@@ -38,7 +38,7 @@
 
 
 /* On mobile, sidebar is hidden by default */
-@media (max-width: 480px) {
+@media (max-width: 480px), (max-width: 768px) {
   .Sidebar {
     transform: translateX(-100%);
     position: absolute; /* so it slides over content */
@@ -47,6 +47,7 @@
   .Sidebar.open {
     transform: translateX(0);
   }
+
 }
 
 .WSidebar {
@@ -66,7 +67,7 @@
   margin-bottom: 2rem;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 480px), (max-width: 768px) {
   .WSidebar{
     display: none;
   }
@@ -292,10 +293,11 @@ a:hover {
 }
 
 /* ✅ 720px and below — Tablets */
-@media (max-width: 720px) {
+@media (max-width: 768px) {
    .Sidebar {
     width: 5rem;
   }
+ 
 
   a {
     padding: 1.5rem 1rem;
@@ -340,6 +342,12 @@ a:hover {
   .GearIcon {
     margin-right: -15vw;
   } 
+
+  .ToggleButton{
+  margin-top: 1vh;
+  margin-left: 2vw;
+  background-color: transparent;
+}
 }
 
 @media (max-width: 480px) {

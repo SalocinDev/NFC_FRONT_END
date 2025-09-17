@@ -347,7 +347,7 @@
   }
 }
 
-@media(max-width: 720px){
+@media(max-width: 768px){
   .ButtonSubmit{
   display: flex;
   justify-content: center;
@@ -360,6 +360,7 @@
     gap: 2rem;
   }
 
+  
   /* .ButtonSignIn 
   {
     position: flex;
@@ -417,6 +418,13 @@
     padding: 0;
     margin-left: 0rem; 
   }
+
+  .UpdateProfileButton,
+  .ConfirmPassButton{
+    
+    margin-left: 10vw;
+  }
+
   .BurgerIcon{
   display: flex;
   justify-content: center;

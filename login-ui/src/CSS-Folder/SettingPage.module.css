@@ -10,7 +10,6 @@
   z-index: 1;
 }
 
-
 .input {
   width: 100% !important;
   max-width: 29.75rem !important;
@@ -314,6 +313,7 @@ label{
 .PersonalDetail {
   display: flex;
   flex-direction: column;
+  padding-bottom: 3rem;
   gap: 1.5rem;
 }
 
@@ -338,12 +338,43 @@ label{
 
 }
 
+.GenderInput{
+  width: 100%;
+  max-width: 29.75rem;
+  height: 4.5rem;
+  font-size: 1.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  border: 2px solid #727374;
+  box-sizing: border-box;
+  margin-bottom: 2px;
+  display: block;
+  background-color: #fff;
+}
+
+.InputGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 1.5rem; 
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 @media (max-width: 480px) {
-  .SmallInput {
-    max-width: 90%;
+  .GenderInput {
+    max-width: 100%;
     font-size: 0.75rem;
     padding: 0.4rem 0.75rem;
   }
+
+  .InputGrid{
+    display: flex;
+    flex-direction: column; 
+  }
+
+  
+  
 }
 
 .NewInput{
@@ -355,12 +386,7 @@ label{
     margin-left: 2.7vw;
 }
 
-.InputGrid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 inputs per row */
-  gap: 1.5rem; /* space between grid items */
-  margin-top: 1rem;
-}
+
 
 .ButtonContainer,
 .ConfirmPassButton {
