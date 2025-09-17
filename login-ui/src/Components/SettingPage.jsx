@@ -1,25 +1,16 @@
 import classes from '../CSS-Folder/SettingPage.module.css';
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css"; 
-import { MdDashboard } from 'react-icons/md';
-import { FaCompass, FaBookOpen, FaUser, FaCog, FaHandPointer, FaReply, FaCommentMedical } from 'react-icons/fa';
-import { Button, Table, SearchID, AiPopUp, Input } from '../Components';
-import { IconHeader } from '../Components';
-import { NavLink } from 'react-router-dom';
+import { Button, Input } from '../Components';
 import { useState, useEffect } from 'react';
-import WlogoSidebar from '/src/Logo/W-logo.png';
 import { useNavigate } from 'react-router-dom';
 import { logOut } from '../Services/SessionUtils';
+import { updateAccount, updateAddress } from '../Services/UpdateAccount';
 
 function SettingPage() {
   const navigate = useNavigate(); 
-  const columns = ["ID", "User ID", "Name", "Email"];
   const storedUser = JSON.parse(sessionStorage.getItem("userInfo"));
-  
-  const [currentTime, setCurrentTime] = useState('');
-  const [currentDate, setCurrentDate] = useState('');
-  const borrowedBooks = 60;
-  const returnedBooks = 40;
+
   const [FN, setFN] = useState("");
   const [MN, setMN] = useState("");
   const [LN, setLN] = useState("");
@@ -30,28 +21,63 @@ function SettingPage() {
   const [Gender, setGender] = useState("");
   const [Contact, setContact] = useState("");
   const [School, setSchool] = useState("");
-  
+  const [Address, setAddress] = useState("");
+  const [City, setCity] = useState("");
+  const [Zip, setZip] = useState("");
+
   const genderOptions = ["Man", "Woman", "Mayonnaise"];
 
   useEffect(() => {
-    const updateTime = () => {
-      const now = new Date();
-      setCurrentTime(now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
-      setCurrentDate(
-        now.toLocaleDateString(undefined, {
-          weekday: 'long',
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric',
-        })
-      );
-    };
-
-    updateTime(); // initial run
-    const interval = setInterval(updateTime, 60000); // every 60s
-
-    return () => clearInterval(interval); // cleanup
+    if (storedUser) {
+      setFN(storedUser.firstName || "");
+      setMN(storedUser.middleName || "");
+      setLN(storedUser.lastName || "");
+      setEmail(storedUser.email || "");
+      setDoB(storedUser.dob || "");
+      setGender(storedUser.gender || "");
+      setContact(storedUser.contact || "");
+      setSchool(storedUser.school || "");
+    }
   }, []);
+
+
+  const handleUpdateAcc = () => {
+    const updatedFields = {};
+
+    if (LN !== storedUser.lastName) updatedFields.lastName = LN;
+    if (FN !== storedUser.firstName) updatedFields.firstName = FN;
+    if (MN !== storedUser.middleName) updatedFields.middleName = MN;
+    if (Email !== storedUser.email) updatedFields.email = Email;
+    if (DoB !== storedUser.dob) updatedFields.dob = DoB;
+    if (Gender !== storedUser.gender) updatedFields.gender = Gender;
+    if (Contact !== storedUser.contact) updatedFields.contact = Contact;
+    if (School !== storedUser.school) updatedFields.school = School;
+    if (newPass) {
+      updatedFields.oldPassword = Pass;
+      updatedFields.newPassword = newPass;
+    }
+
+    if (Object.keys(updatedFields).length === 0) {
+      alert("No changes detected.");
+      return;
+    }
+
+    updateAccount(updatedFields, navigate);
+  };
+
+  const handleUpdateAddress = () => {
+    const updatedAddress = {};
+    if (Address) updatedAddress.address = Address;
+    if (City) updatedAddress.city = City;
+    if (Zip) updatedAddress.zip = Zip;
+
+    if (Object.keys(updatedAddress).length === 0) {
+      alert("No address changes detected.");
+      return;
+    }
+
+    updateAddress(updatedAddress, navigate);
+  };
 
   return (
     <div>
@@ -62,13 +88,7 @@ function SettingPage() {
         <div className={classes.InputGrid}>
           <div className={classes.InputField}>
             <label>Surname</label>
-            <Input
-              required
-              type="text"
-              placeholder="Surname"
-              value={LN}
-              onChange={(e) => setLN(e.target.value)}
-            />
+            <Input type="text" placeholder="Surname" value={LN} onChange={(e) => setLN(e.target.value)} />
           </div>
 
           <div className={classes.InputField}>
@@ -88,125 +108,71 @@ function SettingPage() {
 
           <div className={classes.InputField}>
             <label>First Name</label>
-            <Input
-              required
-              type="text"
-              placeholder="First Name"
-              value={FN}
-              onChange={(e) => setFN(e.target.value)}
-            />
+            <Input type="text" placeholder="First Name" value={FN} onChange={(e) => setFN(e.target.value)} />
           </div>
 
           <div className={classes.InputField}>
             <label>Email</label>
-            <Input
-              required
-              type="email"
-              placeholder="Email"
-              value={Email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
+            <Input type="email" placeholder="Email" value={Email} onChange={(e) => setEmail(e.target.value)} />
           </div>
 
           <div className={classes.InputField}>
             <label>Middle Name</label>
-            <Input
-              required
-              type="email"
-              placeholder="Middle Name"
-              value={MN}
-              onChange={(e) => setMN(e.target.value)}
-            />
+            <Input type="text" placeholder="Middle Name" value={MN} onChange={(e) => setMN(e.target.value)} />
           </div>
-    
+
           <div className={classes.InputField}>
             <label>University</label>
-            <Input
-              required
-              type="text"
-              placeholder="Your University"
-              value={School}
-              onChange={(e) => setSchool(e.target.value)}
-            />
+            <Input type="text" placeholder="Your University" value={School} onChange={(e) => setSchool(e.target.value)} />
           </div>
 
           <div className={classes.InputField}>
             <label>Birth Date</label>
-            <Input
-              required
-              type="date"
-              value={DoB}
-              onChange={(e) => setDoB(e.target.value)}
-            />
+            <Input type="date" value={DoB} onChange={(e) => setDoB(e.target.value)} />
           </div>
 
           <div className={classes.InputField}>
             <label>Old Password</label>
-            <Input
-              required
-              type="password"
-              placeholder="Enter Your Old Password"
-              value={Pass}
-              onChange={(e) => setPass(e.target.value)}
-            />
+            <Input type="password" placeholder="Enter Your Old Password" value={Pass} onChange={(e) => setPass(e.target.value)} />
           </div>
 
           <div className={classes.InputField}>
             <label>Gender Identity</label>
-            <span>
-              <select
-                name="gender"
-                value={Gender}
-                onChange={(e) => setGender(e.target.value)}
-                className={classes.SmallInput}
-              >
-                <option value="" disabled hidden>
-                  Choose gender
-                </option>
-                {genderOptions.map((g, i) => (
-                  <option key={i} value={g}>
-                    {g}
-                  </option>
-                ))}
-              </select>
-            </span>
+            <select value={Gender} onChange={(e) => setGender(e.target.value)} className={classes.SmallInput}>
+              <option value="" disabled hidden>Choose gender</option>
+              {genderOptions.map((g, i) => (
+                <option key={i} value={g}>{g}</option>
+              ))}
+            </select>
           </div>
 
           <div className={classes.InputField}>
             <label>New Password</label>
-            <Input
-              required
-              type="password"
-              placeholder="Enter Your New Password"
-              value={newPass}
-              onChange={(e) => setNewPass(e.target.value)}
-            />
+            <Input type="password" placeholder="Enter Your New Password" value={newPass} onChange={(e) => setNewPass(e.target.value)} />
           </div>
 
-          <Button name="Update Account" use="ConfirmPassButton" />
+          <Button name="Update Account" use="ConfirmPassButton" onClick={handleUpdateAcc} />
         </div>
 
         <h1>LOCATION SETTING</h1>
         <div className={classes.InputField}>
           <label>Address</label>
-          <Input required type="text" placeholder="Please Enter Your Address" />
+          <Input type="text" placeholder="Please Enter Your Address" value={Address} onChange={(e) => setAddress(e.target.value)} />
         </div>
 
         <div className={classes.InputField}>
           <label>City</label>
-          <Input required type="text" placeholder="Please Enter Your City" />
+          <Input type="text" placeholder="Please Enter Your City" value={City} onChange={(e) => setCity(e.target.value)} />
         </div>
 
         <div className={classes.InputField}>
           <label>Zip Code</label>
-          <Input required type="text" placeholder="Please Enter Your Zip Code" />
-          <br />   
+          <Input type="text" placeholder="Please Enter Your Zip Code" value={Zip} onChange={(e) => setZip(e.target.value)} />
         </div>
 
         <div className={classes.ButtonContainer}>
-          <Button name="Update Address" use="UpdateProfileButton" />
+          <Button name="Update Address" use="UpdateProfileButton" onClick={handleUpdateAddress}/>
         </div>
-        <br />
       </div>
     </div>
   );

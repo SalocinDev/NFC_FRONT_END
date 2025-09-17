@@ -144,7 +144,6 @@ html,
   border-radius: 0.75rem;
   border: 2px solid #727374;
   box-sizing: border-box;
-
   display: block;
 } 
 
@@ -301,23 +300,41 @@ html,
     width: 100%;
     max-width: 400px;
   }
+   .InfoContainer,
+  .NameContainer{
+    width: 90%;
+  }
 }
+
+
 
 @media (max-width: 480px) {
   
+  .container{
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  .InfoContainer,
+  .NameContainer{
+    width: 90%;
+  }
+
  .SignUpContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
-    margin: 0 auto;
+    max-width: 100%;
     width: 100%;
-    padding: auto;
+    margin: 0;
+    padding: 0;
   }
 
   .SmallInput {
     font-size: 1rem;
     padding: 0.5rem;
+    
   }
 
   .LogoContainer {

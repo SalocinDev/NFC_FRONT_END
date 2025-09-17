@@ -9,6 +9,7 @@ function Input({
   onChange,
   options = [],
   className,
+  required = false, // make optional
 }) {
   if (type === "select") {
     return (
@@ -16,9 +17,9 @@ function Input({
         className={`${classes.input} ${className || ""}`}
         name={name}
         id={id}
-        value={value}
+        value={value !== undefined ? value : ""}
         onChange={onChange}
-        required
+        required={required}
       >
         <option value="" disabled>
           {placeholder}
@@ -39,9 +40,9 @@ function Input({
       placeholder={placeholder}
       name={name}
       id={id}
-      value={value ?? ""}
+      value={value !== undefined ? value : undefined}
       onChange={onChange}
-      required
+      required={required}
     />
   );
 }

@@ -38,9 +38,22 @@ function LoginPage() {
 
         <div className={classes.LoginInput}>
 
-              <Input id="EmailInput" required type="email" placeholder="Email" value={Email} onChange={(e) => setEmail(e.target.value)} />
-              <Input id="PasswordInput" required type="password" placeholder="Password" value={Pass} onChange={(e) => setPass(e.target.value)} />
-              
+              <Input className={classes.EmailInput} required type="email" placeholder="Email" value={Email} onChange={(e) => setEmail(e.target.value)} />
+              <Input className={classes.PassInput} required type="password" placeholder="Password" value={Pass} onChange={(e) => setPass(e.target.value)} />
+              <div className={classes.mobileattribute}>  
+               <a 
+              className={classes.attributemobile}
+              onClick={() => navigate("/ResetPasswordEmailCheck")}
+                >
+                Forgot password?
+              </a>
+              <a 
+              className={classes.attributemobile}
+              onClick={() => navigate("/SignUpForm")}
+                >
+                Not a user yet?
+              </a>
+              </div>
               <Button name="SIGN-IN" use="ButtonSignInMobile" onClick={() => signIn(Email, Pass, navigate)} />
               <Button name="LOGIN WITH NFC" use="NfcSignInMobile" onClick={() => navigate("/NfcPage")}/>
           

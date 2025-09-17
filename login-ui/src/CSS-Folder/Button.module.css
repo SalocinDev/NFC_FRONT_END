@@ -426,6 +426,18 @@
     
   }
 
+  .ButtonReset{
+  width: 10%;
+  max-width: 25.75rem;
+  height: 4rem;
+  font-size: 2vh;
+  padding: 1rem 5rem;
+  border-radius: 0.75rem;
+  border: 2px solid #727374;
+  box-sizing: border-box;
+  margin-bottom: 2px;
+  cursor: pointer;
+  }
   .ButtonSignIn 
   {
     position: flex;
@@ -438,7 +450,6 @@
     bottom: 100; 
     margin-bottom:0;
   }
-
 
 
   .ButtonServices{
@@ -496,6 +507,10 @@
  .NfcSignInMobile{
   background-color: #222D8A;
   border-color: #222D8A;
+ }
+
+ .BackButton{
+  z-index: 9999;
  }
   
 }
