@@ -45,3 +45,22 @@
   margin-left: 0.8rem;
 }
 
+/* Tablets (720px and below) */
+@media (max-width: 720px) {
+  .header {
+    flex-direction: column;
+    font-size: 2rem;
+    margin-left: 0.5rem;
+    align-items: flex-start;
+  }
+ .cardWrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+  .card{
+    width: 90%; /* or 100% if you want full width */
+    max-width: 400vw;
+  }
+
+}
+

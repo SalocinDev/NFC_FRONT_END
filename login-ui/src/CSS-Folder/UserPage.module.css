@@ -242,7 +242,7 @@ a:hover {
 
 /* ✅ 720px and below — Tablets */
 @media (max-width: 720px) {
-  /* .Sidebar {
+   .Sidebar {
     width: 5rem;
   }
 
@@ -252,12 +252,14 @@ a:hover {
   }
 
   .NavBar {
+    margin: auto;
     margin-left: 5rem;
     padding: 0.5rem;
+
   }
 
   .SampleLangTo {
-    margin-left: 6rem;
+    
   }
 
   .DesignRectangle {
@@ -277,7 +279,7 @@ a:hover {
   }
 
   .Time {
-    font-size: 1.8rem;
+    font-size: 0.8rem;
   }
 
   .UserName {
@@ -290,11 +292,15 @@ a:hover {
 
   .GearIcon {
     margin-right: -15vw;
-  } */
+  } 
 }
 
 /* ✅ 480px and below — Mobile */
 @media (max-width: 480px) {
+  .DesignRectangle{
+    display: none;
+  }
+
   /* .Sidebar {
     position: relative;
     width: 100%;

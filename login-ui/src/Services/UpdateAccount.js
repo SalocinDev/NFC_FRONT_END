@@ -1,22 +1,22 @@
 const apiUrl = import.meta.env.VITE_API_URL;
 
 // Update account details
-export async function updateAccount(updatedFields, navigate) {
+export async function updateAccount(email, updates, navigate) {
   try {
+    console.log(email);
+    
     const response = await fetch(`${apiUrl}/acc/update`, {
-        method: "PUT",
-        credentials: "include",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(updatedFields),
+      method: "PUT",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, ...updates }),
     });
 
     const result = await response.json();
 
     if (!response.ok) {
-        alert(result.message || "Account update failed.");
-        return { success: false, ...result };
+      alert(result.message || "Account update failed.");
+      return { success: false, ...result };
     }
 
     alert(result.message || "Account updated successfully!");
@@ -29,6 +29,7 @@ export async function updateAccount(updatedFields, navigate) {
     return { success: false, error: err };
   }
 }
+
 
 export async function updateAddress(updatedAddress, navigate) {
   try {

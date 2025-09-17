@@ -19,8 +19,8 @@ export async function signUp (email, password, firstName, middleName, lastName, 
         }
         if (result.success) {
             console.log(result);
-            alert("Success Signing up!");
-            const response = sendOTP(email, navigate);
+            alert(result.message);
+            const response = await sendOTP(email);
 
             if (!response.success) {
                 alert(response.message);
@@ -58,7 +58,7 @@ export async function sendOTP(email){
             return { success: true, message: "OTP Sent! Please check your email at "+ email };
         }
     } catch (error) {
-        return { success: false, message: error.message || error}
+        return { success: false, message: "Tite"}
     }
 }
 

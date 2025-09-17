@@ -86,6 +86,7 @@ function NfcPage() {
 
               </div>
             </div>
+
     </div>
 
     
