@@ -184,3 +184,156 @@ a:hover {
   object-fit: contain;
   margin: 1rem 0;
 }
+
+
+/* ✅ 1080px and below — Large screens */
+@media (max-width: 1080px) {
+  .Sidebar {
+    width: 6rem;
+  }
+
+  .NavBar {
+    margin-left: 5.5rem;
+  }
+
+  .SampleLangTo {
+    margin-left: 8rem;
+  }
+
+  .VerticalManila {
+    font-size: 3.5rem;
+    letter-spacing: 1.2rem;
+  }
+
+  .VerticalLibrary {
+    font-size: 1.8rem;
+    letter-spacing: 1rem;
+  }
+
+  .Time {
+    font-size: 2rem;
+  }
+
+  .UserName {
+    font-size: 1.6rem;
+  }
+
+  .UserRole {
+    font-size: 1.3rem;
+  }
+}
+
+/* ✅ 720px and below — Tablets */
+@media (max-width: 720px) {
+  .Sidebar {
+    width: 5rem;
+  }
+
+  a {
+    padding: 1.5rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .NavBar {
+    margin-left: 5rem;
+    padding: 0.5rem;
+  }
+
+  .SampleLangTo {
+    margin-left: 6rem;
+  }
+
+  .DesignRectangle {
+    width: 6vw;
+    height: 50vh;
+    padding: 1vh 0;
+  }
+
+  .VerticalManila {
+    font-size: 3rem;
+    letter-spacing: 1rem;
+  }
+
+  .VerticalLibrary {
+    font-size: 1.5rem;
+    letter-spacing: 0.8rem;
+  }
+
+  .Time {
+    font-size: 1.8rem;
+  }
+
+  .UserName {
+    font-size: 1.4rem;
+  }
+
+  .UserRole {
+    font-size: 1.2rem;
+  }
+
+  .GearIcon {
+    margin-right: -15vw;
+  }
+}
+
+/* ✅ 480px and below — Mobile */
+@media (max-width: 480px) {
+  .Sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 0.5rem 0;
+  }
+
+  a {
+    padding: 0.5rem;
+    font-size: 0.8rem;
+    text-align: center;
+  }
+
+  .NavBar {
+    margin-left: 0;
+    flex-direction: column;
+    height: auto;
+    padding: 0.5rem;
+  }
+
+  .SampleLangTo {
+    margin-left: 0;
+    margin-top: 1rem;
+  }
+
+  .DesignRectangle {
+    display: none; /* Hide decorative element on small screens */
+  }
+
+  .Time {
+    font-size: 1.5rem;
+    margin-right: 0;
+    margin-bottom: 1vh;
+  }
+
+  .Date {
+    font-size: 0.9rem;
+    margin-top: -2vh;
+  }
+
+  .UserName {
+    font-size: 1.2rem;
+  }
+
+  .UserRole {
+    font-size: 1rem;
+  }
+
+  .GearIcon {
+    margin-right: 0;
+    margin-bottom: 1vh;
+  }
+
+  .RenderComponents {
+    padding: 0.5rem;
+  }
+}

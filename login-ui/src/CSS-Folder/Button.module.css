@@ -330,9 +330,6 @@
   display: none;
   }
 
-  .ButtonSignIn{
-    
-  }
 }
 
 @media (max-width: 1080){
@@ -427,13 +424,13 @@
   }
 
   .ButtonReset{
-  width: 10%;
+  width: 90%;
   max-width: 25.75rem;
   height: 4rem;
   font-size: 2vh;
   padding: 1rem 5rem;
   border-radius: 0.75rem;
-  border: 2px solid #727374;
+  border-style: solid;
   box-sizing: border-box;
   margin-bottom: 2px;
   cursor: pointer;
