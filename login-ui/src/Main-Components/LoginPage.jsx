@@ -12,7 +12,7 @@ function LoginPage() {
 
   return (
 
-      <div>
+      <div className={classes.LoginBody}>
          
         <div className={classes.RightRectangle}>
           <div className={classes.RightContent}>
@@ -46,7 +46,7 @@ function LoginPage() {
         <div className={classes.ForgotPassContainer}>  
               <a 
               className={classes.attribute}
-              onClick={() => navigate("/ResetPasswordEmailCheck")}
+              onClick={() => navigate("/NFC_FRONT_END/login-ui/#/ResetPasswordEmailCheck")}
                 >
                 Forgot password?
               </a>

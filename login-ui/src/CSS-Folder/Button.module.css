@@ -322,7 +322,11 @@
 
 @media (max-width: 480px) {
   .NfcSignIn {
-   
+   display: none;
+  }
+
+  .ButtonSignIn{
+    display: none;
   }
 }
 
@@ -416,6 +420,22 @@
     margin-left: 0rem;
     
   }
+
+  .ButtonSignIn 
+  {
+    position: flex;
+    background-color: #101540;
+    border-color: #101540;
+    max-width: 60%;
+    font-size: 0.95rem;
+    padding: 0.4rem 0.75rem;
+    top: 0;
+    bottom: 100; 
+    margin-bottom:0;
+  }
+
+
+
   .ButtonServices{
     position: flex;
     margin-bottom: 12rem;

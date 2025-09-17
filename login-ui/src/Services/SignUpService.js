@@ -1,8 +1,8 @@
 const apiUrl = import.meta.env.VITE_API_URL;
 
 export async function signUp (email, password, firstName, middleName, lastName, dob, gender, contactNumber, school, navigate) {
-    console.log("Signing up with:", { email, password, firstName, middleName, lastName, dob, gender, contactNumber, school });
-    alert(`Signing up with:, ${email}, ${password}, ${firstName}, ${middleName}, ${lastName}, ${dob}, ${gender}, ${contactNumber}, ${school}`);
+    /* console.log("Signing up with:", { email, password, firstName, middleName, lastName, dob, gender, contactNumber, school }); */
+    alert(`Signing up with:, ${email}, ${firstName}, ${middleName}, ${lastName}, ${dob}, ${gender}, ${contactNumber}, ${school}`);
     try {
         const response = await fetch(`${apiUrl}/acc/sign-up`, {
             method: "POST",

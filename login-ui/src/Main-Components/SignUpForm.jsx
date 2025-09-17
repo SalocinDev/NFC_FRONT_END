@@ -15,7 +15,7 @@ function ResetPasswordForm() {
   const [LN, setLN] = useState("");
   const [Email, setEmail] = useState("");
   const [Pass, setPass] = useState("");
-  const [confirmPass, setconfirmPass] = useState("");
+  const [ConfirmPass, setconfirmPass] = useState("");
   const [DoB, setDoB] = useState("");
   const [Gender, setGender] = useState("");
   const [Contact, setContact] = useState("");
@@ -36,8 +36,14 @@ function ResetPasswordForm() {
   }
 
   //password length check
-  if (Pass.length < 6) {
+  if (Pass.length < 6 || ConfirmPass.length < 6) {
     alert("Password must be at least 6 characters long.");
+    return;
+  }
+
+  //confirm password are the same
+  if (Pass !== ConfirmPass) {
+    alert("Passwords are not the same");
     return;
   }
 
@@ -106,7 +112,7 @@ function ResetPasswordForm() {
     <div className={classes.InfoContainer}>
       <Input required type="email" placeholder="Email" value={Email} onChange={(e) => setEmail(e.target.value)} />
       <Input required type="password" placeholder="Password" value={Pass} onChange={(e) => setPass(e.target.value)} />
-      <Input required type="password" placeholder="Confirm Password" value={confirmPass} onChange={(e) => setconfirmPass(e.target.value)} />
+      <Input required type="password" placeholder="Confirm Password" value={ConfirmPass} onChange={(e) => setconfirmPass(e.target.value)} />
       <Input className={classes.SmallInput} required type="date" value={DoB} onChange={(e) => setDoB(e.target.value)} />
       <Input required type="text" placeholder="School" value={School} onChange={(e) => setSchool(e.target.value)} />
     </div>
