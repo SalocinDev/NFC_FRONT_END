@@ -38,17 +38,18 @@ function LoginPage() {
 
         <div className={classes.LoginInput}>
 
-              <Input required type="email" placeholder="Email" value={Email} onChange={(e) => setEmail(e.target.value)} />
-              <Input required type="password" placeholder="Password" value={Pass} onChange={(e) => setPass(e.target.value)} />
+              <Input id="EmailInput" required type="email" placeholder="Email" value={Email} onChange={(e) => setEmail(e.target.value)} />
+              <Input id="PasswordInput" required type="password" placeholder="Password" value={Pass} onChange={(e) => setPass(e.target.value)} />
           
         </div>
 
         <div className={classes.ForgotPassContainer}>  
-              <a className={classes.attribute}
-  href="/ForgotPassword"
->
-  Forgot password?
-</a>
+              <a 
+              className={classes.attribute}
+              onClick={() => navigate("/ResetPasswordEmailCheck")}
+                >
+                Forgot password?
+              </a>
               <Button name="SIGN-IN" use="ButtonSignIn" onClick={() => signIn(Email, Pass, navigate)} />
         </div>
         <div className={classes.LineContainer}>

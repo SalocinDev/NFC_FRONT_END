@@ -1,7 +1,8 @@
 import classes from '../CSS-Folder/SettingPage.module.css';
-import PhoneInput from 'react-phone-input-2';
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css"; 
 import { MdDashboard } from 'react-icons/md';
-import { FaCompass, FaBookOpen, FaUser, FaCog, FaHandPointer, FaReply, FaCommentMedical} from 'react-icons/fa';
+import { FaCompass, FaBookOpen, FaUser, FaCog, FaHandPointer, FaReply, FaCommentMedical } from 'react-icons/fa';
 import { Button, Table, SearchID, AiPopUp, Input } from '../Components';
 import { IconHeader } from '../Components';
 import { NavLink } from 'react-router-dom';
@@ -29,19 +30,21 @@ function SettingPage() {
   const [Gender, setGender] = useState("");
   const [Contact, setContact] = useState("");
   const [School, setSchool] = useState("");
+  
+  const genderOptions = ["Man", "Woman", "Mayonnaise"];
 
-
-  const [phone, setPhone] = useState('');
   useEffect(() => {
     const updateTime = () => {
       const now = new Date();
       setCurrentTime(now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
-      setCurrentDate(now.toLocaleDateString(undefined, {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-      }));
+      setCurrentDate(
+        now.toLocaleDateString(undefined, {
+          weekday: 'long',
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        })
+      );
     };
 
     updateTime(); // initial run
@@ -52,106 +55,161 @@ function SettingPage() {
 
   return (
     <div>
+      <div className={classes.PersonalDetail}>
+        <h1>ACCOUNT SETTING</h1>
+        <h2>Your Profile Picture</h2>
 
-        <div className={classes.PersonalDetail}>
-  <h1>ACCOUNT SETTING</h1>
-  <h2>Your Profile Picture</h2>
+        <div className={classes.InputGrid}>
+          <div className={classes.InputField}>
+            <label>Surname</label>
+            <Input
+              required
+              type="text"
+              placeholder="Surname"
+              value={LN}
+              onChange={(e) => setLN(e.target.value)}
+            />
+          </div>
 
-  <div className={classes.InputGrid}>
-    <div className={classes.InputField}>
-      <label>Surname</label>
-      <Input required type="text" placeholder="Surname" value={LN} onChange={(e) => setLN(e.target.value)} />
-    </div>
+          <div className={classes.InputField}>
+            <label>Contact</label>
+            <PhoneInput
+              country={'ph'}
+              value={Contact}
+              onChange={setContact}
+              specialLabel=""
+              buttonClass={classes.myDropdown}
+              inputClass={classes.input}
+              dropdownClass={classes.myCountryList}
+              searchable={true}
+              disableSearchIcon={true}
+            />
+          </div>
 
-    <div className={classes.InputField}>
-       <PhoneInput
-      country={'ph'}            
-      value={phone}
-      onChange={setPhone}
-      enableSearch={true}    
-    />
-    </div>
+          <div className={classes.InputField}>
+            <label>First Name</label>
+            <Input
+              required
+              type="text"
+              placeholder="First Name"
+              value={FN}
+              onChange={(e) => setFN(e.target.value)}
+            />
+          </div>
 
-    <div className={classes.InputField}>
-      <label>First Name</label>
-      <Input required type="text" placeholder="First Name" value={FN} onChange={(e) => setFN(e.target.value)} />
-    </div>
+          <div className={classes.InputField}>
+            <label>Email</label>
+            <Input
+              required
+              type="email"
+              placeholder="Email"
+              value={Email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
 
-    <div className={classes.InputField}>
-      <label>Email</label>
-      <Input required type="email" placeholder="Email" value={Email} onChange={(e) => setEmail(e.target.value)} />
-    </div>
-    <div className={classes.InputField}>
-      <label>Middle Name</label>
-      <Input required type="email" placeholder="Middle Name" value={MN} onChange={(e) => setMN(e.target.value)} />
-    </div>
+          <div className={classes.InputField}>
+            <label>Middle Name</label>
+            <Input
+              required
+              type="email"
+              placeholder="Middle Name"
+              value={MN}
+              onChange={(e) => setMN(e.target.value)}
+            />
+          </div>
     
-    <div className={classes.InputField}>
-      <label>University</label>
-      <Input required type="text" placeholder="Your University" value={School} onChange={(e) => setSchool(e.target.value)} />
-    </div>
+          <div className={classes.InputField}>
+            <label>University</label>
+            <Input
+              required
+              type="text"
+              placeholder="Your University"
+              value={School}
+              onChange={(e) => setSchool(e.target.value)}
+            />
+          </div>
 
-    <div className={classes.InputField}>
-      <label>Birth Date</label>
-      <Input required type="date" value={DoB} onChange={(e) => setDoB(e.target.value)} />
-    </div>
+          <div className={classes.InputField}>
+            <label>Birth Date</label>
+            <Input
+              required
+              type="date"
+              value={DoB}
+              onChange={(e) => setDoB(e.target.value)}
+            />
+          </div>
 
-    <div className={classes.InputField}>
-      <label>Old Password</label>
-      <Input required type="password" placeholder="Enter Your Old Password" value={Pass} onChange={(e) => setPass(e.target.value)} />
-    </div>
+          <div className={classes.InputField}>
+            <label>Old Password</label>
+            <Input
+              required
+              type="password"
+              placeholder="Enter Your Old Password"
+              value={Pass}
+              onChange={(e) => setPass(e.target.value)}
+            />
+          </div>
 
-    <div className={classes.InputField}>
-      <label>Gender Identity</label>
-      <span>
-        <Input
-        type="select"
-        placeholder="Choose gender"
-        name="gender"
-        value={Gender}
-        onChange={(e) => setGender(e.target.value)}
-        options={["Man", "Woman", "Mayonnaise"]}
-        className={classes.SmallInput}
-      />
-      </span>
-    </div>
+          <div className={classes.InputField}>
+            <label>Gender Identity</label>
+            <span>
+              <select
+                name="gender"
+                value={Gender}
+                onChange={(e) => setGender(e.target.value)}
+                className={classes.SmallInput}
+              >
+                <option value="" disabled hidden>
+                  Choose gender
+                </option>
+                {genderOptions.map((g, i) => (
+                  <option key={i} value={g}>
+                    {g}
+                  </option>
+                ))}
+              </select>
+            </span>
+          </div>
 
-     <div className={classes.InputField}>
-      <label>New Password</label>
-      <Input required type="password" placeholder="Enter Your New Password" value={newPass} onChange={(e) => setNewPass(e.target.value)} />
-    </div>
+          <div className={classes.InputField}>
+            <label>New Password</label>
+            <Input
+              required
+              type="password"
+              placeholder="Enter Your New Password"
+              value={newPass}
+              onChange={(e) => setNewPass(e.target.value)}
+            />
+          </div>
 
-     <Button name="Update Account" use="ConfirmPassButton"/>
+          <Button name="Update Account" use="ConfirmPassButton" />
+        </div>
 
-  </div>
+        <h1>LOCATION SETTING</h1>
+        <div className={classes.InputField}>
+          <label>Address</label>
+          <Input required type="text" placeholder="Please Enter Your Address" />
+        </div>
 
-    <h1>LOCATION SETTING</h1>
-   <div className={classes.InputField}>
-      <label>Address</label>
-      <Input required type="text" placeholder="Please Enter Your Address"/>
+        <div className={classes.InputField}>
+          <label>City</label>
+          <Input required type="text" placeholder="Please Enter Your City" />
+        </div>
 
-    </div>
- <div className={classes.InputField}>
-      <label>City</label>
-      <Input required type="text" placeholder="Please Enter Your City"/>
+        <div className={classes.InputField}>
+          <label>Zip Code</label>
+          <Input required type="text" placeholder="Please Enter Your Zip Code" />
+          <br />   
+        </div>
 
-    </div>
- <div className={classes.InputField}>
-      <label>Zip Code</label>
-      <Input required type="text" placeholder="Please Enter Your Zip Code"/>
-      <br/>   
-    </div>
-
-<div className={classes.ButtonContainer}>
-    <Button name="Update Address" use="UpdateProfileButton"/>
-    
-</div>
-<br/>
-
+        <div className={classes.ButtonContainer}>
+          <Button name="Update Address" use="UpdateProfileButton" />
+        </div>
+        <br />
       </div>
     </div>
   );
 }
 
 export default SettingPage;
-

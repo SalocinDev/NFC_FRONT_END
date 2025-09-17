@@ -22,11 +22,51 @@
   cursor: pointer;
 }
 
-@media (max-width: 480px) {
-  .NfcSignIn {
-    display: none;
+.extraBtn {
+  display: none;
+}
+
+.ButtonUserPage{
+  margin-top: 2vh;
+  color: white;
+  background-color: #101540;
+  border-style: none;
+  width: 25.75rem;
+  height: 4rem;
+  font-size: 1.5rem;
+  padding: 1rem 5rem;
+  border-radius: 0.75rem;
+  box-sizing: border-box;
+  margin-bottom: 2rem;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .extraBtn {
+  display: inline-block; 
+  width: 100%;
+  max-width: 100%;
+  height: 4rem;
+  font-size: 1.5rem;
+  padding: 1rem 5rem;
+  border-radius: 0.75rem;
+  border: 2px solid #727374;
+  box-sizing: border-box;
+  margin-bottom: 2px;
+  cursor: pointer;
+  background-color: #101540;
+  border-color: #101540;
+  color: white;
+  }
+
+  .ButtonUserPage{
+    width: 100%;
+    max-width: 100%;
   }
 }
+
+
+
 
 .ButtonSubmit {
   background-color: #101540;
@@ -52,20 +92,7 @@
 
 }
 
-.ButtonUserPage{
-  margin-top: 2vh;
-  color: white;
-  background-color: #101540;
-  border-style: none;
-  width: 25.75rem;
-  height: 4rem;
-  font-size: 1.5rem;
-  padding: 1rem 5rem;
-  border-radius: 0.75rem;
-  box-sizing: border-box;
-  margin-bottom: 2px;
-  cursor: pointer;
-}
+
 
 .ButtonUserPage:hover{
   border-color: #101540;
@@ -140,7 +167,7 @@
 }
 
 .ButtonReset {
-  max-width: 27.75rem;
+  max-width: 29.75rem;
 }
 
 .NfcSignUp {
@@ -166,6 +193,7 @@
  */
 
 .BackButton,
+.BackButtonOtp,
 .LogoutButton,
 .LogoutUser {
   font-weight: bold;
@@ -177,10 +205,16 @@
   padding: 0.4rem 1rem;
 }
 
-.BackButton {
+.BackButton{
   position: absolute;
   top: 1.5rem;
   right: 1.5rem;
+}
+
+.BackButtonOtp{
+  top: 1.5rem;
+  left: 1.5rem;
+  position: absolute;
 }
 
 .LogoutButton {
@@ -190,7 +224,8 @@
   margin-left: 0.5rem;
 }
 
-.BackButton:hover {
+.BackButton:hover,
+.BackButtonOtp:hover {
   background-color: #101540;
   color: white;
   transition: 0.8s;
@@ -285,6 +320,12 @@
 
 /* Everything below is buttons for the sidebar */
 
+@media (max-width: 480px) {
+  .NfcSignIn {
+   
+  }
+}
+
 @media (max-width: 1080){
     .ButtonSubmit{
   display: flex;
@@ -323,11 +364,11 @@
     max-width: 60%;
     font-size: 0.95rem;
     padding: 0.4rem 0.75rem;
-    margin-left: 4rem;
     top: 0;
     bottom: 100; 
     margin-bottom:0;
   }
+
 
     .ButtonSignUp{
     background-color: #101540;
@@ -349,10 +390,21 @@
 
 @media(max-width: 600px){
   .NfcSignIn{
-    display: none;
+    margin-top: 1rem;
   }
 
+   .ButtonSignIn 
+  {
+    background-color: #101540;
+    border-color: #101540;
+    max-width: 100%;
+    width: 100%;
+  }
+
+
 }
+
+
 
 @media (max-width: 480px) {
   .ButtonSignUp{
@@ -387,9 +439,9 @@
     background-color: #101540;
     border-color: #101540;
     max-width: 65%;
+    width: 100%;
     font-size: 0.95rem;
     padding: 0.4rem 0.75rem;
-    margin-left: 4rem;
   }
 
   

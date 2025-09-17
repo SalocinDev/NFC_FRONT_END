@@ -10,6 +10,63 @@
   z-index: 1;
 }
 
+
+.input {
+  width: 100% !important;
+  max-width: 29.75rem !important;
+  height: 4.5rem !important;
+  font-size: 1.5rem !important;
+  padding: 0.75rem 1rem !important;
+  border-radius: 0.75rem !important;
+  border: 2px solid #727374 !important;
+  box-sizing: border-box !important;
+  margin-bottom: 2px !important;
+  display: block !important;
+  
+   padding-left: 3rem !important;  
+}
+
+.myDropdown {
+  height: 4.5rem !important;             
+  border: 2px solid #727374 !important; 
+  border-right: none !important;       
+  border-radius: 0.75rem 0 0 0.75rem !important; 
+  background: transparent !important;        
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0.75rem !important;
+  text-align: left;
+}
+
+.myCountryList {
+  background: white !important;
+  border: 2px solid #101540 !important;
+  border-radius: 1rem !important;
+  max-height: 250px !important;
+  overflow-y: auto !important;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15) !important;
+  width: 250px !important;
+}
+
+.myCountryList::-webkit-scrollbar {
+  display: none !important; /* Chrome, Safari */
+}
+
+.myCountryList .country {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px;
+  padding: 0.5rem 1rem !important;
+  cursor: pointer !important;
+}
+
+:global(.country-list .country:hover) {
+  background-color: #101540 !important; /* highlight hovered row */
+  color: white !important;           /* text color while hovered */
+}
+
+
 a{
   text-decoration: none;
   color: white;
@@ -266,17 +323,27 @@ label{
   gap: 0.5rem;
 }
 
-.SmallInput{
-  width: 23vw;
-  max-width: 37.75rem;
-  height: 4rem;
+.SmallInput {
+  width: 100%;
+  max-width: 29.75rem;
+  height: 4.5rem;
   font-size: 1.5rem;
   padding: 0.75rem 1rem;
   border-radius: 0.75rem;
   border: 2px solid #727374;
   box-sizing: border-box;
-  margin-bottom: 2rem;
+  margin-bottom: 2px;
   display: block;
+  background-color: #fff;
+
+}
+
+@media (max-width: 480px) {
+  .SmallInput {
+    max-width: 90%;
+    font-size: 0.75rem;
+    padding: 0.4rem 0.75rem;
+  }
 }
 
 .NewInput{

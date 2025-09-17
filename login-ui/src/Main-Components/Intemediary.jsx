@@ -27,11 +27,16 @@ function NfcPage() {
                 
                 <LogoComponent/>
                 <p className={classes.Text}>
-                  New to our platform? Sign Up now.
+                  Navigate through your account.
                 </p>
 
               <div>        
                 <Button name="Account" use="ButtonUserPage" onClick={() => navigate("/UserPage")}/>
+                  <Button
+    name="Services"
+    use="extraBtn"
+    onClick={() => navigate("/Services")}
+  />
               </div>
 
               </div>

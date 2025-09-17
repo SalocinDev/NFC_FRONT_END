@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import "/index.css";
 import NotFoundPage from "./Components/NotFoundPage.jsx";
 import { 
-  LoginPage, Dashboard, NfcPage, OtpForm, ResetPasswordForm, SignUpForm, 
+  LoginPage, Dashboard, NfcPage, OtpForm, ResetPasswordForm, ResetPasswordEmailCheck, SignUpForm, 
   UserPage, Services, Intermediary, AdminPage
 } from "./Main-Components/";
 import { HashRouter, Routes, Route } from "react-router-dom";
@@ -16,6 +16,7 @@ createRoot(document.getElementById("root")).render(
         <Route path="/" element={<LoginPage />} />
         <Route path="OtpForm" element={<OtpForm />} />
         <Route path="ResetPasswordForm" element={<ResetPasswordForm />} />
+        <Route path="ResetPasswordEmailCheck" element={<ResetPasswordEmailCheck />} />
         <Route path="SignUpForm" element={<SignUpForm />} />
         <Route path="NfcPage" element={<NfcPage />} />
         <Route path="Dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
