@@ -13,14 +13,12 @@ function UserPage() {
   const navigate = useNavigate(); 
 
   const storedUser = JSON.parse(sessionStorage.getItem("userInfo") || "{}");
-  console.log(storedUser);
 
   const [currentTime, setCurrentTime] = useState('');
   const [currentDate, setCurrentDate] = useState('');
   
 
-  const [active, setActive] = useState("UserDashboard"); // default section
-
+  const [active, setActive] = useState("UserDashboard");
  const renderContent = () => {
     switch (active) {
       case "UserDashboard":

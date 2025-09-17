@@ -49,7 +49,7 @@ function SettingPage() {
     if (MN !== storedUser.middleName) updatedFields.middleName = MN;
     if (Email !== storedUser.email) updatedFields.email = Email;
     const storedDoB = storedUser.user_date_of_birth ? storedUser.user_date_of_birth.split("T")[0] : "";
-    if (DoB !== storedDoB) { updatedFields.dob = new Date(DoB).toISOString(); }
+    if (DoB !== storedDoB) { updatedFields.dob = DoB; }
     if (Gender !== storedUser.gender) updatedFields.gender = Gender;
     if (Contact !== storedUser.contact) updatedFields.contact = Contact;
     if (School !== storedUser.school) updatedFields.school = School;
