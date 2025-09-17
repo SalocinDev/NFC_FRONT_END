@@ -97,7 +97,6 @@ function ResetPasswordForm() {
       <Input required type="text" placeholder="First Name" value={FN} onChange={(e) => setFN(e.target.value)} />
       <Input type="text" placeholder="Middle Name (If: N/A)" value={MN} onChange={(e) => setMN(e.target.value)} />
       <Input required type="text" placeholder="Last Name" value={LN} onChange={(e) => setLN(e.target.value)} />
-
       <PhoneInput
         country={'ph'}
         value={Contact}
@@ -109,7 +108,6 @@ function ResetPasswordForm() {
         searchable={true}       
         disableSearchIcon={true} 
         />
-
       <Input  className={classes.SmallInput} required type="select" placeholder="Gender" value={Gender} options={["Male", "Female"]} onChange={(e) => setGender(e.target.value)} />
     </div>
 

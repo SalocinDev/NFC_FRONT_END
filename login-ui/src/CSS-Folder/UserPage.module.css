@@ -194,6 +194,7 @@ a:hover {
 
   .NavBar {
     margin-left: 5.5rem;
+    font-size: 2.5vh; 
   }
 
   .SampleLangTo {
@@ -201,13 +202,14 @@ a:hover {
   }
 
   .VerticalManila {
-    font-size: 3.5rem;
+    font-size: 3rem;
     letter-spacing: 1.2rem;
   }
 
   .VerticalLibrary {
     font-size: 1.8rem;
     letter-spacing: 1rem;
+    
   }
 
   .Time {
@@ -221,11 +223,26 @@ a:hover {
   .UserRole {
     font-size: 1.3rem;
   }
+
+  .DesignRectangle{
+    position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 5vw;
+  height: 65vh;
+  background-color: #101540;
+  border-radius: 0.5rem 0 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2vh 0;
+  }
 }
 
 /* ✅ 720px and below — Tablets */
 @media (max-width: 720px) {
-  .Sidebar {
+  /* .Sidebar {
     width: 5rem;
   }
 
@@ -273,12 +290,12 @@ a:hover {
 
   .GearIcon {
     margin-right: -15vw;
-  }
+  } */
 }
 
 /* ✅ 480px and below — Mobile */
 @media (max-width: 480px) {
-  .Sidebar {
+  /* .Sidebar {
     position: relative;
     width: 100%;
     height: auto;
@@ -304,11 +321,17 @@ a:hover {
     margin-left: 0;
     margin-top: 1rem;
   }
+*/
 
+
+/* 
   .DesignRectangle {
-    display: none; /* Hide decorative element on small screens */
+    display: none; /* Hide decorative element on small screens 
   }
+ */
 
+
+/* 
   .Time {
     font-size: 1.5rem;
     margin-right: 0;
@@ -335,5 +358,5 @@ a:hover {
 
   .RenderComponents {
     padding: 0.5rem;
-  }
+  } */
 }

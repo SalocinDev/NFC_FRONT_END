@@ -310,6 +310,12 @@ html,
 
 @media (max-width: 480px) {
   
+.body{
+   max-height: 100vh; /* limit to viewport height */
+  overflow-y: auto;  /* vertical scroll if needed */
+  padding: 1rem;     /* optional spacing */
+}
+
   .container{
     width: 100%;
     padding: 0;
