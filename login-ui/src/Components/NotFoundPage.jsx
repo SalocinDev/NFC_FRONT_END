@@ -1,4 +1,5 @@
 import {Link} from "react-router-dom";
+import {BookTable} from '../Components'
 
 function NotFoundPage() {
   const NotFoundPage = () => {
@@ -10,6 +11,8 @@ function NotFoundPage() {
       <Link to ={"/"}>
       <button>Go Back Home</button>
       </Link>
+
+      <BookTable />
     </div>
   );
 };

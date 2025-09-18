@@ -1,5 +1,5 @@
 .MainBody {
-   background-color: #101540;
+  background-color: #101540;
   min-height: 100vh;   /* grow with content instead of fixed */
   width: 100%;         /* avoid horizontal overflow */
   margin: 0;
@@ -115,7 +115,8 @@ body {
   /* word-break: break-all; */
   color: white;   
   font-family: Arial;          
-  font-size: 2.2rem
+  font-size: 3rem;
+  text-align:justify;
 }
 
 .LogoGroup {
@@ -203,11 +204,18 @@ body {
   }
   .AboutUs {
     padding: 1.5rem;
-    
+    font-size: 10px;
+  }
+  .AboutUs p {
+    font-size: 1.5rem;
+    text-align: justify;  
+  }
+  .AboutUsContainer{
+    font-size: 10px;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
   .HeaderNavBar {
     flex-direction: column;
     align-items: flex-start;
@@ -225,12 +233,13 @@ body {
   }
   .AboutUs h1 {
     font-size: 1.8rem;
-    text-align: center;
+    text-align: left;
   }
   .AboutUs p {
-    font-size: 1rem;
-    line-height: 0.4rem;
+    font-size: 1.8rem;
+    line-height: 80%;
     text-align: justify;
+    
   }
 }
 

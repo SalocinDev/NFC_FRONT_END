@@ -25,18 +25,13 @@ function NfcPage() {
     }); 
 
     const result = await Promise.race([toNFClogin(), timeout]);
-    const firstName = result?.result?.user_firstname;
-    const userID = result?.result?.user_id;
 
-    sessionStorage.setItem("userInfo", JSON.stringify({
-      firstName,
-      userID
-    }));
+    sessionStorage.setItem("userInfo", JSON.stringify(result.result));
     if (result === "Timeout") {
       alert("NFC login timed out. Returning to login.");
       navigate('/');
-    } else if (result.success && firstName) {
-      alert(`Welcome, ${firstName} (via NFC)!`);
+    } else if (result.success) {
+      alert(`Welcome, ${result.result.user_firstname} (via NFC)!`);
       navigate("/Intermediary");
     } else if (result.valid === false) {
       alert("NFC Login Failed. Returning to login.");

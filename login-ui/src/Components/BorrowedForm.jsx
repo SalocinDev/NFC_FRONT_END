@@ -1,6 +1,6 @@
 import { MdDashboard } from 'react-icons/md';
 import { FaCompass, FaBookOpen, FaUser, FaCog, FaHandPointer, FaReply, FaCommentMedical} from 'react-icons/fa';
-import { Button, Wlogo, Blogo, Input, LogoComponent, Chart, ChartLegend, Table, SearchID, AiPopUp } from '.';
+import { Button, Wlogo, Blogo, Input, LogoComponent, Chart, ChartLegend, Table, SearchID, AiPopUp,} from '.';
 import { IconHeader } from '.';
 import { NavLink } from 'react-router-dom';
 import { useState, useEffect } from 'react';
@@ -21,7 +21,7 @@ function BorrowedForm() {
 
   return (
     <div>
-    
+  
       <div className={classes.samplelang}>
           <Button name="Borrowed Books" use="BorrowedBooks" /* onClick={() => {logOut().then(() => navigate('/BorrowedForm'));}} *//>
           <Button name="Returned Books" use="ReturnedBooks" /* onClick={() => {logOut().then(() => navigate('/BorrowedForm'));}} *//>
@@ -29,7 +29,7 @@ function BorrowedForm() {
       </div>
 
       <div className={classes.TableContainer}>
-        <Table columns={columns} records={records} />
+        <Table/>
       </div>
     </div>
   );

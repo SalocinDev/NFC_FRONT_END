@@ -68,7 +68,7 @@ export async function toNFClogin() {
   }
 }
 
-export async function signIn(email, password, navigate){
+export async function signIn(email, password, navigate) {
   try {
     console.log(email, password);
     const response = await fetch(`${apiUrl}/acc/login-verify`, {
@@ -79,22 +79,43 @@ export async function signIn(email, password, navigate){
       },
       body: JSON.stringify({ email: email, password: password })
     });
-    const result = await response.json()
-    if (result.success){
+
+    const result = await response.json();
+
+    if (result.success) {
       sessionStorage.setItem("userInfo", JSON.stringify(result.result));
-      alert("Welcome!, "+ result.result.user_firstname);
-      navigate("/Intermediary");
+      alert("Welcome!, " + (result.result.user_firstname || result.result.staff_firstname));
+      if (result.role === "staff"){
+        navigate("/AdminPage");
+      }
+      if (result.role === "user"){
+        navigate("/Intermediary");
+      }
+
     } else if (result.success === false && result.message === "Email is not verified") {
-      alert(result.message+" Please wait");
-      const resendOTP = await fetch(`${apiUrl}/acc/send-otp`, { method: "POST", credentials: "include", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email: email})});
+      alert(result.message + " Please wait");
+
+      const resendOTP = await fetch(`${apiUrl}/acc/send-otp`, {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email })
+      });
+
       const resultResend = await resendOTP.json();
       alert("Check your Email for the OTP");
-      if (resultResend.success){ navigate(`/OtpForm`, { state: { email, resetPass: false } }); } 
+
+      if (resultResend.success) {
+        navigate(`/OtpForm`, { state: { email, resetPass: false } });
+      }
+
     } else if (result.success === false && result.error === "Invalid credentials") {
       alert(result.error);
+
     } else {
       alert("Input Credentials");
     }
+
   } catch (error) {
     console.log(error);
   }

@@ -1,9 +1,8 @@
 import classes from '../CSS-Folder/UserPage.module.css';
 import { FaUser, FaCog, FaCompass, FaBookOpen, FaSignOutAlt  } from 'react-icons/fa';
-import { MdMenu, MdDashboard, MdLogout } from "react-icons/md"; // ⭐ added MdDashboard here
+import { MdMenu, MdDashboard, MdLogout } from "react-icons/md"; 
 import { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-
 import { Button, UserDashboard, LibraryLane, BorrowedForm, SettingPage, AiPopUp } from '../Components';
 import WlogoSidebar from '../Logo/W-logo.png';
 import { logOut } from '../Services/SessionUtils';
@@ -11,10 +10,11 @@ import { logOut } from '../Services/SessionUtils';
 function UserPage() {
   const navigate = useNavigate(); 
   const storedUser = JSON.parse(sessionStorage.getItem("userInfo") || "{}");
+  const profileUrl = storedUser.user_profile_pic;
 
   const [currentTime, setCurrentTime] = useState('');
   const [currentDate, setCurrentDate] = useState('');
-  const [collapsed, setCollapsed] = useState(false); // ⭐ toggle state
+  const [collapsed, setCollapsed] = useState(false);
   const [active, setActive] = useState("UserDashboard");
 
   const renderContent = () => {
@@ -110,21 +110,29 @@ function UserPage() {
       <div className={classes.NavBar}>
         <div className={classes.LeftTopbar}>
           <NavLink className={classes.iconLink}>
-            <FaUser className={classes.userIcon} size={32} />
+            {profileUrl ? (
+              <img src={profileUrl} alt="Profile" width={200} />
+            ) : (
+              <FaUser className={classes.userIcon} size={32} />
+            )}
           </NavLink>
           <div className={classes.Contents}>
-            <div className={classes.UserName}>{storedUser?.user_firstname|| "Test"}</div>
-            <div className={classes.UserRole}>{storedUser?.user_id || "Test"}</div>
+            <div className={classes.UserName}>{storedUser?.user_firstname || storedUser?.staff_firstname || "Test"}</div>
+            <div className={classes.UserRole}>{storedUser?.user_id || storedUser?.staff_id || "Test"}</div>
           </div>
         </div>
         
         <div className={classes.RightTopbar}>
           <div className={classes.TimeGear}>
+            
             <span className={classes.Time}>{currentTime}</span>
+          
             <NavLink className={classes.GearButton} onClick={() => setActive("SettingPage")}>
               <FaCog className={classes.GearIcon} size={16} />
             </NavLink>
+          
           </div>
+
           <div className={classes.Date}>{currentDate}</div>
         </div>
       </div>

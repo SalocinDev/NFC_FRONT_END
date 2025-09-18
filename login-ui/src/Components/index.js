@@ -30,5 +30,5 @@ export { default as BorrowedForm} from '../Components/BorrowedForm';
 export { default as SettingPage } from './SettingPage';
 
 /* File Upload */
-export { default as FileUpload } from './FileUpload';
+export { default as ImageUpload } from './ImageUpload';
 export { default as BookTable } from './BookTable';

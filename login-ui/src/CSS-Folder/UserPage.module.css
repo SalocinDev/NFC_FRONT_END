@@ -36,21 +36,6 @@
   }
 }
 
-
-/* On mobile, sidebar is hidden by default */
-@media (max-width: 480px), (max-width: 800px) {
-  .Sidebar {
-    transform: translateX(-100%);
-    position: absolute; /* so it slides over content */
-    margin-left: 0;
-  }
-
-  .Sidebar.open {
-    transform: translateX(0);
-  }
-
-}
-
 .WSidebar {
   width: 100%;
   height: auto;
@@ -68,13 +53,8 @@
   margin-bottom: 2rem;
 }
 
-@media (max-width: 480px), (max-width: 800px) {
-  .WSidebar{
-    display: none;
-  }
-  
 
-}
+
 
 a {
   text-decoration: none;
@@ -188,6 +168,7 @@ a:hover {
 
 /* Top bar (right side) */
 .RightTopbar {
+  
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -243,9 +224,10 @@ a:hover {
   }
 
   .NavBar {
-    margin-left: 5.5rem;
+    margin-left: 5.5rem; 
     font-size: 2.5vh; 
   }
+
 
   .SampleLangTo {
     margin-left: 8rem;
@@ -291,7 +273,7 @@ a:hover {
 }
 
 /* ✅ 720px and below — Tablets */
-@media (max-width: 768px) {
+@media (max-width: 800px) {
    .Sidebar {
     width: 5rem;
   }
@@ -328,7 +310,13 @@ a:hover {
   }
 
   .Time {
-    font-size: 0.8rem;
+    font-weight: bold;
+    font-size: 2rem;
+    margin:auto;
+  }
+  .Date{
+    display: flex;
+    font-size: 1rem;
   }
 
   .UserName {
@@ -350,12 +338,32 @@ a:hover {
 }
 }
 
+@media (max-width: 480px), (max-width: 800px) {
+  .Sidebar {
+    transform: translateX(-100%);
+    position: absolute; /* so it slides over content */
+    margin-left: 0;
+  }
+
+  .Sidebar.open {
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 480px), (max-width: 800px) {
+  .WSidebar{
+    display: none;
+  }
+}
+
+
 @media (max-width: 480px) {
   .DesignRectangle{
     display: none;
   }
 
   .NavBar{
+    margin-right: 8vw;
     padding: 0;
   }
 
@@ -375,41 +383,49 @@ a:hover {
   flex-direction: column;
   align-items: flex-start;
   margin-top: 1rem;
- 
+}
+
+.LeftTopbar{
+  margin-top: 0.7rem;
 }
 
 .TimeGear {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 80%; 
-  gap: 2rem;
+  width: 100%; 
  
-
 }
 
 .Time {
-  font-size: 1rem;
-  
+ /*  margin-top: 4vw;
+  font-size: 1.5rem;
   font-weight: bold;
-}
-
-.Date {
-  font-size: 0.9rem;
-  line-height: 5rem;
-  margin-right: 12vw;
-  
+  align-self: right; */
+  line-height: 1.5rem;
+  font-size: 2rem;
+  width: 100%;
+  text-align: right;
 }
 
 .GearIcon{
-    
-  width: 25px;             
-  height: 25px;
-  margin-bottom: -2vh ;
+  width: 35px;
+  height: 35px;
+  margin-top: 0.5rem;
+}
+
+.Date {
+  /* font-size: 0.9rem;
+  line-height: 5rem;
+  margin-right: 12vw;
+   */
+   display: none;
 }
 
 .GearButton{
   padding: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .ToggleButton{

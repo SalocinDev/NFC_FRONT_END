@@ -348,6 +348,20 @@
 }
 
 @media(max-width: 800px){
+  .ButtonReset{
+  width: 80%;
+  max-width: 25.75rem;
+  height: 4rem;
+  font-size: 3vw;
+  padding: 1rem 5rem;
+  border-radius: 0.75rem;
+  border-style: solid;
+  box-sizing: border-box;
+  margin-bottom: 2px;
+  cursor: pointer;
+  }
+
+
  .ButtonUserPage{
     width: 100%;
     max-width: 100%;
@@ -465,6 +479,7 @@
   justify-content: center;
   align-items: center;
   margin: 0 auto;
+  max-width: 90%;
   }
 
 
@@ -477,11 +492,6 @@
     margin-left: 0rem; 
   }
 
-  .UpdateProfileButton,
-  .ConfirmPassButton{
-    
-    margin-left: 10vw;
-  }
 
   .BurgerIcon{
   display: flex;
@@ -503,10 +513,10 @@
   }
 
   .ButtonReset{
-  width: 90%;
+  width: 80%;
   max-width: 25.75rem;
   height: 4rem;
-  font-size: 2vh;
+  font-size: 3vw;
   padding: 1rem 5rem;
   border-radius: 0.75rem;
   border-style: solid;

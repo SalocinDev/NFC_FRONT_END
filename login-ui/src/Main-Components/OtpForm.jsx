@@ -1,68 +1,57 @@
-import { useState, useEffect } from 'react';
-import { Button, Wlogo, Blogo, Input } from '../Components';
-import classes from '../CSS-Folder/OtpForm.module.css';
-import { useNavigate, useSearchParams, useLocation } from 'react-router-dom';
-import { sendOTP, verifyOTP } from '../Services/SignUpService';
+import { useNavigate, useLocation } from "react-router-dom";
+import { useEffect } from "react";
+import classes from "../CSS-Folder/Intemediary.module.css";
+import SurveyWhite from "../Logo/SurveyWhite.png";
+import { Button, LogoComponent } from "../Components";
 
-function OtpForm() {
-  const navigate = useNavigate();
+function NfcPage() {
   const location = useLocation();
+  const navigate = useNavigate();
 
-  const [OTP, setOTP] = useState("");
-  const { email, resetPass } = location.state || {};
+  const { role } = location.state || {};
 
   useEffect(() => {
-    if (!email) {
-      alert("No Email?");
-      navigate("/");
-      return;
+    if (role === "staff") {
+      navigate("/AdminPage");
     }
+  }, [role, navigate]);
 
-    const sendIfNeeded = async () => {
-      if (resetPass) {
-        const result = await sendOTP(email);
-        if (!result.success) {
-          alert("OTP sending Error");
-        } else {
-          alert(result.message);
-        }
-      }
-    };
-
-    sendIfNeeded();
-  }, [email, resetPass, navigate]);
-  
   return (
-
-        <div className='App'>
-        <Button name="Back" use="BackButtonOtp" onClick={() => navigate("/")}/>
-        <div className={classes.RightRectangle}>
-          <div className={classes.RightContent}>
-              <Wlogo />
-            <div className={classes.SignUpContainer}>
-              <p className={classes.tagline}>
-                          "Your premier digital library for borrowing and reading books"
-              </p>
-            </div>
+    <div className={classes.body}>
+      <div className={classes.curvedRectangle}>
+        <div className={classes.content}>
+          <div className={classes.tagline}>
+            <img src={SurveyWhite} alt="Logo" className={classes.NfcLogo} />
+            <Button
+              name="Services"
+              use="ButtonServices"
+              onClick={() => navigate("/Services")}
+            />
           </div>
         </div>
-    
-        <div className={classes.LoginContainer}>
-      <div className={classes.Header}>
-                <Blogo />
-                <h1 className={classes.WelcomeHeader}>CHECK YOUR MAILBOX</h1>
-                <p className={classes.Credentials}>Please Enter the OTP to proceed</p>
-              </div>
-              <div>
-                <Input required type="text" placeholder="OTP" value={OTP} onChange={(e) => setOTP(e.target.value)} />
-                <Button name="VERIFY" use="ButtonVerify" onClick={() => verifyOTP(email, OTP, navigate, resetPass)} />
-              </div>
-      
-        
       </div>
-    
+
+      <div className={classes.Ewan}>
+        <div className={classes.Logo}>
+          <LogoComponent />
+          <p className={classes.Text}>Navigate through your account.</p>
+
+          <div>
+            <Button
+              name="Account"
+              use="ButtonUserPage"
+              onClick={() => navigate("/UserPage")}
+            />
+            <Button
+              name="Services"
+              use="extraBtn"
+              onClick={() => navigate("/Services")}
+            />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
 
-export default OtpForm;
+export default NfcPage;

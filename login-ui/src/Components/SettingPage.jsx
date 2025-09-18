@@ -1,7 +1,7 @@
 import classes from '../CSS-Folder/SettingPage.module.css';
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css"; 
-import { Button, FileUpload, Input } from '../Components';
+import { Button, ImageUpload, Input } from '../Components';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { logOut } from '../Services/SessionUtils';
@@ -85,7 +85,7 @@ function SettingPage() {
       <div className={classes.PersonalDetail}>
         <h1>ACCOUNT SETTING</h1>
         <div className={classes.ImageContainer}>
-        <FileUpload/>
+        <ImageUpload/>
         </div>
         <div className={classes.InputGrid}>
           <div className={classes.InputField}>

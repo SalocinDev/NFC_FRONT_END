@@ -6,7 +6,7 @@ import {
   getPaginationRowModel,
   flexRender,
 } from "@tanstack/react-table";
-import api from "../api/axios";
+import api from "../api/api.js";
 
 export default function BookTable({ reload, onReload }) {
   const [data, setData] = useState([]);
@@ -235,12 +235,12 @@ export default function BookTable({ reload, onReload }) {
         const book = row.original;
         return editingId === book.book_id ? (
           <>
-            <button onClick={() => handleUpdate(book.book_id)}>✅ Save</button>
-            <button onClick={() => setEditingId(null)}>❌ Cancel</button>
+            <button onClick={() => handleUpdate(book.book_id)}>Save</button>
+            <button onClick={() => setEditingId(null)}>Cancel</button>
           </>
         ) : (
           <>
-            <button onClick={() => handleEdit(book)}>✏️ Edit</button>
+            <button onClick={() => handleEdit(book)}>Edit</button>
             <button onClick={() => handleDelete(book.book_id)}>🗑 Delete</button>
           </>
         );
