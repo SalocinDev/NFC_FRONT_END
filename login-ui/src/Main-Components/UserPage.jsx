@@ -6,11 +6,13 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { Button, UserDashboard, LibraryLane, BorrowedForm, SettingPage, AiPopUp } from '../Components';
 import WlogoSidebar from '../Logo/W-logo.png';
 import { logOut } from '../Services/SessionUtils';
+const apiUrl = import.meta.env.VITE_API_URL;
 
 function UserPage() {
   const navigate = useNavigate(); 
   const storedUser = JSON.parse(sessionStorage.getItem("userInfo") || "{}");
-  const profileUrl = storedUser.user_profile_pic;
+  const picturePath = storedUser.user_profile_pic;
+  const profileUrl = `${apiUrl}${picturePath}`;
 
   const [currentTime, setCurrentTime] = useState('');
   const [currentDate, setCurrentDate] = useState('');
