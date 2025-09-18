@@ -28,3 +28,7 @@ export { default as UserDashboard} from './UserDashboard';
 export { default as LibraryLane} from './LibraryLane';
 export { default as BorrowedForm} from '../Components/BorrowedForm';
 export { default as SettingPage } from './SettingPage';
+
+/* File Upload */
+export { default as FileUpload } from './FileUpload';
+export { default as BookTable } from './BookTable';

@@ -149,7 +149,7 @@ html,
 }
 
 
-@media (max-width: 720px) {
+@media (max-width: 800px) {
   .curvedRectangle {
       display: none;
   }
@@ -180,7 +180,7 @@ html,
 
  
 
-@media (max-width: 600px) {
+@media (max-width: 600px), (max-width: 800px) {
   .extraBtn {
     display: inline-block; /* or flex if you want it aligned */
   }

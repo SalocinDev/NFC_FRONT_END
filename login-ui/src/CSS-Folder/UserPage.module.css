@@ -30,7 +30,7 @@
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 900px) {
   .ToggleButton {
     display: none; /* Hide button on larger screens */
   }
@@ -38,10 +38,11 @@
 
 
 /* On mobile, sidebar is hidden by default */
-@media (max-width: 480px), (max-width: 768px) {
+@media (max-width: 480px), (max-width: 800px) {
   .Sidebar {
     transform: translateX(-100%);
     position: absolute; /* so it slides over content */
+    margin-left: 0;
   }
 
   .Sidebar.open {
@@ -67,16 +68,13 @@
   margin-bottom: 2rem;
 }
 
-@media (max-width: 480px), (max-width: 768px) {
+@media (max-width: 480px), (max-width: 800px) {
   .WSidebar{
     display: none;
   }
   
 
 }
-
-
-
 
 a {
   text-decoration: none;
@@ -313,18 +311,20 @@ a:hover {
 
   .DesignRectangle {
     width: 6vw;
-    height: 50vh;
+    height: 70vh;
     padding: 1vh 0;
   }
 
   .VerticalManila {
-    font-size: 3rem;
+    font-size: 4rem;
     letter-spacing: 1rem;
+
   }
 
   .VerticalLibrary {
     font-size: 1.5rem;
     letter-spacing: 0.8rem;
+    margin-bottom: 11vw;
   }
 
   .Time {

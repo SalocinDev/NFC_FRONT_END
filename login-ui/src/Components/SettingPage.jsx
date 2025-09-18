@@ -1,7 +1,7 @@
 import classes from '../CSS-Folder/SettingPage.module.css';
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css"; 
-import { Button, Input } from '../Components';
+import { Button, FileUpload, Input } from '../Components';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { logOut } from '../Services/SessionUtils';
@@ -24,6 +24,7 @@ function SettingPage() {
   const [Address, setAddress] = useState("");
   const [City, setCity] = useState("");
   const [Zip, setZip] = useState("");
+  const [File, setFile] = useState();
 
   const genderOptions = ["Man", "Woman", "Mayonnaise"];
 
@@ -79,13 +80,13 @@ function SettingPage() {
 
     updateAddress(updatedAddress, navigate);
   };
-
   return (
     <div className={classes.SettingMain}>
       <div className={classes.PersonalDetail}>
         <h1>ACCOUNT SETTING</h1>
-        <h2>Change Profile Picture</h2>
-
+        <div className={classes.ImageContainer}>
+        <FileUpload/>
+        </div>
         <div className={classes.InputGrid}>
           <div className={classes.InputField}>
             <label>Surname</label>
