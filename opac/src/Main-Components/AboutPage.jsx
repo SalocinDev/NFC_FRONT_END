@@ -22,7 +22,7 @@ function AboutPage() {
       <SearchBar />
         </div>
       </div>
-</div>
+  </div>
 
       <div className={classes.AboutUsContainer}>
         <div className={classes.AboutUs}>

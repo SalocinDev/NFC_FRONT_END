@@ -13,7 +13,8 @@ function UserPage() {
   const storedUser = JSON.parse(sessionStorage.getItem("userInfo") || "{}");
   const picturePath = storedUser.user_profile_pic;
   const profileUrl = `${apiUrl}${picturePath}`;
-
+  console.log(profileUrl);
+  
   const [currentTime, setCurrentTime] = useState('');
   const [currentDate, setCurrentDate] = useState('');
   const [collapsed, setCollapsed] = useState(false);
@@ -115,7 +116,7 @@ function UserPage() {
         <div className={classes.LeftTopbar}>
           <NavLink className={classes.iconLink}>
             {profileUrl ? (
-              <img src={profileUrl} alt="Profile" width={200} />
+              <img src={profileUrl} alt="Profile" width={100} height={100} />
             ) : (
               <FaUser className={classes.userIcon} size={32} />
             )}
