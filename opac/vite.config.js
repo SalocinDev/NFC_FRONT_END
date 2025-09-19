@@ -5,10 +5,13 @@ export default defineConfig({
   plugins: [react()],
   server: {
     allowedHosts: [
-      'resolved-muskox-verbally.ngrok-free.app'
+      'seriously-trusting-octopus.ngrok-free.app'
     ],
     host: '0.0.0.0',
     port: 5001,
+    proxy: {
+      '/api': 'https://seriously-trusting-octopus.ngrok-free.app'
+    }
   },
   base: "/NFC_FRONT_END/opac/"
 })

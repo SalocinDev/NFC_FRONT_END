@@ -7,14 +7,19 @@ import { Button, UserDashboard, ServicesAvailed, BorrowedForm, SettingPage, AiPo
 import WlogoSidebar from '../Logo/W-logo.png';
 import { logOut } from '../Services/SessionUtils';
 const apiUrl = import.meta.env.VITE_API_URL;
+const environment = import.meta.env.VITE_ENV;
 
 function UserPage() {
   const navigate = useNavigate(); 
   const storedUser = JSON.parse(sessionStorage.getItem("userInfo") || "{}");
   const picturePath = storedUser.user_profile_pic;
-  const profileUrl = `${apiUrl}${picturePath}`;
-  console.log(profileUrl);
-  
+  let profileUrl = null;
+  if (environment === "development") {
+    profileUrl = `${apiUrl}${picturePath}`;
+  } else if (environment === "production") {
+    profileUrl = `${apiUrl}/api${picturePath}`;
+  }
+
   const [currentTime, setCurrentTime] = useState('');
   const [currentDate, setCurrentDate] = useState('');
   const [collapsed, setCollapsed] = useState(false);
