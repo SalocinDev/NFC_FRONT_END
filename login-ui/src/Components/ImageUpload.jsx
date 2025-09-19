@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { uploadProfilePicture } from "../Services/FileService";
 import classes from "../CSS-Folder/FileUpload.module.css";
+import { Navigate } from "react-router-dom";
 
 function ImageUpload() {
   const [file, setFile] = useState(null);
@@ -33,6 +34,8 @@ function ImageUpload() {
 
     if (result && result.success) {
       console.log("Upload success:", result?.url);
+      alert("Upload Success! Please logout and login again");
+      Navigate('/UserPage')
       setUploadedPath(result.path);
     } else {
       console.error("Upload failed:", result?.message || "Unknown error");

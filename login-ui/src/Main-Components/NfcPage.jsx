@@ -26,12 +26,12 @@ function NfcPage() {
 
     const result = await Promise.race([toNFClogin(), timeout]);
 
-    sessionStorage.setItem("userInfo", JSON.stringify(result.result));
+    sessionStorage.setItem("userInfo", JSON.stringify(result));
     if (result === "Timeout") {
       alert("NFC login timed out. Returning to login.");
       navigate('/');
     } else if (result.success) {
-      alert(`Welcome, ${result.result.user_firstname} (via NFC)!`);
+      alert(`Welcome, ${result.user_firstname} (via NFC)!`);
       navigate("/Intermediary");
     } else if (result.valid === false) {
       alert("NFC Login Failed. Returning to login.");

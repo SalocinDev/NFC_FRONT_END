@@ -3,7 +3,7 @@ import { FaUser, FaCog, FaCompass, FaBookOpen, FaSignOutAlt  } from 'react-icons
 import { MdMenu, MdDashboard, MdLogout } from "react-icons/md"; 
 import { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { Button, UserDashboard, LibraryLane, BorrowedForm, SettingPage, AiPopUp } from '../Components';
+import { Button, UserDashboard, ServicesAvailed, BorrowedForm, SettingPage, AiPopUp } from '../Components';
 import WlogoSidebar from '../Logo/W-logo.png';
 import { logOut } from '../Services/SessionUtils';
 const apiUrl = import.meta.env.VITE_API_URL;
@@ -25,8 +25,8 @@ function UserPage() {
         return <UserDashboard/>;
       case "BorrowedForm":
         return <BorrowedForm />;
-      case "LibraryLane":
-        return <LibraryLane />;
+      case "ServicesAvailed":
+        return <ServicesAvailed />;
       case "SettingPage":
         return <SettingPage />;
       default:
@@ -37,6 +37,8 @@ function UserPage() {
   useEffect(() => {
     if (window.innerWidth <= 480) {
       setCollapsed(true); 
+    } else if (window.innerWidth >= 480) {
+      setCollapsed(false);
     }
   }, []);
 
@@ -86,7 +88,7 @@ function UserPage() {
             <Button 
               name={<><FaCompass size={24} /><span>Services Used</span></>} 
               use="Sample" 
-              onClick={() => setActive("LibraryLane")} 
+              onClick={() => setActive("ServicesAvailed")} 
             />
           </li>
         </ul>

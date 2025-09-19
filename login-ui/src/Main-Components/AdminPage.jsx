@@ -29,23 +29,33 @@ function AdminPage() {
   const borrowedBooks = 60;
   const returnedBooks = 40;
 
-   useEffect(() => {
+  useEffect(() => {
+    const userRole = storedUser?.role || storedUser?.staff_role;
+    if (!storedUser || userRole !== "staff") {
+      navigate("/", { replace: true });
+    }
+  }, [navigate, storedUser]);
+  
+  if (!storedUser || storedUser?.role !== "staff") return null;
+
+  useEffect(() => {
     if (window.innerWidth <= 480) {
       setCollapsed(true); 
     }
   }, []);
 
-  useEffect(() => {
-    const updateTime = () => {
-      const now = new Date();
-      setCurrentTime(now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
-      setCurrentDate(now.toLocaleDateString(undefined, {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-      }));
-    };
+  
+    useEffect(() => {
+      const updateTime = () => {
+        const now = new Date();
+        setCurrentTime(now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
+        setCurrentDate(now.toLocaleDateString(undefined, {
+          weekday: 'long',
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        }));
+      };
 
     updateTime(); // initial run
     const interval = setInterval(updateTime, 60000); // every 60s

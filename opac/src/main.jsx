@@ -8,7 +8,7 @@ import { HashRouter, Routes, Route } from "react-router-dom";
 
 /* import ProtectedRoute from "./ProtectedRoute"; */
 
-const router = createBrowserRouter([
+/* const router = createBrowserRouter([
   { path: "/", element: <MainPage /> },
   { path: "/AboutPage", element: <AboutPage /> },
   { path: "/BookArchiveOpac", element: <BookArchiveOpac /> },
@@ -16,10 +16,18 @@ const router = createBrowserRouter([
 ],
   {
     basename: "/NFC_FRONT_END/opac",
-  });
+  }); */
+
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <HashRouter hashType="slash">
+      <Routes>
+        <Route path="/" element={<MainPage/>}/>
+        <Route path="/AboutPage" element={<AboutPage/>}/>
+        <Route path="/BookArchiveOpac" element={<BookArchiveOpac/>}/>
+        <Route path="*" element={<NotFoundPage/>}/>
+      </Routes>
+    </HashRouter>
   </StrictMode>
 );

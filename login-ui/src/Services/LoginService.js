@@ -83,8 +83,8 @@ export async function signIn(email, password, navigate) {
     const result = await response.json();
 
     if (result.success) {
-      sessionStorage.setItem("userInfo", JSON.stringify(result.result));
-      alert("Welcome!, " + (result.result.user_firstname || result.result.staff_firstname));
+      sessionStorage.setItem("userInfo", JSON.stringify(result));
+      alert("Welcome!, " + (result.user_firstname || result.staff_firstname));
       if (result.role === "staff"){
         navigate("/AdminPage");
       }

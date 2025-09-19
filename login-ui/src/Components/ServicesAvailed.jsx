@@ -11,11 +11,16 @@ import { useNavigate } from 'react-router-dom';
 import { logOut } from '../Services/SessionUtils';
 
 
-function LibraryLane() {
+function ServicesAvailed() {
   const navigate = useNavigate(); 
   const columns = ["ID", "User ID", "Name", "Email"];
   const storedUser = JSON.parse(sessionStorage.getItem("userInfo"));
-    
+  
+
+
+  const handleLibrary = async () => {
+    const result = await getServicesAvailed(storedUser.user_id);
+  };
   const records = [
     { id: 1, userid: "U001", name: "John Doe", email: "john@example.com" },
     { id: 2, userid: "U002", name: "Jane Smith", email: "jane@example.com" },
@@ -38,5 +43,5 @@ function LibraryLane() {
   );
 }
 
-export default LibraryLane;
+export default ServicesAvailed;
 

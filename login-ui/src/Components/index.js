@@ -25,7 +25,7 @@ export { default as ServicesGraph} from './ServicesGraph';
 
 /* UserPage related imports */
 export { default as UserDashboard} from './UserDashboard';
-export { default as LibraryLane} from './LibraryLane';
+export { default as ServicesAvailed} from './ServicesAvailed';
 export { default as BorrowedForm} from '../Components/BorrowedForm';
 export { default as SettingPage } from './SettingPage';
 

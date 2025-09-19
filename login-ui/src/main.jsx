@@ -23,7 +23,7 @@ createRoot(document.getElementById("root")).render(
         <Route path="UserPage" element={<ProtectedRoute><UserPage /></ProtectedRoute>} />
         <Route path="Services" element={<ProtectedRoute><Services /></ProtectedRoute>} />
         <Route path="Intermediary" element={<ProtectedRoute><Intermediary /></ProtectedRoute>} />
-        <Route path="AdminPage" element={<AdminPage />} />
+        <Route path="AdminPage" element={<ProtectedRoute><AdminPage /></ProtectedRoute>} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </HashRouter>
