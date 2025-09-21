@@ -13,7 +13,10 @@ function Intemediary() {
       <div className={classes.curvedRectangle}>
         <div className={classes.content}>
           <div className={classes.tagline}>
+            <div>
             <img src={SurveyWhite} alt="Logo" className={classes.NfcLogo} />
+            <p className={classes.TextServices}>Navigate through available services.</p>
+            </div>
             <Button
               name="Services"
               use="ButtonServices"

@@ -12,13 +12,9 @@ const environment = import.meta.env.VITE_ENV;
 function UserPage() {
   const navigate = useNavigate(); 
   const storedUser = JSON.parse(sessionStorage.getItem("userInfo") || "{}");
-  const picturePath = storedUser.user_profile_pic;
-  let profileUrl = null;
-  if (environment === "development") {
-    profileUrl = `${apiUrl}${picturePath}`;
-  } else if (environment === "production") {
-    profileUrl = `${apiUrl}/api${picturePath}`;
-  }
+  const environment = import.meta.env.VITE_ENV;
+
+  const profileUrl = `${apiUrl}${storedUser.user_profile_pic}`;
 
   const [currentTime, setCurrentTime] = useState('');
   const [currentDate, setCurrentDate] = useState('');
@@ -121,7 +117,7 @@ function UserPage() {
         <div className={classes.LeftTopbar}>
           <NavLink className={classes.iconLink}>
             {profileUrl ? (
-              <img src={profileUrl} alt="Profile" width={100} height={100} />
+              <img src={profileUrl} alt="Profile" className={classes.ChogogImage}/>
             ) : (
               <FaUser className={classes.userIcon} size={32} />
             )}

@@ -17,11 +17,13 @@ import {
 } from "react-icons/md";
 import { FaBookReader } from "react-icons/fa";
 import { logOut } from '../Services/SessionUtils';
+const apiUrl = import.meta.env.VITE_API_URL;
 
 function AdminPage() {
   const navigate = useNavigate(); 
-
+  
   const storedUser = JSON.parse(sessionStorage.getItem("userInfo"));
+  const profileUrl = `${apiUrl}${storedUser.user_profile_pic}-staff`;
 
   const [currentTime, setCurrentTime] = useState('');
   const [currentDate, setCurrentDate] = useState('');
@@ -164,7 +166,11 @@ function AdminPage() {
         
         <div className={classes.LeftTopbar}>
           <NavLink to="/profile" className={classes.iconLink}>
-            <FaUser className={classes.userIcon} size={32} />
+            {profileUrl ? (
+              <img src={profileUrl} alt="Profile" className={classes.ChogogImage}/>
+            ) : (
+              <FaUser className={classes.userIcon} size={32} />
+            )}
           </NavLink>
           <div className={classes.Contents}>
             <div className={classes.UserName}>{storedUser?.firstName || storedUser?.staff_firstname || "Test"}</div>

@@ -8,6 +8,8 @@ function ImageUpload() {
   const [preview, setPreview] = useState(null);
   const [uploadedPath, setUploadedPath] = useState(null); // <-- new
 
+  const storedUser = JSON.parse(sessionStorage.getItem("userInfo") || "{}");
+  
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
     if (!selectedFile) return;
@@ -30,7 +32,7 @@ function ImageUpload() {
   }
 
   try {
-    const result = await uploadProfilePicture(formData);
+    const result = await uploadProfilePicture(formData, storedUser.role);
 
     if (result && result.success) {
       console.log("Upload success:", result?.url);

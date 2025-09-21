@@ -11,7 +11,10 @@
 }
 
 .BlueLogo2{
-  transform: scale(1.5); 
+  /* transform: scale(1.5); */ 
+  width: 30rem;
+  height: 30rem;
+  padding: 0;
 }
 
 .SidebarLogo{
@@ -23,6 +26,13 @@
   .WhiteLogo{
     display: none;
   }
+
+  
+.BlueLogo2{
+  margin: 0;
+  padding: 0;
+}
+
 }
 
 /* Small screens: phones */

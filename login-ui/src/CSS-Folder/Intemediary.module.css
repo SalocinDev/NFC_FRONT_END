@@ -13,9 +13,32 @@ html,
   overflow: hidden; 
 }
 
+
+
+.Logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 100%;
+ 
+}
+
+.Ewan {
+  width: 50%;
+  height: 100%; 
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  
+}
+
 .curvedRectangle {
- width: 44.6vw;
-  height: 100vh; 
+  width: 50%;
+  height: 100%; 
   background-color: #0d1046;
   border-top-right-radius: 40px;
   border-bottom-right-radius: 40px;
@@ -27,19 +50,15 @@ html,
   box-sizing: border-box;
 }
 
-
-.Ewan {
-  width: 50%;
-  height: 100%; 
-  
+.NfcLogo {
+  width: 400px;
+  height: 480px;
+  padding: 0.7rem;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding-top: 10rem;
-  padding-left: 7rem;
-  box-sizing: border-box;
+  justify-self: center;
 }
+
+
 
 @media (max-width: 768px) {
   .Ewan {
@@ -53,13 +72,7 @@ html,
   }
 }
 
-.Logo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  transform: translateY(-10vh); /* move content up proportionally */
-}
+
 
 .Text {
   font-family: 'Montserrat', sans-serif;
@@ -70,15 +83,19 @@ html,
   max-width: 400px;
   margin: 0 auto;
   font-weight: 400;
-  margin-top: 4rem;
+ 
 }
 
-.NfcLogo {
-  /* width: 15vw; */
-  height: 40vh;
-  display: block;
-  margin: 0 auto 0 auto; 
-  transform: translate(0.4rem, -2rem);
+.TextServices{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  color: WHITE;
+  line-height: 1.6;
+ 
+  max-width: 400px;
+  margin: 0 auto;
+  font-weight: 400;
+  text-align: center;
 }
 
 
@@ -205,13 +222,13 @@ html,
   }
 
   .Logo {
-    padding-top: 8vh;
-    transform: scale(0.7);
+    margin-top: -20vh;
     margin-bottom: 1rem;
+    width: 80%;
   }
 
   .Text {
-    font-size: clamp(0.8rem, 2.5vw, 0.95rem);
+    font-size: 1rem;
     margin-top: 1.5rem;
     text-align: center;
   }

@@ -3,6 +3,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import { useNavigate } from 'react-router-dom';
 import { Button, Checkbox } from '../Components';
 import { logOut } from '../Services/SessionUtils';
+import { submitServices } from '../Services/ServicesUtis'
 
 function Services() {
   const storedUser = JSON.parse(sessionStorage.getItem("userInfo"));
@@ -25,20 +26,22 @@ function Services() {
     []
   );
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const { selectedServices, others } = availedServices;
     const servicesText = selectedServices.length > 0 ? selectedServices.join(", ") : "None";
     const othersText = others ? ` | Others: ${others}` : "";
 
-    // Pretty alert
     alert(`Availed services: ${servicesText}${othersText}`);
+    const result = await submitServices( servicesText, storedUser.user_id );
 
-    // Optional: log out and go home
+    if (!result.success) {
+      
+    }
+    //Optional: log out and go home
     logOut().then(() => {
       navigate("/");// forces React to remount and re-check ProtectedRoute
     });
-    // Save to sessionStorage if needed
-    // sessionStorage.setItem("availedServices", JSON.stringify(availedServices));
+    
   };
 
   return (

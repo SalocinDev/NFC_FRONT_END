@@ -27,7 +27,7 @@
 }
 
 .ButtonUserPage{
-  margin-top: 2vh;
+  margin-top: 0.5rem;
   color: white;
   background-color: #101540;
   border-style: none;
@@ -84,6 +84,7 @@
   border-radius: 0.75rem;
   border: 2px solid #727374;
   box-sizing: border-box;
+  margin-top: 0.5rem;
   margin-bottom: 2px;
   cursor: pointer;
   border-color: rgb(255, 255, 255);
@@ -339,6 +340,7 @@
     }
 }
 
+
 @media (min-width: 481px) and (max-width: 768px) {
   .ButtonServices {
     margin-bottom: 6rem;
@@ -454,7 +456,34 @@
   .Sample span{
     display: none;
   }
+  .ButtonReset{
+  width: 100%;
+  max-width: 29.75rem;
+  height: 4rem;
+  font-size: 3vw;
+  padding: 1rem 5rem;
+  border-radius: 0.75rem;
+  border-style: solid;
+  box-sizing: border-box;
+  margin-bottom: 2px;
+  cursor: pointer;
+  }
 
+}
+
+@media (max-width: 768px) {
+  .ButtonReset{
+  width: 100%;
+  max-width: 29.75rem;
+  height: 4rem;
+  font-size: 3vw;
+  padding: 1rem 5rem;
+  border-radius: 0.75rem;
+  border-style: solid;
+  box-sizing: border-box;
+  margin-bottom: 2px;
+  cursor: pointer;
+  }
 }
 
 @media(max-width: 600px){
@@ -468,6 +497,20 @@
     border-color: #101540;
     max-width: 100%;
     width: 100%;
+    
+  }
+
+  .ButtonReset{
+  width: 100%;
+  max-width: 29.75rem;
+  height: 4rem;
+  font-size: 3vw;
+  padding: 1rem 5rem;
+  border-radius: 0.75rem;
+  border-style: solid;
+  box-sizing: border-box;
+  margin-bottom: 2px;
+  cursor: pointer;
   }
 
 
@@ -482,6 +525,10 @@
   max-width: 90%;
   }
 
+  .ButtonUserPage{
+    width: 100%;
+    max-width: 100%;
+  }
 
   .ButtonSignUp{
     background-color: #ffffffff;
@@ -513,8 +560,8 @@
   }
 
   .ButtonReset{
-  width: 80%;
-  max-width: 25.75rem;
+  width: 90%;
+  max-width: 28.75rem;
   height: 4rem;
   font-size: 3vw;
   padding: 1rem 5rem;
@@ -524,6 +571,7 @@
   margin-bottom: 2px;
   cursor: pointer;
   }
+
   .ButtonSignIn 
   {
     position: flex;
