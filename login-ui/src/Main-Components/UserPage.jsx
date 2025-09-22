@@ -12,12 +12,15 @@ const apiUrl = import.meta.env.VITE_API_URL;
 function UserPage() {
   const navigate = useNavigate(); 
   const storedUser = JSON.parse(sessionStorage.getItem("userInfo") || "{}");
-  const profileUrl = `${apiUrl}/file/profile-picture/${storedUser.user_pfp_id_fk}`;
+/*   const profileUrl = storedUser?.user_pfp_id_fk
+    ? `${apiUrl}/file/profile-picture/${storedUser.user_pfp_id_fk}`
+    : null; */
 
   const [collapsed, setCollapsed] = useState(false);
   const [active, setActive] = useState("UserDashboard");
   const [currentTime, setCurrentTime] = useState('');
   const [currentDate, setCurrentDate] = useState('');
+  const [profileSrc, setProfileSrc] = useState(null);
 
   useEffect(() => {
   const handleResize = () => {
@@ -56,6 +59,11 @@ function UserPage() {
     const interval = setInterval(updateTime, 60000);
     return () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+    getProfilePicture(storedUser.user_pfp_id_fk).then(url => setProfileSrc(url));
+    console.log(profileSrc)
+  })
 
   const renderContent = () => {
     switch (active) {
@@ -126,8 +134,8 @@ function UserPage() {
       <div className={classes.NavBar}>
         <div className={classes.LeftTopbar}>
           <NavLink className={classes.iconLink}>
-            {profileUrl ? (
-              <img src={profileUrl} alt="Profile" className={classes.ChogogImage}/>
+            {profileSrc ? (
+              <img src={profileSrc} alt="Profile" className={classes.ChogogImage}/>
             ) : (
               <FaUser className={classes.userIcon} size={32} />
             )}

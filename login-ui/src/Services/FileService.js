@@ -28,12 +28,15 @@ export async function getProfilePicture(user_pfp_id) {
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
-    const data = await response.json();
-    return data;
+
+    const blob = await response.blob();
+    return URL.createObjectURL(blob);
   } catch (error) {
+    console.error(error);
     return null;
   }
 }
+
 
 /* export async function fetchProfilePicture() {
   try {
