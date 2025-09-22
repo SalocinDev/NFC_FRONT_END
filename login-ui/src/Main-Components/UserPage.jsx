@@ -62,9 +62,12 @@ function UserPage() {
   }, []);
 
   useEffect(() => {
-    getProfilePicture(storedUser.user_pfp_id_fk).then(url => setProfileSrc(url));
-    console.log(profileSrc)
-  })
+    if (storedUser.user_pfp_id_fk) {
+      getProfilePicture(storedUser.user_pfp_id_fk).then(url => {
+        setProfileSrc(url);
+      });
+    }
+  }, [storedUser.user_pfp_id_fk]);
 
   const renderContent = () => {
     switch (active) {
