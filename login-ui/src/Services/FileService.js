@@ -20,7 +20,7 @@ export async function uploadProfilePicture(formData) {
 
 export async function getProfilePicture(user_pfp_id) {
   try {
-    const response = await fetch(`${apiUrl}/profile-picture/${user_pfp_id}`, {
+    const response = await fetch(`${apiUrl}/file//profile-picture/${user_pfp_id}`, {
       method: "POST",
       credentials: "include"
     });
