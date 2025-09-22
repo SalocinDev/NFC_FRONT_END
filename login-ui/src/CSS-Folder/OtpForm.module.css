@@ -201,9 +201,6 @@
   }
 }
 
-
-
-
 @media (max-width: 768px) {
   .loginContainer {
     top: 5%;
@@ -246,4 +243,10 @@
     align-items: center;
   }
 
+}
+
+@media (min-width: 360px){
+  .LoginContainer{
+    padding: 0;
+  }
 }
