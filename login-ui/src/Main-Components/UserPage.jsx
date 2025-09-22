@@ -6,6 +6,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { Button, UserDashboard, ServicesAvailed, BorrowedForm, SettingPage, AiPopUp } from '../Components';
 import WlogoSidebar from '../Logo/W-logo.png';
 import { logOut } from '../Services/SessionUtils';
+import { getProfilePicture } from '../Services/FileService'
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
