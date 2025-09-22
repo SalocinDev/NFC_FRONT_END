@@ -243,3 +243,15 @@ footer{
   margin-right: -2vw;
   margin-bottom: 2vh;
 }
+
+@media (max-width: 480px){
+
+  .samplelang{
+    margin: 0;
+    padding: 0;
+    padding-left: 1rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+}

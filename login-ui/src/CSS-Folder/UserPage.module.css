@@ -285,7 +285,7 @@ a:hover {
   }
 }
 
-/* ✅ 720px and below — Tablets */
+
 @media (max-width: 800px) {
    .Sidebar {
     width: 5rem;
@@ -351,6 +351,49 @@ a:hover {
 }
 }
 
+@media (min-width: 600px) and (max-width: 1024px) {
+  
+    .RenderComponents{
+   
+      
+    }
+
+    .SampleLangTo{
+      margin: 0;
+      padding: 0;
+    }
+
+    .DesignRectangle{
+    width: 5rem;
+    gap: 2rem;
+  }
+
+  a.GearButton{
+    background-color: red;
+    padding: 0;
+    margin: 0;
+    justify-self: center;
+  }
+
+  .GearIcon{
+    width: 25px;
+    height: 25px;
+    justify-content: center;
+    justify-self: center;
+  }
+  
+  .Date{
+    line-height: 4rem;
+  }
+
+  .NavBar{
+   justify-content: center;
+   gap: 43vw;
+  }
+
+
+}
+
 @media (max-width: 480px), (max-width: 800px) {
   .Sidebar {
     transform: translateX(-100%);
@@ -361,6 +404,18 @@ a:hover {
   .Sidebar.open {
     transform: translateX(0);
   }
+
+  .SampleLangTo{
+    margin: 0;
+    padding: 0;
+  }
+
+  .DesignRectangle{
+    width: 5rem;
+    gap: 2rem;
+  }
+
+ 
 }
 
 @media (max-width: 480px), (max-width: 800px) {

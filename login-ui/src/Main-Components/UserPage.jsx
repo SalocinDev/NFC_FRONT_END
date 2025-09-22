@@ -1,49 +1,44 @@
-import classes from '../CSS-Folder/UserPage.module.css';
-import { FaUser, FaCog, FaCompass, FaBookOpen, FaSignOutAlt  } from 'react-icons/fa';
-import { MdMenu, MdDashboard, MdLogout } from "react-icons/md"; 
 import { useState, useEffect } from 'react';
+import classes from '../CSS-Folder/UserPage.module.css';
+import { MdMenu, MdDashboard, MdLogout } from "react-icons/md"; 
+import { FaUser, FaCog, FaCompass, FaBookOpen } from 'react-icons/fa';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Button, UserDashboard, ServicesAvailed, BorrowedForm, SettingPage, AiPopUp } from '../Components';
 import WlogoSidebar from '../Logo/W-logo.png';
 import { logOut } from '../Services/SessionUtils';
+
 const apiUrl = import.meta.env.VITE_API_URL;
-const environment = import.meta.env.VITE_ENV;
 
 function UserPage() {
   const navigate = useNavigate(); 
   const storedUser = JSON.parse(sessionStorage.getItem("userInfo") || "{}");
-  const environment = import.meta.env.VITE_ENV;
+  const profileUrl = `${apiUrl}/file/profile-picture/${storedUser.user_pfp_id_fk}`;
 
-  const profileUrl = `${apiUrl}${storedUser.user_profile_pic}`;
-
-  const [currentTime, setCurrentTime] = useState('');
-  const [currentDate, setCurrentDate] = useState('');
   const [collapsed, setCollapsed] = useState(false);
   const [active, setActive] = useState("UserDashboard");
-  const [activeButton, setActiveButton] = useState(false);
-
-  const renderContent = () => {
-    switch (active) {
-      case "UserDashboard":
-        return <UserDashboard/>;
-      case "BorrowedForm":
-        return <BorrowedForm />;
-      case "ServicesAvailed":
-        return <ServicesAvailed />;
-      case "SettingPage":
-        return <SettingPage />;
-      default:
-        return <UserDashboard />;
-    }
-  }; 
+  const [currentTime, setCurrentTime] = useState('');
+  const [currentDate, setCurrentDate] = useState('');
 
   useEffect(() => {
+  const handleResize = () => {
     if (window.innerWidth <= 480) {
-      setCollapsed(true); 
-    } else if (window.innerWidth >= 480) {
+  
+      setCollapsed(true);
+    } else if (window.innerWidth <= 820) {
+ 
+      setCollapsed(true);
+    } else {
+
       setCollapsed(false);
     }
-  }, []);
+  };
+
+  handleResize();
+
+  window.addEventListener("resize", handleResize);
+  return () => window.removeEventListener("resize", handleResize);
+}, []);
+
 
   useEffect(() => {
     const updateTime = () => {
@@ -62,14 +57,25 @@ function UserPage() {
     return () => clearInterval(interval);
   }, []);
 
+  const renderContent = () => {
+    switch (active) {
+      case "UserDashboard": return <UserDashboard />;
+      case "BorrowedForm": return <BorrowedForm />;
+      case "ServicesAvailed": return <ServicesAvailed />;
+      case "SettingPage": return <SettingPage />;
+      default: return <UserDashboard />;
+    }
+  };
+
   return (
     <div>
+
       <aside className={`${classes.Sidebar} ${collapsed ? classes.hidden : classes.open}`}>
         <Button 
-              name={<><MdMenu size={24} /></>} 
-              use="BurgerIcon" 
-              onClick={() => setCollapsed(true)}    
-            />
+          name={<MdMenu size={24} />} 
+          use="BurgerIcon" 
+          onClick={() => setCollapsed(true)}    
+        />
         <img src={WlogoSidebar} alt="Logo" className={classes.WSidebar} />
 
         <ul className={classes.ulstyling}>
@@ -127,26 +133,27 @@ function UserPage() {
             )}
           </NavLink>
           <div className={classes.Contents}>
-            <div className={classes.UserName}>{storedUser?.user_firstname || storedUser?.staff_firstname || "Test"}</div>
-            <div className={classes.UserRole}>{storedUser?.user_id || storedUser?.staff_id || "Test"}</div>
+            <div className={classes.UserName}>
+              {storedUser?.user_firstname || storedUser?.staff_firstname || "Test"}
+            </div>
+            <div className={classes.UserRole}>
+              {storedUser?.user_id || storedUser?.staff_id || "Test"}
+            </div>
           </div>
         </div>
         
         <div className={classes.RightTopbar}>
           <div className={classes.TimeGear}>
-            
             <span className={classes.Time}>{currentTime}</span>
-          
             <NavLink className={classes.GearButton} onClick={() => setActive("SettingPage")}>
               <FaCog className={classes.GearIcon} size={16} />
             </NavLink>
-          
           </div>
-
           <div className={classes.Date}>{currentDate}</div>
         </div>
       </div>
 
+     
       <div className={classes.SampleLangTo}>
         <main className={classes.RenderComponents}>
           {renderContent()}

@@ -74,16 +74,59 @@ img{
     border-radius: 1rem;
 }
 
-@media (max-width: 480px) {
- 
+@media (min-width: 820px) and (max-width: 1024px) {
+  
     .ProfileContainer{
-        width: 50vw;
+        width: 13rem;
         padding-bottom: 1rem;
         justify-self: left;
+        background-color: red;
+    }
+
+}
+
+
+@media (min-width: 480px) and (max-width: 600px){
+ 
+    .ProfileContainer{
+        width: 13rem;
+        padding-bottom: 1rem;
+        justify-self: left;
+        background-color: red;
     }
 
     .ImageContainer{
+        background-color: red;
+        width: 80%;
+        height: 20vh;
+        border-radius: 8rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .InputButtonContainer{
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    .UploadButton{
     
+         width: 100%
+    }
+ 
+}
+
+@media (min-width: 360px) and (max-width: 480px){
+ 
+    .ProfileContainer{
+        width: 13rem;
+        padding-bottom: 1rem;
+        justify-self: left;
+      
+    }
+
+    .ImageContainer{
+     
         width: 80%;
         height: 20vh;
         border-radius: 8rem;

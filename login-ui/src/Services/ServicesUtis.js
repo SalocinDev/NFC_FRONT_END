@@ -13,9 +13,11 @@ export async function submitServices( servicesText, user_id ) {
         const result = await response.json();
         if (!result.success){
             alert("Submission Failed!");
+            return { success: false }
         }
         if (result.success) {
             alert("Services Submitted");
+            return { success: true }
         }
     } catch (error) {
         return;

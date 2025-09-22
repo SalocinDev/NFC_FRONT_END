@@ -1,21 +1,22 @@
 import React, { useState } from "react";
 import { uploadProfilePicture } from "../Services/FileService";
 import classes from "../CSS-Folder/FileUpload.module.css";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function ImageUpload() {
   const [file, setFile] = useState(null);
   const [preview, setPreview] = useState(null);
   const [uploadedPath, setUploadedPath] = useState(null); // <-- new
+  const navigate = useNavigate();
 
   const storedUser = JSON.parse(sessionStorage.getItem("userInfo") || "{}");
-  
+  const role = storedUser.role;
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
     if (!selectedFile) return;
 
     setFile(selectedFile);
-    setPreview(URL.createObjectURL(selectedFile)); // local preview before upload
+    setPreview(URL.createObjectURL(selectedFile));
   };
 
   const handleUpload = async () => {
@@ -26,6 +27,7 @@ function ImageUpload() {
 
   const formData = new FormData();
   formData.append("file", file);
+  formData.append("role", role);
 
   for (let [key, value] of formData.entries()) {
     console.log(key, value);
@@ -36,8 +38,8 @@ function ImageUpload() {
 
     if (result && result.success) {
       console.log("Upload success:", result?.url);
-      alert("Upload Success! Please logout and login again");
-      Navigate('/UserPage')
+      alert("Upload Success!");
+      window.location.reload();
       setUploadedPath(result.path);
     } else {
       console.error("Upload failed:", result?.message || "Unknown error");
@@ -60,7 +62,6 @@ function ImageUpload() {
             />
           )}
 
-          {/* Show final uploaded image (served from backend) */}
           {uploadedPath && (
             <img
               src={`${import.meta.env.VITE_API_URL}${uploadedPath}`}

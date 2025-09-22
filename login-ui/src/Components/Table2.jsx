@@ -8,7 +8,7 @@ const Table2 = () => {
     <div>
       {/* <Materialtable column={columns}/> */}
       <h1>Testing if it works</h1>
-      <th>{/* {User_ID} */}</th>
+      <th></th>
       <tr>
       <td>testing</td>
       </tr>

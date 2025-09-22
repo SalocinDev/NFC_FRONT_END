@@ -259,8 +259,36 @@ footer{
     color: #101540;
 }
 
+@media (min-width: 600px) and (max-width: 1024px){
+  .iconHeaderContainer{
+    padding-left: 5rem;
+  }
+
+}
+
+@media (max-width: 480px), (max-width: 800px) {
+  
+.Paragraph{
+  display: none;
+}
+
+.iconHeaderContainer{
+  padding-bottom: 4rem;
+  gap: 1rem;
+}
+
+.h2{
+  font-size: 0.5rem;
+  white-space: nowrap;
+}
+ 
+}
+
+
 
 @media (max-width: 480px) {
+
+  
   .iconHeaderContainer{
     display: flex;
     flex-direction: column;

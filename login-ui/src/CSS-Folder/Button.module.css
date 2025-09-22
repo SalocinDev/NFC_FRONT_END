@@ -576,7 +576,7 @@
   }
 
   .ButtonReset{
-  width: 90%;
+  width: 100%;
   max-width: 28.75rem;
   height: 4rem;
   font-size: 3vw;
@@ -662,6 +662,16 @@
  .BackButton{
   z-index: 9999;
  }
-  
+
+  .BorrowedBooks,
+  .ReturnedBooks {
+  min-width: 6rem;    
+  padding: 0.5rem 1rem; 
+  font-size: 0.75rem;   
+  white-space: nowrap;  
+  text-align: center;   
+  display: inline-block;
+}
+
 }
 

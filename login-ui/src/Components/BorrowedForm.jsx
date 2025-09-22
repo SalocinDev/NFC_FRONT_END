@@ -38,9 +38,10 @@ function BorrowedForm() {
           onClick={() => setActive("ReturnedBooks")}
           isActive={active === "ReturnedBooks"}   
         />
+        
         <SearchID placeholder="Search by ID" />
       </div>
-
+      
       <div className={classes.TableContainer}>
         <main className={classes.RenderComponents}>
           {renderTableContent()}

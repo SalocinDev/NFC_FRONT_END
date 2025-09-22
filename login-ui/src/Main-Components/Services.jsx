@@ -30,17 +30,17 @@ function Services() {
     const { selectedServices, others } = availedServices;
     const servicesText = selectedServices.length > 0 ? selectedServices.join(", ") : "None";
     const othersText = others ? ` | Others: ${others}` : "";
-
+    
     alert(`Availed services: ${servicesText}${othersText}`);
     const result = await submitServices( servicesText, storedUser.user_id );
-
-    if (!result.success) {
-      
+/*     if (!result.success) {
+      alert(result.message)
+    } */
+    if (result.success) { 
+      logOut().then(() => {
+        navigate("/");
+      });
     }
-    //Optional: log out and go home
-    logOut().then(() => {
-      navigate("/");// forces React to remount and re-check ProtectedRoute
-    });
     
   };
 

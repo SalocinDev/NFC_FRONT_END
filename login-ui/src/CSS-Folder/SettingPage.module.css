@@ -363,6 +363,15 @@ label{
   padding: 0;
 }
 
+@media (min-width: 600px) and (max-width: 1024px) {
+.PersonalDetail{
+  width: 74%;
+  padding-left: 5rem;
+  padding-right: 2rem;
+}
+
+}
+
 @media (max-width: 480px) {
   .GenderInput {
     max-width: 100%;
@@ -377,6 +386,8 @@ label{
 
 }
 
+
+
 .NewInput{
     width: 50vw;
 }
@@ -387,9 +398,10 @@ label{
 }
 
 
-
 .ButtonContainer,
 .ConfirmPassButton {
   grid-column: 2;
-  justify-self: start; /* use end if you want it right-aligned */
+  justify-self: start; 
 }
+
+
