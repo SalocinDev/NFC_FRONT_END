@@ -1,6 +1,6 @@
 import classes from '../CSS-Folder/AdminPage.module.css';
 import { FaUser, FaCog } from 'react-icons/fa';
-import { Button, Graphs, Catalog, Books, UserManagement, NfcUserManagement, SettingPage} from '../Components';
+import { Button, Graphs, Books, UserManagement, SettingPage} from '../Components';
 import { NavLink } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import WlogoSidebar from '../Logo/W-logo.png';
@@ -24,7 +24,7 @@ function AdminPage() {
   
   const storedUser = JSON.parse(sessionStorage.getItem("userInfo"));
   const profileUrl = `${apiUrl}${storedUser.user_profile_pic}-staff`;
-
+  
   const [currentTime, setCurrentTime] = useState('');
   const [currentDate, setCurrentDate] = useState('');
   const [collapsed, setCollapsed] = useState(false);
@@ -66,21 +66,17 @@ function AdminPage() {
   }, []);
 
   /* eto yung bago: */
-
+  
   const [active, setActive] = useState("DashBoard"); // default section
 
   const renderContent = () => {
     switch (active) {
       case "Dashboard":
         return <Graphs/>;
-      case "Catalog":
-        return <Catalog />;
       case "Books":
         return <Books/>;
       case "Users":
         return <UserManagement />;
-        case "NfcUsers":
-        return <NfcUserManagement />;
          case "SettingPage":
         return <SettingPage />;
       default:
@@ -105,13 +101,7 @@ function AdminPage() {
                 name={<><MdDashboard size={24} /><span>Home</span></>} 
                 use="Sample" 
                 onClick={() => setActive("Dashboard")} 
-              />
-            </li>
-            <li>
-              <Button 
-                name={<><MdLibraryBooks size={24} /><span>Catalog</span></>} 
-                use="Sample" 
-                onClick={() => setActive("Catalog")} 
+                isActive={active === "Dashboard"}
               />
             </li>
             <li>
@@ -119,6 +109,7 @@ function AdminPage() {
                 name={<><MdBook size={24} /><span>Books</span></>} 
                 use="Sample" 
                 onClick={() => setActive("Books")} 
+                isActive={active === "Books"}
               />
             </li>
             <li>
@@ -126,20 +117,15 @@ function AdminPage() {
                 name={<><MdPeople size={24} /><span>Users</span></>} 
                 use="Sample" 
                 onClick={() => setActive("Users")} 
-              />
-            </li>
-            <li>
-              <Button 
-                name={<><MdPeopleAlt size={24} /><span>NFC Users</span></>} 
-                use="Sample" 
-                onClick={() => setActive("NfcUsers")} 
+                isActive={active === "Users"}
               />
             </li>
             <li>
               <Button 
                 name={<><MdReport size={24} /><span>Reports</span></>} 
                 use="Sample" 
-                onClick={() => setActive("Sample6")} 
+                onClick={() => setActive("Reports")} 
+                isActive={active === "Reports"}
               />
             </li>
           </ul>

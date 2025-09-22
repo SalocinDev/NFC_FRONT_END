@@ -20,6 +20,7 @@ function UserPage() {
   const [currentDate, setCurrentDate] = useState('');
   const [collapsed, setCollapsed] = useState(false);
   const [active, setActive] = useState("UserDashboard");
+  const [activeButton, setActiveButton] = useState(false);
 
   const renderContent = () => {
     switch (active) {
@@ -77,20 +78,23 @@ function UserPage() {
               name={<><MdDashboard size={24} /><span>Home</span></>} 
               use="Sample" 
               onClick={() => setActive("UserDashboard")} 
+              isActive={active === "UserDashboard"}   
             />
           </li>
           <li>
             <Button 
               name={<><FaBookOpen size={24} /><span>Borrowed Books</span></>} 
               use="Sample" 
-              onClick={() => setActive("BorrowedForm")} 
+              onClick={() => setActive("BorrowedForm")}
+              isActive={active === "BorrowedForm"}   
             />
           </li>
           <li>
             <Button 
               name={<><FaCompass size={24} /><span>Services Used</span></>} 
               use="Sample" 
-              onClick={() => setActive("ServicesAvailed")} 
+              onClick={() => setActive("ServicesAvailed")}
+              isActive={active === "ServicesAvailed"}    
             />
           </li>
         </ul>

@@ -238,20 +238,31 @@
 }
 
 .BorrowedBooks,
-.ReturnedBooks {
+.ReturnedBooks,
+.Books{
   border: none;
   padding: 0.5rem 4rem;
-  background-color: #9c9393;
+  background-color: #E3E3E3;
+  border: 1px solid rgba(0, 0, 0, 0.349);
   color: #101540;
-}
-
-.BorrowedBooks:hover,
-.ReturnedBooks:hover{
   cursor: pointer;
 }
 
-.BorrowedBooks:active,
-.ReturnedBooks:active{
+.BorrowedBooks:hover,
+.ReturnedBooks:hover,
+.Books:hover{
+  background-color:#101540;
+  color: white;
+  transition: 0.4s;
+}
+
+.Books{
+  margin-right: 1rem;
+}
+
+.BorrowedBooks.active,
+.ReturnedBooks.active,
+.Books.active{
   background-color:#101540;
   color: white;
 } 
@@ -308,6 +319,11 @@
   border-style: solid;
   border-color: white;
   transition: 0.5s;
+}
+
+.Sample.active{
+  background-color: white;
+  color: #101540;
 }
 
 .UpdateProfileButton,
