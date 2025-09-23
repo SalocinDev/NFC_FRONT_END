@@ -8,7 +8,6 @@ export { default as IconHeader} from './IconHeader';
 export { default as Chart} from './Chart';
 export { default as ChartLegend} from './ChartLegend';
 export { default as Table} from './Table';
-export { default as Table2} from './Table2'; /* TABLE TO NA MAAYOS */
 export { default as SearchID} from './SearchID';
 export { default as AiPopUp} from './AiPopUp';
 export { default as Checkbox} from './Checkbox';
@@ -24,8 +23,8 @@ export { default as ServicesGraph} from './ServicesGraph';
 export { default as LogsTable} from './LogsTable';
 
 /* UserPage related imports */
-export { default as UserDashboard} from './UserDashboard';
-export { default as ServicesAvailed} from './ServicesAvailed';
+export { default as UserDashboard} from './UserPage-Components/UserDashboard';
+export { default as ServicesAvailed} from './UserPage-Components/ServicesAvailed';
 export { default as BorrowedForm} from '../Components/BorrowedForm';
 export { default as SettingPage } from './SettingPage';
 
@@ -34,5 +33,5 @@ export { default as ImageUpload } from './ImageUpload';
 export { default as BookTable } from './BookTable';
 
 /* BorrowedForm imports */
-export { default as BorrowedBooksTable } from './BorrowedBooksTable';
-export { default as ReturnedBooksTable } from './ReturnedBooksTable';
+export { default as BorrowedBooksTable } from './UserPage-Components/BorrowedBooksTable';
+export { default as ReturnedBooksTable } from './UserPage-Components/ReturnedBooksTable';

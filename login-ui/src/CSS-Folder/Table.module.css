@@ -1,15 +1,13 @@
-/* this needs fixing, every table has this design. so the component is not properly reusable */
+
 .tableWrapper {
   background: #f5f5f5;
   padding: 2rem;
   border-radius: 1rem;
   max-width: 90%;
-  
 }
 
 .tableContainer {
   background: white;
-  border-radius: 0.8rem;
   overflow-x: auto;
 }
 
@@ -43,4 +41,15 @@ tr:hover {
   height: 100%;       /* matches row height */
   cursor: pointer;
   box-sizing: border-box;
+}
+
+.PageCount{
+  text-align: center;
+  padding: 1rem;
+}
+
+.PaginationControls{
+  display: flex;
+  justify-content: left;
+  background-color: red;
 }

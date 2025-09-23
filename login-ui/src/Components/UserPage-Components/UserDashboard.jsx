@@ -1,7 +1,7 @@
-import classes from '../CSS-Folder/UserDashboard.module.css';
-import { IconHeader } from '../Components';
+import classes from '../../CSS-Folder/UserDashboard.module.css';
+import { IconHeader } from '..';
 import { FaUser, FaCog, FaBookOpen, FaReply, FaHandPointer} from 'react-icons/fa';
-import { AiPopUp} from '../Components';
+import { AiPopUp} from '..';
 import { useNavigate } from 'react-router-dom';
 import { AiFillAccountBook } from 'react-icons/ai';
 /* import { logOut } from '../Services/SessionUtils'; */

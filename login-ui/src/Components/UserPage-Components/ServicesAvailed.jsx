@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
-import { Table } from "."; 
-import api from "../api/api";
+import { Table } from ".."; 
+import api from "../../api/api";
 
-function ReturnedBooksTable() {
+function ServicesAvailed() {
   const [records, setRecords] = useState([]);
   const [loading, setLoading] = useState(true);
+  const storedUser = JSON.parse(sessionStorage.getItem("userInfo"));
 
   useEffect(() => {
     const fetchReturnedBooks = async () => {
       try {
-        const res = await api.get("/borrowing"); 
+        const res = await api.get(`/servicelogs/${storedUser.user_id}`); 
         setRecords(res.data);
       } catch (err) {
         console.error("Error fetching returned books:", err);
@@ -30,6 +31,4 @@ function ReturnedBooksTable() {
   );
 }
 
-export default ReturnedBooksTable;
-
-
+export default ServicesAvailed;
