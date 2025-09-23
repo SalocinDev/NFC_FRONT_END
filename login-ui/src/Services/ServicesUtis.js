@@ -1,6 +1,6 @@
 const apiUrl = import.meta.env.VITE_API_URL;
 
-export async function submitServices( servicesText, user_id ) {
+export async function submitServices( services ) {
     try {
         const response = await fetch(`${apiUrl}/lib/user-services`, {
             method: "POST",
@@ -8,7 +8,7 @@ export async function submitServices( servicesText, user_id ) {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({ servicesText, user_id })
+            body: JSON.stringify({ services })
         })
         const result = await response.json();
         if (!result.success){

@@ -1,8 +1,33 @@
+import { useEffect, useState } from "react";
+import { Table } from "."; 
+import api from "../api/api";
+
 function BorrowedBooksTable() {
+
+  const [records, setRecords] = useState([]);
+    const [loading, setLoading] = useState(true);
+  
+    useEffect(() => {
+      const fetchReturnedBooks = async () => {
+        try {
+          const res = await api.get("/servicelogs"); 
+          setRecords(res.data);
+        } catch (err) {
+          console.error("Error fetching returned books:", err);
+        } finally {
+          setLoading(false);
+        }
+      };
+  
+      fetchReturnedBooks();
+    }, []);
+  
+    if (loading) return <p>Loading returned books...</p>;
+  
   
   return (
     <div>
-        <h1>This is for BorrowedBooks Table</h1>
+        <Table records={records}/>
     </div>
   );
 }

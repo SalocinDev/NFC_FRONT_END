@@ -196,3 +196,17 @@ font-size: 5rem;
   margin: 0 auto;
 }
 }
+
+@media (max-width: 480px){
+  .ServicesSubmitted{
+    white-space: nowrap;
+    word-break: break-all;
+    overflow-y: auto;
+    max-width: 80vw;
+    padding-left: 8.5rem;
+  }
+
+  .CheckboxContainer{
+    overflow-x: hidden;
+  }
+}

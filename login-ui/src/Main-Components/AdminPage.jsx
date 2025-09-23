@@ -1,35 +1,37 @@
 import classes from '../CSS-Folder/AdminPage.module.css';
 import { FaUser, FaCog } from 'react-icons/fa';
-import { Button, Graphs, Books, UserManagement, SettingPage} from '../Components';
+import { Button, Graphs, Books, UserManagement, SettingPage, LogsTable} from '../Components';
 import { NavLink } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import WlogoSidebar from '../Logo/W-logo.png';
 import { useNavigate } from 'react-router-dom';
-import { 
-  MdDashboard, 
-  MdBook, 
-  MdPeople, 
-  MdLibraryBooks, 
-  MdReport, 
-  MdPeopleAlt,
-  MdMenu,
-  MdLogout
-} from "react-icons/md";
+import { MdDashboard, MdBook, MdPeople, MdLibraryBooks, MdReport, MdPeopleAlt,MdMenu,MdLogout } from "react-icons/md";
 import { FaBookReader } from "react-icons/fa";
 import { logOut } from '../Services/SessionUtils';
+import { getProfilePicture } from '../Services/FileService'
+
 const apiUrl = import.meta.env.VITE_API_URL;
 
 function AdminPage() {
   const navigate = useNavigate(); 
   
   const storedUser = JSON.parse(sessionStorage.getItem("userInfo"));
-  const profileUrl = `${apiUrl}${storedUser.user_profile_pic}-staff`;
+  // const profileUrl = `${apiUrl}${storedUser.user_profile_pic}-staff`;
   
   const [currentTime, setCurrentTime] = useState('');
   const [currentDate, setCurrentDate] = useState('');
   const [collapsed, setCollapsed] = useState(false);
+  const [profileSrc, setProfileSrc] = useState(null);
   const borrowedBooks = 60;
   const returnedBooks = 40;
+
+  useEffect(() => {
+    if (storedUser.role) {
+      getProfilePicture(4).then(url => {
+        setProfileSrc(url);
+      });
+    }
+  }, [storedUser.user_role]);
 
   useEffect(() => {
     const userRole = storedUser?.role || storedUser?.staff_role;
@@ -152,8 +154,8 @@ function AdminPage() {
         
         <div className={classes.LeftTopbar}>
           <NavLink to="/profile" className={classes.iconLink}>
-            {profileUrl ? (
-              <img src={profileUrl} alt="Profile" className={classes.ChogogImage}/>
+            {profileSrc ? (
+              <img src={profileSrc} alt="Profile" className={classes.ChogogImage}/>
             ) : (
               <FaUser className={classes.userIcon} size={32} />
             )}

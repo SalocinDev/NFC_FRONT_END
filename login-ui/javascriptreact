@@ -8,3 +8,5 @@ export async function askLibraryAI(message) {
   if (!res.ok) throw new Error(data?.error || 'Request failed');
   return data; // { reply, books }
 }  
+
+// ano toh?

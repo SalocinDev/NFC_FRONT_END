@@ -11,7 +11,6 @@ function Services() {
   const [availedServices, setAvailedServices] = useState({ selectedServices: [], others: "" });
   const [alertShown, setAlertShown] = useState(false);
 
-  // show greeting only once
   useEffect(() => {
     if (!alertShown) {
       alert(`Hello, ${storedUser?.firstName || "User"}. Please select the services you'd like to avail.`);
@@ -32,7 +31,7 @@ function Services() {
     const othersText = others ? ` | Others: ${others}` : "";
     
     alert(`Availed services: ${servicesText}${othersText}`);
-    const result = await submitServices( servicesText, storedUser.user_id );
+    const result = await submitServices( servicesText );
 /*     if (!result.success) {
       alert(result.message)
     } */

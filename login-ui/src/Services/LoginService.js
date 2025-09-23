@@ -77,10 +77,13 @@ export async function signIn(email, password, navigate) {
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ email: email, password: password })
+      body: JSON.stringify({ email, password })
     });
 
     const result = await response.json();
+    if (!result.success) {
+      alert(result.error, result.details);
+    }
 
     if (result.success) {
       sessionStorage.setItem("userInfo", JSON.stringify(result));
@@ -108,14 +111,7 @@ export async function signIn(email, password, navigate) {
       if (resultResend.success) {
         navigate(`/OtpForm`, { state: { email, resetPass: false } });
       }
-
-    } else if (result.success === false && result.error === "Invalid credentials") {
-      alert(result.error);
-
-    } else {
-      alert("Input Credentials");
     }
-
   } catch (error) {
     console.log(error);
   }

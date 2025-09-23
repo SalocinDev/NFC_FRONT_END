@@ -8,16 +8,15 @@ function SearchBar({ setResults }) {
   
     const [input, setInput] = useState("")
     const fetchData = (value) => {
-        fetch(`${apiUrl}/lib/get-books`, {
-            method: "POST",
-            credentials: "include",
+        fetch(`${apiUrl}/books`, {
+            method: "GET",
             headers: {
                 "Content-Type": "application/json"
         },
         })
         .then((response) => response.json())
         .then((json) => {
-            console.log(json);
+            // console.log(json);
             
             const results = json.filter((book) => {
                 return ( 
