@@ -21,6 +21,7 @@ export { default as UserGraph} from './UserGraph';
 export { default as UserLoggedMonth} from './UserLoggedMonth';
 export { default as UserManagement} from './UserManagement';
 export { default as ServicesGraph} from './ServicesGraph';
+export { default as LogsTable} from './LogsTable';
 
 /* UserPage related imports */
 export { default as UserDashboard} from './UserDashboard';
