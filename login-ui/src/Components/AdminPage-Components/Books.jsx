@@ -1,5 +1,5 @@
-import classes from '../CSS-Folder/Books.module.css';
-import { Button, Table} from '../Components';
+import classes from '../../CSS-Folder/Books.module.css';
+import { Button, BorrowedBooksAdmin, ReturnedBooksAdmin, BooksAdmin} from '..';
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 /* import { logOut } from '../Services/SessionUtils'; */
@@ -12,14 +12,14 @@ function Books() {
      
       const renderUserContent = () => {
         switch (active) {
-          case "BorrowedBooks":
-            return <Table />;
-          case "ReturnedBooks":
-            return <Table />;
-            case "Books":
-            return <Table />;
+          case "BorrowedBooksAdmin":
+            return <BorrowedBooksAdmin />;
+          case "ReturnedBooksAdmin":
+            return <ReturnedBooksAdmin />;
+            case "BooksAdmin":
+            return <BooksAdmin />;
           default:
-            return <Table />;
+            return <BorrowedBooksAdmin />;
         }
       };
      
@@ -27,16 +27,16 @@ function Books() {
         <div>
           <div className={classes.samplelang}>
               <Button name="Borrowed Books" use="BorrowedBooks" 
-              onClick={() => setActive("BorrowedBooks")}
-              isActive={active === "BorrowedBooks"} />
+              onClick={() => setActive("BorrowedBooksAdmin")}
+              isActive={active === "BorrowedBooksAdmin"} />
 
               <Button name="Books" use="Books" 
-              onClick={() => setActive("Books")}
-              isActive={active === "Books"} />
+              onClick={() => setActive("BooksAdmin")}
+              isActive={active === "BooksAdmin"} />
 
               <Button name="ReturnedBooks" use="ReturnedBooks" 
-              onClick={() => setActive("ReturnedBooks")}
-              isActive={active === "ReturnedBooks"} />
+              onClick={() => setActive("ReturnedBooksAdmin")}
+              isActive={active === "ReturnedBooksAdmin"} />
           </div>
     
           <div className={classes.TableContainer}>

@@ -1,13 +1,13 @@
 import { MdDashboard } from 'react-icons/md';
 import { FaCompass, FaBookOpen, FaUser, FaCog, FaHandPointer, FaReply, FaCommentMedical } from 'react-icons/fa';
-import { Button, SearchID, BorrowedBooksTable, ReturnedBooksTable } from '.';
-import { IconHeader } from '.';
+import { Button, SearchID, BorrowedBooksTable, ReturnedBooksTable } from '..';
+import { IconHeader } from '..';
 import { NavLink } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import WlogoSidebar from '../Logo/W-logo.png';
+import WlogoSidebar from '../../Logo/W-logo.png';
 import { useNavigate } from 'react-router-dom';
-import { logOut } from '../Services/SessionUtils';
-import classes from '../CSS-Folder/BorrowedForm.module.css';
+import { logOut } from '../../Services/SessionUtils';
+import classes from '../../CSS-Folder/BorrowedForm.module.css';
 
 function BorrowedForm() {
   const [active, setActive] = useState("BorrowedBooks");

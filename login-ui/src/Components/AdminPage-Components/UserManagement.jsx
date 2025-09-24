@@ -1,5 +1,5 @@
-import classes from '../CSS-Folder/UserManagement.module.css';
-import { Button, Table} from '../Components';
+import classes from '../../CSS-Folder/UserManagement.module.css';
+import { Button, NfcUsers, Users} from '..';
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
@@ -8,17 +8,17 @@ import { useState, useEffect } from 'react';
 function UserManagement() {
   const navigate = useNavigate(); 
   const storedUser = JSON.parse(sessionStorage.getItem("userInfo"));
-  const [active, setActive] = useState("BorrowedBooks");
+  const [active, setActive] = useState("UserTable");
    
     
     const renderUserContent = () => {
       switch (active) {
-        case "BorrowedBooks":
-          return <Table />;
-        case "ReturnedBooks":
-          return <Table />;
+        case "NfcUserTable":
+          return <NfcUsers />;
+        case "UserTable":
+          return <Users />;
         default:
-          return <Table />;
+          return <Users />;
       }
     };
    
@@ -26,12 +26,12 @@ function UserManagement() {
       <div>
         <div className={classes.samplelang}>
             <Button name="User Table" use="BorrowedBooks" 
-            onClick={() => setActive("BorrowedBooks")}
-            isActive={active === "BorrowedBooks"} />
+            onClick={() => setActive("UserTable")}
+            isActive={active === "UserTable"} />
   
             <Button name="NFC-User Table" use="ReturnedBooks" 
-            onClick={() => setActive("ReturnedBooks")}
-            isActive={active === "ReturnedBooks"} />
+            onClick={() => setActive("NfcUserTable")}
+            isActive={active === "NfcUserTable"} />
         </div>
   
         <div className={classes.TableContainer}>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Table } from ".."; 
-import api from "../../api/api";
+import { Table } from "../.."; 
+import api from "../../../api/api";
 
 function ServicesAvailed() {
   const [records, setRecords] = useState([]);

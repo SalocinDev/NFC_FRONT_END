@@ -1,5 +1,5 @@
-import {ServicesGraph, UserGraph, UserLoggedMonth } from '../Components';  
-import classes from '../CSS-Folder/Graphs.module.css';
+import {ServicesGraph, UserGraph, UserLoggedMonth } from '..';  
+import classes from '../../CSS-Folder/Graphs.module.css';
 
 
 function Graphs() {

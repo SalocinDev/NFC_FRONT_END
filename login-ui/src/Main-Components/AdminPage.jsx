@@ -153,13 +153,13 @@ function AdminPage() {
       <div className={classes.NavBar}>
         
         <div className={classes.LeftTopbar}>
-          <NavLink to="/profile" className={classes.iconLink}>
+          <div className={classes.iconLink}>
             {profileSrc ? (
               <img src={profileSrc} alt="Profile" className={classes.ChogogImage}/>
             ) : (
               <FaUser className={classes.userIcon} size={32} />
             )}
-          </NavLink>
+          </div>
           <div className={classes.Contents}>
             <div className={classes.UserName}>{storedUser?.firstName || storedUser?.staff_firstname || "Test"}</div>
             <div className={classes.UserRole}>{storedUser?.userID || storedUser?.staff_id || "Test"}</div>

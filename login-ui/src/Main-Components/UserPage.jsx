@@ -137,13 +137,13 @@ function UserPage() {
 
       <div className={classes.NavBar}>
         <div className={classes.LeftTopbar}>
-          <NavLink className={classes.iconLink}>
+          <div className={classes.iconLink}>
             {profileSrc ? (
               <img src={profileSrc} alt="Profile" className={classes.ChogogImage}/>
             ) : (
               <FaUser className={classes.userIcon} size={32} />
             )}
-          </NavLink>
+          </div>
           <div className={classes.Contents}>
             <div className={classes.UserName}>
               {storedUser?.user_firstname || storedUser?.staff_firstname || "Test"}

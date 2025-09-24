@@ -2,7 +2,8 @@ import classes from '../CSS-Folder/LoginPage.module.css';
 import { useNavigate } from 'react-router-dom';
 import { Button, Wlogo, Blogo, Input } from '../Components/index.js';
 import { signIn } from '../Services/LoginService.js';
-import { useState } from "react";
+import { useState, useEffect } from "react";
+const apiUrl = import.meta.env.VITE_API_URL;
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -10,8 +11,65 @@ function LoginPage() {
   const [Email, setEmail] = useState("");
   const [Pass, setPass] = useState("");
 
-  return (
+  /* async function scanForNFC() {
+    try {
+      const res = await fetch(`${apiUrl}/nfc/read`, {
+        method: "POST",
+        credentials: "include"
+      });
+      const data = await res.json();
+      if (!data.valid) {
+        console.log("NFC SCAN NOT SUCCESSFUL");
+        return;
+      }
+      console.log("NFC SCAN SUCCESSFUL");
+      loginUsingNFC(data.token);
+    } catch (error) {
+      console.error("Error scanning NFC:", error);
+    }
+  }
 
+  useEffect(() => {
+    const interval = setInterval(scanForNFC, 2000);
+    return () => clearInterval(interval);
+  }, []);
+
+  async function loginUsingNFC(token) {
+    try {
+      const res = await fetch(`${apiUrl}/acc/login-verify`, {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ token })
+      });
+      const data = await res.json();
+      if (!data.success) {
+        alert("NFC TOKEN NOT RECOGNIZED");
+        return;
+      }
+      sessionStorage.setItem("userInfo", JSON.stringify(data));
+      if (data.success) {
+        alert(`Welcome, ${data.user_firstname} (via NFC)!`);
+        navigate("/Intermediary");
+      } else if (data.valid === false) {
+        alert("NFC Login Failed. Returning to login.");
+        navigate("/");
+      } else if (data === "Error") {
+        alert("An error occurred. Returning to login.");
+        navigate("/");
+      } else {
+        console.warn("Unexpected response format:", data);
+        alert("Unexpected response. Returning to login.");
+        navigate("/");
+      }
+    } catch (error) {
+      console.error("Error logging in with NFC:", error);
+    }
+  } */
+
+  return (
       <div className={classes.LoginBody}>
          
         <div className={classes.RightRectangle}>

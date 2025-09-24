@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { LineChart } from '@mui/x-charts/LineChart';
 import { ClassNames } from '@emotion/react';
-import classes from '../CSS-Folder/UserLoggedMonth.module.css';
+import classes from '../../CSS-Folder/UserLoggedMonth.module.css';
 
 function UserLoggedMonth() {
   return (

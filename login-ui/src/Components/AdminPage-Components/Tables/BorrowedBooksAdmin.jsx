@@ -1,18 +1,21 @@
 import { useEffect, useState } from "react";
-import { Table } from ".."; 
-import api from "../../api/api";
+import { Table } from "../.."; 
+import api from "../../../api/api";
 
-function BorrowedBooksTable() {
+function BorrowedBooksAdmin() {
 
   const [records, setRecords] = useState([]);
   const [loading, setLoading] = useState(true);
   const storedUser = JSON.parse(sessionStorage.getItem("userInfo"));
   
     useEffect(() => {
-      const fetchReturnedBooks = async () => {
+      const fetchBorrowedBooks = async () => {
         try {
-          const res = await api.get(`/borrowing/${storedUser.user_id}`); 
-          setRecords(res.data);
+          const res = await api.get(`/borrowing/`); 
+          const sorted = res.data.sort(
+            (a, b) => new Date(b.log_time) - new Date(a.log_time)
+          );
+          setRecords(sorted);
         } catch (err) {
           console.error("Error fetching borrowed books:", err);
         } finally {
@@ -20,10 +23,10 @@ function BorrowedBooksTable() {
         }
       };
   
-      fetchReturnedBooks();
+      fetchBorrowedBooks();
     }, []);
   
-    if (loading) return <p>Loading returned books...</p>;
+    if (loading) return <p>Loading borrowed books...</p>;
   
   
   return (
@@ -33,4 +36,4 @@ function BorrowedBooksTable() {
   );
 }
 
-export default BorrowedBooksTable;
+export default BorrowedBooksAdmin;
