@@ -7,7 +7,7 @@ function NotFoundPage() {
     }
   return (
     <div>
-      <h1>Ito ay imong guniguni lamang</h1>
+      <h1>404 NOT FOUND</h1>
       <Link to ={"/"}>
       <button>Go Back Home</button>
       </Link>

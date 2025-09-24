@@ -16,7 +16,7 @@ export { default as Graphs} from './AdminPage-Components/Graphs';
 export { default as UserGraph} from './AdminPage-Components/UserGraph';
 export { default as UserLoggedMonth} from './AdminPage-Components/UserLoggedMonth';
 export { default as UserManagement} from './AdminPage-Components/UserManagement';
-export { default as ServicesGraph} from './ServicesGraph';
+export { default as ServicesGraph} from './AdminPage-Components/ServicesGraph';
 export { default as LogsTable} from './LogsTable';
 
 /* UserPage related imports */
