@@ -9,7 +9,8 @@ function Dashboard() {
   const LogOut = async () => {
     await fetch(`${apiUrl}/logout`, {
       method: "POST",
-      credentials: "include"
+      credentials: "include",
+      "x-api-key": import.meta.env.VITE_API_KEY,
     });
     navigate("/"); // redirect after logout
   };

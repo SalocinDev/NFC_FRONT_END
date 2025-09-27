@@ -2,11 +2,12 @@ const apiUrl = import.meta.env.VITE_API_URL;
 
 export async function submitServices( services ) {
     try {
-        const response = await fetch(`${apiUrl}/lib/user-services`, {
+        const response = await fetch(`${apiUrl}/servicelogs`, {
             method: "POST",
             credentials: "include",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "x-api-key": import.meta.env.VITE_API_KEY
             },
             body: JSON.stringify({ services })
         })

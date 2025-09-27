@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { toNFClogin } from '../Services/LoginService';
 import classes from '../CSS-Folder/NfcPage.module.css';
-import NfcLogo from '../Logo/NFC-logo.png';
+import { NFCicon } from '../Logo';
 import { Button, LogoComponent} from '../Components';
 import { useState, useEffect, useRef } from 'react';
 
@@ -24,9 +24,9 @@ function NfcPage() {
       setTimeout(() => resolve("Timeout"), 5000);
     }); 
 
-    const result = await Promise.race([toNFClogin(), timeout]);
+    const result = await Promise.race([toNFClogin(navigate), timeout]);
 
-    sessionStorage.setItem("userInfo", JSON.stringify(result));
+    // sessionStorage.setItem("userInfo", JSON.stringify(result));
     if (result === "Timeout") {
       alert("NFC login timed out. Returning to login.");
       navigate('/');
@@ -54,7 +54,7 @@ function NfcPage() {
       <div className={classes.curvedRectangle}>
         <div className={classes.content}>
           <div className={classes.tagline}>
-            <img src={NfcLogo} alt="Logo" className={classes.NfcLogo} />
+            <img src={NFCicon} alt="Logo" className={classes.NfcLogo} />
 
             {SigningIn && (
               <div className={classes.loadingContainer}>

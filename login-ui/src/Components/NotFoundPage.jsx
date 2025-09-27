@@ -1,5 +1,9 @@
+import claases from '../CSS-Folder/NotFoundPage.module.css'
 import {Link} from "react-router-dom";
-import {BookTable} from '../Components'
+import {BookTable, BookForm} from '../Components'
+import Oops from '../Logo/Oppsie.svg'
+
+
 
 function NotFoundPage() {
   const NotFoundPage = () => {
@@ -11,8 +15,8 @@ function NotFoundPage() {
       <Link to ={"/"}>
       <button>Go Back Home</button>
       </Link>
-
-      <BookTable />
+      <BookForm/>
+      {/* <BookTable /> */}
     </div>
   );
 };

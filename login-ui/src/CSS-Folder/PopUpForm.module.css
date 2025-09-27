@@ -1,0 +1,74 @@
+.overlay {
+  position: fixed;
+  top: 0; 
+  left: 0;
+  margin: 0;
+  width: 100%; 
+  height: 100%;
+  background: rgba(0,0,0,0.5); /* dark background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100; /* make sure it’s above your tables */
+}
+
+.popup {
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 100vw;
+  max-height: 100vh;
+  height: 100vh;
+  width: 100vw;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* PopUpForm.module.css */
+
+.FormContainer {
+  background-color: #f5f6fc;
+  border: 1px solid rgba(0, 0, 0, 0.158);
+  box-shadow: -10px 10px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 2rem;
+  width: 70vw;
+  max-width: 800px;   /* optional max width */
+  height: 70vh;
+  padding: 2rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  overflow-y: auto;   /* scroll if form is too tall */
+}
+
+.FormContainer::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari, Edge */
+}
+
+.FormButtonContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 2rem;
+}
+
+.FormContainer form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 equal columns */
+  gap: 1rem 2rem;                        /* row gap, column gap */
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column; /* label on top of input */
+  width: 100%;
+}
+
+.inputGroup input {
+  width: 100%;
+  box-sizing: border-box;
+}
+

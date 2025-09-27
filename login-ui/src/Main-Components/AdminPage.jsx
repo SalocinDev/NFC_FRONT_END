@@ -3,7 +3,7 @@ import { FaUser, FaCog } from 'react-icons/fa';
 import { Button, Graphs, Books, UserManagement, SettingPage, LogsTable} from '../Components';
 import { NavLink } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import WlogoSidebar from '../Logo/W-logo.png';
+import { WlogoSidebar } from '../Logo';
 import { useNavigate } from 'react-router-dom';
 import { MdDashboard, MdBook, MdPeople, MdLibraryBooks, MdReport, MdPeopleAlt,MdMenu,MdLogout } from "react-icons/md";
 import { FaBookReader } from "react-icons/fa";

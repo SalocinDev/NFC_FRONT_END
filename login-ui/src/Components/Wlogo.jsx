@@ -1,5 +1,5 @@
 import WhiteLogo from '../CSS-Folder/Logo.module.css';
-import WlogoImg from '../Logo/W-logo2.png'
+import WlogoImg from '../Logo/NW-logo2.svg'
 
 function Wlogo() {
 

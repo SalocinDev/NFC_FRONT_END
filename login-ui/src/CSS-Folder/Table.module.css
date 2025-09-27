@@ -53,3 +53,14 @@ tr:hover {
   justify-content: left;
   background-color: red;
 }
+
+.SelectRow{
+  background-color: red;
+  width: 20px;
+  height: 20px;
+}
+
+.viewButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

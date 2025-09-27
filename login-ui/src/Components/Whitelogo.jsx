@@ -1,4 +1,4 @@
-import WlogoImg from '../Logo/W-logo2.png';
+import WlogoImg from '../Logo/W-logo2.svg';
 
 function Whitelogo() {
   return (

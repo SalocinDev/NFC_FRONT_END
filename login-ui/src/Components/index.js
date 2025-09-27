@@ -9,6 +9,7 @@ export { default as Table} from './Table';
 export { default as SearchID} from './SearchID';
 export { default as AiPopUp} from './AiPopUp';
 export { default as Checkbox} from './Checkbox';
+export { default as NotFoundPage} from './NotFoundPage';
 
 /* AdminPage related imports */
 export { default as Books} from './AdminPage-Components/Books';
@@ -34,8 +35,10 @@ export { default as BorrowedBooksTable } from './UserPage-Components/Tables/Borr
 export { default as ReturnedBooksTable } from './UserPage-Components/Tables/ReturnedBooksUser';
 
 /* Admin related imports */
-export { default as ReturnedBooksAdmin } from './AdminPage-Components/Tables/ReturnedBooksAdmin';
-export { default as BorrowedBooksAdmin } from './AdminPage-Components/Tables/BorrowedBooksAdmin';
-export { default as BooksAdmin } from './AdminPage-Components/Tables/BooksAdmin';
-export { default as NfcUsers } from './AdminPage-Components/Tables/NfcUsers';
-export { default as Users } from './AdminPage-Components/Tables/Users';
+export { default as BookForm } from './BookForm';
+export { default as PopUpForm } from './General-Components/PopUpForm';
+export { default as PopUpFormDeleteConfirm } from './General-Components/PopUpDeleteConfirm'
+export { default as PopUpNfc } from './General-Components/PopUpNfc';
+export { default as GenerateTokenForm } from './General-Components/GenerateTokenForm';
+
+export { default as TestingPage } from './TestingPage';

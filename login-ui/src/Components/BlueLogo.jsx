@@ -1,5 +1,5 @@
 import BlueLogo2 from '../CSS-Folder/Logo.module.css';
-import BlueLogo from '../Logo/B-logo2.png';
+import BlueLogo from '../Logo/B-logo2.svg';
 
 function LogoComponent({ className }) {
   return (

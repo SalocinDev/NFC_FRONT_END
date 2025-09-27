@@ -11,7 +11,8 @@ export async function checkEmail(email, navigate) {
             method: "POST",
             credentials: "include",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "x-api-key": import.meta.env.VITE_API_KEY
             },
             body: JSON.stringify({ email })
         });
@@ -56,7 +57,8 @@ export async function changePassword(email, password, navigate) {
             method: "POST",
             credentials: "include",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "x-api-key": import.meta.env.VITE_API_KEY
             },
             body: JSON.stringify({ email, password })
         });

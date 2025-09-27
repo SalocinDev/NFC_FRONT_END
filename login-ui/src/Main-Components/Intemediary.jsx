@@ -1,7 +1,7 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import classes from "../CSS-Folder/Intemediary.module.css";
-import SurveyWhite from "../Logo/SurveyWhite.png";
+import { SurveyWhite } from "../Logo";
 import { Button, LogoComponent } from "../Components";
 
 function Intemediary() {

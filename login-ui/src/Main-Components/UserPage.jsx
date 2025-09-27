@@ -4,7 +4,7 @@ import { MdMenu, MdDashboard, MdLogout } from "react-icons/md";
 import { FaUser, FaCog, FaCompass, FaBookOpen } from 'react-icons/fa';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Button, UserDashboard, ServicesAvailed, BorrowedForm, SettingPage, AiPopUp } from '../Components';
-import WlogoSidebar from '../Logo/W-logo.png';
+import { WlogoSidebar } from '../Logo';
 import { logOut } from '../Services/SessionUtils';
 import { getProfilePicture } from '../Services/FileService'
 
@@ -22,6 +22,8 @@ function UserPage() {
   const [currentTime, setCurrentTime] = useState('');
   const [currentDate, setCurrentDate] = useState('');
   const [profileSrc, setProfileSrc] = useState(null);
+  const FirstName = storedUser.user_firstname;
+  const UserID = storedUser.user_id;
 
   useEffect(() => {
   const handleResize = () => {
@@ -146,10 +148,10 @@ function UserPage() {
           </div>
           <div className={classes.Contents}>
             <div className={classes.UserName}>
-              {storedUser?.user_firstname || storedUser?.staff_firstname || "Test"}
+              {FirstName || storedUser?.staff_firstname || "Test"}
             </div>
             <div className={classes.UserRole}>
-              {storedUser?.user_id || storedUser?.staff_id || "Test"}
+              {UserID || storedUser?.staff_id || "Test"}
             </div>
           </div>
         </div>

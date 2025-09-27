@@ -42,7 +42,7 @@ function SettingPage() {
   }, []);
 
 
-  const handleUpdateAcc = () => {
+  const handleUpdateAcc = async () => {
     const updatedFields = {};
 
     if (LN !== storedUser.lastName) updatedFields.lastName = LN;
@@ -50,7 +50,7 @@ function SettingPage() {
     if (MN !== storedUser.middleName) updatedFields.middleName = MN;
     if (Email !== storedUser.email) updatedFields.email = Email;
     const storedDoB = storedUser.user_date_of_birth ? storedUser.user_date_of_birth.split("T")[0] : "";
-    if (DoB !== storedDoB) { updatedFields.dob = DoB; }
+    if (DoB !== storedDoB) updatedFields.dob = DoB;
     if (Gender !== storedUser.gender) updatedFields.gender = Gender;
     if (Contact !== storedUser.contact) updatedFields.contact = Contact;
     if (School !== storedUser.school) updatedFields.school = School;
@@ -64,7 +64,12 @@ function SettingPage() {
       return;
     }
 
-    updateAccount(updatedFields, navigate);
+    const result = await updateAccount(updatedFields, navigate);
+    if (!result.success) return;
+    if (updatedFields.newPassword || updatedFields.email) {
+      await logOut();
+      navigate("/");
+    }
   };
 
   const handleUpdateAddress = () => {

@@ -11,6 +11,7 @@ import classes from '../../CSS-Folder/BorrowedForm.module.css';
 
 function BorrowedForm() {
   const [active, setActive] = useState("BorrowedBooks");
+  const [searchTerm, setSearchTerm] = useState("");
 
   const renderTableContent = () => {
     switch (active) {
@@ -39,7 +40,10 @@ function BorrowedForm() {
           isActive={active === "ReturnedBooks"}   
         />
         
-        <SearchID placeholder="Search by ID" />
+        {/* <SearchID placeholder="Search by ID"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+         /> */}
       </div>
       
       <div className={classes.TableContainer}>

@@ -1,15 +1,27 @@
 import classes from '../CSS-Folder/Services.module.css';
 import React, { useState, useEffect, useCallback } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Button, Checkbox } from '../Components';
 import { logOut } from '../Services/SessionUtils';
-import { submitServices } from '../Services/ServicesUtis'
+import { submitServices } from '../Services/ServicesUtis';
 
 function Services() {
   const storedUser = JSON.parse(sessionStorage.getItem("userInfo"));
   const navigate = useNavigate();
   const [availedServices, setAvailedServices] = useState({ selectedServices: [], others: "" });
   const [alertShown, setAlertShown] = useState(false);
+  const location = useLocation();
+  const { loggedIn } = location.state || {};
+
+  useEffect(() => {
+    const checkLogin = async () => {
+      if (!loggedIn) {
+        await logOut();
+        navigate("/");
+      }
+    };
+    checkLogin();
+  }, [loggedIn, navigate]);
 
   useEffect(() => {
     if (!alertShown) {
@@ -18,29 +30,29 @@ function Services() {
     }
   }, [alertShown, storedUser]);
 
-  const handleServicesChange = useCallback(
-    (selected, others) => {
-      setAvailedServices({ selectedServices: selected, others });
-    },
-    []
-  );
+  const handleServicesChange = useCallback((selected, others) => {
+    setAvailedServices({ selectedServices: selected, others });
+  }, []);
 
   const handleSubmit = async () => {
     const { selectedServices, others } = availedServices;
-    const servicesText = selectedServices.length > 0 ? selectedServices.join(", ") : "None";
-    const othersText = others ? ` | Others: ${others}` : "";
-    
-    alert(`Availed services: ${servicesText}${othersText}`);
-    const result = await submitServices( servicesText );
-/*     if (!result.success) {
-      alert(result.message)
-    } */
-    if (result.success) { 
-      logOut().then(() => {
-        navigate("/");
-      });
+
+    let payloadServices = [...selectedServices];
+    if (others.trim()) {
+      payloadServices.push(`Others: ${others.trim()}`);
     }
-    
+
+    const servicesText = payloadServices.length > 0 ? payloadServices.join(", ") : "None";
+    alert(`Availed services: ${servicesText}`);
+
+    const result = await submitServices(payloadServices);
+
+    if (!result.success) {
+      alert(result.message || "Failed to submit services.");
+      return;
+    }
+
+    logOut().then(() => navigate("/", { state: { loggedIn: true } }));
   };
 
   return (
@@ -52,10 +64,12 @@ function Services() {
 
       <div className={classes.CheckboxContainer}>
         <Checkbox onChange={handleServicesChange} />
-
-        {/* Live display of selected services */}
-        <div className={classes.ServicesSubmitted} style={{ marginTop: "1rem", fontSize: "1rem", color: "#101540" }}>
-          <strong>Selected Services:</strong> {availedServices.selectedServices.join(", ")}
+        <div
+          className={classes.ServicesSubmitted}
+          style={{ marginTop: "1rem", fontSize: "1rem", color: "#101540" }}
+        >
+          <strong>Selected Services:</strong>{" "}
+          {availedServices.selectedServices.join(", ")}
           {availedServices.others ? ` | Others: ${availedServices.others}` : ""}
         </div>
 

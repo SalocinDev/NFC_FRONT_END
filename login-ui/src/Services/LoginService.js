@@ -6,7 +6,8 @@ async function toLogin(email, password) {
       method: "POST",
       credentials: "include",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "x-api-key": import.meta.env.VITE_API_KEY
       },
       body: JSON.stringify({ email: email, password: password })
     });
@@ -37,12 +38,14 @@ export async function handleLoginClick(navigate) {
   }
 }
 //////////////////////////////////////////////////////////////////////////////////////////////
-export async function toNFClogin() {
+export async function toNFClogin(navigate) {
   console.log("API URL:", apiUrl);
   try {
     const nfcResponse = await fetch(`${apiUrl}/nfc/read`, {
       method: "POST",
-      headers: { "Accept": "application/json" }
+      headers: { 
+        "Accept": "application/json",
+        "x-api-key": import.meta.env.VITE_API_KEY }
     });
     const nfcData = await nfcResponse.json();
     const token = nfcData?.token;
@@ -51,11 +54,27 @@ export async function toNFClogin() {
       throw new Error("No token returned from NFC data");
     }
 
+    const checkFirst = await fetch(`${apiUrl}/acc/relogin`, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": import.meta.env.VITE_API_KEY
+      },
+      body: JSON.stringify({ token })
+    });
+    const resultCheck = await checkFirst.json();
+    if (resultCheck.success) {
+      navigate('/Intermediary', { state: { hasLogged: true }});
+      return;      
+    }
+
     const response = await fetch(`${apiUrl}/acc/login-verify`, {
       method: "POST",
       credentials: "include",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "x-api-key": import.meta.env.VITE_API_KEY
       },
       body: JSON.stringify({ token })
     });
@@ -70,12 +89,28 @@ export async function toNFClogin() {
 
 export async function signIn(email, password, navigate) {
   try {
-    console.log(email, password);
+    // console.log(email, password);
+    const checkFirst = await fetch(`${apiUrl}/acc/relogin`, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": import.meta.env.VITE_API_KEY
+      },
+      body: JSON.stringify({ email })
+    });
+    const resultCheck = await checkFirst.json();
+    if (resultCheck.success) {
+      navigate('/Intermediary', { state: { hasLogged: true }});
+      return;      
+    }
+
     const response = await fetch(`${apiUrl}/acc/login-verify`, {
       method: "POST",
       credentials: "include",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "x-api-key": import.meta.env.VITE_API_KEY
       },
       body: JSON.stringify({ email, password })
     });
@@ -86,13 +121,12 @@ export async function signIn(email, password, navigate) {
     }
 
     if (result.success) {
-      sessionStorage.setItem("userInfo", JSON.stringify(result));
       alert("Welcome!, " + (result.user_firstname || result.staff_firstname));
       if (result.role === "staff"){
         navigate("/AdminPage");
       }
       if (result.role === "user"){
-        navigate("/Intermediary");
+        navigate("/Services", { state: { loggedIn: true } });
       }
 
     } else if (result.success === false && result.message === "Email is not verified") {
@@ -101,7 +135,9 @@ export async function signIn(email, password, navigate) {
       const resendOTP = await fetch(`${apiUrl}/acc/send-otp`, {
         method: "POST",
         credentials: "include",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+          "x-api-key": import.meta.env.VITE_API_KEY },
         body: JSON.stringify({ email })
       });
 

@@ -1,5 +1,5 @@
 import classes from '../CSS-Folder/LoginPage.module.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Button, Wlogo, Blogo, Input } from '../Components/index.js';
 import { signIn } from '../Services/LoginService.js';
 import { useState, useEffect } from "react";
@@ -10,7 +10,9 @@ function LoginPage() {
 
   const [Email, setEmail] = useState("");
   const [Pass, setPass] = useState("");
-
+  const location = useLocation();
+  const { loggedIn } = location.state || {};
+  
   /* async function scanForNFC() {
     try {
       const res = await fetch(`${apiUrl}/nfc/read`, {

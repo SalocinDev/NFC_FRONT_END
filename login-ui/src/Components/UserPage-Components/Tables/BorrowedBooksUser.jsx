@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Table } from "../.."; 
+import { Table, SearchID } from "../.."; 
 import api from "../../../api/api";
 
 function BorrowedBooksTable() {
@@ -7,7 +7,13 @@ function BorrowedBooksTable() {
   const [records, setRecords] = useState([]);
   const [loading, setLoading] = useState(true);
   const storedUser = JSON.parse(sessionStorage.getItem("userInfo"));
-  
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const filteredRecords = records.filter((record) =>
+    record.book_title?.toString().includes(searchTerm) ||
+    record.book_author?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    record.book_publisher?.toString().includes(searchTerm)
+  );
     useEffect(() => {
       const fetchReturnedBooks = async () => {
         try {
@@ -28,7 +34,11 @@ function BorrowedBooksTable() {
   
   return (
     <div>
-        <Table records={records}/>
+      <SearchID placeholder="Search by Book Name/Author"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+         />
+      <Table records={searchTerm ? filteredRecords : records} />
     </div>
   );
 }

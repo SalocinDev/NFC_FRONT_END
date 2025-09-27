@@ -8,7 +8,7 @@ export { default as ResetPasswordEmailCheck} from './ResetPasswordEmailCheck';
 export { default as SignUpForm} from './SignUpForm';
 
 export { default as Services} from './Services';
-export { default as Intermediary } from './Intemediary';
+export { default as Intemediary } from './Intemediary';
 export { default as AdminPage} from './AdminPage';
 
 

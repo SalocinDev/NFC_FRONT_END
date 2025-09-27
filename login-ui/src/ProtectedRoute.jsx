@@ -13,13 +13,19 @@ export default function ProtectedRoute({ children }) {
         const res = await fetch(`${apiUrl}/session/get-session`, {
           method: "POST",
           credentials: 'include',
+          headers: {
+            "Content-Type": "application/json",
+            "x-api-key": import.meta.env.VITE_API_KEY
+          }
         });
         const data = await res.json();
         console.log("Session data:", data);
 
         if (data?.loggedIn) {
+          sessionStorage.setItem("userInfo", JSON.stringify(data));
           setLoggedIn(true);
-        } else {
+        }
+        if (!data?.loggedIn){
           setLoggedIn(false);
           navigate('/', { replace: true }); // replace ensures no back button
         }

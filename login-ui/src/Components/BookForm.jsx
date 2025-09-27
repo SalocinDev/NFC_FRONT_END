@@ -1,5 +1,9 @@
 import { useState, useEffect } from "react";
+import {Input} from '../Components'
+import classes from '../CSS-Folder/BookForm.module.css'
+
 import api from "../api/api";
+import { ClassNames } from "@emotion/react";
 
 function BookForm({ onBookAdded }) {
   const [form, setForm] = useState({
@@ -52,15 +56,16 @@ function BookForm({ onBookAdded }) {
 
   return (
     <form onSubmit={handleSubmit} style={{ marginBottom: "20px" }}>
-      <input
+      <Input
         type="text"
         name="book_title"
         placeholder="Title"
         value={form.book_title}
         onChange={handleChange}
         required
+        className={classes.BookTitle}
       />
-      <input
+      <Input
         type="text"
         name="book_author"
         placeholder="Author"
@@ -68,7 +73,7 @@ function BookForm({ onBookAdded }) {
         onChange={handleChange}
         required
       />
-      <input
+      <Input
         type="text"
         name="book_publisher"
         placeholder="Publisher"
@@ -76,14 +81,14 @@ function BookForm({ onBookAdded }) {
         onChange={handleChange}
         required
       />
-      <input
+      <Input
         type="date"
         name="book_year_publish"
         value={form.book_year_publish}
         onChange={handleChange}
         required
       />
-      <input
+      <Input
         type="text"
         name="book_description"
         placeholder="Description"

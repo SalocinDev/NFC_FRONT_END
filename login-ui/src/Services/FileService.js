@@ -5,7 +5,11 @@ export async function uploadProfilePicture(formData) {
     const response = await fetch(`${apiUrl}/file/profile-picture-update`, {
       method: "POST",
       credentials: "include",
-      body: formData
+      body: formData,
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": import.meta.env.VITE_API_KEY
+      },
     });
 
     if (!response.ok) {
@@ -22,7 +26,11 @@ export async function getProfilePicture(user_pfp_id) {
   try {
     const response = await fetch(`${apiUrl}/file/profile-picture/${user_pfp_id}`, {
       method: "POST",
-      credentials: "include"
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": import.meta.env.VITE_API_KEY
+      },
     });
 
     if (!response.ok) {

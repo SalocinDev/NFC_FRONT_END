@@ -8,7 +8,8 @@ export async function signUp (email, password, firstName, middleName, lastName, 
             method: "POST",
             credentials: "include",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "x-api-key": import.meta.env.VITE_API_KEY
         },
         body: JSON.stringify({ email, password, firstName, middleName, lastName, dob, gender, contactNumber, school })
         });
@@ -46,9 +47,10 @@ export async function sendOTP(email){
             method: "POST",
             credentials: "include",
             headers: {
-                "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ email })
+                "Content-Type": "application/json",
+                "x-api-key": import.meta.env.VITE_API_KEY
+            },
+            body: JSON.stringify({ email })
         });
         const result = await response.json();
         if (!result.success){
@@ -68,8 +70,9 @@ export async function verifyOTP(email, OTP, navigate, resetPass) {
             method: "POST",
             credentials: "include",
             headers: {
-                "Content-Type": "application/json"
-        },
+                "Content-Type": "application/json",
+            "x-api-key": import.meta.env.VITE_API_KEY
+            },
             body: JSON.stringify({ email, OTP })
         });
 

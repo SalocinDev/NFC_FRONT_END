@@ -2,7 +2,7 @@ import classes from '../CSS-Folder/SignUpForm.module.css';
 import { useNavigate } from 'react-router-dom';
 import { useState } from "react";
 import { Wlogo, Input, Blogo, Button } from '../Components';
-import BlogoImg from '../Logo/B-logo.png';
+import { BlogoImg } from '../Logo';
 import { signUp, sendOTP } from '../Services/SignUpService';
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css"; 

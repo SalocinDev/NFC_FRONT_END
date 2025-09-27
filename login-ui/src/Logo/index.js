@@ -1,0 +1,9 @@
+export { default as BlogoImg } from './B-logo.svg';
+export { default as Blogo2 } from './B-logo2.svg';
+export { default as Background } from './Background.png';
+export { default as NFCicon } from './NFC-Icon.svg';
+export { default as Survey } from './Survey.svg';
+export { default as SurveyWhite } from './SurveyWhite.svg';
+export { default as WlogoSidebar } from './W-logo.svg';
+export { default as Wlogo2 } from './NW-logo2.svg';
+export { default as Oops } from './Oppsie.svg'

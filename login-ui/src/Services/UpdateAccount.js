@@ -1,15 +1,17 @@
 const apiUrl = import.meta.env.VITE_API_URL;
-
+import { logOut } from './SessionUtils'
 // Update account details
-export async function updateAccount(email, updates, navigate) {
+export async function updateAccount(updates, navigate) {
   try {
-    console.log(email);
-    
+    console.log(updates.email);
+
     const response = await fetch(`${apiUrl}/acc/update`, {
       method: "PUT",
       credentials: "include",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, ...updates }),
+      headers: { 
+        "Content-Type": "application/json",
+        "x-api-key": import.meta.env.VITE_API_KEY },
+      body: JSON.stringify(updates),
     });
 
     const result = await response.json();
@@ -21,7 +23,6 @@ export async function updateAccount(email, updates, navigate) {
 
     alert(result.message || "Account updated successfully!");
     sessionStorage.setItem("userInfo", JSON.stringify(result.user || {}));
-
     return { success: true, ...result };
   } catch (err) {
     console.error("Update Account Error:", err);
@@ -30,7 +31,6 @@ export async function updateAccount(email, updates, navigate) {
   }
 }
 
-
 export async function updateAddress(updatedAddress, navigate) {
   try {
     const response = await fetch(`${apiUrl}/acc/update-address`, {
@@ -38,6 +38,7 @@ export async function updateAddress(updatedAddress, navigate) {
         credentials: "include",
         headers: {
             "Content-Type": "application/json",
+            "x-api-key": import.meta.env.VITE_API_KEY
         },
         body: JSON.stringify(updatedAddress),
     });
