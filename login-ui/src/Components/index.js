@@ -19,6 +19,10 @@ export { default as UserLoggedMonth} from './AdminPage-Components/UserLoggedMont
 export { default as UserManagement} from './AdminPage-Components/UserManagement';
 export { default as ServicesGraph} from './AdminPage-Components/ServicesGraph';
 export { default as LogsTable} from './LogsTable';
+export { default as OverallStats} from './OverallStats';
+export { default as Statistics} from './Statistics';
+export { default as TestingPage} from './TestingPage';
+
 
 /* UserPage related imports */
 export { default as UserDashboard} from './UserPage-Components/UserDashboard';
@@ -36,9 +40,11 @@ export { default as ReturnedBooksTable } from './UserPage-Components/Tables/Retu
 
 /* Admin related imports */
 export { default as BookForm } from './BookForm';
-export { default as PopUpForm } from './General-Components/PopUpForm';
-export { default as PopUpFormDeleteConfirm } from './General-Components/PopUpDeleteConfirm'
-export { default as PopUpNfc } from './General-Components/PopUpNfc';
+export { default as PopUpForm } from './PopUps/PopUpForm';
+export { default as PopUpFormDeleteConfirm } from './PopUps/PopUpDeleteConfirm'
+export { default as PopUpNfc } from './PopUps/PopUpNfc';
 export { default as GenerateTokenForm } from './General-Components/GenerateTokenForm';
+export { default as RegisterUser } from './PopUps/RegisterUser';
 
-export { default as TestingPage } from './TestingPage';
+
+export { default as Charts } from './Charts';

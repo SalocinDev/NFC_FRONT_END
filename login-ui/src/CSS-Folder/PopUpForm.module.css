@@ -5,11 +5,11 @@
   margin: 0;
   width: 100%; 
   height: 100%;
-  background: rgba(0,0,0,0.5); /* dark background */
+  background: rgba(0,0,0,0.5); 
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 100; /* make sure it’s above your tables */
+  z-index: 100; 
 }
 
 .popup {
@@ -25,50 +25,182 @@
   align-items: center;
 }
 
-/* PopUpForm.module.css */
 
 .FormContainer {
-  background-color: #f5f6fc;
-  border: 1px solid rgba(0, 0, 0, 0.158);
-  box-shadow: -10px 10px 20px rgba(0, 0, 0, 0.2);
-  border-radius: 2rem;
-  width: 70vw;
-  max-width: 800px;   /* optional max width */
-  height: 70vh;
-  padding: 2rem;
+  position: relative;
+  background: #fff;
+  border-radius: 0.5rem;
+  width: 90vw;             
+  height: 80vh;
+  padding: 1rem;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 1rem;
-  overflow-y: auto;   /* scroll if form is too tall */
+  overflow-y: auto;
+
+
+  box-shadow: 
+    12px 12px 20px rgba(0,0,0,0.2),
+    -3px -3px 10px rgba(0,0,0,0.08),
+    0 0 0 8px rgb(139, 69, 19);
+
+    animation: fadeIn 0.3s ease;
+}
+
+
+.FormContainer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+
+  background:
+
+    linear-gradient(
+      to right,
+      transparent 49%,
+      rgba(0,0,0,0.18) 50%,
+      transparent 51%
+    ),
+ 
+    radial-gradient(
+      ellipse at 50% 0%,
+      rgba(0,0,0,0.15) 0%,
+      transparent 70%
+    ),
+   
+    radial-gradient(
+      ellipse at 50% 100%,
+      rgba(0,0,0,0.15) 0%,
+      transparent 70%
+    ),
+    
+    linear-gradient(
+      to right,
+      rgba(0,0,0,0.06) 0%,
+      transparent 20%,
+      transparent 80%,
+      rgba(0,0,0,0.06) 100%
+    );
+  background-blend-mode: multiply;
 }
 
 .FormContainer::-webkit-scrollbar {
-  display: none;  /* Chrome, Safari, Edge */
+  display: none;
 }
 
-.FormButtonContainer{
+.FormButtonContainer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 2rem;
+  padding: 1rem;
+}
+
+.FormContainer label{
+  font-size: 1.1rem;
 }
 
 .FormContainer form {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 equal columns */
-  gap: 1rem 2rem;                        /* row gap, column gap */
-}
+  grid-template-columns: 1fr 1fr; 
 
+  gap: 1rem 1rem;
+}
 .inputGroup {
   display: flex;
-  flex-direction: column; /* label on top of input */
+  flex-direction: column;
   width: 100%;
+  background-color: transparent;
 }
-
 .inputGroup input {
   width: 100%;
+  height: 2rem;
   box-sizing: border-box;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.185);
+  border-radius: 0;
+  background-color: transparent;
 }
 
+.inputGroup input{
+  outline: none;
+}
+
+.SelectBorrowedBook{
+  width: 100%;
+}
+
+.FormContainer select {
+  width: 100%;
+  height: 2rem;
+  box-sizing: border-box;
+  text-align: left;
+
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.185);
+  border-radius: 0;
+  background-color: transparent;
+
+  font: inherit;
+  color: inherit;
+
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+
+  outline: none;
+  padding: 0;        
+}
+.FormContainer select:focus {
+  border-bottom: 1px solid black;
+}
+
+.FormContainer select option {
+  padding: 0; 
+  font-size: 1rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+
+
+
+@media (min-width: 600px) {
+  .FormContainer {
+    width: 70vw;
+    height: 75vh;
+    padding: 1.5rem;
+    box-shadow:
+      16px 16px 26px rgba(0,0,0,0.22),
+      -4px -4px 12px rgba(0,0,0,0.1),
+      0 0 0 10px rgb(139, 69, 19);
+  }
+}
+
+@media (min-width: 1024px) {
+  .FormContainer {
+    width: 40vw;
+    max-width: 800px;
+    height: 70vh;
+    padding: 2rem;
+    box-shadow:
+  20px 20px 30px rgba(0,0,0,0.25),
+  -5px -5px 15px rgba(0,0,0,0.1),
+  0 0 0 15px #101540;
+
+  }
+}

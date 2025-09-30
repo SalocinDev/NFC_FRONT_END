@@ -1,6 +1,6 @@
 import classes from '../CSS-Folder/AdminPage.module.css';
 import { FaUser, FaCog } from 'react-icons/fa';
-import { Button, Graphs, Books, UserManagement, SettingPage, LogsTable} from '../Components';
+import { Button, Statistics, Books, UserManagement, SettingPage, LogsTable} from '../Components';
 import { NavLink } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { WlogoSidebar } from '../Logo';
@@ -74,7 +74,7 @@ function AdminPage() {
   const renderContent = () => {
     switch (active) {
       case "Dashboard":
-        return <Graphs/>;
+        return <Statistics/>;
       case "Books":
         return <Books/>;
       case "Users":
@@ -82,7 +82,7 @@ function AdminPage() {
          case "SettingPage":
         return <SettingPage />;
       default:
-        return <Graphs />;
+        return <Statistics />;
     }
   };
 

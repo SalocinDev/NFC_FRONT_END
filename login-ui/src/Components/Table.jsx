@@ -65,11 +65,12 @@ const Table = ({
       : [];
 
   let columnsToUse = [
-    ...(checkbox
-      ? [
-          {
-            id: "select",
-            header: ({ table }) => (
+  ...(checkbox && records.length > 0 // ✅ only add if records exist
+    ? [
+        {
+          id: "select",
+          header: ({ table }) =>
+            table.getRowModel().rows.length > 0 ? (
               <input
                 className={classes.SelectRow}
                 type="checkbox"
@@ -86,8 +87,9 @@ const Table = ({
                   updateSelected(newSelected);
                 }}
               />
-            ),
-            cell: ({ row }) => (
+            ) : null,
+          cell: ({ row }) =>
+            row.original && Object.keys(row.original).length > 0 ? (
               <input
                 className={classes.SelectRow}
                 type="checkbox"
@@ -100,12 +102,13 @@ const Table = ({
                   updateSelected(newSelected);
                 }}
               />
-            ),
-          },
-        ]
-      : []),
-    ...autoColumns,
-  ];
+            ) : null, 
+        },
+      ]
+    : []),
+  ...autoColumns,
+];
+
 
   if (view) {
     columnsToUse = [
@@ -146,7 +149,7 @@ const Table = ({
     getCoreRowModel: getCoreRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
-    initialState: { pagination: { pageSize: 5 } },
+    initialState: { pagination: { pageSize: 15 } },
   });
 
   return (
@@ -178,7 +181,7 @@ const Table = ({
                 </td>
               </tr>
             ) : (
-              Array.from({ length: 5 }).map((_, i) => {
+              Array.from({ length: 10 }).map((_, i) => {
                 const row = table.getRowModel().rows[i];
                 return row ? (
                   <tr

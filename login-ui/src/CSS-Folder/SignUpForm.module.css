@@ -159,7 +159,7 @@ html,
   margin-bottom: 2px !important;
   display: block !important;
 
-   padding-left: 3rem !important;  /* 👈 push number placeholder right */
+   padding-left: 3rem !important;
 }
 
 .myDropdown {

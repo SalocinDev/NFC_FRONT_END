@@ -1,0 +1,152 @@
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* dark overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+.popupContent {
+  background: #fff;
+  width: 35rem;
+  max-width: 90%;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.25);
+  animation: fadeIn 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.popupForm input{
+  border: 2px solid #101540;
+  border-radius: 1.6rem;
+}
+
+.input {
+  width: 100% !important;
+  max-width: 29.75rem !important;
+  height: 4.5rem !important;
+  font-size: 1.5rem !important;
+  padding: 0.75rem 1rem !important;
+  border-radius: 1.6rem !important;
+  border: 2px solid #101540 !important;
+  box-sizing: border-box !important;
+  margin-bottom: 2px !important;
+  display: block !important;
+
+   padding-left: 3rem !important;
+}
+
+.GenderInput{
+  width: 100%;
+  max-width: 29.75rem;
+  height: 4.5rem;
+  font-size: 1.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 1.6rem;
+  border: 2px solid #101540;
+  box-sizing: border-box;
+  margin-bottom: 2px;
+  display: block;
+  background-color: #fff;
+}
+
+.myDropdown {
+  height: 4.5rem !important;             
+  border: 2px solid #101540 !important; 
+  border-right: none !important;       
+  border-radius: 1.6rem 0 0 1.6rem !important;
+  background: transparent !important;        
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0.75rem !important;
+  text-align: left;
+}
+
+.myCountryList {
+  background: white !important;
+  border: 2px solid #101540 !important;
+  border-radius: 1.6rem !important;
+  max-height: 250px !important;
+  overflow-y: auto !important;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15) !important;
+  width: 250px !important;
+}
+
+.myCountryList::-webkit-scrollbar {
+  display: none !important; 
+}
+
+.myCountryList .country {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px;
+  padding: 0.5rem 1rem !important;
+  cursor: pointer !important;
+}
+
+:global(.country-list .country:hover) {
+  background-color: #101540 !important; 
+  color: white !important;         
+}
+
+.popupHeader {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+}
+
+.headerActions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.popupForm {
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  gap: 1rem;
+}
+
+.popupFooter {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.popupFooter button{
+  background: hwb(210 1% 66%);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.popupFooter button:hover{
+  background: #021035a2;
+}
+
+.popupFooter input{
+  width: 17.5rem;
+  height: 2rem;
+  text-align: center;
+  border: 1px solid #101540;
+  background-color: transparent;
+  color: #101540;
+}
+
+.popupFooter input::placeholder{
+  color: #101540;
+  font-size: 1rem;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

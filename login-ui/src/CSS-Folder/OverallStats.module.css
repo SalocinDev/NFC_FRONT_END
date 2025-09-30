@@ -1,0 +1,62 @@
+h3{
+    padding: 0;
+    margin: 0;
+}
+
+h2{
+    text-align: center;
+}
+
+h1{
+    color: #101540;
+    text-align: center;
+    font-size: 4rem;
+    padding: 0;
+    margin: 0;
+}
+
+.TableContainer table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 0.95rem;
+}
+
+.TableContainer th,
+.TableContainer td {
+  padding: 0.5rem 1rem;
+  border: 2px solid #000000;
+  text-align: left;
+  font-size: 1.5rem;
+}
+
+.TableContainer th {
+  background-color: #f3f4f6;
+}
+
+.TableContainer tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+.MainContainer{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    
+}
+
+.TableContainer{
+    width: 100%;
+}
+
+.ChartContainer{
+    padding-top: 2rem;
+    display: flex;
+
+    
+}
+
+.MainRender{
+    padding-bottom: 10rem;
+}
+

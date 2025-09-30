@@ -57,8 +57,8 @@
   width: 90%;
   max-width: 400px;
   padding: 4rem 2rem;
-  transform: translateX(60%); 
-  margin-top: 5vw;
+  margin-left: 15vw;
+  margin-top: 20vh;
 }
 
 .Header{
@@ -123,6 +123,17 @@
   font-weight: 400;
   margin-top: 4rem;
 }
+
+@media (max-width: 1420px){
+    
+      .LoginContainer {
+    margin-left: 12vw;
+    width: 100%;
+    margin-top: 20vh;
+  }
+}
+
+
 @media (max-width: 1400px){
     .RightRectangle {
       display: none;
@@ -130,7 +141,7 @@
       .loginContainer {
     top: 5%;
     left: 50%;
-    transform: translateX(-50%);
+    margin-left: 5vw;
     width: 90%;
     margin-top: 15vh;
   }

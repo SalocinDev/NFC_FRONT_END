@@ -337,6 +337,40 @@
   border: none;
 }
 
+.RegisterNewUser{
+  background: hwb(145 1% 47%);
+  color: white;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  display: flex;
+  border-radius: 6px;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.VerifyEmail{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  color: white;
+  border-radius: 6px;
+  border: none;
+  background-color: #101540;
+  cursor: pointer;
+}
+
+.VerifyEmail:hover{
+  background-color: #222D8A;
+}
+
+.RegisterNewUser:hover{
+  background: #086b19;
+}
+
 .RegisterUser{
   color: #101540;
 }
@@ -349,16 +383,59 @@
   cursor: not-allowed;
 }
 
+.disabled{
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+.CancelDelete,
+.ConfirmDelete{
+  
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 2rem;
+  width: 10rem;
+  height: 3rem;
+  cursor: pointer;
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+.CancelDelete{
+  background-color: #101540;
+  border-color: #101540;
+  color: white;
+}
+
+.ConfirmDelete{
+  background-color: red;
+  border-color: red;
+  color: white;
+}
+
 .CloseForm,
 .SaveForm{
-  width: 18rem;
-  height: 4rem;
-  border-radius: 0.8rem;
+  width: 10rem;
+  height: 2rem;
   font-size: 1.5rem;
-  color: white;
-  background-color: #101540;
-  border: none;
+  background-color: transparent;
   cursor: pointer;
+  border: none;
+  text-decoration: underline;
+  text-decoration: none;
+  font-style: italic;
+}
+
+.CloseForm{
+  justify-self: left;     
+  align-self: center;
+   grid-column: 1 / 1;
+   color: red;
+}
+.SaveForm{
+ align-self: center;      
+ justify-self: right;
+ color: #101540;
 }
 
 .Sample:hover{

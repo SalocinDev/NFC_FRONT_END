@@ -1,3 +1,5 @@
+import { toast } from "react-toastify";
+
 const apiUrl = import.meta.env.VITE_API_URL;
 //////////////////////////////////////////////////////////////////////////////////////////////
 async function toLogin(email, password) {
@@ -97,7 +99,7 @@ export async function signIn(email, password, navigate) {
         "Content-Type": "application/json",
         "x-api-key": import.meta.env.VITE_API_KEY
       },
-      body: JSON.stringify({ email })
+      body: JSON.stringify({ email, password })
     });
     const resultCheck = await checkFirst.json();
     if (resultCheck.success) {

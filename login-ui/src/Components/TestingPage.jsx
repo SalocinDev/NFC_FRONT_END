@@ -1,66 +1,96 @@
+//overall report for gender, caregory, and school. 
+//jm ikaw na mag style
+//palagay na lng sa report
+
 import { useEffect, useState } from "react";
 import api from "../api/api";
+import { BarChart, PieChart } from "@mui/x-charts";
 
-function TestingPage (){
+function OverallStats() {
+  const [genderData, setGenderData] = useState([]);
+  const [categoryData, setCategoryData] = useState([]);
+  const [schoolData, setSchoolData] = useState([]);
+  const [graphType, setGraphType] = useState("bar");
 
-const [services, setServices] = useState([]);
-  const [selectedService, setSelectedService] = useState("");
-  const [ageData, setAgeData] = useState([]);
-
-  // Load all services for dropdown
   useEffect(() => {
-    api.get("/routes/services").then((res) => setServices(res.data));
+    api.get("/Statsreports/overall/gender").then((res) => setGenderData(res.data));
+    api.get("/Statsreports/overall/category").then((res) => setCategoryData(res.data));
+    api.get("/Statsreports/overall/school").then((res) => setSchoolData(res.data));
   }, []);
 
-  // Load age data when a service is selected
-  useEffect(() => {
-    if (selectedService) {
-      api.get(`/Statsreports/${selectedService}/age`).then((res) =>
-        setAgeData(res.data)
-      );
-    }
-  }, [selectedService]);
+  const renderTable = (title, data) => {
+    const total = data.reduce((sum, row) => sum + row.value, 0);
 
-  return (
-    <div>
-      <h3>Age Groups by Service</h3>
-
-      {/* Dropdown */}
-      <select
-        value={selectedService}
-        onChange={(e) => setSelectedService(e.target.value)}
-      >
-        <option value="">-- Select Service --</option>
-        {services.map((s) => (
-          <option key={s.library_service_id} value={s.library_service_id}>
-            {s.library_service_name}
-          </option>
-        ))}
-      </select>
-
-      {/* Results Table */}
-      {ageData.length > 0 && (
-        <table border="1" style={{ marginTop: "15px", width: "100%" }}>
+    return (
+      <div style={{ marginTop: "20px" }}>
+        <h4>{title}</h4>
+        <table border="1" style={{ width: "100%", marginBottom: "15px" }}>
           <thead>
             <tr>
-              <th>Service</th>
-              <th>Age Group</th>
-              <th>Total Users</th>
+              <th>Label</th>
+              <th>Total</th>
             </tr>
           </thead>
           <tbody>
-            {ageData.map((row, idx) => (
+            {data.map((row, idx) => (
               <tr key={idx}>
-                <td>{row.library_service_name}</td>
-                <td>{row.age_group}</td>
-                <td>{row.total_users}</td>
+                <td>{row.label}</td>
+                <td>{row.value}</td>
               </tr>
             ))}
+            <tr style={{ fontWeight: "bold" }}>
+              <td>GRAND TOTAL</td>
+              <td>{total}</td>
+            </tr>
           </tbody>
         </table>
-      )}
+
+        {/* Chart */}
+        {graphType === "bar" ? (
+          <BarChart
+            xAxis={[{ scaleType: "band", data: data.map((r) => r.label) }]}
+            series={[{ data: data.map((r) => r.value), label: "Users" }]}
+            width={600}
+            height={400}
+          />
+        ) : (
+          <PieChart
+            series={[
+              {
+                data: data.map((r, i) => ({
+                  id: i,
+                  value: r.value,
+                  label: r.label,
+                })),
+              },
+            ]}
+            width={600}
+            height={400}
+          />
+        )}
+      </div>
+    );
+  };
+
+  return (
+    <div>
+      <h3>Overall Reports</h3>
+
+      {/* Graph type selector */}
+      <select
+        value={graphType}
+        onChange={(e) => setGraphType(e.target.value)}
+        style={{ marginBottom: "15px" }}
+      >
+        <option value="bar">Bar Chart</option>
+        <option value="pie">Pie Chart</option>
+      </select>
+
+      {renderTable("Overall Gender Count", genderData)}
+      {renderTable("Overall User Category Count", categoryData)}
+      {renderTable("Overall User School Count", schoolData)}
     </div>
   );
 }
 
-export default TestingPage;
+export default OverallStats;

@@ -140,13 +140,13 @@ function Books() {
     if (active === "BorrowedBooksAdmin") {
       tableData = borrowedRecords;
       idField = "borrow_id";   //adjust field name from your backend
-    } else if (active === "ReturnedBooksAdmin") {
-      tableData = returnedRecords;
-      idField = "returned_id"; //adjust field name
     } else if (active === "BooksAdmin") {
       tableData = bookRecords;
       idField = "book_id";     //adjust field name
-    }
+    } else if (active === "ReturnedBooksAdmin") {
+      tableData = returnedRecords;
+      idField = "book_returned_id";
+    } //adjust field name
     //map selected indexes to real IDs
     const selectedIds = selectedIndexes.map(idx => tableData[idx][idField]);
     console.log("Ids Selected: ", selectedIds);
@@ -157,9 +157,39 @@ function Books() {
     }
     
     if (action === "delete" && active === "BorrowedBooksAdmin") {
-      const res = await api.delete('/borrowing/staff', { data: selectedIds });
-      fetchBorrowedBooks();
-      alert(res.data.message);
+      try {
+        const res = await api.delete("/borrowing/staff", { data: selectedIds });
+        fetchBorrowedBooks();
+        alert(res.data.message);
+      } catch (err) {
+        alert(err.response?.data?.message || "Failed to delete borrowed books");
+      }
+    }
+
+    if (action === "delete" && active === "BooksAdmin") {
+      try {
+        const res = await api.delete("/books/staff", { data: selectedIds });
+        fetchBooks();
+        alert(res.data.message);
+      } catch (err) {
+        const books = err.response?.data?.books;
+        if (books?.length) {
+          const titles = books.map(b => `${b.book_title} (${b.book_author})`).join("\n");
+          alert(`Cannot delete these borrowed books:\n${titles}`);
+        } else {
+          alert(err.response?.data?.message || "Failed to delete books");
+        }
+      }
+    }
+
+    if (action === "delete" && active === "ReturnedBooksAdmin") {
+      try {
+        const res = await api.delete("/returning/staff", { data: selectedIds });
+        fetchReturnedBooks();
+        alert(res.data.message);
+      } catch (err) {
+        alert(err.response?.data?.message || "Failed to delete returned books");
+      }
     }
     setIsOpenDeleteConfirm(false);
   };
