@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Table, SearchID } from "../.."; 
 import api from "../../../api/api";
+import classes from "../../../CSS-Folder/Table.module.css";
 
 function ServicesAvailed() {
   const [records, setRecords] = useState([]);
@@ -33,11 +34,14 @@ function ServicesAvailed() {
 
   return (
     <div>
+      <div className={classes.ServicesAvailedContainer}> 
        <SearchID placeholder="Search by Services"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
          />
-      <Table records={searchTerm ? filteredRecords : records} />
+      <Table records={searchTerm ? filteredRecords : records}
+      containerClass={classes.ServicesTable} />
+      </div>
     </div>
   );
 }

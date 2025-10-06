@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Table, SearchID } from "../.."; 
 import api from "../../../api/api";
+import classes from "../../../CSS-Folder/Table.module.css";
+
 
 function BorrowedBooksTable() {
 
@@ -34,11 +36,14 @@ function BorrowedBooksTable() {
   
   return (
     <div>
-      <SearchID placeholder="Search by Book Name/Author"
+      <div className={classes.BorrowedBooksContainer}>     
+        <SearchID placeholder="Search by Book Name/Author"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
          />
-      <Table records={searchTerm ? filteredRecords : records} />
+      <Table records={searchTerm ? filteredRecords : records}
+      containerClass={classes.BorrowedTable} />
+      </div>
     </div>
   );
 }

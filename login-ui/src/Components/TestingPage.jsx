@@ -1,96 +1,146 @@
-//overall report for gender, caregory, and school. 
-//jm ikaw na mag style
-//palagay na lng sa report
+//jm pa style
+//add book form
+//maayos na to with validation na 
+//should be good na
 
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import api from "../api/api";
-import { BarChart, PieChart } from "@mui/x-charts";
 
-function OverallStats() {
-  const [genderData, setGenderData] = useState([]);
-  const [categoryData, setCategoryData] = useState([]);
-  const [schoolData, setSchoolData] = useState([]);
-  const [graphType, setGraphType] = useState("bar");
+export default function AddBookForm({ onAdded }) {
+  const [form, setForm] = useState({
+    book_title: "",
+    book_author: "",
+    book_description: "",
+    book_publisher: "",
+    book_year_publish: "",
+    book_category_id_fk: "",
+    book_status: "Available",
+    book_inventory: 1,
+  });
+  const [cover, setCover] = useState(null);
+  const [categories, setCategories] = useState([]);
 
+  // Load categories on mount
   useEffect(() => {
-    api.get("/Statsreports/overall/gender").then((res) => setGenderData(res.data));
-    api.get("/Statsreports/overall/category").then((res) => setCategoryData(res.data));
-    api.get("/Statsreports/overall/school").then((res) => setSchoolData(res.data));
+    api.get("/categories")
+      .then((res) => setCategories(res.data))
+      .catch((err) => console.error("Error fetching categories:", err));
   }, []);
 
-  const renderTable = (title, data) => {
-    const total = data.reduce((sum, row) => sum + row.value, 0);
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
 
-    return (
-      <div style={{ marginTop: "20px" }}>
-        <h4>{title}</h4>
-        <table border="1" style={{ width: "100%", marginBottom: "15px" }}>
-          <thead>
-            <tr>
-              <th>Label</th>
-              <th>Total</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((row, idx) => (
-              <tr key={idx}>
-                <td>{row.label}</td>
-                <td>{row.value}</td>
-              </tr>
-            ))}
-            <tr style={{ fontWeight: "bold" }}>
-              <td>GRAND TOTAL</td>
-              <td>{total}</td>
-            </tr>
-          </tbody>
-        </table>
+  const handleFileChange = (e) => {
+    setCover(e.target.files[0]);
+  };
 
-        {/* Chart */}
-        {graphType === "bar" ? (
-          <BarChart
-            xAxis={[{ scaleType: "band", data: data.map((r) => r.label) }]}
-            series={[{ data: data.map((r) => r.value), label: "Users" }]}
-            width={600}
-            height={400}
-          />
-        ) : (
-          <PieChart
-            series={[
-              {
-                data: data.map((r, i) => ({
-                  id: i,
-                  value: r.value,
-                  label: r.label,
-                })),
-              },
-            ]}
-            width={600}
-            height={400}
-          />
-        )}
-      </div>
-    );
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    //validation
+    if (!form.book_title.trim()) return alert("Title is required");
+    if (!form.book_author.trim()) return alert("Author is required");
+    if (!form.book_category_id_fk) return alert("Category is required");
+
+    if (cover) {
+      if (cover.size > 5 * 1024 * 1024) {
+        return alert("File too large (max 5MB)");
+      }
+      if (
+        !["image/jpeg", "image/png", "image/gif", "image/webp"].includes(
+          cover.type
+        )
+      ) {
+        return alert("Only JPG, PNG, GIF, WEBP allowed");
+      }
+    }
+    //sent file + form
+    const formData = new FormData();
+    for (const key in form) {
+      formData.append(key, form[key]);
+    }
+    if (cover) formData.append("cover", cover);
+
+    try {
+      await api.post("/opac", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+      alert("Book added!");
+      if (onAdded) onAdded();
+    } catch (err) {
+      console.error("Upload failed:", err);
+      alert("Error uploading book");
+    }
   };
 
   return (
-    <div>
-      <h3>Overall Reports</h3>
+    <form onSubmit={handleSubmit} encType="multipart/form-data">
+      <div>
+        <label>Title</label>
+        <input type="text" name="book_title" onChange={handleChange} required />
+      </div>
 
-      {/* Graph type selector */}
-      <select
-        value={graphType}
-        onChange={(e) => setGraphType(e.target.value)}
-        style={{ marginBottom: "15px" }}
-      >
-        <option value="bar">Bar Chart</option>
-        <option value="pie">Pie Chart</option>
-      </select>
+      <div>
+        <label>Author</label>
+        <input type="text" name="book_author" onChange={handleChange} required />
+      </div>
 
-      {renderTable("Overall Gender Count", genderData)}
-      {renderTable("Overall User Category Count", categoryData)}
-      {renderTable("Overall User School Count", schoolData)}
-    </div>
+      <div>
+        <label>Description</label>
+        <textarea name="book_description" onChange={handleChange} />
+      </div>
+
+      <div>
+        <label>Publisher</label>
+        <input type="text" name="book_publisher" onChange={handleChange} />
+      </div>
+
+      <div>
+        <label>Year Published</label>
+        <input type="date" name="book_year_publish" onChange={handleChange} />
+      </div>
+
+      <div>
+        <label>Category</label>
+        <select
+          name="book_category_id_fk"
+          value={form.book_category_id_fk}
+          onChange={handleChange}
+          required
+        >
+          <option value="">-- Select Category --</option>
+          {categories.map((cat) => (
+            <option key={cat.book_category_id} value={cat.book_category_id}>
+              {cat.book_category_name}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      <div>
+        <label>Inventory</label>
+        <input
+          type="number"
+          name="book_inventory"
+          min="1"
+          value={form.book_inventory}
+          onChange={handleChange}
+        />
+      </div>
+
+      <div>
+        <label>Book Cover</label>
+        <input
+          type="file"
+          id="cover"
+          name="cover"
+          accept="image/*"
+          onChange={handleFileChange}
+          style={{ display: "block", margin: "10px 0" }}
+        />
+      </div>
+
+      <button type="submit">Add Book</button>
+    </form>
   );
 }
-
-export default OverallStats;

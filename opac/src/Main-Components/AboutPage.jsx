@@ -4,6 +4,7 @@ import classes from '../CSS/AboutPage.module.css'
 import React from "react";
 import { Parallax, ParallaxLayer } from '@react-spring/parallax';
 import { AiPopUp } from '../../../login-ui/src/Components'
+
 function AboutPage() {
   
   return (

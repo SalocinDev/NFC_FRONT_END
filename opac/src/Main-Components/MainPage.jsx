@@ -6,15 +6,13 @@ import React, { useState, useRef, useEffect } from 'react';
 import classes from '../CSS/MainPage.module.css';
 import { Parallax, ParallaxLayer } from '@react-spring/parallax';
 import { fetchBooks } from '../Services/fetchBooks'; 
+import OPACSearchBar from '../Components/OPACSearchbar';
 
 function MainPage() {
   const [results, setResults] = useState([]);
-
-  /* WE NEED TO FETCH DATA FROM DB THAT WILL DISPLAY BOOK_TITLE, BOOK_AUTHOR AND BOOK_IMG */
-  /* ATTEMPT FOR PLACEHOLDER: */
-  /*  */
   
   return (
+
     <div className={classes.MainDiv}>
       <div className={classes.SearchContainer}>
 
@@ -25,19 +23,23 @@ function MainPage() {
           </span>
         </div>
 
-      
+        {/*}
         <div className={classes.SearchWrapper}>
           <SearchBar setResults={setResults} />
           {results.length > 0 && <SearchResultList results={results} />}
         </div>
-        
+        {*/}
+        <>
+          <OPACSearchBar/>
+        </>
+
         <div className={classes.ButtonContainer}>
           <Button name="SEARCH" use="SearchButton" />
           <Button name="BROWSE BOOKS" use="RandomButton" />
         </div>     
+      </div>
     </div>
-</div>
-      
+     
   );
 }
 

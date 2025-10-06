@@ -337,6 +337,19 @@
   border: none;
 }
 
+ .FirstPageTable,
+ .LastPageTable,
+ .NextPageButton,
+ .PreviousPageButton{
+  color: #101540;
+  margin-top: 0.5rem;
+  border: none;
+ }
+
+ .FirstPageTable.disabled{
+  color: grey;
+ }
+
 .RegisterNewUser{
   background: hwb(145 1% 47%);
   color: white;
@@ -349,6 +362,31 @@
   padding: 0.4rem 0.8rem;
   cursor: pointer;
   transition: background 0.2s ease;
+}
+
+.ExportExcel{
+  display: flex;
+  align-items: center;
+  border-style: solid;
+  border-color: #101540;
+  border-radius: 0.5rem;
+  gap: 0.5rem;
+  padding: 0.3rem 0.8rem;
+  color: #101540;
+  text-transform: uppercase;
+}
+
+.ExportExcel:hover{
+  color: white;
+  background-color: #086b19;
+  border: #086b19;
+  transition: 0.4s;
+}
+
+.ExportExcel.disabled{
+  color: grey;
+  border-color: grey;
+  
 }
 
 .VerifyEmail{
@@ -507,6 +545,7 @@
   cursor: pointer;
   }
 
+ 
 
  .ButtonUserPage{
     width: 100%;

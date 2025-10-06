@@ -5,6 +5,7 @@ import { MainPage, AboutPage, BookArchiveOpac} from "./Main-Components/";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "/index.css";
 import { HashRouter, Routes, Route } from "react-router-dom";
+import { BookDetailPage, OPACSearchbar, OPACResult } from "./Components";
 
 /* import ProtectedRoute from "./ProtectedRoute"; */
 
@@ -24,8 +25,14 @@ createRoot(document.getElementById("root")).render(
     <HashRouter hashType="slash">
       <Routes>
         <Route path="/" element={<MainPage/>}/>
-        <Route path="/AboutPage" element={<AboutPage/>}/>
-        <Route path="/BookArchiveOpac" element={<BookArchiveOpac/>}/>
+        <Route path="AboutPage" element={<AboutPage/>}/>
+        <Route path="BookArchiveOpac" element={<BookArchiveOpac/>}/>
+
+        {/*test*/}
+        <Route path="OPACSearchBar" element={<OPACSearchbar />} />
+        <Route path="OPACResult" element={<OPACResult />} />
+        <Route path="BookDetail/:id" element={<BookDetailPage />} />
+
         <Route path="*" element={<NotFoundPage/>}/>
       </Routes>
     </HashRouter>

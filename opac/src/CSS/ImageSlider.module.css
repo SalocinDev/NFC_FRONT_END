@@ -1,0 +1,113 @@
+.SliderContainer{
+    display: flex;
+    background-color: #101540;
+}
+
+.SliderContainer h1{
+    font-size: 5rem;
+    margin: 0;
+    color: white;
+    letter-spacing: 0.4rem;
+    text-shadow: 0 4px 6px rgba(0, 0, 0, 0.8);
+}
+
+.SliderContainer p{
+    font-size: 1.5rem;
+    margin: 0;
+    color: white;
+    text-align: left;
+text-shadow: 0 4px 6px rgba(0, 0, 0, 0.8);
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+}
+
+.BookTitle{
+    border-bottom: 5px solid white;
+    width: 50vw;
+}
+
+.CoverTitle {
+  width: 100%;
+  height: 35vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+  overflow: hidden;
+  background: none;
+  isolation: isolate; 
+}
+
+.CoverTitle::before {
+  content: "";
+  position: absolute;
+  inset: 0; 
+  background-image: var(--bg-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: brightness(0.7) blur(3px);
+  transform: scale(1.05); 
+  transform-origin: center;
+  z-index: 0;
+}
+
+.CoverTitle::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0) 30%,
+    rgba(255, 255, 255, 0) 60%,
+    rgba(255, 255, 255, 1) 100%
+  ); */
+  z-index: 1;
+}
+
+.CoverTitle img,
+.CoverTitle .TitleContainer {
+  position: relative;
+  z-index: 2;
+}
+
+.TitleContainer h1, p{
+    text-align: left;
+}
+
+.bookImage{
+    width: 10.4;
+    height: 16.7rem;
+    padding: 1rem 0 1rem 7rem;
+    cursor: pointer;
+}
+.bgLayer {
+  position: absolute;
+  inset: 0;
+  background-image: var(--bg-image);
+  background-size: cover;       /* fills the div */
+  background-position: center;
+  filter: blur(20px) brightness(0.7);
+  transform: scale(1.2);        /* avoids blur edges */
+  z-index: 0;
+}
+
+.PaginationWrapper{
+  background-color: transparent;
+  z-index: 999;
+  display: inline-block;
+  align-items: center;
+  bottom: 63%;
+  left: 60%;
+  position: absolute;
+  display: flex;
+}
+
+.PageIndicator{
+  color: white;
+}

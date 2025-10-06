@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import classes from '../CSS-Folder/Statistics.module.css';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { Charts, OverallStats, Button, TestingPage } from '../Components';
+import { Charts, OverallStats, Button } from '../Components';
 
 function Statistics() {
   const navigate = useNavigate(); 
@@ -11,7 +11,6 @@ function Statistics() {
     switch (active) {
       case "ServicesChart": return <Charts />;
       case "OverallStats": return <OverallStats />;
-      case "TestingPage": return <TestingPage />;
       default: return <Charts />;
     }
   };
@@ -31,11 +30,6 @@ function Statistics() {
           isActive={active === "OverallStats"} 
         />
 
-        <Button 
-          name="Silang orbi to" use="ReturnedBooks" 
-          onClick={() => setActive("TestingPage")}
-          isActive={active === "TestingPage"} 
-        />
       </div>
 
       <div className={classes.SampleLangTo}>

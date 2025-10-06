@@ -9,7 +9,6 @@
 .tableContainer {
   background: white;
   width: 100%;
-  
 }
 
 table {
@@ -58,15 +57,16 @@ tr:hover {
   box-sizing: border-box;
 }
 
-.PageCount{
-  text-align: center;
-  padding: 1rem;
+.PageCount{  
+  line-height: normal;
+  font-size: 1.5rem;
+  color: #101540;
   
 }
 
-.PaginationControls{  display: flex;
-  justify-content: left;
-  background-color: red;
+.PaginationControls{  
+  display: flex;
+  flex-direction: row;
 }
 
 .viewButton:disabled {
@@ -96,4 +96,31 @@ tr:hover {
   color: rgb(7, 23, 29);
 }
 
- 
+.ReturnedBooksContainer,
+.BorrowedBooksContainer,
+.ServicesAvailedContainer{
+  width: 82vw;
+}
+
+.ServicesAvailedContainer table{
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.ReturnedBooksContainer table{
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.BorrowedBooksContainer table{
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.ReturnedTable,
+.BorrowedTable,
+.ServicesTable{
+  width: 100%;    /* overrides the wrapper width */
+  margin: 0 auto;
+  margin-top: 2.5rem;
+}

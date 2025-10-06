@@ -1,6 +1,6 @@
 .ResultList {
-  position: absolute;   /* 🔥 take it out of the normal flow */
-  top: 100%;            /* appear right under the search bar */
+  position: absolute;   
+  top: 100%;           
   left: 0;
   right: 0;
 
@@ -11,10 +11,10 @@
   box-shadow: 0px 0px 8px #ddd;
   border-radius: 10px;
 
-  margin-top: 0.5rem;   /* small spacing below search bar */
+  margin-top: 0.5rem;   
   max-height: 300px;
   overflow-y: auto;
-  z-index: 9999;        /* stay on top */
+  z-index: 9999;    
 }
 
 .ResultList::-webkit-scrollbar-button {

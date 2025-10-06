@@ -75,7 +75,7 @@ function Charts() {
   return (
     <div>
       <h3>Reports by Service</h3>
-
+    <div className={classes.SelectContainer}>
       {/* Service Dropdown */}
       <select
         value={selectedService}
@@ -122,10 +122,9 @@ function Charts() {
         <option value="month">This Month</option>
         <option value="custom">Custom</option>
       </select>
-
-      {/* Custom Dates */}
+  
       {range === "custom" && (
-        <span style={{ marginLeft: "10px" }}>
+        <span className={classes.InputContainer}>
           <input
             type="date"
             value={customDates.start}
@@ -136,55 +135,36 @@ function Charts() {
           <input
             type="date"
             value={customDates.end}
+            placeholder="Select a date" 
             onChange={(e) =>
               setCustomDates((prev) => ({ ...prev, end: e.target.value }))
             }
-            style={{ marginLeft: "5px" }}
           />
         </span>
       )}
+</div>
+{/* <div className={classes.NoData}>      
+{loading && <p>Loading...</p>}
+  {!loading && selectedService && reportData.length === 0 && (
+    <p>No data available (showing zeros).</p>
+  )}
+</div> */}
+<div className={classes.MainContainer}>
 
-      {/* Results */}
-      <div className={classes.ChartContainer} style={{ marginTop: "15px" }}>
-        {loading && <p>Loading...</p>}
-        {!loading && selectedService && reportData.length === 0 && (
-          <p>No data available (showing zeros).</p>
-        )}
+  {graphType === "bar" ? (
+    // Bar chart layout: chart above table
+    <>
+      <div className={classes.BarChartContainer}>
+        <BarChart
+          xAxis={[{ scaleType: "band", data: mergedData.map((r) => r.label) }]}
+          series={[{ data: mergedData.map((r) => r.value), label: "Users" }]}
+          width={800}
+          height={200}
+        />
+      </div>
 
-        {/* Chart */}
-        <div style={{ marginTop: "20px" }}>
-          {graphType === "bar" ? (
-            <BarChart
-              xAxis={[{ scaleType: "band", 
-              data: mergedData.map((r) => r.label), }]}
-          
-              series={[{ data: mergedData.map((r) => r.value), label: "Users" }]}
-              width={1500}
-              height={200}
-            />
-            
-
-
-          ) : (
-            <PieChart
-              series={[
-                {
-                  data: mergedData.map((r, i) => ({
-                    id: i,
-                    value: r.value,
-                    label: r.label
-                  }))
-                }
-              ]}
-              width={600}
-              height={400}
-              
-            />
-          )}
-        </div>
-
-        
-        <table border="1" style={{ marginTop: "15px", width: "80%" }}>
+     <div className={classes.TableContainer}>
+        <table>
           <thead>
             <tr>
               <th>{reportType.toUpperCase()}</th>
@@ -198,7 +178,49 @@ function Charts() {
                 <td>{row.value}</td>
               </tr>
             ))}
-            <tr style={{ fontWeight: "bold", background: "#f0f0f0" }}>
+            <tr>
+              <td>GRAND TOTAL</td>
+              <td>{mergedData.reduce((sum, row) => sum + row.value, 0)}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </>
+  ) : (
+    // Pie chart layout: chart and table side by side
+    <div className={classes.PieLayoutContainer}>
+      <div className={classes.PieChartContainer}>
+        <PieChart
+          series={[
+            {
+              data: mergedData.map((r, i) => ({
+                id: i,
+                value: r.value,
+                label: r.label,
+              })),
+            },
+          ]}
+          width={550}
+          height={550}
+        />
+      </div>
+
+      <div className={classes.TableContainer}>
+        <table>
+          <thead>
+            <tr>
+              <th>{reportType.toUpperCase()}</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            {mergedData.map((row, idx) => (
+              <tr key={idx}>
+                <td>{row.label}</td>
+                <td>{row.value}</td>
+              </tr>
+            ))}
+            <tr>
               <td>GRAND TOTAL</td>
               <td>{mergedData.reduce((sum, row) => sum + row.value, 0)}</td>
             </tr>
@@ -206,6 +228,10 @@ function Charts() {
         </table>
       </div>
     </div>
+  )}
+</div>
+
+  </div>
   );
 }
 

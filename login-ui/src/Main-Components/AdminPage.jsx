@@ -1,6 +1,6 @@
 import classes from '../CSS-Folder/AdminPage.module.css';
 import { FaUser, FaCog } from 'react-icons/fa';
-import { Button, Statistics, Books, UserManagement, SettingPage, LogsTable} from '../Components';
+import { Button, Statistics, Books, UserManagement, SettingPage, LogsTable, ReportsExport} from '../Components';
 import { NavLink } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { WlogoSidebar } from '../Logo';
@@ -81,6 +81,8 @@ function AdminPage() {
         return <UserManagement />;
          case "SettingPage":
         return <SettingPage />;
+        case "Reports":
+        return <ReportsExport />;
       default:
         return <Statistics />;
     }

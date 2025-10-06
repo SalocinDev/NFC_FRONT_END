@@ -13,15 +13,11 @@ export { default as NotFoundPage} from './NotFoundPage';
 
 /* AdminPage related imports */
 export { default as Books} from './AdminPage-Components/Books';
-export { default as Graphs} from './AdminPage-Components/Graphs';
-export { default as UserGraph} from './AdminPage-Components/UserGraph';
-export { default as UserLoggedMonth} from './AdminPage-Components/UserLoggedMonth';
 export { default as UserManagement} from './AdminPage-Components/UserManagement';
-export { default as ServicesGraph} from './AdminPage-Components/ServicesGraph';
 export { default as LogsTable} from './LogsTable';
 export { default as OverallStats} from './OverallStats';
 export { default as Statistics} from './Statistics';
-export { default as TestingPage} from './TestingPage';
+export { default as ReportsExport} from './ReportsExport';
 
 
 /* UserPage related imports */
@@ -48,3 +44,5 @@ export { default as RegisterUser } from './PopUps/RegisterUser';
 
 
 export { default as Charts } from './Charts';
+
+

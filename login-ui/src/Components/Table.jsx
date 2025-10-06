@@ -1,5 +1,8 @@
 import React from "react";
 import classes from "../CSS-Folder/Table.module.css";
+import { GrCaretNext, GrChapterNext, GrCaretPrevious, GrChapterPrevious } from "react-icons/gr";
+import { Button } from ".";
+
 import {
   useReactTable,
   getCoreRowModel,
@@ -65,50 +68,49 @@ const Table = ({
       : [];
 
   let columnsToUse = [
-  ...(checkbox && records.length > 0 // ✅ only add if records exist
-    ? [
-        {
-          id: "select",
-          header: ({ table }) =>
-            table.getRowModel().rows.length > 0 ? (
-              <input
-                className={classes.SelectRow}
-                type="checkbox"
-                checked={
-                  table.getRowModel().rows.length > 0 &&
-                  table.getRowModel().rows.every((row) => selectedRows[row.id])
-                }
-                onChange={(e) => {
-                  const checked = e.target.checked;
-                  const newSelected = {};
-                  table.getRowModel().rows.forEach((row) => {
-                    newSelected[row.id] = checked;
-                  });
-                  updateSelected(newSelected);
-                }}
-              />
-            ) : null,
-          cell: ({ row }) =>
-            row.original && Object.keys(row.original).length > 0 ? (
-              <input
-                className={classes.SelectRow}
-                type="checkbox"
-                checked={!!selectedRows[row.id]}
-                onChange={(e) => {
-                  const newSelected = {
-                    ...selectedRows,
-                    [row.id]: e.target.checked,
-                  };
-                  updateSelected(newSelected);
-                }}
-              />
-            ) : null, 
-        },
-      ]
-    : []),
-  ...autoColumns,
-];
-
+    ...(checkbox && records.length > 0
+      ? [
+          {
+            id: "select",
+            header: ({ table }) =>
+              table.getRowModel().rows.length > 0 ? (
+                <input
+                  className={classes.SelectRow}
+                  type="checkbox"
+                  checked={
+                    table.getRowModel().rows.length > 0 &&
+                    table.getRowModel().rows.every((row) => selectedRows[row.id])
+                  }
+                  onChange={(e) => {
+                    const checked = e.target.checked;
+                    const newSelected = {};
+                    table.getRowModel().rows.forEach((row) => {
+                      newSelected[row.id] = checked;
+                    });
+                    updateSelected(newSelected);
+                  }}
+                />
+              ) : null,
+            cell: ({ row }) =>
+              row.original && Object.keys(row.original).length > 0 ? (
+                <input
+                  className={classes.SelectRow}
+                  type="checkbox"
+                  checked={!!selectedRows[row.id]}
+                  onChange={(e) => {
+                    const newSelected = {
+                      ...selectedRows,
+                      [row.id]: e.target.checked,
+                    };
+                    updateSelected(newSelected);
+                  }}
+                />
+              ) : null,
+          },
+        ]
+      : []),
+    ...autoColumns,
+  ];
 
   if (view) {
     columnsToUse = [
@@ -211,24 +213,43 @@ const Table = ({
         </table>
 
         <div className={classes.paginationControls}>
-          <button
+          <Button
+            use="FirstPageTable"
+            name={<><GrChapterPrevious size={20} 
+             /></>}
+            onClick={() => table.setPageIndex(0)}
+            disabled={!table.getCanPreviousPage()}
+          />
+          
+          <Button
+            use="PreviousPageButton"
+            name={<><GrCaretPrevious size={20} 
+             /></>}
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
-          >
-            Previous
-          </button>
+          />
 
-          <span>
+          <span className={classes.PageCount}>
             Page {table.getState().pagination.pageIndex + 1} of{" "}
             {table.getPageCount()}
           </span>
 
-          <button
+          <Button
+            use="NextPageButton"
+            name={<><GrCaretNext size={20} 
+             /></>}
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}
-          >
-            Next
-          </button>
+          />
+      
+          <Button
+            use="LastPageTable"
+            name={<><GrChapterNext size={20} 
+             /></>}
+            onClick={() => table.setPageIndex(table.getPageCount() - 1)}
+            disabled={!table.getCanNextPage()}
+          />
+    
         </div>
       </div>
     </div>

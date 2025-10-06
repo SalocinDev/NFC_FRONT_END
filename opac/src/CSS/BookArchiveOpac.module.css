@@ -1,5 +1,5 @@
 .MainBody {
-   background-color: #101540;
+  
   min-height: 100vh;   /* grow with content instead of fixed */
   width: 100%;         /* avoid horizontal overflow */
   margin: 0;
@@ -20,6 +20,7 @@ body {
   padding: 0 2rem;
   background-color: white;
   width: 100%;
+  border-bottom: 5px solid #101540;
 }
 
 .ManilaAbove {

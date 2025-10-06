@@ -1,11 +1,23 @@
-import { BookArchive, SearchBar, Button, BookArchiveList } from '../Components';
-import React, { useState, useRef, useEffect } from 'react';
+import { SearchBar, ImageSlider, BookDetailPage } from '../Components';
 import classes from '../CSS/BookArchiveOpac.module.css';
-import { fetchBooks } from '../Services/fetchBooks';
-import { MdDashboard } from "react-icons/md";
+import { useState, useEffect } from 'react';
 
-function BookArchiveOpac({ image, name, description }) {
+
+function BookArchiveOpac() {
   
+   const [active, setActive] = useState("DashBoard");
+
+   const renderContent = () => {
+    switch (active) {
+      case "DashBoard":
+        return <ImageSlider setActive={ setActive }/>;
+      case "Books":
+        return <BookDetailPage />;
+      default:
+        return <ImageSlider />;
+    }
+  };
+
   return (
 
 <div className={classes.MainBody}>
@@ -24,9 +36,15 @@ function BookArchiveOpac({ image, name, description }) {
           </div>
         </div>
       </div>
+
       <div className={classes.BookContainer}>
-            <BookArchiveList title="Staff Picks" /> 
+            <div className={classes.SampleLangTo}>
+                <main className={classes.RenderComponents}>
+                  {renderContent()}
+                </main>
+            </div>
       </div>
+      
 </div>
 
   );
