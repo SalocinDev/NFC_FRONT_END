@@ -56,7 +56,7 @@ const OPACResult1 = ({ query, type, onBookClick, onBack, onNewSearch }) => {
         sort: filters.sort,
       };
 
-      const res = await api.get("/search", { params });
+      const res = await api.get("/opac/search", { params });
       setBooks(res.data || []);
     } catch (error) {
       console.error("Search error:", error);
