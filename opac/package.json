@@ -16,6 +16,7 @@
     "@mui/x-charts": "^8.11.2",
     "@react-spring/parallax": "^10.0.1",
     "async": "^3.2.6",
+    "axios": "^1.12.2",
     "dom": "^0.0.3",
     "lucide-react": "^0.541.0",
     "react": "^19.1.1",
