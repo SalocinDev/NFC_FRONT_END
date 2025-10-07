@@ -46,12 +46,14 @@ function Books() {
 
   const fetchBooks = async () => {
     try {
+      
       const res = await api.get(`/books/?role=${storedUser.role}`);
       setBookRecords(res.data);
     } catch (err) {
       console.error("Error fetching books:", err);
     }
   };
+  
 
   // Initial fetch on mount
   useEffect(() => {
@@ -90,7 +92,7 @@ function Books() {
           records={bookRecords}
           onSelectedRowsChange={setSelectedRows}
           checkbox
-          hiddenColumns={["book_category_name", "book_img"]}
+          hiddenColumns={["book_category_name", "book_img", "book_category_id"]}
         />
       );
     default:

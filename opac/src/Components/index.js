@@ -20,3 +20,7 @@ export { default as OPACSearchbar} from './OPACSearchbar';
 export { default as OPACResult } from './OPACResult';
 export { default as BookCoverDisplay } from './BookCoverDisplay';
 
+/*Testing*/
+export { default as BookDetail1} from './BookDetailPage1';
+export { default as OPACSearch1} from './OPACSearch1';
+export { default as OPACResult1 } from './OPACResult1';

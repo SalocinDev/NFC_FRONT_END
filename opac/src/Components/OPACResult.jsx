@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import classes from '../CSS/OPACResult.module.css';
 import api from "../api/api";
 
-function OPACResult() {
+function OPACResult({ initialResults, initialLoading }) {
+  const [results, setResults] = useState(initialResults || []);
+  const [loading, setLoading] = useState(initialLoading || false);
+
   const location = useLocation();
   const navigate = useNavigate();
-
-  const [results, setResults] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState([]);
 
   // Filters
@@ -70,16 +71,14 @@ function OPACResult() {
   };
 
   return (
-    <div className="p-6 min-h-screen bg-gray-50">
-      {/* 🔹 Search Bar */}
+    <div className={classes.Main}>
+    
       <form
         onSubmit={handleSearch}
-        className="flex flex-wrap justify-center items-center gap-3 bg-white shadow p-4 rounded-lg mb-6 sticky top-0 z-20"
       >
         <select
           value={type}
           onChange={(e) => setType(e.target.value)}
-          className="border p-3 rounded-lg"
         >
           <option value="keyword">Keyword</option>
           <option value="title">Title</option>
@@ -91,21 +90,19 @@ function OPACResult() {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search books..."
-          className="border flex-grow p-3 rounded-lg text-lg w-80"
         />
 
         <button
           type="submit"
-          className="bg-blue-600 text-white px-5 py-3 rounded-lg hover:bg-blue-700"
         >
           Search
         </button>
       </form>
 
       {/* Filters */}
-      <div className="flex flex-wrap gap-4 mb-6 bg-white p-4 rounded-lg shadow">
+      <div>
         <div>
-          <label className="block text-sm font-medium mb-1 text-gray-700">
+          <label>
             Sort By
           </label>
           <select
@@ -125,7 +122,7 @@ function OPACResult() {
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-1 text-gray-700">
+          <label>
             Category
           </label>
           <select
@@ -143,7 +140,7 @@ function OPACResult() {
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-1 text-gray-700">
+          <label>
             Publication From
           </label>
           <input
@@ -155,7 +152,7 @@ function OPACResult() {
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-1 text-gray-700">
+          <label>
             Publication To
           </label>
           <input
@@ -169,9 +166,9 @@ function OPACResult() {
 
       {/* Results */}
       {loading ? (
-        <p className="text-center text-gray-500">Loading books...</p>
+        <p>Loading books...</p>
       ) : results.length === 0 ? (
-        <p className="text-center text-red-500 text-lg font-semibold">
+        <p>
           No books found.
         </p>
       ) : (
@@ -182,15 +179,17 @@ function OPACResult() {
               onClick={() => handleBookClick(book.book_id)}
               className="p-3 border rounded-lg bg-white shadow hover:shadow-md cursor-pointer transition-transform hover:scale-105"
             >
-              <img
-                src={
-                  book.book_cover_img
-                    ? `${import.meta.env.VITE_API_URL}/${book.book_cover_img.replace(/^\/?uploads\//, "uploads/")}`
-                    : `${import.meta.env.BASE_URL}images/placeholder-book.png`
-                }
-                alt={book.book_title}
-                className="w-full h-48 object-cover rounded"
-              />
+             {results.map((book) => (
+        <div key={book.book_id} className="p-3 border rounded-lg">
+          <img
+            src={book.book_cover_img || "/placeholder-book.png"}
+            alt={book.book_title}
+            className="w-full h-48 object-cover rounded"
+          />
+          <h3>{book.book_title}</h3>
+          <p>{book.book_author}</p>
+        </div>
+      ))}
               <h3 className="mt-2 font-semibold text-lg truncate text-gray-900">
                 {book.book_title}
               </h3>

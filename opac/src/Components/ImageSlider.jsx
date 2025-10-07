@@ -10,7 +10,7 @@ import "swiper/css/navigation";
 import { Swiper, SwiperSlide } from "swiper/react";
 import api from "../api/api.js";
 
-function ImageSlider({ setActive }) {
+function ImageSlider({ setActive, setBookSelected }) {
   const [books, setBooks] = useState([]);
   const [error, setError] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(1);
@@ -71,7 +71,11 @@ function ImageSlider({ setActive }) {
                     src={bgImage}
                     alt={book.book_title}
                     className={classes.bookImage}
-                    onClick={() => setActive("Books")}
+                    onClick={() => {
+                      const bookID = JSON.stringify(book.book_id)
+                      setBookSelected(bookID);
+                      setActive("Books");
+                    }}
                   />
                   <div className={classes.TitleContainer}>
                     <div className={classes.BookTitle}>

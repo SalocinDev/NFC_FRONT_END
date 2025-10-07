@@ -5,38 +5,23 @@ import { useState, useEffect } from 'react';
 
 function BookArchiveOpac() {
   
-   const [active, setActive] = useState("DashBoard");
+  const [bookSelected, setBookSelected] = useState();
+  const [active, setActive] = useState("DashBoard");
 
-   const renderContent = () => {
-    switch (active) {
-      case "DashBoard":
-        return <ImageSlider setActive={ setActive }/>;
-      case "Books":
-        return <BookDetailPage />;
-      default:
-        return <ImageSlider />;
-    }
-  };
+  const renderContent = () => {
+  switch (active) {
+    case "DashBoard":
+      return <ImageSlider setActive={ setActive } setBookSelected={null} />;
+    case "Books":
+      return <BookDetailPage bookSelected={bookSelected} />;
+    default:
+      return <ImageSlider />;
+  }
+};
 
   return (
 
 <div className={classes.MainBody}>
-  <div className={classes.NavBar}>
-      <div className={classes.HeaderNavBar}>
-        <div className={classes.LogoGroup}>
-        <span className={classes.ManilaAbove}>MANILA</span>
-        <span className={classes.LibraryAbove}>
-          City <br /> Library
-        </span>
-      </div>
-      <div className={classes.SearchBar}>
-        <SearchBar />
-        
-        
-          </div>
-        </div>
-      </div>
-
       <div className={classes.BookContainer}>
             <div className={classes.SampleLangTo}>
                 <main className={classes.RenderComponents}>

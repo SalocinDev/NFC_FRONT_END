@@ -10,21 +10,7 @@ function AboutPage() {
   return (
     <div className={classes.MainBody}>
     <AiPopUp/>
-    <div className={classes.NavBar}>
-      <div className={classes.HeaderNavBar}>
-        <div className={classes.LogoGroup}>
-          <span className={classes.ManilaAbove}>MANILA</span>
-          <span className={classes.LibraryAbove}>
-          City <br /> Library
-          </span>
-    </div>
-    
-    <div className={classes.SearchBar}>
-      <SearchBar />
-        </div>
-      </div>
-  </div>
-
+  
       <div className={classes.AboutUsContainer}>
         <div className={classes.AboutUs}>
           <div className={classes.AboutParagraph}>

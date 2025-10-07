@@ -1,0 +1,8 @@
+.Main{
+    background-color: red;
+}
+
+.Main input{
+    width: 20rem;
+    height: 2rem;
+}

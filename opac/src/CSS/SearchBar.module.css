@@ -4,15 +4,16 @@
     width: 35vw;
     background-color: #D9D9D9;
     box-shadow: 2px 2px 3px black;
-    margin-right: 3rem;
     display: flex;
     align-items: center;
+    margin-right: 0.5rem;
 }
 
 .SearchInput{
     background-color: transparent;
     border: none;
     height: 100%;
+    
     font-size: 1.25rem;
     width: 100%;
 }

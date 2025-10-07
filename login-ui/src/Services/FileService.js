@@ -7,7 +7,6 @@ export async function uploadProfilePicture(formData) {
       credentials: "include",
       body: formData,
       headers: {
-        "Content-Type": "application/json",
         "x-api-key": import.meta.env.VITE_API_KEY
       },
     });
@@ -28,7 +27,6 @@ export async function getProfilePicture(user_pfp_id) {
       method: "POST",
       credentials: "include",
       headers: {
-        "Content-Type": "application/json",
         "x-api-key": import.meta.env.VITE_API_KEY
       },
     });

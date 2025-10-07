@@ -2,14 +2,15 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import api from "../api/api";
 
-function BookDetailPage() {
-  const { id } = useParams();
+function BookDetailPage(bookSelected) {
+  const id = bookSelected;
   const navigate = useNavigate();
   const [book, setBook] = useState(null);
   const [similarBooks, setSimilarBooks] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    alert(id)
     if (!id || isNaN(id)) {
       console.error("Invalid or missing book ID");
       setLoading(false);

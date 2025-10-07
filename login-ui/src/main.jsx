@@ -4,7 +4,7 @@ import "/index.css";
 import { NotFoundPage }from './Components';
 import { 
   LoginPage, Dashboard, NfcPage, OtpForm, ResetPasswordForm, ResetPasswordEmailCheck, SignUpForm, 
-  UserPage, Services, Intemediary, AdminPage, TestingPage1
+  UserPage, Services, Intemediary, AdminPage
 } from "./Main-Components/";
 import { HashRouter, Routes, Route } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";

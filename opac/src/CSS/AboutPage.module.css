@@ -1,10 +1,11 @@
 .MainBody {
-  background-color: #101540;
+
   min-height: 100vh;   /* grow with content instead of fixed */
   width: 100%;         /* avoid horizontal overflow */
   margin: 0;
   padding: 0;
   overflow-x: hidden;  /* prevent sideways gaps */
+  overflow-y: hidden;
 }
 
 html,

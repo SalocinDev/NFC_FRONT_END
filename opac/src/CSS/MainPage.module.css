@@ -1,16 +1,49 @@
+body, html {
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For IE and Edge */
+}
+.SearchBar input{
+  margin: 0;
+}
 
-.HeaderContainer {
-  border-radius: 0 0 12px 12px;
+.SearchBar{
+  
   display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 10px;
-  box-sizing: border-box;
-  position: relative;
-  z-index: 30;
+  margin: 0;
+}
 
-  transition: transform 0.8s ease, opacity 0.6s ease;
+.HeaderNavBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  width: 100%;
+  border-bottom: 5px solid #101540;
+}
+
+.ManilaAboveHeader {
+  font-size: 3rem;
+  font-weight: bold;
+  letter-spacing: 0.8rem;
+  color: #101540;
+  line-height: 3rem;
+  text-align: left;
+}
+
+.LibraryAboveHeader {
+  font-size: 1.5rem;
+  letter-spacing: 0.5rem;
+  color: #101540;
+  line-height: 1.5rem;
+  text-align: left;
+}
+
+.LogoGroup {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-left: 2rem;
 }
 
 .SearchWrapper {
@@ -23,26 +56,10 @@
 }
 
 
-.ManilaAbove {
-  font-size: 3rem;
-  letter-spacing: 0.8rem;
-  color: #101540;
-  line-height: 2rem;
-  margin-top: -1vh;
-  text-align: left;
-}
 
-.LibraryAbove {
-  font-size: 1.5rem;
-  letter-spacing: 0.8rem;
-  color: #101540;
-  line-height: 1.3rem;
-  margin-top: -0.5vw;
-  text-align: left;
-}
 
 .SearchContainer {
-  padding-top: 40vh;
+  padding-top: 30vh;
   margin: 0;
   width: 40%;
   margin: auto;
@@ -51,7 +68,6 @@
   justify-items: center;
   position: relative;
   z-index: 9999;
-
 
   transition: all 0.8s ease;
 }

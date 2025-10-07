@@ -6,27 +6,67 @@
   padding: 1rem 3rem;
   border-radius: 0.75rem;
   box-sizing: border-box;
-  margin-right: 1.5rem;
+  
   border-style: solid;
   font-weight: bold;
   letter-spacing: 0.1rem;
+  display: flex;
+  text-align: left;
+  align-items: center;
+  cursor: pointer;
 }
 
-.SearchButton{
+.AboutPage{
+  font-size: 1.5;
+  width: 8rem;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  border-color: #101540;
+  border-style: solid;
+  border-radius: 7px;
+  height: 2.5rem;
+  background-color: #101540;
+  color: white;
+  cursor: pointer;
+  margin-right: 2rem;
+}
+
+.AboutPage:hover{
+  transition: 0.5s;
+}
+
+.SearchButton {
   color: white;
   background-color: #101540;
   border-color: #101540;
   cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  margin-right: 1.5rem;
 }
 
-.SearchButton:Active{
-  background-color: red;
+.SearchButton:hover {
+  background-color: #010424;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); 
 }
 
-.RandomButton{
+.RandomButton {
   color: #101540;
   background-color: #D7D7D7;
   border-color: #D7D7D7;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.RandomButton:hover {
+  background-color: #9c9393;
+  border-color: #9c9393;
+  color: #010424;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
 .ArrowButton{
