@@ -1,15 +1,29 @@
 import {Link} from "react-router-dom";
+import classes from '../CSS/NotFoundPage.module.css';
+import { IoReturnDownBackOutline } from "react-icons/io5";
+import { Button } from '../Components';
 
 function NotFoundPage() {
   const NotFoundPage = () => {
       
     }
   return (
-    <div>
-      <h1>Ito ay imong guniguni lamang</h1>
+    <div className={classes.NotFoundBackground}>
+      <div className={classes.CenteredButton}>
       <Link to ={"/"}>
-      <button>Go Back Home</button>
+      
+      <Button
+        use="ErrorButton"
+        name={
+          <span className={classes.UnderlineGroup}>
+            <IoReturnDownBackOutline size={35} />
+            <span>Go Home</span>
+          </span>
+        }
+        onClick={() => setActive("AboutPage")}
+      />
       </Link>
+      </div>
     </div>
   );
 };

@@ -1,160 +1,112 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import classes from '../CSS/OPACResult.module.css';
 import api from "../api/api";
+import classes from "../CSS/OPACResult.module.css";
+import { Button } from "../Components";
+import { FaMagnifyingGlass } from "react-icons/fa6";
+import { IoIosSearch } from "react-icons/io";
 
-function OPACResult({ initialResults, initialLoading }) {
-  const [results, setResults] = useState(initialResults || []);
-  const [loading, setLoading] = useState(initialLoading || false);
 
-  const location = useLocation();
-  const navigate = useNavigate();
-  const [categories, setCategories] = useState([]);
-
-  // Filters
-  const [sort, setSort] = useState("title_asc");
-  const [category, setCategory] = useState("");
+export default function OPACResult({ query, type, onBookClick, onBack }) {
+  const [results, setResults] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [sortBy, setSortBy] = useState("relevance"); // default to relevance
+  const [category, setCategory] = useState("all");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
+  const [categories, setCategories] = useState([]);
+  const [searchQuery, setSearchQuery] = useState(query || "");
+  const [searchType, setSearchType] = useState(type || "keyword");
 
-  // Search
-  const queryParams = new URLSearchParams(location.search);
-  const initialQ = queryParams.get("q") || "";
-  const initialType = queryParams.get("type") || "keyword";
-  const [query, setQuery] = useState(initialQ);
-  const [type, setType] = useState(initialType);
-
-  // Fetch categories
+  // Load categories on mount
   useEffect(() => {
-    const fetchCategories = async () => {
-      try {
-        const res = await api.get("/categories");
-        setCategories(res.data);
-      } catch (err) {
-        console.error("Failed to load categories:", err);
-      }
-    };
-    fetchCategories();
+    api.get("/categories")
+      .then((res) => setCategories(res.data))
+      .catch(() => {});
   }, []);
 
-  // Fetch results
-  useEffect(() => {
-    if (!query.trim()) return;
-
-    const fetchBooks = async () => {
-      setLoading(true);
-      try {
-        const res = await api.get("/opac/search", {
-          params: { q: query, type, sort, category, startDate, endDate },
-        });
-        setResults(res.data);
-      } catch (err) {
-        console.error("Error fetching results:", err);
-        setResults([]);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchBooks();
-  }, [query, type, sort, category, startDate, endDate]);
-
-  // Go to details
-  const handleBookClick = (bookId) => {
-    navigate(`/BookDetail/${bookId}`);
+  // Fetch books (on manual trigger)
+  const fetchData = async () => {
+    if (!searchQuery.trim()) return;
+    setLoading(true);
+    try {
+      const res = await api.get("/opac/search", {
+        params: {
+          q: searchQuery,
+          type: searchType,
+          sort: sortBy,
+          category,
+          startDate,
+          endDate,
+        },
+      });
+      setResults(res.data);
+    } catch {
+      setResults([]);
+    } finally {
+      setLoading(false);
+    }
   };
 
-  // Refine search directly here
+  // Initial fetch — only when query is passed from searchbar
+  useEffect(() => {
+    if (query) fetchData();
+  }, [query, type]);
+
+  // Handle main search
   const handleSearch = (e) => {
     e.preventDefault();
-    if (!query.trim()) return alert("Please enter a search term.");
+    fetchData();
+  };
+
+  // Handle filter apply
+  const handleApplyFilters = (e) => {
+    e.preventDefault();
+    fetchData();
   };
 
   return (
-    <div className={classes.Main}>
-    
-      <form
-        onSubmit={handleSearch}
-      >
-        <select
-          value={type}
-          onChange={(e) => setType(e.target.value)}
-        >
-          <option value="keyword">Keyword</option>
-          <option value="title">Title</option>
-          <option value="author">Author</option>
-        </select>
+    <div className={classes.MainDiv}>
+      <Button onClick={onBack} use="BackButton" name="Back"/>
+       
+      <div className={classes.FormContainer}></div>
 
-        <input
-          type="text"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search books..."
-        />
-
-        <button
-          type="submit"
-        >
-          Search
-        </button>
+      <form onSubmit={handleSearch} className={classes.FormAuthor} id="SearchForm">
+        <div className={classes.SearchFunction}>
+          <Button 
+          type="submit" 
+          name={<IoIosSearch />} 
+          form="SearchForm" 
+          use="SearchButtonForm"/>
+          <input
+            type="text"
+            placeholder="Search..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="border p-2 rounded"
+          />
+          <select
+            value={searchType}
+            onChange={(e) => setSearchType(e.target.value)}
+            className="border p-2 rounded"
+          >
+            <option value="keyword">Keyword</option>
+            <option value="title">Title</option>
+            <option value="author">Author</option>
+          </select>
+          
+        </div>
       </form>
+    <div/>
 
-      {/* Filters */}
-      <div>
-        <div>
-          <label>
-            Sort By
-          </label>
-          <select
-            value={sort}
-            onChange={(e) => setSort(e.target.value)}
-            className="border p-2 rounded"
-          >
-            <option value="title_asc">Title (A–Z)</option>
-            <option value="title_desc">Title (Z–A)</option>
-            <option value="author_asc">Author (A–Z)</option>
-            <option value="author_desc">Author (Z–A)</option>
-            <option value="views_desc">Views (Highest → Lowest)</option>
-            <option value="views_asc">Views (Lowest → Highest)</option>
-            <option value="date_recent">Publication (Recent → Oldest)</option>
-            <option value="date_oldest">Publication (Oldest → Recent)</option>
-          </select>
-        </div>
-
-        <div>
-          <label>
-            Category
-          </label>
-          <select
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-            className="border p-2 rounded"
-          >
-            <option value="">All Categories</option>
-            {categories.map((cat) => (
-              <option key={cat.book_category_id} value={cat.book_category_id}>
-                {cat.book_category_name}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        <div>
-          <label>
-            Publication From
-          </label>
+    <div className={classes.FormDateContainer}>
+      <div className={classes.FormDate}>
+        <div className={classes.DateInput}>
           <input
             type="date"
             value={startDate}
             onChange={(e) => setStartDate(e.target.value)}
             className="border p-2 rounded"
           />
-        </div>
-
-        <div>
-          <label>
-            Publication To
-          </label>
           <input
             type="date"
             value={endDate}
@@ -162,43 +114,83 @@ function OPACResult({ initialResults, initialLoading }) {
             className="border p-2 rounded"
           />
         </div>
-      </div>
 
-      {/* Results */}
+        <div className={classes.FilterFunction}>
+          
+          <select
+            value={sortBy}
+            onChange={(e) => setSortBy(e.target.value)}
+            className="border p-2 rounded"
+          >
+            <option value="relevance">Relevance</option>
+            <option value="title-asc">Title A–Z</option>
+            <option value="title-desc">Title Z–A</option>
+            <option value="author-asc">Author A–Z</option>
+            <option value="author-desc">Author Z–A</option>
+            <option value="views-asc">Views ↑</option>
+            <option value="views-desc">Views ↓</option>
+            <option value="pub-recent">Recent → Oldest</option>
+            <option value="pub-oldest">Oldest → Recent</option>
+          </select>
+
+          <select
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+            className="border p-2 rounded"
+          >
+            <option value="all">All Categories</option>
+            {categories.map((c) => (
+              <option key={c.book_category_id} value={c.book_category_name}>
+                {c.book_category_name}
+              </option>
+            ))}
+          </select>
+
+          <button
+            onClick={handleApplyFilters}
+            className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
+          >
+            Apply Filters
+          </button>
+        </div>
+      </div>
+    </div>
+ 
       {loading ? (
-        <p>Loading books...</p>
+        <p className="text-center text-gray-500">Loading...</p>
       ) : results.length === 0 ? (
-        <p>
-          No books found.
-        </p>
+        <div className={classes.NoBookFound}>
+          <p className={classes.MagnifyingIcon}><FaMagnifyingGlass /></p>
+          <h1>
+          We couldn't find any matches for that book.
+          </h1>
+          <h2>
+            Try searching another term or if you have filters enabled, <br/>
+            try clearing them
+          </h2>
+        </div>
+      
       ) : (
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          {results.map((book) => (
+          {results.map((b) => (
             <div
-              key={book.book_id}
-              onClick={() => handleBookClick(book.book_id)}
-              className="p-3 border rounded-lg bg-white shadow hover:shadow-md cursor-pointer transition-transform hover:scale-105"
+              key={b.book_id}
+              onClick={() => onBookClick(b.book_id)}
+              className="p-3 bg-white shadow rounded hover:shadow-md cursor-pointer"
             >
-             {results.map((book) => (
-        <div key={book.book_id} className="p-3 border rounded-lg">
-          <img
-            src={book.book_cover_img || "/placeholder-book.png"}
-            alt={book.book_title}
-            className="w-full h-48 object-cover rounded"
-          />
-          <h3>{book.book_title}</h3>
-          <p>{book.book_author}</p>
-        </div>
-      ))}
-              <h3 className="mt-2 font-semibold text-lg truncate text-gray-900">
-                {book.book_title}
-              </h3>
-              <p className="text-sm text-gray-600">{book.book_author}</p>
+              <img
+                src={
+                  b.book_cover_img
+                    ? `${import.meta.env.VITE_API_URL}/${b.book_cover_img}`
+                    : `${import.meta.env.BASE_URL}images/placeholder-book.png`
+                }
+                alt={b.book_title}
+                className="w-full h-48 object-cover rounded"
+              />
+              <h3 className="mt-2 font-semibold truncate">{b.book_title}</h3>
+              <p className="text-sm text-gray-600">{b.book_author}</p>
               <p className="text-xs text-gray-500 italic">
-                {book.book_category || "Uncategorized"}
-              </p>
-              <p className="text-xs text-gray-400">
-                {new Date(book.book_year_publish).getFullYear()}
+                {b.book_category || "Uncategorized"}
               </p>
             </div>
           ))}
@@ -207,5 +199,3 @@ function OPACResult({ initialResults, initialLoading }) {
     </div>
   );
 }
-
-export default OPACResult;

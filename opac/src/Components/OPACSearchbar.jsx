@@ -1,32 +1,38 @@
 import React, { useState, useRef, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import classes from '../CSS/OPACSearchbar.module.css';
 import { Button } from '../Components';
 import { IoMdSearch } from "react-icons/io";
 import { PiBooksFill } from "react-icons/pi";
 import { HiSortDescending } from "react-icons/hi";
-import { FaUser, FaBook } from "react-icons/fa"; // optional icons for options
+import { FaUser, FaBook } from "react-icons/fa";
 
-function OPACSearchBar({setActive, onSearch}) {
+function OPACSearchBar({ setActive, onSearch }) {
   const [query, setQuery] = useState("");
-  const [filter, setFilter] = useState("keyword"); // default option
+  const [filter, setFilter] = useState("keyword");
   const [open, setOpen] = useState(false);
-  const navigate = useNavigate();
   const dropdownRef = useRef();
 
-   const handleSearch = (e) => {
+  // ✅ When user clicks Search button or presses Enter
+  const handleSearch = (e) => {
     e.preventDefault();
-    if (!query.trim()) return alert("Please enter a search term!");
+    if (!query.trim()) {
+      alert("Please enter a search term!");
+      return;
+    }
 
+    // send query and filter up to parent
     onSearch(query, filter);
+    // move to results page
     setActive("BookResult");
   };
 
   const options = [
+    { value: "keyword", label: "Keyword", icon: <HiSortDescending size={18} /> },
     { value: "title", label: "Title", icon: <FaBook size={18} /> },
     { value: "author", label: "Author", icon: <FaUser size={18} /> },
   ];
 
+  // ✅ close dropdown if clicked outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -39,17 +45,14 @@ function OPACSearchBar({setActive, onSearch}) {
 
   return (
     <div className={classes.SearchContainer}>
-       <div className={classes.HeaderContainer}>
-          <span className={classes.ManilaAbove}>MANILA</span>
-          <span className={classes.LibraryAbove}>
-            City <br /> Library
-          </span>
-        </div>
+      <div className={classes.HeaderContainer}>
+        <span className={classes.ManilaAbove}>MANILA</span>
+        <span className={classes.LibraryAbove}>
+          City <br /> Library
+        </span>
+      </div>
 
-      <form
-        onSubmit={handleSearch}
-        className={classes.FormBook}
-      >
+      <form onSubmit={handleSearch} className={classes.FormBook}>
         <input
           type="text"
           placeholder="Search for a book..."
@@ -59,54 +62,61 @@ function OPACSearchBar({setActive, onSearch}) {
         />
 
         <div className={classes.ButtonContainer}>
-
+          {/* 🔍 Search Button */}
           <Button
             use="SearchButton"
-            name={<><IoMdSearch size={25} /><span>Search</span></>}
+            name={
+              <>
+                <IoMdSearch size={25} />
+                <span>Search</span>
+              </>
+            }
             type="submit"
           />
 
+          {/* 📚 Browse Button */}
           <Button
             use="RandomButton"
-            name={<><PiBooksFill size={25} /><span>Browse for Books</span></>}
+            name={
+              <>
+                <PiBooksFill size={25} />
+                <span>Browse for Books</span>
+              </>
+            }
             type="button"
-            onClick={() => setActive("BookArchive")} 
+            onClick={() => setActive("BookArchive")}
           />
 
-        <div className={classes.CustomDropdown} ref={dropdownRef}>
-          <button
-            type="button"
-            className={classes.DropdownButton}
-            onClick={() => setOpen(!open)}
-          >
-            {/* Render icon of selected filter */}
-            {filter === "keyword" 
-              ? <HiSortDescending size={24} /> 
-              : options.find(o => o.value === filter)?.icon}
-          </button>
+          {/* ⚙️ Dropdown */}
+          <div className={classes.CustomDropdown} ref={dropdownRef}>
+            <button
+              type="button"
+              className={classes.DropdownButton}
+              onClick={() => setOpen(!open)}
+            >
+              {options.find((o) => o.value === filter)?.icon}
+            </button>
 
-          {open && (
-            <ul className={classes.DropdownList}>
-              {options.map((option) => (
-                <li
-                  key={option.value}
-                  onClick={() => {
-                    setFilter(option.value); 
-                    setOpen(false);
-                  }}
-                  className={classes.DropdownItem}
-                >
-                  {option.icon} {option.label}
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-
+            {open && (
+              <ul className={classes.DropdownList}>
+                {options.map((option) => (
+                  <li
+                    key={option.value}
+                    onClick={() => {
+                      setFilter(option.value);
+                      setOpen(false);
+                    }}
+                    className={classes.DropdownItem}
+                  >
+                    {option.icon} {option.label}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
         </div>
       </form>
     </div>
-
   );
 }
 

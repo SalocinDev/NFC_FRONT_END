@@ -172,8 +172,8 @@
 }
 
 .NfcSignIn {
-  background-color: #222D8A;
-  border-color: #222D8A;
+  background-color: #3DA5DF;
+  border-color: #3DA5DF;
   color: white;
 }
 
@@ -387,6 +387,23 @@
   color: grey;
   border-color: grey;
   
+}
+
+.ErrorButton{
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+  display: flex;
+  font-size: 1.5rem;
+  border: none;
+  background-color: transparent;
+  text-underline-offset: 10px;
+}
+
+.ErrorButton:hover{
+  color: #101540;
+  transition: 0.5s;
+  cursor: pointer;
 }
 
 .VerifyEmail{

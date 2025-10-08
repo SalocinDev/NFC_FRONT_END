@@ -151,3 +151,30 @@
 .PreviousButtonSwiper{
   margin-right: 2rem;
 }
+
+.ErrorButton{
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+  display: flex;
+  font-size: 1.5rem;
+  border: none;
+  background-color: transparent;
+  text-underline-offset: 10px;
+}
+
+.ErrorButton:hover{
+  color: #101540;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.SearchButtonForm{
+  border: none;
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
