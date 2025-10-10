@@ -9,7 +9,8 @@ import {
 import { AboutPage, BookArchiveOpac } from "../Main-Components";
 import React, { useState } from "react";
 import classes from "../CSS/MainPage.module.css";
-import { IoMdInformationCircle } from "react-icons/io";
+import { IoMdInformationCircle, IoMdArrowBack } from "react-icons/io";
+
 
 function MainPage() {
   const [active, setActive] = useState("SearchPage");
@@ -50,7 +51,14 @@ function MainPage() {
           />
         );
       case "BookDetailPage":
-        return <BookDetailPage bookId={selectedBookId} onBack={handleBack} />;
+        return (
+          <BookDetailPage
+            bookId={selectedBookId}
+            onBack={handleBack}
+            setActive={setActive}
+            setBookSelected={setSelectedBookId} // pass the state setter
+          />
+        );
       case "BookArchive":
         return <BookArchiveOpac setActive={setActive} />;
       case "AboutPage":
@@ -73,7 +81,21 @@ function MainPage() {
           </div>
 
           <div className={classes.SearchBar}>
-            {active !== "SearchPage" && <SearchBar />}
+            {active === "BookArchive" ? (
+              <Button
+                use="AboutPage"
+                name={
+                <>
+                  <IoMdArrowBack size={20} />
+                  <span>BACK</span>
+                </>
+              }
+                onClick={handleBack} // or () => setActive("SearchPage")
+              />
+            ) : (
+              active !== "SearchPage" && <SearchBar />
+            )}
+
             <Button
               use="AboutPage"
               name={
@@ -83,8 +105,8 @@ function MainPage() {
                 </>
               }
               onClick={() => setActive("AboutPage")}
-            />
-          </div>
+           />
+</div>
         </div>
       </div>
 

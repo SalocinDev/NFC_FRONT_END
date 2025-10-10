@@ -6,7 +6,14 @@ import "swiper/css";
 import "swiper/css/pagination";
 import api from "../api/api.js";
 
-function BookCoverDisplay({ title = "Random Books", apiEndpoint, slidesPerView = 4, setActive = { setActive }}) {
+function BookCoverDisplay({
+  title = "Random Books",
+  apiEndpoint,
+  slidesPerView = 4,
+  setActive,
+  setBookSelected,
+  bookImageClass // NEW PROP: pass a custom class name for the book image
+}) {
   const [books, setBooks] = useState([]);
   const [error, setError] = useState(null);
 
@@ -37,7 +44,7 @@ function BookCoverDisplay({ title = "Random Books", apiEndpoint, slidesPerView =
           modules={[Pagination]}
           pagination={{ clickable: true }}
           slidesPerView={slidesPerView}
-          spaceBetween={8}  
+          spaceBetween={8}
           loop={false}
           className={classes.MySwiper}
         >
@@ -53,8 +60,13 @@ function BookCoverDisplay({ title = "Random Books", apiEndpoint, slidesPerView =
                     <img
                       src={imgSrc}
                       alt={book.book_title}
-                      className={classes.BookImage}
-                      onClick={() => setActive("Books")}
+                      
+                      className={`${classes.BookImage} ${bookImageClass ? classes[bookImageClass] : ""}`}
+                      onClick={() => {
+                        //console.log("Book clicked:", book.book_id, book.book_title);
+                        if (setBookSelected) setBookSelected(book.book_id);
+                        if (setActive) setActive("BookDetailPage");
+                      }}
                     />
                   </div>
                   <div className={classes.BookInfo}>

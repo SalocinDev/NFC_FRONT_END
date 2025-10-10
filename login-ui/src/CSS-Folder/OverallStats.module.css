@@ -1,13 +1,8 @@
-h3{
-    padding: 0;
-    margin: 0;
+.TableContainer h2{
+    text-align: left;
 }
 
-h2{
-    text-align: center;
-}
-
-h1{
+.MainRender h1{
     color: #101540;
     text-align: center;
     font-size: 4rem;

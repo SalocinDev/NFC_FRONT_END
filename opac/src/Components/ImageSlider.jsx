@@ -72,9 +72,8 @@ function ImageSlider({ setActive, setBookSelected }) {
                     alt={book.book_title}
                     className={classes.bookImage}
                     onClick={() => {
-                      const bookID = JSON.stringify(book.book_id)
-                      setBookSelected(bookID);
-                      setActive("Books");
+                      setBookSelected(book.book_id);
+                      setActive("BookDetailPage");
                     }}
                   />
                   <div className={classes.TitleContainer}>
@@ -133,14 +132,16 @@ function ImageSlider({ setActive, setBookSelected }) {
         title="Random Picks" 
         apiEndpoint="/opac/random" 
         slidesPerView={5}
-        setActive = { setActive }
+        setActive={setActive}             //Now defined
+        setBookSelected={setBookSelected} //Now defined
       />
 
       <BookCoverDisplay 
         title="Recently Added" 
         apiEndpoint="/opac/recent" 
         slidesPerView={5}
-        setActive = { setActive }
+        setActive={setActive}             //Now defined
+        setBookSelected={setBookSelected} //Now defined
       />
     </div>
   </div>

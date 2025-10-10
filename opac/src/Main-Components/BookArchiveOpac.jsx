@@ -4,34 +4,46 @@ import { useState, useEffect } from 'react';
 
 
 function BookArchiveOpac() {
-  
-  const [bookSelected, setBookSelected] = useState();
+  const [selectedBookId, setSelectedBookId] = useState();
   const [active, setActive] = useState("DashBoard");
 
+  const handleBack = () => setActive("DashBoard");
+
   const renderContent = () => {
-  switch (active) {
-    case "DashBoard":
-      return <ImageSlider setActive={ setActive } setBookSelected={null} />;
-    case "Books":
-      return <BookDetailPage bookSelected={bookSelected} />;
-    default:
-      return <ImageSlider />;
-  }
-};
+    switch (active) {
+      case "DashBoard":
+        return (
+          <ImageSlider
+            setActive={setActive}
+            setBookSelected={setSelectedBookId}
+          />
+        );
+
+      case "BookDetailPage":
+        return (
+          <BookDetailPage
+            bookId={selectedBookId}
+            onBack={handleBack}
+            setActive={setActive}
+            setBookSelected={setSelectedBookId}
+          />
+        );
+
+      default:
+        return <ImageSlider setActive={setActive} setBookSelected={setSelectedBookId} />;
+    }
+  };
 
   return (
-
-<div className={classes.MainBody}>
+    <div className={classes.MainBody}>
       <div className={classes.BookContainer}>
-            <div className={classes.SampleLangTo}>
-                <main className={classes.RenderComponents}>
-                  {renderContent()}
-                </main>
-            </div>
+        <div className={classes.SampleLangTo}>
+          <main className={classes.RenderComponents}>
+            {renderContent()}
+          </main>
+        </div>
       </div>
-      
-</div>
-
+    </div>
   );
 }
 

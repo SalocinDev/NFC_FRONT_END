@@ -23,8 +23,8 @@
 }
 
 .inputGroup h1{
-    text-align: center;
-    font-size: 3rem;
+    text-align: center !important;
+    font-size: 3rem !important;
     color:  #101540;
 }
 

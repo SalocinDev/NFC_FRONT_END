@@ -1,5 +1,5 @@
 import classes from '../../CSS-Folder/Books.module.css';
-import { Button, PopUpForm, Table, PopUpFormDeleteConfirm } from '..';
+import { Button, PopUpForm, Table, PopUpFormDeleteConfirm, TestingPage } from '..';
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from "react";
 import api from "../../api/api";
@@ -87,13 +87,13 @@ function Books() {
       );
     case "BooksAdmin":
       return (
-        <Table
+         <Table
           key="BooksAdmin"
           records={bookRecords}
           onSelectedRowsChange={setSelectedRows}
           checkbox
           hiddenColumns={["book_category_name", "book_img", "book_category_id"]}
-        />
+          />
       );
     default:
       return <Table key="default"/>;

@@ -10,7 +10,7 @@ export { default as SearchID} from './SearchID';
 export { default as AiPopUp} from './AiPopUp';
 export { default as Checkbox} from './Checkbox';
 export { default as NotFoundPage} from './NotFoundPage';
-
+export { default as TestingPage} from './TestingPage';
 /* AdminPage related imports */
 export { default as Books} from './AdminPage-Components/Books';
 export { default as UserManagement} from './AdminPage-Components/UserManagement';

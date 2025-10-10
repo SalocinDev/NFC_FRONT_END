@@ -11,9 +11,7 @@
     justify-content: center;
     align-items: center;
     gap: 0.5rem;
-    padding-top: 1rem;
     padding: 0 15vw 0 17.3vw;
-    margin-top: 1rem;
 }
 
 .FormAuthor input{
@@ -48,7 +46,7 @@
 .FilterFunction select{
     border-radius: 8px;
     background-color: #D9D9D9;
-    color: grey;
+    color: black;
 }
 
 .FilterFunction button{
@@ -68,12 +66,11 @@
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    padding: 3rem;
+    padding: 2.5rem;
     padding-right: 3rem;
     padding-left: 3rem;
     width: 100%;
     border: 1px solid grey;
-    margin-top: 2rem;
     border-radius: 8px;
 }
 
@@ -84,7 +81,8 @@
 }
 
 .FormDateContainer{
-    padding: 0 20vw 0 20vw;
+    padding: 1rem 25.5vw 0 24.5vw;
+    
 }
 
 .MagnifyingIcon{
@@ -98,8 +96,10 @@
 }
 
 .NoBookFound h1{
-    font-size: 2.5rem;
-    margin-top: 1rem;
+  color: #101540;
+  text-align: center;
+  font-size: 2.5rem;
+  margin-top: 1rem;
 }
 
 .NoBookFound h2{
@@ -107,4 +107,156 @@
     color: #727374;
     justify-content: center;
     text-align: center;
+}
+
+.BookCover{
+    width: 10rem;
+    height: 16rem;
+}
+
+.ImageContainer {
+  width: 25vw;
+  height: 16rem;
+  display: flex;
+  background-color: transparent;
+  border: 1px solid grey;
+  padding: 1rem;
+  gap: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 
+    transform 0.3s ease, 
+    box-shadow 0.3s ease, 
+    background-color 0.5s ease, 
+    opacity 0.5s ease;
+}
+
+.ImageContainer:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  background-color: rgba(58, 51, 51, 0.301); 
+  opacity: 0.9; 
+}
+
+
+.TextContainer p{
+    font-size: 1.5rem;
+    color: black;
+    text-align: left;
+    padding: 0;
+    margin: 0;
+}
+
+.TextContainer h3{
+    background-color: #101540;
+    color: white;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-radius: 16px;
+    list-style-type: disc;
+    width: fit-content;
+}
+
+.ImageCard {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal-width columns */
+  padding: 1rem;
+  padding-left: 15rem;
+  padding-right: 10rem;
+  gap: 2rem;
+  
+}
+
+.ImageCard > :nth-child(2n + 1) {
+  justify-self: end;
+}
+
+.ImageCard > :nth-child(2n) {
+  justify-self: start;
+}
+.BookCover{
+    border-radius: 8px;
+}
+
+.DateInput {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.DateInput input{
+    background-color: #D9D9D9;
+    color: black;
+    border: 1px solid grey;
+}
+
+.DateInputField {
+  width: 13vw;
+  height: 5.2vh;
+  margin-top: 0.1rem;
+  
+  text-align: center;
+  font-size: 1rem;
+  background-color: white;
+  color: #333;
+  transition: border-color 0.3s ease;
+}
+
+.DateInputField:first-child {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.DateInputField:last-child {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left: none; 
+}
+
+.DateInputField:hover,
+.DateInputField:focus {
+  border-color: #101540;
+}
+
+.InputSearch{
+    width: 40vw;
+    margin-right: 2rem;
+}
+
+.BackButtonContainer{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.PaginationContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 3rem;
+  gap: 1rem;
+  padding-bottom: 5rem;
+}
+
+.PageButton {
+  background-color: #101540;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+.PageButton:hover:not(:disabled) {
+  background-color: #2a3060;
+}
+
+.PageButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.PageInfo {
+  color: #101540;
+  font-weight: 600;
 }

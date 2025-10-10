@@ -178,3 +178,14 @@
   cursor: pointer;
 }
 
+.BackButton{
+  font-weight: bold;
+  border: 2px solid #101540;
+  border-radius: 20px;
+  background: white;
+  color: #101540;
+  cursor: pointer;
+  padding: 0.4rem 1rem;
+  margin-top: 1rem;
+  margin-right: 1rem;
+}
