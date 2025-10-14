@@ -4,12 +4,17 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { Button, Checkbox } from '../Components';
 import { logOut } from '../Services/SessionUtils';
 import { submitServices } from '../Services/ServicesUtis';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Services() {
   const storedUser = JSON.parse(sessionStorage.getItem("userInfo"));
   const navigate = useNavigate();
   const [availedServices, setAvailedServices] = useState({ selectedServices: [], others: "" });
   const [alertShown, setAlertShown] = useState(false);
+  const [showPopup, setShowPopup] = useState(false); 
+  const [popupServices, setPopupServices] = useState([]); 
+
   const location = useLocation();
   const { loggedIn } = location.state || {};
 
@@ -25,7 +30,7 @@ function Services() {
 
   useEffect(() => {
     if (!alertShown) {
-      alert(`Hello, ${storedUser?.firstName || "User"}. Please select the services you'd like to avail.`);
+      toast.success(`Hello, ${storedUser?.firstName || "User"}. Please select the services you'd like to avail.`);
       setAlertShown(true);
     }
   }, [alertShown, storedUser]);
@@ -34,7 +39,7 @@ function Services() {
     setAvailedServices({ selectedServices: selected, others });
   }, []);
 
-  const handleSubmit = async () => {
+  const handleSubmit = () => {
     const { selectedServices, others } = availedServices;
 
     let payloadServices = [...selectedServices];
@@ -42,16 +47,17 @@ function Services() {
       payloadServices.push(`Others: ${others.trim()}`);
     }
 
-    const servicesText = payloadServices.length > 0 ? payloadServices.join(", ") : "None";
-    alert(`Availed services: ${servicesText}`);
+    setPopupServices(payloadServices);
+    setShowPopup(true); 
+  };
 
-    const result = await submitServices(payloadServices);
-
+  const handleConfirmSubmit = async () => {
+    const result = await submitServices(popupServices);
     if (!result.success) {
-      alert(result.message || "Failed to submit services.");
+      toast.error(result.message || "Failed to submit services.");
       return;
     }
-
+    setShowPopup(false);
     logOut().then(() => navigate("/", { state: { loggedIn: true } }));
   };
 
@@ -62,19 +68,47 @@ function Services() {
         <span className={classes.LibraryAbove}>City <br />Library</span>
       </div>
 
-      <div className={classes.CheckboxContainer}>
-        <Checkbox onChange={handleServicesChange} />
-        <div
-          className={classes.ServicesSubmitted}
-          style={{ marginTop: "1rem", fontSize: "1rem", color: "#101540" }}
-        >
-          <strong>Selected Services:</strong>{" "}
-          {availedServices.selectedServices.join(", ")}
+      <div className={classes.CheckboxBackground}>
+        <div className={classes.CheckboxContainer}>
+          <Checkbox onChange={handleServicesChange} />
+        </div>
+
+        <div className={classes.ServicesSubmitted}>
+
           {availedServices.others ? ` | Others: ${availedServices.others}` : ""}
         </div>
 
         <Button name="Submit" use="ButtonSubmit" onClick={handleSubmit} />
       </div>
+
+      {showPopup && (
+        <div className={classes.PopupOverlay}>
+          <div className={classes.PopupBox}>
+            <h2>Confirm Your Selected Services</h2>
+            <ul>
+              {popupServices.length > 0 ? (
+                popupServices.map((service, index) => <li key={index}>{service}</li>)
+              ) : (
+                <li>None</li>
+              )}
+            </ul>
+
+            <div className={classes.PopupButtons}>
+              <Button
+                name="Cancel"
+                use="CancelServicesButton"
+                onClick={() => setShowPopup(false)}
+              />
+
+              <Button
+                name="Confirm"
+                use="ConfirmServicesButton"
+                onClick={handleConfirmSubmit}
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

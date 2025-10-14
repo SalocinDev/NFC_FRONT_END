@@ -110,21 +110,7 @@ export default function BookDetail({ setActive, setBookSelected, bookId, onBack}
             <span className={classes.Label}>Description:</span>
             <span className={classes.Value}>{book.book_description || "No description available."}</span>
           </div>          
-          {/* 
-           <p>
-            
-          <strong>Publisher:</strong> {book.book_publisher}
-          <strong>Year Published:</strong>{" "}
-            {new Date(book.book_year_publish).toLocaleDateString()}
-          <strong>Category:</strong>{" "}
-            {book.book_category_name || "Uncategorized"}
-          <strong>Status:</strong> {book.book_status}
-          <strong>Views:</strong> {book.book_view_count || 0}
-          </p>
-
-          <p>
-            {book.book_description || "No description available."}
-          </p> */}
+      
           </div>
         </div>
         <div className={classes.ChooseBooks}>
@@ -133,8 +119,8 @@ export default function BookDetail({ setActive, setBookSelected, bookId, onBack}
         title="Recently Added" 
         apiEndpoint="/opac/recent" 
         slidesPerView={7}
-        setActive={setActive}             //Now defined
-        setBookSelected={setBookSelected} //Now defined
+        setActive={setActive}            
+        setBookSelected={setBookSelected} 
         bookImageClass="SmallBook"
       />
       </div>

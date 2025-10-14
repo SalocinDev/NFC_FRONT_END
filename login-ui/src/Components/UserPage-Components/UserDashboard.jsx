@@ -1,49 +1,43 @@
 import classes from '../../CSS-Folder/UserDashboard.module.css';
 import { IconHeader } from '..';
 import { FaUser, FaCog, FaBookOpen, FaReply, FaHandPointer} from 'react-icons/fa';
+import { BorrowedBooksTable, ReturnedBooksTable, UserHomePage } from '..';
 import { AiPopUp} from '..';
-import { useNavigate } from 'react-router-dom';
 import { AiFillAccountBook } from 'react-icons/ai';
-/* import { logOut } from '../Services/SessionUtils'; */
+import { useNavigate } from 'react-router-dom';
 
+/* import { logOut } from '../Services/SessionUtils'; */
+import { useState, useEffect } from 'react';
 
 function UserDashboard() {
-    
-    const borrowedBooks = 60;
-    const returnedBooks = 40;
+
+    const [active, setActive] = useState("HomePage");
+
+    const renderTableContent = () => {
+    switch (active) {
+      case "HomePage":
+        return <UserHomePage onChangePage={setActive}/>;
+      case "BorrowedBooks":
+        return <BorrowedBooksTable/>;
+      case "ReturnedBooks":
+        return <ReturnedBooksTable/>;
+      case "BrowseBooks":
+        window.open("http://manila.city.library:5001/NFC_FRONT_END/opac/",
+        "_self"
+);
+        return null;
+      default:
+        return <UserHomePage />;
+    }
+  };
 
   return (
    
     <div className={classes.samplelang}>
-      <div className={classes.iconHeaderContainer}>
-        <IconHeader
-          icon={FaBookOpen}
-          headerTop="Your Borrowed"
-          headerBottom="Book List"
-          to="/BorrowedForm"
-        /> 
-    
-         <IconHeader
-          icon={ FaReply }
-          headerTop="Your Returned"
-          headerBottom="Book List"
-        />
-
-        <IconHeader
-          icon={FaHandPointer}
-          headerTop="Browse Available"
-          headerBottom="Book Inventory"
-        />
-       
-      </div>
-        <div className={classes.ChartContainer}>
-            <p className={classes.Paragraph}>
-                "Embarking on the journey of reading fosters <br/>
-                personal growth, nurturing a path <br/>
-                towards excellence and the refinement of <br/>
-                character."</p>
-        </div>
-      </div>
+      <main className={classes.RenderComponents}>
+          {renderTableContent()}
+      </main>
+    </div>
 
   );
 }

@@ -27,7 +27,7 @@ function AdminPage() {
 
   useEffect(() => {
     if (storedUser.role) {
-      getProfilePicture(4).then(url => {
+      getProfilePicture(7).then(url => {
         setProfileSrc(url);
       });
     }

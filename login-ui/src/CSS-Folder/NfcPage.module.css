@@ -80,8 +80,6 @@ html,
   margin: 0 auto 0 auto; 
 }
 
-/*BELOW THIS PART IS UNFINISHED*/
-
 .loadingContainer {
   display: flex;
   flex-direction: column;

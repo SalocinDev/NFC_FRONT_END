@@ -20,7 +20,8 @@ function ReturnedBooksTable() {
         const res = await api.get(`/returning/${storedUser.user_id}`); 
         setRecords(res.data);
       } catch (err) {
-        console.error("Error fetching returned books:", err);
+        return;
+        // console.error("Error fetching returned books:", err);
       } finally {
         setLoading(false);
       }

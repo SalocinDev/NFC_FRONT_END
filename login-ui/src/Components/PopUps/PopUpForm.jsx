@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import classes from "../../CSS-Folder/PopUpForm.module.css";
-import { Button } from "..";
+import { Button, Input } from "..";
 import { TiPin } from "react-icons/ti";
 import { GrFormClose } from "react-icons/gr";
 
@@ -50,7 +50,8 @@ function PopUpForm({ isOpen, onClose, columns = [], onSubmit, initialValues = {}
   if (!isOpen) return null;
 
   const handleChange = (e, col) => {
-    setFormData({ ...formData, [col]: e.target.value });
+    const value = col === "book_cover_img" ? e.target.files[0] : e.target.value;
+    setFormData({ ...formData, [col]: value });
   };
 
   const handleSubmit = (e) => {
@@ -115,7 +116,6 @@ function PopUpForm({ isOpen, onClose, columns = [], onSubmit, initialValues = {}
                       ))}
                     </select>
                   ) : col === "borrow_id_fk" ? (
-
                     <select
                       required
                       value={formData[col] || ""}
@@ -129,6 +129,16 @@ function PopUpForm({ isOpen, onClose, columns = [], onSubmit, initialValues = {}
                         </option>
                       ))}
                     </select>
+                  ) : col === "book_cover_img" ? (
+                    <div className={classes.ImageUploadWrapper}>
+                      <input
+                        required
+                        type="file"
+                        accept="image/*"
+                        className={classes.UploadImage}
+                        onChange={(e) => handleChange(e, col)}
+                      />
+                    </div>
                   ) : isDateField ? (
                     <input
                       required

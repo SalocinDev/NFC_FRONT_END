@@ -13,10 +13,11 @@ function AboutPage() {
   
       <div className={classes.AboutUsContainer}>
         <div className={classes.AboutUs}>
-          <div className={classes.AboutParagraph}>
-          <h1>About Us</h1>
+        
+          <h1>About Us</h1><br/>
+          
           <p>The Manila City Library is a public library that serves as a hub of knowledge, learning, and community engagement in Manila. It offers a wide collection of books, periodicals, and digital resources accessible to students, researchers, and residents. The library also hosts educational programs, cultural activities, and outreach initiatives to promote literacy and lifelong learning. As a public institution, it plays a vital role in preserving history while adapting to modern information needs.</p>
-          </div>
+          
         </div>
       </div>
 

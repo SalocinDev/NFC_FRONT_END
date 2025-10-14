@@ -4,6 +4,8 @@ import { Button, Wlogo, Blogo, Input } from '../Components/index.js';
 import { signIn } from '../Services/LoginService.js';
 import { useState, useEffect } from "react";
 const apiUrl = import.meta.env.VITE_API_URL;
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function LoginPage() {
   const navigate = useNavigate();

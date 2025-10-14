@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 import api from "../../api/api";
 import { MdOutlineDeleteOutline } from "react-icons/md";
 import { BiBookAdd, BiSolidEditAlt } from "react-icons/bi";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Books() {
 
@@ -22,14 +24,19 @@ function Books() {
   // const [loading, setLoading] = useState(true);
 
   /* For popup generate columns dynamically */
-  const borrowedColumns = borrowedRecords.length > 0 ? Object.keys(borrowedRecords[0]) : [];
-  const returnedColumns = returnedRecords.length > 0 ? Object.keys(returnedRecords[0]) : [];
-  const bookColumns = bookRecords.length > 0 ? Object.keys(bookRecords[0]) : [];
+  const [borrowedColumns, setBorrowedColumns] = useState([]);
+  const [returnedColumns, setReturnedColumns] = useState([]);
+  const [bookColumns, setBookColumns] = useState([]);
 
   const fetchBorrowedBooks = async () => {
     try {
       const res = await api.get(`/borrowing/`);
       setBorrowedRecords(res.data);
+      if (res.data.length > 0) {
+        setBorrowedColumns(Object.keys(res.data[0]));
+      } else if (borrowedColumns.length === 0) {
+        setBorrowedColumns(["borrow_id", "book_id_fk", "user_id_fk", "borrowed_due_date", "Note"]);
+      }
     } catch (err) {
       console.error("Error fetching borrowed books:", err);
     }
@@ -39,6 +46,11 @@ function Books() {
     try {
       const res = await api.get(`/returning/`);
       setReturnedRecords(res.data);
+      if (res.data.length > 0) {
+        setReturnedColumns(Object.keys(res.data[0]));
+      } else if (returnedColumns.length === 0) {
+        setReturnedColumns(["book_returned_id", "borrow_id_fk", "date_returned", "Notes"]);
+      }
     } catch (err) {
       console.error("Error fetching returned books:", err);
     }
@@ -46,15 +58,18 @@ function Books() {
 
   const fetchBooks = async () => {
     try {
-      
-      const res = await api.get(`/books/?role=${storedUser.role}`);
+      const res = await api.get(`/books/`);
       setBookRecords(res.data);
+      if (res.data.length > 0) {
+        setBookColumns(Object.keys(res.data[0]));
+      } else if (bookColumns.length === 0) {
+        setBookColumns(["book_id", "book_title", "book_cover_img", "book_author", "book_description", "book_publisher", "book_year_publish", "book_category_id_fk", "book_status", "book_inventory", "book_view_count"]);
+      }
     } catch (err) {
       console.error("Error fetching books:", err);
     }
   };
   
-
   // Initial fetch on mount
   useEffect(() => {
     fetchBorrowedBooks();
@@ -92,7 +107,7 @@ function Books() {
           records={bookRecords}
           onSelectedRowsChange={setSelectedRows}
           checkbox
-          hiddenColumns={["book_category_name", "book_img", "book_category_id"]}
+          hiddenColumns={["book_category_name", "book_img", "book_category_id", "book_cover_img"]}
           />
       );
     default:
@@ -102,28 +117,29 @@ function Books() {
 
   const handleFormSubmit = async( formValues, active, action) => {
     if (!formValues || !active || !action) {
-      alert("What are you doing");
+      toast.error("What are you doing");
       return;
     }
     console.log("Form values: ", formValues);
-    console.log("Active tab: ", active);
-    console.log("Action taken: ", action);
+    // console.log("Active tab: ", active);
+    // console.log("Action taken: ", action);
+
     if (action === "add" && active === "BorrowedBooksAdmin") {
       const res = await api.post(`/borrowing/staff`, formValues);
       fetchBorrowedBooks();
-      alert(res.data.message);
+      toast.success(res.data.message);
     }
 
     if (action === "add" && active === "BooksAdmin") {
       const res = await api.post(`/books/staff`, formValues);
       fetchBooks();
-      alert(res.data.message);
+      toast.success(res.data.message);
     }
 
     if (action === "add" && active === "ReturnedBooksAdmin") {
       const res = await api.post(`/returning/staff`, formValues);
       fetchReturnedBooks();
-      alert(res.data.message);
+      toast.success(res.data.message);
     }
     setIsOpen(false);
   };
@@ -131,9 +147,9 @@ function Books() {
   const handleDeleteConfirm = async () => {
     const selectedIndexes = Object.keys(selectedRows).filter(idx => selectedRows[idx]);
 
-    console.log("Rows Selected: ", selectedRows);
-    console.log("Active tab: ", active);
-    console.log("Action taken: ", action);
+    // console.log("Rows Selected: ", selectedRows);
+    // console.log("Active tab: ", active);
+    // console.log("Action taken: ", action);
 
     let tableData = [];
     let idField = null;
@@ -154,7 +170,7 @@ function Books() {
     console.log("Ids Selected: ", selectedIds);
 
     if (selectedIds.length === 0) {
-      alert("No valid IDs found for deletion");
+      toast.error("No valid IDs found for deletion");
       return;
     }
     
@@ -162,9 +178,9 @@ function Books() {
       try {
         const res = await api.delete("/borrowing/staff", { data: selectedIds });
         fetchBorrowedBooks();
-        alert(res.data.message);
+        toast.success(res.data.message);
       } catch (err) {
-        alert(err.response?.data?.message || "Failed to delete borrowed books");
+        toast.error(err.response?.data?.message || "Failed to delete borrowed books");
       }
     }
 
@@ -172,14 +188,14 @@ function Books() {
       try {
         const res = await api.delete("/books/staff", { data: selectedIds });
         fetchBooks();
-        alert(res.data.message);
+        toast.success(res.data.message);
       } catch (err) {
         const books = err.response?.data?.books;
         if (books?.length) {
           const titles = books.map(b => `${b.book_title} (${b.book_author})`).join("\n");
-          alert(`Cannot delete these borrowed books:\n${titles}`);
+          toast.error(`Cannot delete these borrowed books:\n${titles}`);
         } else {
-          alert(err.response?.data?.message || "Failed to delete books");
+          toast.error(err.response?.data?.message || "Failed to delete books");
         }
       }
     }
@@ -188,9 +204,9 @@ function Books() {
       try {
         const res = await api.delete("/returning/staff", { data: selectedIds });
         fetchReturnedBooks();
-        alert(res.data.message);
+        toast.success(res.data.message);
       } catch (err) {
-        alert(err.response?.data?.message || "Failed to delete returned books");
+        toast.error(err.response?.data?.message || "Failed to delete returned books");
       }
     }
     setIsOpenDeleteConfirm(false);
@@ -225,7 +241,7 @@ function Books() {
         onClick={() => {
           const selectedIds = Object.keys(selectedRows).filter(id => selectedRows[id]);
             if (selectedIds.length === 0) {
-              alert("Please select a row");
+              toast.error("Please select a row");
             return;
               }
               setAction("edit");
@@ -252,7 +268,7 @@ function Books() {
           onClick={() => {
             const selectedIds = Object.keys(selectedRows).filter(id => selectedRows[id]);
             if (selectedIds.length === 0) {
-              alert("Please select a row to delete");
+              toast.error("Please select a row to delete");
               return;
             }
             setAction("delete");

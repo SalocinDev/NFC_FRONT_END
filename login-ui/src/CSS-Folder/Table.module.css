@@ -21,7 +21,7 @@ table {
 
 thead {
   background-color: #f3f4f6;
-  border-bottom: 1px solid black;
+  border: 1px solid black;
   color: #101540;
 }
 
@@ -30,19 +30,14 @@ th{
  
   text-align: center;
   text-transform: uppercase;
-  border-left: 1px solid rgba(0, 0, 0, 0.329);
-  border-right: 1px solid rgba(0, 0, 0, 0.253);
-  border-bottom: 1px solid  rgba(0, 0, 0, 0.253);
-  border-top: 1px solid rgba(0, 0, 0, 0.253);
+  border: 1px solid black;
 }
 
 td {
   text-align: center;
   padding: 0;
   padding-bottom: 0.5rem;
-  border-left: 1px solid rgba(0, 0, 0, 0.329);
-  border-right: 1px solid rgba(0, 0, 0, 0.253);
-  border-bottom: 1px solid  rgba(0, 0, 0, 0.253);;
+  border: 1px solid black;
 }
 
 tr:hover {

@@ -20,6 +20,7 @@ function ResetPasswordForm() {
   const [Gender, setGender] = useState("");
   const [Contact, setContact] = useState("");
   const [School, setSchool] = useState("");
+  const SymbolList = ["!","@","#","$","%","^","&","*","(",")","-","_","=","+"];
 
   const handleSignUp = () => {
   //required fields check
@@ -41,6 +42,7 @@ function ResetPasswordForm() {
     return;
   }
 
+  if (Pass.includes(""))
   //confirm password are the same
   if (Pass !== ConfirmPass) {
     alert("Passwords are not the same");
@@ -82,14 +84,13 @@ function ResetPasswordForm() {
 
     <div className={classes.container}>
       <Button name="Back" use="BackButton" onClick={() => navigate("/")}/>
-
+      <div className={classes.TitleRight}>
       <h1 className={classes.LogoContainer}>
         <span className={classes.title}>Sign Up</span>
         <img  src={BlogoImg} alt="Logo" className={classes.icon} />
       </h1>
-       <p className={classes.info}>
-            Please provide your information to sign up.
-          </p>
+       <p className={classes.info}> Please provide your information to sign up.</p>
+      </div>
 
   <div className={classes.SignUpContainer}>
     <div className={classes.NameContainer}>

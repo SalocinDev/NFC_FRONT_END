@@ -4,6 +4,8 @@ import classes from '../CSS-Folder/NfcPage.module.css';
 import { NFCicon } from '../Logo';
 import { Button, LogoComponent} from '../Components';
 import { useState, useEffect, useRef } from 'react';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function NfcPage() {
   const [SigningIn, IsSigningIn] = useState(false);
@@ -27,24 +29,32 @@ function NfcPage() {
     const result = await Promise.race([toNFClogin(navigate), timeout]);
 
     // sessionStorage.setItem("userInfo", JSON.stringify(result));
-    if (result === "Timeout") {
-      alert("NFC login timed out. Returning to login.");
+    if (!result) {
+      toast.error("No response received. Returning to login.");
       navigate('/');
-    } else if (result.success) {
-      alert(`Welcome, ${result.user_firstname} (via NFC)!`);
-      navigate("/Intermediary");
+    } else if (result === "Timeout") {
+      toast.error("NFC login timed out. Returning to login.");
+      navigate('/');
+    } if (result.success && !result.alreadyLoggedIn) {
+      // First NFC login go to Services
+      toast.success(`Welcome, ${result.user_firstname} (via NFC)!`);
+      navigate("/Services", { state: { loggedIn: true } });
+    } else if (result.success && result.alreadyLoggedIn) {
+      // Already logged in
+      toast.success(`Welcome, ${result.user_firstname} (via NFC)!`);
+      navigate('/Intermediary');
     } else if (result.valid === false) {
-      alert("NFC Login Failed. Returning to login.");
+      toast.error("NFC Login Failed. Returning to login.");
       navigate('/');
-    } else if (result === "Error") {
-      alert("An error occurred. Returning to login.");
+    } else if (result.error) {
+      toast.error(`An error occurred: ${result.error}`);
       navigate('/');
     } else {
       console.warn("Unexpected response format:", result);
-      alert("Unexpected response. Returning to login.");
+      toast.error("Unexpected response. Returning to login.");
       navigate('/');
     }
-
+    
     IsSigningIn(false);
 
   };

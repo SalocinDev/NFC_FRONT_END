@@ -16,14 +16,22 @@
   box-sizing: border-box;  
 }
 
-.CheckboxContainer{
-    margin-top: 20vh;
-    margin-left: -3vw;
-    z-index: -1;
+.container{
+  background-color: black;
+  margin: 0;
 }
 
-p{
-    color: white;
+.CheckboxBackground{
+    
+    z-index: -1;
+    padding-top: 22vh;
+}
+
+.CheckboxContainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .ManilaAbove{
@@ -68,6 +76,87 @@ font-size: 5rem;
   color: #0d1046;
   margin-left: 40vw;
 }
+
+/* Popup ito */
+
+.PopupOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.PopupBox {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 2rem;
+  width: fit-content;
+  max-width: 100%;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.PopupBox h2{
+  text-align: center;
+}
+
+.PopupBox ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.5rem 2rem; 
+  list-style-type: none;
+  padding: 0;
+  margin: 0 0 1rem;
+  text-align: left;
+  max-height: 250px; 
+  overflow-y: auto;
+}
+
+.PopupBox li {
+  font-weight: 500;
+  color: #0d1046;
+  padding: 4px 0;
+  font-size: 1.5rem;
+  padding: 0 1rem 0rem 1rem;
+  white-space: nowrap;
+  
+}
+
+.PopupBox h2 {
+  margin-bottom: 1rem;
+  color: #0d1046;
+}
+
+.PopupBox ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 0 1rem;
+}
+
+.PopupBox li {
+  margin: 5px 0;
+  font-weight: 500;
+  color: #444;
+}
+
+.PopupButtons {
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
 
 @media (max-width: 1024px) {
   

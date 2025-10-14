@@ -56,7 +56,7 @@ function MainPage() {
             bookId={selectedBookId}
             onBack={handleBack}
             setActive={setActive}
-            setBookSelected={setSelectedBookId} // pass the state setter
+            setBookSelected={setSelectedBookId} 
           />
         );
       case "BookArchive":
@@ -67,6 +67,8 @@ function MainPage() {
         return <OPACSearchbar onSearch={handleSearch} setActive={setActive} />;
     }
   };
+
+  console.log("ACTIVE PAGE:", active);
 
   return (
     <div>
@@ -81,32 +83,49 @@ function MainPage() {
           </div>
 
           <div className={classes.SearchBar}>
-            {active === "BookArchive" ? (
-              <Button
-                use="AboutPage"
-                name={
-                <>
-                  <IoMdArrowBack size={20} />
-                  <span>BACK</span>
-                </>
-              }
-                onClick={handleBack} // or () => setActive("SearchPage")
-              />
-            ) : (
-              active !== "SearchPage" && <SearchBar />
-            )}
+  
+  {active === "BookArchive" || active === "BookResult" || active === "BookDetailPage"? (
+    <Button
+      use="BackButtonOpac"
+      name={
+        <>
+          <IoMdArrowBack size={30} />
+          
+        </>
+      }
+      onClick={handleBack}
+    />
+  ) : (
+    
+    active !== "SearchPage" && <SearchBar />
+  )}
 
-            <Button
-              use="AboutPage"
-              name={
-                <>
-                  <span>ABOUT US</span>
-                  <IoMdInformationCircle size={20} />
-                </>
-              }
-              onClick={() => setActive("AboutPage")}
-           />
+
+  {active === "AboutPage" ? (
+    <Button
+      use="AboutPage"
+      name={
+        <>
+          <IoMdArrowBack size={20} />
+          <span>BACK</span>
+        </>
+      }
+      onClick={handleBack}
+    />
+  ) : (
+    <Button
+      use="AboutPage"
+      name={
+        <>
+          <span>ABOUT US</span>
+          <IoMdInformationCircle size={20} />
+        </>
+      }
+      onClick={() => setActive("AboutPage")}
+    />
+  )}
 </div>
+
         </div>
       </div>
 

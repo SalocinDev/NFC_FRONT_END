@@ -25,6 +25,8 @@ export { default as UserDashboard} from './UserPage-Components/UserDashboard';
 export { default as ServicesAvailed} from './UserPage-Components/Tables/ServicesAvailed';
 export { default as BorrowedForm} from './UserPage-Components/BorrowedForm';
 export { default as SettingPage } from './SettingPage';
+export { default as UserHomePage} from './UserPage-Components/UserHomePage';
+
 
 /* File Upload */
 export { default as ImageUpload } from './ImageUpload';

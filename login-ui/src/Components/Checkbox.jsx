@@ -57,13 +57,13 @@ const Checkbox = ({ onChange }) => {
           <div className={classes.others}>
             <label>
               Others:{" "}
-              <input
+            </label>
+            <input
                 type="text"
                 value={others}
                 onChange={handleOthersChange}
                 className={classes.inputText}
               />
-            </label>
           </div>
         </div>
       </div>

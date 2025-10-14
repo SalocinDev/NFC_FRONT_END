@@ -28,11 +28,7 @@ function PopUpFormDeleteConfirm({
               <Button use="ConfirmDelete" name="CONFIRM DELETE" type="submit"/>
               
             </div>
-               <p>
-                {selectedCount > 0
-                  ? `You are about to delete ${selectedCount} record(s). This action cannot be undone.`
-                  : "No records selected."}
-              </p>
+              
             </div>
           </form>
         </div>

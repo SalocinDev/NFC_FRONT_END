@@ -9,6 +9,14 @@
   cursor: pointer;
   width: fit-content;
   color: #101540;
+  border-left: 2px solid black;
+  border-radius: 0px;
+}
+
+.card:hover{
+  background-color: #77798a75;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .iconContainer{

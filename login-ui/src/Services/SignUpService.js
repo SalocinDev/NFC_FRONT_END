@@ -1,8 +1,10 @@
 const apiUrl = import.meta.env.VITE_API_URL;
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export async function signUp (email, password, firstName, middleName, lastName, dob, gender, contactNumber, school, navigate) {
     /* console.log("Signing up with:", { email, password, firstName, middleName, lastName, dob, gender, contactNumber, school }); */
-    alert(`Signing up with:, ${email}, ${firstName}, ${middleName}, ${lastName}, ${dob}, ${gender}, ${contactNumber}, ${school}`);
+    toast.success(`Signing up with:, ${email}, ${firstName}, ${middleName}, ${lastName}, ${dob}, ${gender}, ${contactNumber}, ${school}`);
     try {
         const response = await fetch(`${apiUrl}/acc/sign-up`, {
             method: "POST",
@@ -15,27 +17,55 @@ export async function signUp (email, password, firstName, middleName, lastName, 
         });
         const result = await response.json();
         if (!result.success && result.message === "Account already registered"){
-            alert(result.message);
+            toast.error(result.message);
             return;
         }
         if (result.success) {
-            console.log(result);
-            alert(result.message);
+            // console.log(result);
+            toast.success(result.message);
             const response = await sendOTP(email);
 
             if (!response.success) {
-                alert(response.message);
+                toast.error(response.message);
                 return;
             }
 
             if (response.success) {
-                alert(response.message);
+                toast.success(response.message);
                 navigate(`/OtpForm`, { state: { email, resetPass: false } });
                 return;
             }
         } 
     } catch (error) {
-        alert(error);
+        toast.error(error);
+        console.log(error);
+        return;
+    }
+}
+
+export async function adminUserRegister(email, password, firstName, middleName, lastName, dob, gender, contactNumber, school) {
+    toast.success(`Signing up with:, ${email}, ${firstName}, ${middleName}, ${lastName}, ${dob}, ${gender}, ${contactNumber}, ${school}`);
+    try {
+        const response = await fetch(`${apiUrl}/acc/sign-up`, {
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+                "x-api-key": import.meta.env.VITE_API_KEY
+        },
+        body: JSON.stringify({ email, password, firstName, middleName, lastName, dob, gender, contactNumber, school })
+        });
+        const result = await response.json();
+        if (!result.success && result.message === "Account already registered"){
+            toast.error(result.message);
+            return;
+        }
+        if (result.success) {
+            console.log(result);
+            toast.success(result.message);
+        } 
+    } catch (error) {
+        toast.error(error);
         console.log(error);
         return;
     }
@@ -79,13 +109,13 @@ export async function verifyOTP(email, OTP, navigate, resetPass) {
         const result = await response.json();
 
         if (!result.verified) {
-            alert(result.message || "Invalid OTP");
+            toast.error(result.message || "Invalid OTP");
         return;
         }
 
         // Success case
         console.log(result.message);
-        alert("Email Verified!");
+        toast.success("Email Verified!");
 
         if (resetPass) {
             navigate("/ResetPasswordForm", { state: { email } });
@@ -95,6 +125,6 @@ export async function verifyOTP(email, OTP, navigate, resetPass) {
 
         return result;
     } catch (error) {
-        alert(error);
+        toast.error(error);
     }
 }

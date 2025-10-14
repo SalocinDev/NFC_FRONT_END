@@ -57,9 +57,6 @@ html,
   font-weight: 400;
 }
 
-
-
-
 .container {
   width: 90%;
   max-width: 1000px;
@@ -227,6 +224,10 @@ html,
 
 .GenderInput{
   display: none;
+}
+
+.TitleRight{
+ margin-top: -50px;
 }
 
 @media (max-width: 768px) {

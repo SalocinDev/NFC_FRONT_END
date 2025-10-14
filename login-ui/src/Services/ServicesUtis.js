@@ -1,4 +1,6 @@
 const apiUrl = import.meta.env.VITE_API_URL;
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export async function submitServices( services ) {
     try {
@@ -13,11 +15,11 @@ export async function submitServices( services ) {
         })
         const result = await response.json();
         if (!result.success){
-            alert("Submission Failed!");
+            toast.error("Submission Failed!");
             return { success: false }
         }
         if (result.success) {
-            alert("Services Submitted");
+            toast.success("Services Submitted");
             return { success: true }
         }
     } catch (error) {

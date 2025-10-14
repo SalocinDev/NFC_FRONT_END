@@ -1,153 +1,134 @@
-import classes from '../../CSS-Folder/Books.module.css';
-import { Button, Table, PopUpForm, PopUpFormDeleteConfirm } from '..';
+import classes from '../../CSS-Folder/UserManagement.module.css';
+import { Button, Table, PopUpNfc, SearchID, RegisterUser } from '..';
+import PopUpFormDeleteConfirm from '../PopUps/PopUpDeleteConfirm';
 import { useState, useEffect } from 'react';
-import api from '../../api/api';
-import { BiSolidEditAlt, BiUserPlus } from 'react-icons/bi';
-import { MdOutlineDeleteOutline } from 'react-icons/md';
+import { TiUserAddOutline, TiUserDeleteOutline } from "react-icons/ti";
+import api from "../../api/api";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function UserManagement() {
-  const storedUser = JSON.parse(sessionStorage.getItem('userInfo'));
-  const [userRecords, setUserRecords] = useState([]);
-  const [selectedRows, setSelectedRows] = useState({});
-  const [isOpen, setIsOpen] = useState(false);
-  const [isOpenDeleteConfirm, setIsOpenDeleteConfirm] = useState(false);
-  const [action, setAction] = useState(null);
+    const [userRecords, setUserRecords] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [selectedRow, setSelectedRow] = useState(null);
+    const [selectedRowsData, setSelectedRowsData] = useState([]);
+    const [isPopupOpen, setIsPopupOpen] = useState(false);
+    const [isRegisterPopupOpen, setIsRegisterPopupOpen] = useState(false);
+    const [isDeleteConfirmOpen, setIsDeleteConfirmOpen] = useState(false);
 
-  //Fetch all users
-  const fetchUsers = async () => {
-    try {
-      const res = await api.get(`/user/?role=${storedUser.role}`);
-      setUserRecords(res.data);
-    } catch (err) {
-      console.error('Error fetching users:', err);
-    }
-  };
+    useEffect(() => {
+        const fetchUsers = async () => {
+            try {
+                const res = await api.get("/user/");
+                const sorted = res.data.sort((a, b) => new Date(b.log_time) - new Date(a.log_time));
+                setUserRecords(sorted);
+            } catch (err) {
+                console.error("Error fetching users:", err);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchUsers();
+    }, []);
 
-  useEffect(() => {
-    fetchUsers();
-  }, []);
+    if (loading) return <p>Loading users...</p>;
 
-  //Generate columns dynamically
-  const userColumns = userRecords.length > 0 ? Object.keys(userRecords[0]) : [];
+    const handleOpenRegister = () => setIsRegisterPopupOpen(true);
+    const handleCloseRegister = () => setIsRegisterPopupOpen(false);
 
-  //Handle add/edit form submission
-  const handleFormSubmit = async (formValues, action) => {
-    if (!formValues || !action) {
-      alert('Invalid form submission');
-      return;
-    }
+    const handleViewRow = (rowData) => {
+        setSelectedRow({ user_id: rowData.user_id });
+        setIsPopupOpen(true);
+    };
 
-    try {
-      if (action === 'add') {
-        const res = await api.post('/user', formValues);
-        alert(res.data.message);
-      } else if (action === 'edit') {
-        const selectedIndexes = Object.keys(selectedRows).filter(idx => selectedRows[idx]);
-        const selectedIds = selectedIndexes.map(idx => userRecords[idx].user_id);
-        if (selectedIds.length !== 1) {
-          alert('Please select exactly one user to edit.');
-          return;
+    const handleClosePopup = () => setIsPopupOpen(false);
+
+    const handleDeleteUser = () => {
+        if (!selectedRowsData || selectedRowsData.length === 0) return toast.error("No row selected.");
+        setIsDeleteConfirmOpen(true);
+    };
+
+    const handleDeleteConfirm = async () => {
+        try {
+            await api.delete("/user/", { data: selectedRowsData });
+            // console.log(`Deleting Users: ${selectedRowsData}`);
+
+            setUserRecords((prev) => prev.filter(u => !selectedRowsData.includes(u.user_id)));
+
+            setSelectedRowsData([]);
+            setSelectedRow(null);
+            setIsDeleteConfirmOpen(false);
+
+            toast.success("Selected user(s) deleted successfully");
+        } catch (err) {
+            console.error("Failed to delete users:", err);
+            toast.error("Failed to delete users");
         }
-        const res = await api.put(`/user${selectedIds[0]}`, formValues);
-        alert(res.data.message);
-      }
+    };
 
-      fetchUsers();
-      setIsOpen(false);
-    } catch (err) {
-      alert(err.response?.data?.message || 'Failed to submit form');
-    }
-  };
+    return (
+        <div>
+            <div className={classes.samplelang}>
+                <SearchID placeholder="Search by User Name" />
+                <Button use="RegisterUser" name={<TiUserAddOutline size={24} />} onClick={handleOpenRegister} />
+                <Button use="DeleteUser" name={<TiUserDeleteOutline size={25} />} onClick={handleDeleteUser} />
+            </div>
 
-  //Handle delete confirmation
-  const handleDeleteConfirm = async () => {
-    const selectedIndexes = Object.keys(selectedRows).filter(idx => selectedRows[idx]);
-    const selectedIds = selectedIndexes.map(idx => userRecords[idx].user_id);
+            <div className={classes.TableContainer}>
+                <main className={classes.RenderComponents}>
+                    <Table
+                        checkbox
+                        view
+                        records={userRecords}
+                        onViewRow={handleViewRow}
+                        onSelectedRowsChange={(rows) => {
+                            const selectedIds = Object.keys(rows)
+                                .filter(id => rows[id])
+                                .map(id => {
+                                    const index = parseInt(id.replace("row-", ""));
+                                    return userRecords[index]?.user_id;
+                                })
+                                .filter(Boolean);
+                            setSelectedRowsData(selectedIds);
+                            setSelectedRow(selectedIds.length === 1 ? { user_id: selectedIds[0] } : null);
+                        }}
+                        columns={[
+                            { accessorKey: "user_id", header: "ID" },
+                            { accessorKey: "user_email", header: "EMAIL" },
+                            { accessorKey: "user_firstname", header: "FIRSTNAME" },
+                            { accessorKey: "user_middlename", header: "MIDDLENAME" },
+                            { accessorKey: "user_date_of_birth", header: "DATE OF BIRTH" },
+                            { accessorKey: "user_gender", header: "GENDER" },
+                            { accessorKey: "user_contact_number", header: "CONTACT" },
+                            { accessorKey: "user_category_id_fk", header: "USER CATEGORY" },
+                            { accessorKey: "user_school", header: "UNIVERSITY" },
+                            { accessorKey: "user_creation_time", header: "CREATION DATE" },
+                        ]}
+                    />
+                </main>
+            </div>
 
-    if (selectedIds.length === 0) {
-      alert('Please select at least one user to delete.');
-      return;
-    }
-    
-    try {
-      const res = await api.delete('/user', { data: selectedIds });
-      alert(res.data.message);
-      fetchUsers();
-    } catch (err) {
-      alert(err.response?.data?.message || 'Failed to delete users');
-    }
+            <PopUpNfc
+                isOpen={isPopupOpen}
+                onClose={handleClosePopup}
+                columns={userRecords.length > 0 ? Object.keys(userRecords[0]) : []}
+                initialValues={selectedRow || {}}
+                onSubmit={() => setIsPopupOpen(false)}
+            />
 
-    setIsOpenDeleteConfirm(false);
-  };
+            <RegisterUser
+                isOpen={isRegisterPopupOpen}
+                onClose={handleCloseRegister}
+            />
 
-  return (
-    <div>
-      <div className={classes.samplelang}>
-        <Button
-          name={<BiSolidEditAlt size={24} />}
-          use="EDAButton"
-          onClick={() => {
-            const selectedIds = Object.keys(selectedRows).filter(id => selectedRows[id]);
-            if (selectedIds.length !== 1) {
-              alert('Please select exactly one user to edit.');
-              return;
-            }
-            setAction('edit');
-            setIsOpen(true);
-          }}
-        />
-
-        <Button
-          name={<BiUserPlus size={24} />}
-          use="EDAButton"
-          onClick={() => {
-            setAction('add');
-            setIsOpen(true);
-          }}
-        />
-
-        <Button
-          name={<MdOutlineDeleteOutline size={24} />}
-          use="DeleteButton"
-          onClick={() => {
-            const selectedIds = Object.keys(selectedRows).filter(id => selectedRows[id]);
-            if (selectedIds.length === 0) {
-              alert('Please select a user to delete.');
-              return;
-            }
-            setAction('delete');
-            setIsOpenDeleteConfirm(true);
-          }}
-        />
-      </div>
-
-      <div className={classes.TableContainer}>
-        <main className={classes.RenderComponents}>
-          <Table
-            key="UsersAdmin"
-            records={userRecords}
-            onSelectedRowsChange={setSelectedRows}
-            checkbox
-            hiddenColumns={['password']}
-          />
-        </main>
-      </div>
-
-      <PopUpForm
-        isOpen={isOpen}
-        onClose={() => setIsOpen(false)}
-        columns={userColumns.slice(1)}
-        initialValues={{}}
-        onSubmit={(formValues) => handleFormSubmit(formValues, action)}
-      />
-
-      <PopUpFormDeleteConfirm
-        isOpen={isOpenDeleteConfirm}
-        onClose={() => setIsOpenDeleteConfirm(false)}
-        onConfirm={handleDeleteConfirm}
-      />
-    </div>
-  );
+            <PopUpFormDeleteConfirm
+                isOpen={isDeleteConfirmOpen}
+                onClose={() => setIsDeleteConfirmOpen(false)}
+                onConfirm={handleDeleteConfirm}
+                selectedCount={selectedRowsData.length}
+            />
+        </div>
+    );
 }
 
 export default UserManagement;

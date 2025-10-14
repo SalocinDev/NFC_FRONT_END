@@ -22,7 +22,8 @@ function BorrowedBooksTable() {
           const res = await api.get(`/borrowing/${storedUser.user_id}`); 
           setRecords(res.data);
         } catch (err) {
-          console.error("Error fetching borrowed books:", err);
+          // console.error("Error fetching borrowed books:", err);
+          return;
         } finally {
           setLoading(false);
         }

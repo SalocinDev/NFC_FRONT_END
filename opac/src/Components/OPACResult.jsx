@@ -69,9 +69,6 @@ export default function OPACResult({ query, type, onBookClick, onBack }) {
 
   return (
     <div className={classes.MainDiv}>
-      <div className={classes.BackButtonContainer}>
-        <Button onClick={onBack} use="BackButton" name="Back" />
-      </div>
 
       <form onSubmit={handleSearch} className={classes.FormAuthor} id="SearchForm">
         <div className={classes.SearchFunction}>

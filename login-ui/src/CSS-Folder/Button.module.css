@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 .ButtonSignIn,
 .NfcSignIn,
 .ButtonSignUp,
@@ -14,13 +16,15 @@
   max-width: 25.75rem;
   height: 4rem;
   font-size: 1.5rem;
-  padding: 1rem 5rem;
+  font-family: "Poppins", sans-serif !important;
   border-radius: 0.75rem;
   border: 2px solid #727374;
   box-sizing: border-box;
   margin-bottom: 2px;
   cursor: pointer;
-}
+  font-family: "Poppins", sans-serif;
+  }
+
 
 .PreviousTableButton,
 .NextTableButton{
@@ -117,7 +121,6 @@
   margin-top: 2rem;
 }
 
-.ButtonSignIn:hover,
 .ButtonReset:hover,
 .NfcSignUp:hover,
 .ButtonSignUpForm:hover,
@@ -129,6 +132,10 @@
   transition: 0.9s;
 }
 
+.ButtonSignIn:hover{
+  background-color: #101540be;
+  
+}
 
 .ButtonSignUp:hover,
 .ButtonForm:hover{
@@ -146,10 +153,10 @@
 }
 
 .NfcSignIn:hover {
-  background-color: #222D8A;
+  background-color: #222c8a8e;
   cursor: pointer;
   border-style: solid;
-  border-color: #222D8A;
+  border-color: #222c8a8e;
   color: white;
 }
 
@@ -172,8 +179,8 @@
 }
 
 .NfcSignIn {
-  background-color: #3DA5DF;
-  border-color: #3DA5DF;
+  background-color: #222D8A;
+  border-color: #222D8A;
   color: white;
 }
 
@@ -186,6 +193,7 @@
   border-color: #101540;
   color: #101540;
   margin-top: 2rem;
+  width: 25.75rem !important;
 }
 
 /* .ButtonForm {
@@ -202,6 +210,55 @@
   margin-top: 2rem;
 }
  */
+
+.ConfirmServicesButton {
+  background-color: #101540; 
+  color: white;
+  width: 10rem;
+  height: 2.8rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.ConfirmServicesButton:hover {
+  background-color: #0069d9; 
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 105, 217, 0.3);
+}
+
+.ConfirmServicesButton:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.CancelServicesButton {
+  background-color: #dc3545; 
+  color: white;
+  width: 10rem;
+  height: 2.8rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.CancelServicesButton:hover {
+  background-color: #c82333; 
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(220, 53, 69, 0.3);
+}
+
+.CancelServicesButton:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
 
  .ButtonSignInMobile,
  .NfcSignInMobile{
