@@ -20,6 +20,8 @@ function Services() {
 
   useEffect(() => {
     const checkLogin = async () => {
+      console.log(loggedIn);
+      
       if (!loggedIn) {
         await logOut();
         navigate("/");

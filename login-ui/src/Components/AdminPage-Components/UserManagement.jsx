@@ -17,18 +17,38 @@ function UserManagement() {
     const [isDeleteConfirmOpen, setIsDeleteConfirmOpen] = useState(false);
 
     useEffect(() => {
-        const fetchUsers = async () => {
+        const fetchUsersAndCategories = async () => {
             try {
-                const res = await api.get("/user/");
-                const sorted = res.data.sort((a, b) => new Date(b.log_time) - new Date(a.log_time));
+                // Fetch both users and categories in parallel
+                const [usersRes, categoriesRes] = await Promise.all([
+                    api.get("/user/"),
+                    api.get("/user/categories/")
+                ]);
+
+                // Map categories by ID for easy lookup
+                const categoriesMap = {};
+                categoriesRes.data.forEach(cat => {
+                    categoriesMap[cat.user_category_id] = cat.user_category_name;
+                });
+
+                // Merge category names into user records
+                const usersWithCategory = usersRes.data.map(user => ({
+                    ...user,
+                    user_category_name: categoriesMap[user.user_category_id_fk] || "Unknown"
+                }));
+
+                // Sort by log_time descending
+                const sorted = usersWithCategory.sort(
+                    (a, b) => new Date(b.log_time) - new Date(a.log_time)
+                );
                 setUserRecords(sorted);
             } catch (err) {
-                console.error("Error fetching users:", err);
+                console.error("Error fetching users or categories:", err);
             } finally {
                 setLoading(false);
             }
         };
-        fetchUsers();
+        fetchUsersAndCategories();
     }, []);
 
     if (loading) return <p>Loading users...</p>;
@@ -37,7 +57,7 @@ function UserManagement() {
     const handleCloseRegister = () => setIsRegisterPopupOpen(false);
 
     const handleViewRow = (rowData) => {
-        setSelectedRow({ user_id: rowData.user_id });
+        setSelectedRow(rowData);
         setIsPopupOpen(true);
     };
 
@@ -100,7 +120,7 @@ function UserManagement() {
                             { accessorKey: "user_date_of_birth", header: "DATE OF BIRTH" },
                             { accessorKey: "user_gender", header: "GENDER" },
                             { accessorKey: "user_contact_number", header: "CONTACT" },
-                            { accessorKey: "user_category_id_fk", header: "USER CATEGORY" },
+                            { accessorKey: "user_category_name", header: "USER CATEGORY" },
                             { accessorKey: "user_school", header: "UNIVERSITY" },
                             { accessorKey: "user_creation_time", header: "CREATION DATE" },
                         ]}

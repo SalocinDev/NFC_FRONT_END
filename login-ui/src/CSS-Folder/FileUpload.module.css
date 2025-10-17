@@ -36,7 +36,7 @@
 
 
 
-input[type="file"] {
+.InputButtonContainer input[type="file"] {
     display: none;
 }
 

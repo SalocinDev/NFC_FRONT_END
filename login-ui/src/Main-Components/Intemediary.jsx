@@ -37,11 +37,11 @@ function Intemediary() {
               use="ButtonUserPage"
               onClick={() => navigate("/UserPage")}
             />
-            <Button
-              name="Services"
-              use="extraBtn"
-              onClick={() => navigate("/Services")}
-            />
+          <Button
+            name="Services"
+            use="extraBtn"
+            onClick={() => navigate("/Services", { state: { loggedIn: true } })}
+          />
           </div>
         </div>
       </div>

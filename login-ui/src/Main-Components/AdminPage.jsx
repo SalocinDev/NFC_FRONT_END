@@ -9,6 +9,10 @@ import { MdDashboard, MdBook, MdPeople, MdLibraryBooks, MdReport, MdPeopleAlt,Md
 import { FaBookReader } from "react-icons/fa";
 import { logOut } from '../Services/SessionUtils';
 import { getProfilePicture } from '../Services/FileService'
+import { FaWifi } from "react-icons/fa";
+import { IoDocumentText } from "react-icons/io5";
+
+
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
@@ -83,6 +87,10 @@ function AdminPage() {
         return <SettingPage />;
         case "Reports":
         return <ReportsExport />;
+        case "Wi-Fi":
+        return <ReportsExport />;
+        case "Logs":
+        return <ReportsExport />;
       default:
         return <Statistics />;
     }
@@ -130,6 +138,22 @@ function AdminPage() {
                 use="Sample" 
                 onClick={() => setActive("Reports")} 
                 isActive={active === "Reports"}
+              />
+            </li>
+            <li>
+              <Button 
+                name={<><FaWifi size={24} /><span>Wi-Fi</span></>} 
+                use="Sample" 
+                onClick={() => setActive("Wi-Fi")} 
+                isActive={active === "Wi-fi"}
+              />
+            </li>
+            <li>
+              <Button 
+                name={<><IoDocumentText size={24} /><span>Logs</span></>} 
+                use="Sample" 
+                onClick={() => setActive("Logs")} 
+                isActive={active === "Logs"}
               />
             </li>
           </ul>

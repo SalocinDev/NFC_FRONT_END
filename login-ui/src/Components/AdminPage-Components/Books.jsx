@@ -121,8 +121,8 @@ function Books() {
       return;
     }
     console.log("Form values: ", formValues);
-    // console.log("Active tab: ", active);
-    // console.log("Action taken: ", action);
+    console.log("Active tab: ", active);
+    console.log("Action taken: ", action);
 
     if (action === "add" && active === "BorrowedBooksAdmin") {
       const res = await api.post(`/borrowing/staff`, formValues);
@@ -131,7 +131,7 @@ function Books() {
     }
 
     if (action === "add" && active === "BooksAdmin") {
-      const res = await api.post(`/books/staff`, formValues);
+      const res = await api.post(`/opac/`, formValues);
       fetchBooks();
       toast.success(res.data.message);
     }
@@ -229,7 +229,7 @@ function Books() {
         />
 
         <Button 
-          name="ReturnedBooks" use="ReturnedBooks" 
+          name="Returned Books" use="ReturnedBooks" 
           onClick={() => setActive("ReturnedBooksAdmin")}
           isActive={active === "ReturnedBooksAdmin"} 
         />

@@ -130,15 +130,14 @@ function PopUpForm({ isOpen, onClose, columns = [], onSubmit, initialValues = {}
                       ))}
                     </select>
                   ) : col === "book_cover_img" ? (
-                    <div className={classes.ImageUploadWrapper}>
+                    <div className={classes.FileInput}> 
                       <input
                         required
                         type="file"
                         accept="image/*"
-                        className={classes.UploadImage}
                         onChange={(e) => handleChange(e, col)}
                       />
-                    </div>
+                    </div>                  
                   ) : isDateField ? (
                     <input
                       required
