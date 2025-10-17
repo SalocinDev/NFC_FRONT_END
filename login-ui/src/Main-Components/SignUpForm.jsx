@@ -128,7 +128,7 @@ function ResetPasswordForm() {
 
     <div className={classes.InputGender}>
       
-      <Button name="SIGN UP" use="ButtonSignUpForm" onClick={handleSignUp} />
+      <Button name="SIGN UP" use="SignUpButtonForm" onClick={handleSignUp} />
     </div>
     </div>
 

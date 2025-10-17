@@ -25,6 +25,23 @@
   font-family: "Poppins", sans-serif;
   }
 
+  .SignUpButtonForm{
+    width: 25.75rem;
+  max-width: 25.75rem;
+  height: 4rem;
+  font-size: 1.5rem;
+  font-family: "Poppins", sans-serif !important;
+  border-radius: 0.75rem;
+  border: 2px solid #727374;
+  box-sizing: border-box;
+  margin-bottom: 2px;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  background-color: #101540;
+  color: white;
+  border: 2px solid #101540;
+  }
+
 
 .PreviousTableButton,
 .NextTableButton{
