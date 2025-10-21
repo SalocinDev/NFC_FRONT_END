@@ -9,7 +9,7 @@ function AboutPage() {
   
   return (
     <div className={classes.MainBody}>
-    <AiPopUp/>
+    
   
       <div className={classes.AboutUsContainer}>
         <div className={classes.AboutUs}>
@@ -47,7 +47,9 @@ function AboutPage() {
             </p>
           </span>
         </div>
+         <AiPopUp/>
     </div>
+   
    </div>
   );
 }
