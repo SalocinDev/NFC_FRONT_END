@@ -42,6 +42,10 @@
   border: 2px solid #101540;
   }
 
+.SignUpButtonForm:hover{
+    background-color: #101540be;
+}
+
 .SubmitFeedback {
   width: 10rem;
   height: 2.5rem;
