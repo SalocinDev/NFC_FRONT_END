@@ -1,11 +1,13 @@
 import React, { useEffect, useState, useMemo } from "react";
 import api from "../api/api";
+import { Button } from ".";
 import { BarChart } from "@mui/x-charts/BarChart";
 import {
   useReactTable,
   getCoreRowModel,
   flexRender,
 } from "@tanstack/react-table";
+import { AiOutlineSelect } from "react-icons/ai";
 import classes from '../CSS-Folder/SurveyReport.module.css';
 
 const SurveyReport = () => {
@@ -153,7 +155,7 @@ const SurveyReport = () => {
   }, [reportData]);
 
   return (
-    <div >
+    <div className={classes.MainDiv}>
       <h2>Library Survey Report</h2>
 
       {/* Filters */}
@@ -203,9 +205,23 @@ const SurveyReport = () => {
           </>
         )}
 
-        <button onClick={fetchReport} disabled={loading}>
-          {loading ? "Loading..." : "Go"}
-        </button>
+        <Button 
+  onClick={fetchReport} 
+  disabled={loading} 
+  use="GoButtonSurvey"
+  name={
+    loading ? (
+      "Loading..."
+    ) : (
+      <>
+        <AiOutlineSelect size={20}/>
+        Go
+      </>
+    )
+  }
+/>
+          
+        
       </div>
 
       {/* Status messages */}

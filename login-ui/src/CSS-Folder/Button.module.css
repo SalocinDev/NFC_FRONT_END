@@ -84,6 +84,26 @@
   transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
+.GoButtonSurvey {
+  border: none;
+  color: #101540;
+  background-color: #f2f4ff;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 🌟 Hover Effect */
+.GoButtonSurvey:hover {
+  background-color: transparent;
+  color:#101540 ;
+  transform: translateY(-2px);
+}
+
 .UpdateWifiQR:hover{
   background-color: #0069d9;
   transform: scale(1.03);
