@@ -22,10 +22,20 @@
 }
 
 .RadioheadContainer{
-border: 1px solid rgba(0, 0, 0, 0.377);
-border-radius: 0.50rem;
+background-color: #8080804b; /* soft gray-white */
+    box-shadow:
+  0 4px 10px rgba(0, 0, 0, 0.25),   /* bottom */
+  0 -4px 10px rgba(0, 0, 0, 0.15),  /* top */
+  4px 0 10px rgba(0, 0, 0, 0.1),    /* right */
+  -4px 0 10px rgba(0, 0, 0, 0.1);   /* left */
+border-radius: 0.75rem;
 padding: 1rem;
 margin-bottom: 1rem;
+}
+
+.RadioheadContainer strong{
+  font-size: 1.5rem;
+
 }
 
 .Radiohead{
@@ -57,4 +67,8 @@ margin-bottom: 1rem;
 .FeedbackContainer textarea{
     border: 1px solid black;
     border-radius: 0.50rem;
+}
+
+.FeedbackContainer label{
+  font-size: 1.5rem;
 }
