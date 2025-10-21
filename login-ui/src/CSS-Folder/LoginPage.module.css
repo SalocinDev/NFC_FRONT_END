@@ -14,6 +14,12 @@
   align-items: center;
 }
 
+.LoginInput input{
+  width: 24.75rem;
+  border: 2px solid #101540;
+  border-radius: 0.75rem;
+}
+
 .RightContent {
   text-align: center;
   padding: 2rem;

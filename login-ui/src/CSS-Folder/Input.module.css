@@ -1,10 +1,10 @@
 input{
   width: 100%;
   max-width: 29.75rem;
-  height: 4.5rem;
-  font-size: 1.5rem;
+  height: 4rem;
+  font-size: 1rem;
   padding: 0.75rem 1rem;
-  border-radius: 0.75rem;
+
   border: 2px solid #727374;
   box-sizing: border-box;
   margin-bottom: 2px;
@@ -23,6 +23,35 @@ input{
 .SelectRow{
   background-color: red;
 }
+
+.inputContainer {
+  position: relative;
+  width: 100%;
+  margin-top: 1.2rem;
+}
+
+.inputLabel {
+  position: absolute;
+  top: -1.2rem;
+  left: 0.6rem;
+  background-color: #fff;  
+  padding: 0 0.5rem;
+  font-size: 1.2rem;
+  color: #101540;
+  font-weight: 600;
+  pointer-events: none;
+  white-space: nowrap; 
+  transform: translateY(0); 
+}
+
+@media (max-width: 500px) {
+  .inputLabel {
+    font-size: 1.1rem;
+    left: 1.2rem;
+  }
+}
+
+
 
 
 

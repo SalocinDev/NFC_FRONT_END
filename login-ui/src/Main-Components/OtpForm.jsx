@@ -54,13 +54,16 @@ function OtpForm() {
         </div>
 
         <div>
+          <div className={classes.inputContainer}>
           <Input
             required
             type="text"
-            placeholder="OTP"
+            
             value={OTP}
             onChange={(e) => setOTP(e.target.value)}
+            label="OTP"
           />
+          </div>
           <Button
             name="VERIFY"
             use="ButtonVerify"

@@ -10,24 +10,47 @@
   z-index: 1;
 }
 
-.input {
+.InputField {
+  position: relative;
+  width: 100%;
+  margin-top: 1.2rem;
+}
+
+.inputLabel {
+  position: absolute;
+  top: -1.2rem;
+  left: 0.6rem;
+  background-color: #fff;  
+  padding: 0 0.5rem;
+  font-size: 1.2rem;
+  color: #101540;
+  font-weight: 600;
+  pointer-events: none;
+  white-space: nowrap; 
+  transform: translateY(0); 
+}
+
+.InputGrid input {
   width: 100% !important;
   max-width: 29.75rem !important;
-  height: 4.5rem !important;
+  height: 4rem !important;
   font-size: 1.5rem !important;
   padding: 0.75rem 1rem !important;
   border-radius: 0.75rem !important;
-  border: 2px solid #727374 !important;
+  border: 2px solid #101540 !important;
   box-sizing: border-box !important;
-  margin-bottom: 2px !important;
+ 
   display: block !important;
-  
-   padding-left: 3rem !important;  
+   padding-left: 1rem !important;
+}
+
+.InputField input{
+  padding-left: 3rem !important;
 }
 
 .myDropdown {
-  height: 4.5rem !important;             
-  border: 2px solid #727374 !important; 
+  height: 4rem !important;             
+  border: 2px solid #10154098 !important; 
   border-right: none !important;       
   border-radius: 0.75rem 0 0 0.75rem !important; 
   background: transparent !important;        
@@ -346,7 +369,7 @@ label{
   font-size: 1.5rem;
   padding: 0.75rem 1rem;
   border-radius: 0.75rem;
-  border: 2px solid #727374;
+  border: 2px solid #101540;
   box-sizing: border-box;
   margin-bottom: 2px;
   display: block;
@@ -361,6 +384,17 @@ label{
   margin: 0;
   padding: 0;
 }
+.PersonalDetail input{
+  border-radius: 0.75rem;
+  border-color: #101540;
+}
+
+.PersonalDetail h1{
+  margin: 0;
+  padding: 0;
+}
+
+
 
 @media (min-width: 600px) and (max-width: 1024px) {
 .PersonalDetail{

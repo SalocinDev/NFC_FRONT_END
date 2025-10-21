@@ -97,30 +97,62 @@ function LoginPage() {
               <h1 className={classes.WelcomeHeader}>Welcome Back !!</h1>
               <p className={classes.Credentials}>Please Enter Your Credentials To Log-in</p>
         </div>
-
+      <form
+        onSubmit={(e) => {
+          e.preventDefault(); //prevents reload
+          signIn(Email, Pass, navigate);
+        }}
+      >
         <div className={classes.LoginInput}>
+          <div className={classes.inputContainer}>
+            <Input
+              className={classes.EmailInput}
+              required
+              type="email"
+              label="Email"
+              placeholder="Email"
+              value={Email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <Input
+              className={classes.PassInput}
+              required
+              type="password"
+              label="Password"
+              placeholder="Password"
+              value={Pass}
+              onChange={(e) => setPass(e.target.value)}
+            />
+          </div>
 
-              <Input className={classes.EmailInput} required type="email" placeholder="Email" value={Email} onChange={(e) => setEmail(e.target.value)} />
-              <Input className={classes.PassInput} required type="password" placeholder="Password" value={Pass} onChange={(e) => setPass(e.target.value)} />
-              <div className={classes.mobileattribute}>  
-               <a 
+          <div className={classes.mobileattribute}>
+            <a
               className={classes.attributemobile}
               onClick={() => navigate("/ResetPasswordEmailCheck")}
-                >
-                Forgot password?
-              </a>
-              <a 
+            >
+              Forgot password?
+            </a>
+            <a
               className={classes.attributemobile}
               onClick={() => navigate("/SignUpForm")}
-                >
-                Not a user yet?
-              </a>
-              </div>
-              <Button name="SIGN-IN" use="ButtonSignInMobile" onClick={() => signIn(Email, Pass, navigate)} />
-              <Button name="LOGIN WITH NFC" use="NfcSignInMobile" onClick={() => navigate("/NfcPage")}/>
-          
-        </div>
+            >
+              Not a user yet?
+            </a>
+          </div>
 
+          <Button
+            name="SIGN-IN"
+            use="ButtonSignInMobile"
+            type="submit"
+          />
+
+          <Button
+            name="LOGIN WITH NFC"
+            use="NfcSignInMobile"
+            onClick={() => navigate("/NfcPage")}
+          />
+        </div>
+      </form>
         <div className={classes.ForgotPassContainer}>  
               <a 
               className={classes.attribute}

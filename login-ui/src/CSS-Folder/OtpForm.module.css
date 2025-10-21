@@ -14,7 +14,10 @@
   align-items: center;
 }
 
-
+.LoginContainer input{
+  border-radius: 0.75rem;
+  border: 2px solid #101540;
+}
 
 .RightContent {
   text-align: center;

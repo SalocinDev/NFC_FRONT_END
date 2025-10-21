@@ -1,11 +1,12 @@
 import classes from '../CSS-Folder/AdminPage.module.css';
 import { FaUser, FaCog } from 'react-icons/fa';
-import { Button, Statistics, Books, UserManagement, SettingPage, LogsTable, ReportsExport} from '../Components';
+import { Button, Statistics, Books, UserManagement, SettingPage, LogsTable, ReportsExport, WifiList, UserLibraryLog, SurveyReport} from '../Components';
 import { NavLink } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { WlogoSidebar } from '../Logo';
 import { useNavigate } from 'react-router-dom';
 import { MdDashboard, MdBook, MdPeople, MdLibraryBooks, MdReport, MdPeopleAlt,MdMenu,MdLogout } from "react-icons/md";
+import { RiSurveyFill } from "react-icons/ri";
 import { FaBookReader } from "react-icons/fa";
 import { logOut } from '../Services/SessionUtils';
 import { getProfilePicture } from '../Services/FileService'
@@ -87,10 +88,12 @@ function AdminPage() {
         return <SettingPage />;
         case "Reports":
         return <ReportsExport />;
-        case "Wi-Fi":
-        return <ReportsExport />;
-        case "Logs":
-        return <ReportsExport />;
+        case "WiFi":
+        return <WifiList />;
+        case "Logs": 
+        return <UserLibraryLog />;
+        case "SurveyReport": 
+        return <SurveyReport />;
       default:
         return <Statistics />;
     }
@@ -144,16 +147,24 @@ function AdminPage() {
               <Button 
                 name={<><FaWifi size={24} /><span>Wi-Fi</span></>} 
                 use="Sample" 
-                onClick={() => setActive("Wi-Fi")} 
-                isActive={active === "Wi-fi"}
+                onClick={() => setActive("WiFi")} 
+                isActive={active === "Wifi"}
               />
             </li>
             <li>
               <Button 
-                name={<><IoDocumentText size={24} /><span>Logs</span></>} 
+                name={<><IoDocumentText size={24} /><span>Service Logs</span></>} 
                 use="Sample" 
                 onClick={() => setActive("Logs")} 
                 isActive={active === "Logs"}
+              />
+            </li>
+            <li>
+              <Button 
+                name={<><RiSurveyFill  size={24} /><span>Survey Report</span></>} 
+                use="Sample" 
+                onClick={() => setActive("SurveyReport")} 
+                isActive={active === "SurveyReport"}
               />
             </li>
           </ul>

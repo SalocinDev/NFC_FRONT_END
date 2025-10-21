@@ -119,18 +119,20 @@ function RegisterUser({ isOpen, onClose }) {
 
         {/* Form Fields */}
         <div className={classes.popupForm}>
-          <Input required type="text" placeholder="First Name" value={FN} onChange={(e) => setFN(e.target.value)} />
-          <Input type="text" placeholder="Middle Name (If: N/A)" value={MN} onChange={(e) => setMN(e.target.value)} />
-          <Input required type="text" placeholder="Last Name" value={LN} onChange={(e) => setLN(e.target.value)} />
+          <Input required type="text" label="First Name"  value={FN} onChange={(e) => setFN(e.target.value)} />
+          <Input type="text" label="Middle Name"  value={MN} onChange={(e) => setMN(e.target.value)} />
+          <Input required label="Last Name" type="text"  value={LN} onChange={(e) => setLN(e.target.value)} />
           <Input
             className={classes.GenderInput}
             required
             type="select"
-            placeholder="Gender"
+            
             value={Gender}
             options={["Male", "Female"]}
             onChange={(e) => setGender(e.target.value)}
+            label="Gender"
           />
+          <div className={classes.inputContainer}>
 
           <PhoneInput
             country={'ph'}
@@ -143,12 +145,14 @@ function RegisterUser({ isOpen, onClose }) {
             searchable
             disableSearchIcon
           />
+          <label className={classes.inputLabel}>Contact Number</label>
+          </div>
 
-          <Input className={classes.DateInput} required type="date" value={DoB} onChange={(e) => setDoB(e.target.value)} />
-          <Input required type="text" placeholder="School" value={School} onChange={(e) => setSchool(e.target.value)} />
-          <Input required type="password" placeholder="Password" value={Pass} onChange={(e) => setPass(e.target.value)} />
-          <Input required type="email" placeholder="Email" value={Email} onChange={(e) => setEmail(e.target.value)} />
-          <Input required type="password" placeholder="Confirm Password" value={ConfirmPass} onChange={(e) => setConfirmPass(e.target.value)} />
+          <Input className={classes.DateInput} label="Date of Birth" required type="date" value={DoB} onChange={(e) => setDoB(e.target.value)} />
+          <Input className={classes.GenderInput} required type="select" label="University" options={["TUP", "PNU", "UDM", "PLM", "ADAMSON", "Other"]} value={School} onChange={(e) => setSchool(e.target.value)} />
+          <Input required type="password" label="Password"  value={Pass} onChange={(e) => setPass(e.target.value)} />
+          <Input required type="email" label="Email"  value={Email} onChange={(e) => setEmail(e.target.value)} />
+          <Input required type="password" label="Verify Password"  value={ConfirmPass} onChange={(e) => setConfirmPass(e.target.value)} />
         </div>
 
         {/* Footer */}

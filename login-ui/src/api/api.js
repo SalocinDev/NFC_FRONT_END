@@ -8,6 +8,7 @@ const api = axios.create({
     "Content-Type": "application/json",
     "x-api-key": import.meta.env.VITE_API_KEY
   },
+  withCredentials: true, //this makes cookies (sessions) work
 });
 
 export default api;

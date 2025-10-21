@@ -9,41 +9,48 @@ function Input({
   onChange,
   options = [],
   className,
-  required = false, // make optional
+  required = false, 
+  label, 
 }) {
   if (type === "select") {
     return (
-      <select
-        className={`${classes.input} ${className || ""}`}
-        name={name}
-        id={id}
-        value={value !== undefined ? value : ""}
-        onChange={onChange}
-        required={required}
-      >
-        <option value="" disabled>
-          {placeholder}
-        </option>
-        {options.map((opt, index) => (
-          <option key={index} value={opt}>
-            {opt}
+      <div className={classes.inputContainer}>
+        <select
+          className={`${classes.input} ${className || ""}`}
+          name={name}
+          id={id}
+          value={value || ""}
+          onChange={onChange}
+          required={required}
+        >
+          <option value="" disabled>
+            {placeholder}
           </option>
-        ))}
-      </select>
+          {options.map((opt, index) => (
+            <option key={index} value={opt}>
+              {opt}
+            </option>
+          ))}
+        </select>
+        {label && <label htmlFor={id} className={classes.inputLabel}>{label}</label>}
+      </div>
     );
   }
 
   return (
-    <input
-      className={`${classes.input} ${className || ""}`}
-      type={type}
-      placeholder={placeholder}
-      name={name}
-      id={id}
-      value={value !== undefined ? value : undefined}
-      onChange={onChange}
-      required={required}
-    />
+    <div className={classes.inputContainer}>
+      <input
+        className={`${classes.input} ${className || ""}`}
+        type={type}
+        name={name}
+        id={id}
+        placeholder={placeholder}
+        value={value || ""}
+        onChange={onChange}
+        required={required}
+      />
+      {label && <label htmlFor={id} className={classes.inputLabel}>{label}</label>}
+    </div>
   );
 }
 

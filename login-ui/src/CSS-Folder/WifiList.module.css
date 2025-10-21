@@ -1,0 +1,19 @@
+.WifiHeaderContainer{
+    width: 50vw;
+    justify-self: center;
+}
+
+.TableContainer{
+    width: 100%;
+}
+
+.WifiTable{
+    width: 50vw;
+    justify-self: center;
+}
+
+.ButtonContainer{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}

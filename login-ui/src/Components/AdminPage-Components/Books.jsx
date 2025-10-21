@@ -98,6 +98,7 @@ function Books() {
           records={returnedRecords}
           onSelectedRowsChange={setSelectedRows} 
           checkbox
+          
         />
       );
     case "BooksAdmin":

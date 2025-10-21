@@ -42,8 +42,9 @@ function ResetPasswordEmailCheck() {
 
       <h1 className={classes.title}>Reset Password</h1>
       <p className={classes.subtitle}>Please enter your email</p>
-
-      <Input  className={classes.InputEmailReset} placeholder='Enter Email' type='email' value={email} onChange={(e) => setEmail(e.target.value)} />
+      <div className={classes.inputContainer}>
+      <Input  className={classes.InputEmailReset} label="Email" placeholder='Enter Email' type='email' value={email} onChange={(e) => setEmail(e.target.value)} />
+      </div>
       <Button name="Verify Email" use="ButtonReset" onClick={handleCheckEmail} />
       
     </div>

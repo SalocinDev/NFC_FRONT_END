@@ -69,7 +69,6 @@ html,
   text-align: center;
   height: 100%;
   justify-content: start;
-  margin-top: 7vh;
   overflow: hidden;
 }
 
@@ -114,6 +113,30 @@ html,
   font-family: 'Montserrat';
 }
 
+.inputContainer {
+  position: relative;
+  width: 100%;
+  margin-top: 1.2rem;
+}
+
+.inputLabel {
+  position: absolute;
+  top: -1.2rem;
+  left: 0.6rem;
+  background-color: #fff;  
+  padding: 0 0.5rem;
+  font-size: 1.2rem;
+  color: #101540;
+  font-weight: 600;
+  pointer-events: none;
+  white-space: nowrap; 
+  transform: translateY(0); 
+}
+
+.SignUpContainer select{
+  height: 4rem;
+  border-color:#101540;
+}
 
 .SignUpContainer{
   display: grid;
@@ -139,29 +162,42 @@ html,
   font-size: 1rem;
   padding: 0.75rem 1rem;
   border-radius: 0.75rem;
-  border: 2px solid #727374;
+  border: 2px solid #101540;
   box-sizing: border-box;
   display: block;
 } 
 
-.input {
+.UniversityInput{
+  width: 20rem;
+  height: 2rem;
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  border: 2px solid #101540;
+  box-sizing: border-box;
+  display: block;
+} 
+
+.SignUpContainer input {
   width: 100% !important;
   max-width: 29.75rem !important;
-  height: 4.5rem !important;
+  height: 4rem !important;
   font-size: 1.5rem !important;
   padding: 0.75rem 1rem !important;
   border-radius: 0.75rem !important;
-  border: 2px solid #727374 !important;
+  border: 2px solid #101540 !important;
   box-sizing: border-box !important;
   margin-bottom: 2px !important;
   display: block !important;
+}
 
-   padding-left: 3rem !important;
+.inputContainer input{
+  padding-left: 3rem !important;
 }
 
 .myDropdown {
-  height: 4.5rem !important;             
-  border: 2px solid #727374 !important; 
+  height: 4rem !important;             
+  border: 2px solid #10154098 !important; 
   border-right: none !important;       
   border-radius: 0.75rem 0 0 0.75rem !important; 
   background: transparent !important;        

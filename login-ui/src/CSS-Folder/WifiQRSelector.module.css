@@ -1,0 +1,98 @@
+.TextContainer{
+
+    border-radius: 0.75rem;
+    padding: 2rem;
+    width: 50%;
+}
+
+.MainText{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.MainText h1, p{
+    margin: 0;
+    padding: 0;
+    
+    text-align: left;
+}
+
+.WPAContainer{
+    margin-top: 2rem;
+}
+
+.WPAContainer, 
+.WiFiContainer, 
+.PassContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 2rem;
+}
+
+.WPAContainer p, 
+.WiFiContainer p, 
+.PassContainer p{
+    font-size: 2rem;
+}
+
+.WPAContainer h3, 
+.WiFiContainer h3, 
+.PassContainer h3{
+    color: black;
+    font-size: 2.5rem;
+    margin-right: 1rem;
+}
+
+.SelectWifi p{
+    color: black;
+    margin-top: 1rem;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.QRContainer{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.SubDiv{
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+    justify-self: center;
+    background-color: #8080804b; /* soft gray-white */
+    box-shadow:
+  0 4px 10px rgba(0, 0, 0, 0.25),   /* bottom */
+  0 -4px 10px rgba(0, 0, 0, 0.15),  /* top */
+  4px 0 10px rgba(0, 0, 0, 0.1),    /* right */
+  -4px 0 10px rgba(0, 0, 0, 0.1);   /* left */
+    border-radius: 1rem;
+    padding: 2rem 2rem 3rem 2rem;
+    gap: 2rem;
+}
+
+.SubDiv select{
+    color: black;
+    font-size: 1.5rem;
+    width: 100%;
+    height: 4rem;
+    background-color: #D9D9D9;
+    border: 0.5px solid black;
+    border-radius: 0.75rem;
+    padding: 1rem 1rem 1rem 2rem;
+}
+
+.WifiHeader{
+    padding-left: 2rem;
+    padding-right: 2rem;
+    width: 70%;
+    display: flex;
+    justify-self: center;
+    
+}

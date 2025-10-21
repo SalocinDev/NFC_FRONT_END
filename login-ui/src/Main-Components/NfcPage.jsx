@@ -42,7 +42,7 @@ function NfcPage() {
     } else if (result.success && result.alreadyLoggedIn) {
       // Already logged in
       toast.success(`Welcome, ${result.user_firstname} (via NFC)!`);
-      navigate('/Intermediary');
+      navigate('/Intermediary', { state: { loggedIn: true } });
     } else if (result.valid === false) {
       toast.error("NFC Login Failed. Returning to login.");
       navigate('/');

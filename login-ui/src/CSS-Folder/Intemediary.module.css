@@ -13,7 +13,11 @@ html,
   overflow: hidden; 
 }
 
-
+.Services {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: not-allowed;
+}
 
 .Logo {
   display: flex;
@@ -158,6 +162,14 @@ html,
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+button:disabled,
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: not-allowed;
+  filter: grayscale(100%);
 }
 
 @keyframes spin {

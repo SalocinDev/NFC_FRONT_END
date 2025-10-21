@@ -92,14 +92,13 @@ function SettingPage() {
         <div className={classes.ImageContainer}>
         <ImageUpload/>
         </div>
+        
         <div className={classes.InputGrid}>
-          <div className={classes.InputField}>
-            <label>Surname</label>
-            <Input type="text" placeholder="Surname" value={LN} onChange={(e) => setLN(e.target.value)} />
-          </div>
 
+            <Input type="text" label="Surname" placeholder="Surname" value={LN} onChange={(e) => setLN(e.target.value)} />
+         
           <div className={classes.InputField}>
-            <label>Contact</label>
+          
             <PhoneInput
               country={'ph'}
               value={Contact}
@@ -111,71 +110,50 @@ function SettingPage() {
               searchable={true}
               disableSearchIcon={true}
             />
+            <label className={classes.inputLabel}>Contact Number</label>
           </div>
 
-          <div className={classes.InputField}>
-            <label>First Name</label>
-            <Input type="text" placeholder="First Name" value={FN} onChange={(e) => setFN(e.target.value)} />
-          </div>
-
-          <div className={classes.InputField}>
-            <label>Email</label>
-            <Input type="email" placeholder="Email" value={Email} onChange={(e) => setEmail(e.target.value)} />
-          </div>
-
-          <div className={classes.InputField}>
-            <label>Middle Name</label>
-            <Input type="text" placeholder="Middle Name" value={MN} onChange={(e) => setMN(e.target.value)} />
-          </div>
-
-          <div className={classes.InputField}>
-            <label>University</label>
-            <Input type="text" placeholder="Your University" value={School} onChange={(e) => setSchool(e.target.value)} />
-          </div>
-
-          <div className={classes.InputField}>
-            <label>Birth Date</label>
-            <Input type="date" value={DoB} onChange={(e) => setDoB(e.target.value)} />
-          </div>
-
-          <div className={classes.InputField}>
-            <label>Old Password</label>
-            <Input type="password" placeholder="Enter Your Old Password" value={Pass} onChange={(e) => setPass(e.target.value)} />
-          </div>
-
-          <div className={classes.InputField}>
-            <label>Gender Identity</label>
+      
+            
+            <Input type="text" label="First Name" value={FN} onChange={(e) => setFN(e.target.value)} />
+            <Input type="email" label="Email"  value={Email} onChange={(e) => setEmail(e.target.value)} />
+            <Input type="text" label="Middle Name"  value={MN} onChange={(e) => setMN(e.target.value)} />     
+            <Input type="text"  label="University"  value={School} onChange={(e) => setSchool(e.target.value)} />
+            <Input type="date" label="Date of Birth" value={DoB} onChange={(e) => setDoB(e.target.value)} />
+            <Input type="password" label="Password"  value={Pass} onChange={(e) => setPass(e.target.value)} />
+      
+         
+            <div className={classes.InputField}>
             <select value={Gender} onChange={(e) => setGender(e.target.value)} className={classes.GenderInput}>
               <option value="" disabled hidden>Choose gender</option>
               {genderOptions.map((g, i) => (
                 <option key={i} value={g}>{g}</option>
               ))}
             </select>
-          </div>
+            <label className={classes.inputLabel}>Gender</label>
+            </div>
 
-          <div className={classes.InputField}>
-            <label>New Password</label>
-            <Input type="password" placeholder="Enter Your New Password" value={newPass} onChange={(e) => setNewPass(e.target.value)} />
-          </div>
-
+            <Input type="password" label="Old Password" value={newPass} onChange={(e) => setNewPass(e.target.value)} />
+     
           <Button name="Update Account" use="ConfirmPassButton" onClick={handleUpdateAcc} />
         </div>
 
         <h1>LOCATION SETTING</h1>
-        <div className={classes.InputField}>
-          <label>Address</label>
-          <Input type="text" placeholder="Please Enter Your Address" value={Address} onChange={(e) => setAddress(e.target.value)} />
-        </div>
 
-        <div className={classes.InputField}>
-          <label>City</label>
-          <Input type="text" placeholder="Please Enter Your City" value={City} onChange={(e) => setCity(e.target.value)} />
-        </div>
+    
+          
+          <Input type="text" label="Address" value={Address} onChange={(e) => setAddress(e.target.value)} />
+  
 
-        <div className={classes.InputField}>
-          <label>Zip Code</label>
-          <Input type="text" placeholder="Please Enter Your Zip Code" value={Zip} onChange={(e) => setZip(e.target.value)} />
-        </div>   
+       
+     
+          <Input type="text" label="City"  value={City} onChange={(e) => setCity(e.target.value)} />
+    
+
+       
+          
+          <Input type="text" label="Zip Code"  value={Zip} onChange={(e) => setZip(e.target.value)} />
+    
        
           <Button name="Update Address" use="UpdateProfileButton" onClick={handleUpdateAddress}/>
           

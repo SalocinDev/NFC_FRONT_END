@@ -7,6 +7,19 @@ import { Button, LogoComponent } from "../Components";
 function Intemediary() {
   const location = useLocation();
   const navigate = useNavigate();
+  const { loggedIn } = location.state || {};
+
+  useEffect(() => {
+    const checkLogin = async () => {
+      console.log(loggedIn);
+      
+      if (!loggedIn) {
+        await logOut();
+        navigate("/");
+      }
+    };
+    checkLogin();
+  }, [loggedIn, navigate]);
 
   return (
     <div className={classes.body}>
@@ -37,11 +50,13 @@ function Intemediary() {
               use="ButtonUserPage"
               onClick={() => navigate("/UserPage")}
             />
-          <Button
-            name="Services"
-            use="extraBtn"
-            onClick={() => navigate("/Services", { state: { loggedIn: true } })}
-          />
+            <Button
+              className={classes.Services}
+              name="Services"
+              use="extraBtn"
+              onClick={() => navigate("/Services", { state: { loggedIn } })}
+              disabled
+            />
           </div>
         </div>
       </div>

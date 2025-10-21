@@ -3,7 +3,9 @@ import classes from '../CSS-Folder/UserPage.module.css';
 import { MdMenu, MdDashboard, MdLogout } from "react-icons/md"; 
 import { FaUser, FaCog, FaCompass, FaBookOpen } from 'react-icons/fa';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { Button, UserDashboard, ServicesAvailed, BorrowedForm, SettingPage, AiPopUp } from '../Components';
+import { Button, UserDashboard, ServicesAvailed, BorrowedForm, SettingPage, AiPopUp, SurveyForm, WifiQRSelector } from '../Components';
+import { FaWifi } from "react-icons/fa";
+import { RiSurveyFill } from "react-icons/ri";
 import { WlogoSidebar } from '../Logo';
 import { logOut } from '../Services/SessionUtils';
 import { getProfilePicture } from '../Services/FileService'
@@ -77,6 +79,8 @@ function UserPage() {
       case "BorrowedForm": return <BorrowedForm />;
       case "ServicesAvailed": return <ServicesAvailed />;
       case "SettingPage": return <SettingPage />;
+      case "SurveyPage": return <SurveyForm />;
+      case "WifiPage": return <WifiQRSelector />;
       default: return <UserDashboard />;
     }
   };
@@ -115,6 +119,22 @@ function UserPage() {
               use="Sample" 
               onClick={() => setActive("ServicesAvailed")}
               isActive={active === "ServicesAvailed"}    
+            />
+          </li>
+          <li>
+            <Button 
+              name={<>< RiSurveyFill size={24} /><span>Survey Form</span></>} 
+              use="Sample" 
+              onClick={() => setActive("SurveyPage")}
+              isActive={active === "SurveyPage"}    
+            />
+          </li>
+           <li>
+            <Button 
+              name={<>< FaWifi size={24} /><span>Wi-Fi</span></>} 
+              use="Sample" 
+              onClick={() => setActive("WifiPage")}
+              isActive={active === "WifiPage"}    
             />
           </li>
         </ul>

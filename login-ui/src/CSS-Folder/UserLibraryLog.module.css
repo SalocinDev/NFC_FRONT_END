@@ -1,0 +1,31 @@
+.SelectDiv{
+    display: flex;
+    flex-direction: row;
+}
+
+.InputDiv input{
+    border-radius: 0.75rem;
+    border: 2px solid #101540;
+    margin-bottom: 1rem;
+}
+
+.InputDiv input:focus{
+    border: 2px solid #101540;
+    outline: #101540;
+}
+
+.InputDiv select{
+    width: 8rem;
+    height: 1.5rem;
+    border: none;
+}
+
+.InputDiv select:focus{
+    outline: none;
+    border: none;
+}
+
+.InputDiv select:hover{
+    border-bottom: 1px solid #101540;
+    
+}

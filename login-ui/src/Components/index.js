@@ -18,7 +18,12 @@ export { default as LogsTable} from './LogsTable';
 export { default as OverallStats} from './OverallStats';
 export { default as Statistics} from './Statistics';
 export { default as ReportsExport} from './ReportsExport';
-
+export { default as WifiList} from './WifiList';
+export { default as UserLibraryLog} from './UserLibraryLog';
+export { default as SurveyReport} from './SurveyReport';
+export { default as SurveyForm} from './SurveyForm';
+export { default as WifiQRSelector} from './WifiQRSelector';
+export { default as WifiQRcode} from './WifiQRcode';
 
 /* UserPage related imports */
 export { default as UserDashboard} from './UserPage-Components/UserDashboard';

@@ -1,0 +1,60 @@
+.MainDiv{
+    justify-self: center;
+    width: 50vw;
+}
+
+.MainDiv h2{
+    font-size: 2.5rem;
+    margin: 0;
+    padding: 0;
+}
+
+.Form {
+  max-height: 45vh;
+  overflow: auto; 
+
+  scrollbar-width: none;     
+  -ms-overflow-style: none;   
+}
+
+.Form::-webkit-scrollbar {
+  display: none;              
+}
+
+.RadioheadContainer{
+border: 1px solid rgba(0, 0, 0, 0.377);
+border-radius: 0.50rem;
+padding: 1rem;
+margin-bottom: 1rem;
+}
+
+.Radiohead{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.Radiohead label {
+  display: inline-flex;
+  flex-direction: column; 
+  align-items: center;             
+  margin-right: 1rem;     
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.Radiohead input{
+    width: 2rem;
+}
+
+
+.FeedbackContainer{
+    display: flex;
+    flex-direction: column;
+}
+
+.FeedbackContainer textarea{
+    border: 1px solid black;
+    border-radius: 0.50rem;
+}

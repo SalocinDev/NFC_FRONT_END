@@ -91,13 +91,21 @@ function ResetPasswordForm() {
       </h1>
        <p className={classes.info}> Please provide your information to sign up.</p>
       </div>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault(); //prevents reload
+          handleSignUp();
+        }}
+      >
 
   <div className={classes.SignUpContainer}>
     <div className={classes.NameContainer}>
 
-      <Input required type="text" placeholder="First Name" value={FN} onChange={(e) => setFN(e.target.value)} />
-      <Input type="text" placeholder="Middle Name (If: N/A)" value={MN} onChange={(e) => setMN(e.target.value)} />
-      <Input required type="text" placeholder="Last Name" value={LN} onChange={(e) => setLN(e.target.value)} />
+      <Input required type="text" label="First Name"  value={FN} onChange={(e) => setFN(e.target.value)} />
+      <Input type="text" label="Middle Name"  value={MN} onChange={(e) => setMN(e.target.value)} />
+      <Input required label="Last Name" type="text"  value={LN} onChange={(e) => setLN(e.target.value)} />
+
+      <div className={classes.inputContainer}>
       <PhoneInput
         country={'ph'}
         value={Contact}
@@ -109,35 +117,35 @@ function ResetPasswordForm() {
         searchable={true}       
         disableSearchIcon={true} 
         />
-      <Input  className={classes.SmallInput} required type="select" placeholder="Gender" value={Gender} options={["Male", "Female"]} onChange={(e) => setGender(e.target.value)} />
+        <label className={classes.inputLabel}>Contact Number</label>
+        </div>
+        
+      <Input className={classes.SmallInput} label="Gender" required type="select" value={Gender} options={["Male", "Female", "Other"]} onChange={(e) => setGender(e.target.value)} />
     </div>
 
     <div className={classes.InfoContainer}>
-      <Input required type="email" placeholder="Email" value={Email} onChange={(e) => setEmail(e.target.value)} />
-      <Input required type="password" placeholder="Password" value={Pass} onChange={(e) => setPass(e.target.value)} />
-      <Input required type="password" placeholder="Confirm Password" value={ConfirmPass} onChange={(e) => setconfirmPass(e.target.value)} />
-      <Input className={classes.HiddenOnMobile}required type="password" placeholder="Confirm Password" value={ConfirmPass} onChange={(e) => setconfirmPass(e.target.value)} />
-      <Input className={classes.DateInput} required type="date" value={DoB} onChange={(e) => setDoB(e.target.value)} />
-      <Input required type="text" placeholder="School" value={School} onChange={(e) => setSchool(e.target.value)} />
+      <Input required type="email" label="Email" value={Email} onChange={(e) => setEmail(e.target.value)} />
+      <Input required type="password" label="Password"  value={Pass} onChange={(e) => setPass(e.target.value)} />
+      <Input required type="password" label="Verify Password"  value={ConfirmPass} onChange={(e) => setconfirmPass(e.target.value)} />
+      
+      <Input className={classes.DateInput} label="Date of Birth" required type="date" value={DoB} onChange={(e) => setDoB(e.target.value)} />
 
+      <Input className={classes.UniversityInput} required label="University" type="select" options={["TUP", "PNU", "UDM", "PLM", "ADAMSON", "Others."]} value={School} onChange={(e) => setSchool(e.target.value)} />
       {/* mobile view ito naka display: none; */}
-      <Input  className={classes.GenderInput} required type="select" placeholder="Gender" value={Gender} options={["Male", "Female"]} onChange={(e) => setGender(e.target.value)} />
+      <Input className={classes.GenderInput} required type="select" value={Gender} options={["Male", "Female"]} onChange={(e) => setGender(e.target.value)} />
 
     </div>
   </div>
 
     <div className={classes.InputGender}>
       
-      <Button name="SIGN UP" use="SignUpButtonForm" onClick={handleSignUp} />
+      <Button name="SIGN UP" use="SignUpButtonForm" onClick={handleSignUp} type="submit" />
     </div>
-    </div>
-
-    
-
+    </form>
     </div>
 
-    
-    
+    </div>
+
   );
 }
 
