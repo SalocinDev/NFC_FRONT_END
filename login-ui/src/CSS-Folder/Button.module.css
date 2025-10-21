@@ -74,6 +74,51 @@
   background-color: #101540;
 }
 
+.UpdateWifiQR{
+   background-color: #101540;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.UpdateWifiQR:hover{
+  background-color: #0069d9;
+  transform: scale(1.03);
+}
+
+.CloseFormQR{
+  background-color: #101540;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 15px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.CloseFormQR:hover{
+  background-color: #0069d9;
+  transform: scale(1.03);
+}
+
+.CloseWifiQR{
+  background-color: #ccc;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.CloseWifiQR:hover{
+  background-color: #b3b3b3;
+  transform: scale(1.03);
+}
+
 .DeleteQR{
   
   background-color: red;
@@ -85,7 +130,7 @@
 }
 
 .ViewQR:hover, .EditQR:hover{
-  background-color: #1a1f4a;
+  background-color: #0069d9;
   transform: scale(1.03)
 }
 
@@ -96,7 +141,7 @@
 }
 
 .AddWifiQr{
-  background-color: #007bff;
+  background-color: #101540;
   color: white;
   padding: 10px 15px;
   border: none;

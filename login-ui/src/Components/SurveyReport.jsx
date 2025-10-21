@@ -6,6 +6,7 @@ import {
   getCoreRowModel,
   flexRender,
 } from "@tanstack/react-table";
+import classes from '../CSS-Folder/SurveyReport.module.css';
 
 const SurveyReport = () => {
   const [services, setServices] = useState([]);
@@ -152,7 +153,7 @@ const SurveyReport = () => {
   }, [reportData]);
 
   return (
-    <div style={{ maxWidth: "1000px", margin: "auto", padding: "20px" }}>
+    <div >
       <h2>Library Survey Report</h2>
 
       {/* Filters */}

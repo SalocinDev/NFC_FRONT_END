@@ -1,35 +1,16 @@
 import React from "react";
+import { Button, Input } from ".";
 import WifiQRCode from "./WifiQRcode";
+import classes from '../CSS-Folder/WifiModal.module.css';
 
 const WifiModal = ({ wifi, onClose }) => {
   if (!wifi) return null;
 
   return (
-    <div
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        width: "100%",
-        height: "100%",
-        backgroundColor: "rgba(0,0,0,0.5)",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        zIndex: 1000,
-      }}
-      onClick={onClose} // Close on background click
+    <div className={classes.PopUpModal}
+      onClick={onClose} 
     >
-      <div
-        style={{
-          backgroundColor: "#fff",
-          padding: "30px",
-          borderRadius: "10px",
-          width: "400px",
-          boxShadow: "0 4px 15px rgba(0,0,0,0.2)",
-          position: "relative",
-          textAlign: "center",
-        }}
+      <div className={classes.PopUpBackground}
         onClick={(e) => e.stopPropagation()} // Prevent background close
       >
         <h2 style={{ marginBottom: "15px" }}>{wifi.wifi_name}</h2>
@@ -42,6 +23,7 @@ const WifiModal = ({ wifi, onClose }) => {
         </p>
 
         <div style={{ margin: "20px 0" }}>
+        
           <WifiQRCode
             name={wifi.wifi_name}
             password={wifi.wifi_password}
@@ -49,20 +31,14 @@ const WifiModal = ({ wifi, onClose }) => {
             size={400}
           />
         </div>
+        
 
-        <button
+        <Button
           onClick={onClose}
-          style={{
-            backgroundColor: "#007bff",
-            color: "#fff",
-            border: "none",
-            borderRadius: "5px",
-            padding: "8px 15px",
-            cursor: "pointer",
-          }}
-        >
-          Close
-        </button>
+          name="Close"
+          use="CloseFormQR"
+        />
+          
       </div>
     </div>
   );
