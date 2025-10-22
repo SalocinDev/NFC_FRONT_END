@@ -1,8 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Button, Wlogo, Blogo, Input } from '../Components';
 import classes from '../CSS-Folder/OtpForm.module.css';
 import { useNavigate, useSearchParams, useLocation } from 'react-router-dom';
 import { sendOTP, verifyOTP } from '../Services/SignUpService';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function OtpForm() {
   const navigate = useNavigate();
@@ -11,9 +13,13 @@ function OtpForm() {
   const [OTP, setOTP] = useState("");
   const { email, resetPass } = location.state || {};
 
+  const effectRan = useRef(false);
+
   useEffect(() => {
+    if (effectRan.current) return;
+
     if (!email) {
-      alert("No Email?");
+      toast.error("No Email?");
       navigate("/");
       return;
     }
@@ -22,14 +28,17 @@ function OtpForm() {
       if (resetPass) {
         const result = await sendOTP(email);
         if (!result.success) {
-          alert("OTP sending Error");
+          toast.error("OTP sending Error");
         } else {
-          alert(result.message);
+          toast.success(result.message);
         }
       }
     };
+
     sendIfNeeded();
+    effectRan.current = true;
   }, [email, resetPass, navigate]);
+
 
   return (
     <div className="App">

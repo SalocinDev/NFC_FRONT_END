@@ -1,5 +1,6 @@
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { sendOTP } from './SignUpService';
 
 const apiUrl = import.meta.env.VITE_API_URL;
 //////////////////////////////////////////////////////////////////////////////////////////////
@@ -141,10 +142,22 @@ export async function signIn(email, password, navigate) {
       },
       body: JSON.stringify({ email, password })
     });
-
     const result = await response.json();
+    // console.log(result);
+    // console.log(response);
     if (!result.success) {
       toast.error(result.error || result.message || "Login failed");
+      if (response.status === 403) {
+        toast.info(`Please wait, Sending OTP to ${email}`);
+        // const OTPsend = await sendOTP(email);
+        // if (!OTPsend) {
+        //   return toast.error(`OTP has failed to Send`);
+        // }
+        // if (OTPsend.success) {
+        //   toast.error(`OTP has been sent to ${email}!`);
+        // }
+        return navigate(`OtpForm`, { state: { email, resetPass: true } })
+      }
       return;
     }
 

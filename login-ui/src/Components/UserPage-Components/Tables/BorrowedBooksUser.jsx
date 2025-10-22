@@ -16,36 +16,42 @@ function BorrowedBooksTable() {
     record.book_author?.toLowerCase().includes(searchTerm.toLowerCase()) ||
     record.book_publisher?.toString().includes(searchTerm)
   );
-    useEffect(() => {
-      const fetchReturnedBooks = async () => {
-        try {
-          const res = await api.get(`/borrowing/${storedUser.user_id}`); 
-          setRecords(res.data);
-        } catch (err) {
-          // console.error("Error fetching borrowed books:", err);
+
+  useEffect(() => {
+    const fetchReturnedBooks = async () => {
+      try {
+        const res = await api.get(`/borrowing/${storedUser.user_id}`); 
+        // console.log(res);
+        if (data.status === '204') {
           return;
-        } finally {
-          setLoading(false);
         }
-      };
-  
-      fetchReturnedBooks();
-    }, []);
-  
-    if (loading) return <p>Loading returned books...</p>;
-  
+        if (data.status === '200') {
+          setRecords(res.data);
+        }
+      } catch (err) {
+        // console.error("Error fetching borrowed books:", err);
+        return;
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchReturnedBooks();
+  }, []);
+
+  if (loading) return <p>Loading returned books...</p>;
   
   return (
-    <div>
-      <div className={classes.BorrowedBooksContainer}>     
-        <SearchID placeholder="Search by Book Name/Author"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-         />
-      <Table records={searchTerm ? filteredRecords : records}
-      containerClass={classes.BorrowedTable} />
-      </div>
+  <div>
+    <div className={classes.BorrowedBooksContainer}>     
+      <SearchID placeholder="Search by Book Name/Author"
+      value={searchTerm}
+      onChange={(e) => setSearchTerm(e.target.value)}
+        />
+    <Table records={searchTerm ? filteredRecords : records}
+    containerClass={classes.BorrowedTable} />
     </div>
+  </div>
   );
 }
 

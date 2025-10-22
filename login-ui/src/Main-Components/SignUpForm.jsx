@@ -78,12 +78,12 @@ function ResetPasswordForm() {
           <p className={classes.tagline}>
             Already have an account? Sign in now
           </p><br/>
-          <Button name="SIGN IN" use="ButtonForm" onClick={() => navigate("/")}/>
+          <Button name="SIGN IN" use="ButtonForm" type="button" onClick={() => navigate("/")}/>
         </div>
       </div>
 
     <div className={classes.container}>
-      <Button name="Back" use="BackButton" onClick={() => navigate("/")}/>
+        <Button name="Back" use="BackButton" type="button" onClick={() => navigate("/")}/>
       <div className={classes.TitleRight}>
       <h1 className={classes.LogoContainer}>
         <span className={classes.title}>Sign Up</span>
@@ -137,9 +137,9 @@ function ResetPasswordForm() {
     </div>
   </div>
 
-    <div className={classes.InputGender}>
       
-      <Button name="SIGN UP" use="SignUpButtonForm" onClick={handleSignUp} type="submit" />
+    <div className={classes.InputGender}>
+      <Button name="SIGN UP" use="SignUpButtonForm" type="submit" />
     </div>
     </form>
     </div>

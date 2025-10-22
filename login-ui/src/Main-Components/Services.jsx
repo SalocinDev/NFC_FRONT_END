@@ -18,17 +18,16 @@ function Services() {
   const location = useLocation();
   const { loggedIn } = location.state || {};
 
-  useEffect(() => {
-    const checkLogin = async () => {
-      console.log(loggedIn);
-      
-      if (!loggedIn) {
-        await logOut();
-        navigate("/");
-      }
-    };
-    checkLogin();
-  }, [loggedIn, navigate]);
+  // useEffect(() => {
+  //   const checkLogin = async () => {
+  //     console.log(loggedIn);
+  //     if (!loggedIn) {
+  //       await logOut();
+  //       navigate("/");
+  //     }
+  //   };
+  //   checkLogin();
+  // }, [loggedIn, navigate]);
 
   useEffect(() => {
     if (!alertShown) {
