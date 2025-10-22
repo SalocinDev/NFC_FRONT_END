@@ -113,6 +113,31 @@ html,
   font-family: 'Montserrat';
 }
 
+.InputGender{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.InputGender input{
+
+  display: flex;
+  justify-self: center;
+  align-self: center;
+  width: 20rem;
+  height: 4rem;
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  border: 2px solid #101540;
+  box-sizing: border-box;
+  display: block;
+}
+
+
+
 .inputContainer {
   position: relative;
   width: 100%;
@@ -153,7 +178,7 @@ html,
 .InfoContainer{
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+
 }
 
 .SmallInput{

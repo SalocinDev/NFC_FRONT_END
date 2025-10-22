@@ -1,0 +1,26 @@
+.MainDiv{
+    
+    width: 80%;
+    max-height: 100vh;
+    justify-self: center;
+    padding-bottom: 20vh;
+}
+
+.MainDiv select{
+    width: 200px;
+    height: 1.8rem;
+    border-radius: 2rem;
+    border: none;
+    background-color: #101540;
+    color: white;
+    text-align: left;
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    padding: 0 1rem;
+}
+
+.MainDiv select:focus{
+    outline-color: none;
+    box-shadow: none; 
+}
+

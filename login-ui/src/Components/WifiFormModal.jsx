@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { Button, Input } from ".";
+import classes from '../CSS-Folder/WifiFormModal.module.css';
+
 
 const WifiFormModal = ({ isOpen, onClose, onSubmit, editData }) => {
   const [wifiName, setWifiName] = useState("");
@@ -56,28 +59,27 @@ const WifiFormModal = ({ isOpen, onClose, onSubmit, editData }) => {
           {editData ? "Edit Wi-Fi" : "Add New Wi-Fi"}
         </h2>
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className={classes.FormInput}>
           {/* Wi-Fi Name */}
           <div style={{ marginBottom: "15px" }}>
-            <label>Wi-Fi Name</label>
-            <input
+            <Input
               type="text"
               value={wifiName}
               onChange={(e) => setWifiName(e.target.value)}
               required
-              style={{ width: "100%", padding: "8px", marginTop: "5px" }}
+              label="Wi-Fi Name"
             />
           </div>
 
           {/* Password */}
           <div style={{ marginBottom: "15px" }}>
-            <label>Password</label>
-            <input
+            
+            <Input
               type="text"
               value={wifiPassword}
               onChange={(e) => setWifiPassword(e.target.value)}
               required={wifiSecurity !== "nopass"}
-              style={{ width: "100%", padding: "8px", marginTop: "5px" }}
+              label="Password"
               placeholder={
                 wifiSecurity === "nopass" ? "No password required" : "Enter password"
               }
@@ -86,12 +88,12 @@ const WifiFormModal = ({ isOpen, onClose, onSubmit, editData }) => {
           </div>
 
           {/* Security Type */}
-          <div style={{ marginBottom: "20px" }}>
-            <label>Security Type</label>
+          <div className={classes.MainPopUp}>
+            <label className={classes.inputLabel}>Security Type</label>
             <select
               value={wifiSecurity}
               onChange={(e) => setWifiSecurity(e.target.value)}
-              style={{ width: "100%", padding: "8px", marginTop: "5px" }}
+              
             >
               <option value="WEP">WEP</option>
               <option value="WPA">WPA</option>
@@ -104,33 +106,22 @@ const WifiFormModal = ({ isOpen, onClose, onSubmit, editData }) => {
 
           {/* Buttons */}
           <div style={{ display: "flex", justifyContent: "flex-end" }}>
-            <button
+            <Button
               type="button"
               onClick={onClose}
-              style={{
-                backgroundColor: "#ccc",
-                border: "none",
-                padding: "8px 12px",
-                borderRadius: "5px",
-                marginRight: "10px",
-                cursor: "pointer",
-              }}
-            >
-              Cancel
-            </button>
-            <button
+              use="CloseWifiQR"
+              name="Close"
+            />
+           
+            <Button
               type="submit"
-              style={{
-                backgroundColor: "#007bff",
-                color: "#fff",
-                border: "none",
-                padding: "8px 12px",
-                borderRadius: "5px",
-                cursor: "pointer",
-              }}
+              name="Update"
+              use="UpdateWifiQR"
             >
               {editData ? "Update" : "Add"}
-            </button>
+            </Button>
+              
+          
           </div>
         </form>
       </div>

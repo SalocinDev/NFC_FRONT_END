@@ -20,6 +20,8 @@ function ResetPasswordForm() {
   const [Gender, setGender] = useState("");
   const [Contact, setContact] = useState("");
   const [School, setSchool] = useState("");
+  const [Category, setCategory] = useState("");
+
   const SymbolList = ["!","@","#","$","%","^","&","*","(",")","-","_","=","+"];
 
   const handleSignUp = () => {
@@ -104,7 +106,8 @@ function ResetPasswordForm() {
       <Input required type="text" label="First Name"  value={FN} onChange={(e) => setFN(e.target.value)} />
       <Input type="text" label="Middle Name"  value={MN} onChange={(e) => setMN(e.target.value)} />
       <Input required label="Last Name" type="text"  value={LN} onChange={(e) => setLN(e.target.value)} />
-
+      <Input className={classes.UniversityInput} required label="University" type="select" options={["TUP", "PNU", "UDM", "PLM", "ADAMSON", "Others."]} value={School} onChange={(e) => setSchool(e.target.value)} />
+      
       <div className={classes.inputContainer}>
       <PhoneInput
         country={'ph'}
@@ -121,19 +124,47 @@ function ResetPasswordForm() {
         </div>
         
       <Input className={classes.SmallInput} label="Gender" required type="select" value={Gender} options={["Male", "Female", "Other"]} onChange={(e) => setGender(e.target.value)} />
+      
     </div>
 
     <div className={classes.InfoContainer}>
+      <Input 
+        className={classes.UniversityInput}
+        required
+        label="User Category"
+        type="select"
+        options={[
+          "Elementary Student (ES)",
+          "High School Student (HS)",
+          "College Student (CS)",
+          "Employees-Gov’t (EGOV)",
+          "Employees-Private (EPRI)",
+          "Senior Citizens (SC)",
+          "Reviewees (R)",
+          "Person with Disabilities (PWD)",
+          "Children in Street Situations (CISS)",
+          "Out-of-School-Youth (OSY)",
+          "Housewife/Husband (HH)",
+          "LGBTQIAS2+",
+          "OTHERS",
+          "N/A"
+        ]}
+        value={Category}
+        onChange={(e) => setCategory(e.target.value)}
+      />      
       <Input required type="email" label="Email" value={Email} onChange={(e) => setEmail(e.target.value)} />
       <Input required type="password" label="Password"  value={Pass} onChange={(e) => setPass(e.target.value)} />
       <Input required type="password" label="Verify Password"  value={ConfirmPass} onChange={(e) => setconfirmPass(e.target.value)} />
       
       <Input className={classes.DateInput} label="Date of Birth" required type="date" value={DoB} onChange={(e) => setDoB(e.target.value)} />
-
-      <Input className={classes.UniversityInput} required label="University" type="select" options={["TUP", "PNU", "UDM", "PLM", "ADAMSON", "Others."]} value={School} onChange={(e) => setSchool(e.target.value)} />
+        
       {/* mobile view ito naka display: none; */}
       <Input className={classes.GenderInput} required type="select" value={Gender} options={["Male", "Female"]} onChange={(e) => setGender(e.target.value)} />
+        
 
+    </div>
+    <div>
+      
     </div>
   </div>
 
