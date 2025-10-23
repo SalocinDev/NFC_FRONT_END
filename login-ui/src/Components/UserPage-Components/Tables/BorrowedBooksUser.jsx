@@ -22,11 +22,13 @@ function BorrowedBooksTable() {
       try {
         const res = await api.get(`/borrowing/${storedUser.user_id}`); 
         // console.log(res);
-        if (data.status === '204') {
+        // console.log(res.data);
+        if (res.status === 204) {
           return;
         }
-        if (data.status === '200') {
+        if (res.status === 200) {
           setRecords(res.data);
+          return;
         }
       } catch (err) {
         // console.error("Error fetching borrowed books:", err);

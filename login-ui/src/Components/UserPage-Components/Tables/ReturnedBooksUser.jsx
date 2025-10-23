@@ -18,11 +18,14 @@ function ReturnedBooksTable() {
     const fetchReturnedBooks = async () => {
       try {
         const res = await api.get(`/returning/${storedUser.user_id}`); 
-        if (data.status === '204') {
+        // console.log(res);
+        // console.log(res.data);
+        if (res.status === 204) {
           return;
         }
-        if (data.status === '200') {
+        if (res.status === 200) {
           setRecords(res.data);
+          return;
         }
       } catch (err) {
         return;
