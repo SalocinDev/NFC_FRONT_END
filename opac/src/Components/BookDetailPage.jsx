@@ -3,6 +3,7 @@ import api from "../api/api";
 import { ClassNames } from "@emotion/react";
 import classes from "../CSS/BookDetailPage.module.css";
 import { BookCoverDisplay } from '../Components';
+import { GiBookCover } from "react-icons/gi";
 
 export default function BookDetail({ setActive, setBookSelected, bookId, onBack}) {
   const [book, setBook] = useState(null);
@@ -39,7 +40,11 @@ export default function BookDetail({ setActive, setBookSelected, bookId, onBack}
   }, [bookId]);
 
   if (loading) {
-    return <p className="text-center text-gray-500 mt-10">Loading book details...</p>;
+    return <div className={classes.LoadingContainer}><p className={classes.LoadingBooks}>
+      <GiBookCover size={400}/><br/>
+      Loading book details...
+      </p>;
+      </div>
   }
 
   if (!book) {

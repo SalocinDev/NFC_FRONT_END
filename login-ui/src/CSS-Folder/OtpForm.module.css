@@ -17,6 +17,7 @@
 .LoginContainer input{
   border-radius: 0.75rem;
   border: 2px solid #101540;
+  padding-left: 3.5rem;
 }
 
 .RightContent {
@@ -113,6 +114,25 @@
   gap: 20px;
 
   
+}
+
+.InputWrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: left;
+}
+
+.icon {
+  margin-top: 1rem;
+  margin-left: 1rem;
+  position: absolute;
+  left: 15vw;
+  z-index: 99;
+  color: #101540;
+  font-size: 1.25rem;
+  pointer-events: none; 
+  transition: color 0.3s ease;
 }
 
 .tagline{
@@ -227,6 +247,14 @@
 
 
 @media (max-width: 480px) {
+
+ 
+  .icon{
+     
+  left: 5vw;
+  color: #101540;
+  }
+
   .RightRectangle {
     display: none;
   }

@@ -155,7 +155,7 @@ export default function OPACResult({ query, type, onBookClick, onBack }) {
       </div>
 
       {loading ? (
-        <p className="text-center text-gray-500">Loading...</p>
+        <p className={classes.LoadingBooks}>Loading...</p>
       ) : results.length === 0 ? (
         <div className={classes.NoBookFound}>
           <p className={classes.MagnifyingIcon}><FaMagnifyingGlass /></p>

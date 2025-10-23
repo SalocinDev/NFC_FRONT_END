@@ -13,6 +13,19 @@
     display: flex;
 }
 
+.LoadingContainer{
+  align-items: center;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.LoadingBooks{
+  margin-top: 25vh;
+  justify-self: center;
+}
+
 .BookTitle h1{
     font-size: 5rem;
     text-align: left;

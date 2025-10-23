@@ -381,6 +381,19 @@ html,
 @media (max-width: 480px) {
 
 
+.NameContainer input, select{
+    width: 100% !important;
+    height: 4rem !important;
+    
+  }
+  
+
+.InfoContainer input, select{
+  width: 100% !important;
+  height: 4rem !important;
+}
+
+
   body{
     height: 100vh;
   }
@@ -391,15 +404,15 @@ html,
     padding: 0;
     margin: 0;
     overflow-y: auto;
-    padding-bottom: 10rem;
+    padding-top: 5rem;
+    
   }
 
   .InfoContainer,
   .NameContainer{
-    width: 90%;
+  width: 90%;
   display: grid;
-  grid-template-columns: 1fr 1fr; 
-  gap: 1rem;                       
+  grid-template-columns: 1fr; 
 
   }
 
@@ -413,9 +426,6 @@ html,
     padding: 0;
   }
 
-  .SmallInput{
-    display: none;
-  }
 
   .GenderInput {
     font-size: 1rem;
@@ -443,5 +453,9 @@ html,
 
   .icon {
     width: 8rem;
+  }
+
+  .InputGender{
+    padding-bottom: 10rem;
   }
 }

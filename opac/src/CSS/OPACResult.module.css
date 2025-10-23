@@ -81,6 +81,12 @@
     height: 5vh;
 }
 
+.LoadingBooks{
+  margin-top: 10rem;
+  justify-self: center;
+  
+}
+
 .FormDateContainer{
     padding: 1rem 25.5vw 0 24.5vw;
     

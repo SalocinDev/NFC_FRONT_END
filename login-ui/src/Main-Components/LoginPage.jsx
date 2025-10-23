@@ -2,6 +2,7 @@ import classes from '../CSS-Folder/LoginPage.module.css';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Button, Wlogo, Blogo, Input } from '../Components/index.js';
 import { signIn } from '../Services/LoginService.js';
+import { MdEmail, MdLock } from "react-icons/md";
 import { useState, useEffect } from "react";
 const apiUrl = import.meta.env.VITE_API_URL;
 import { toast } from 'react-toastify';
@@ -104,26 +105,32 @@ function LoginPage() {
         }}
       >
         <div className={classes.LoginInput}>
-          <div className={classes.inputContainer}>
+
+        <div className={classes.inputContainer}>
+          <div className={classes.inputWrapper}>
+            <MdEmail className={classes.icon} size={30}/>
             <Input
               className={classes.EmailInput}
               required
               type="email"
               label="Email"
-              placeholder="Email"
               value={Email}
               onChange={(e) => setEmail(e.target.value)}
             />
+          </div>
+
+          <div className={classes.inputWrapper}>
+            <MdLock className={classes.icon} size={30}/>
             <Input
-              className={classes.PassInput}
-              required
+             required
               type="password"
               label="Password"
-              placeholder="Password"
               value={Pass}
               onChange={(e) => setPass(e.target.value)}
-            />
+              className={classes.PassInput}
+            />  
           </div>
+        </div>
 
           <div className={classes.mobileattribute}>
             <a

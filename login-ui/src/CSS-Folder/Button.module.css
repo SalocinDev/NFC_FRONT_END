@@ -954,6 +954,10 @@
   max-width: 90%;
   }
 
+  .SignUpButtonForm{
+    width: 20rem;
+  }
+
   .ButtonUserPage{
     width: 100%;
     max-width: 100%;

@@ -3,6 +3,8 @@ import { useNavigate, useSearchParams, useLocation } from 'react-router-dom';
 import { useState } from "react";
 import { Wlogo, Input, Blogo, Button } from '../Components';
 import { changePassword } from '../Services/ChangePassword'
+import { RiRotateLockFill } from "react-icons/ri";
+import { GiConfirmed } from "react-icons/gi";
 
 function ResetPasswordForm() {
   const navigate = useNavigate();
@@ -60,12 +62,19 @@ function ResetPasswordForm() {
       <h1 className={classes.title}>Reset Password</h1>
       <p className={classes.subtitle}>Please enter your new password</p>
 
-       
+    <div className={classes.inputContainer}>
 
+    <div className={classes.inputWrapper}>
+      <RiRotateLockFill className={classes.icon} size={30}/>
       <Input placeholder="New Password" type='password' value={Pass} onChange={(e) => setPass(e.target.value)} />
+    </div>
+    
+    <div className={classes.inputWrapper}>
+      <GiConfirmed className={classes.icon} size={30}/>
       <Input placeholder="Confirm Password"  type='password' value={ConfirmPass} onChange={(e) => setConfirmPass(e.target.value)} />
+      </div>
       <Button name="RESET PASSWORD" use="ButtonReset" onClick={handlePass} />
-      
+      </div>
       
     </div>
 

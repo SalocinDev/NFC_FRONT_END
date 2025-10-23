@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Button, Wlogo, Blogo, Input } from '../Components';
 import classes from '../CSS-Folder/OtpForm.module.css';
+import { MdOutlinePassword  } from "react-icons/md";
 import { useNavigate, useSearchParams, useLocation } from 'react-router-dom';
 import { sendOTP, verifyOTP } from '../Services/SignUpService';
 import { toast } from 'react-toastify';
@@ -64,20 +65,24 @@ function OtpForm() {
 
         <div>
           <div className={classes.inputContainer}>
-          <Input
-            required
-            type="text"
-            
-            value={OTP}
-            onChange={(e) => setOTP(e.target.value)}
-            label="OTP"
-          />
+            <div className={classes.inputWrapper}>
+              <MdOutlinePassword  className={classes.icon} size={30} />   
+              <Input
+                required
+                type="text"
+                
+                value={OTP}
+                onChange={(e) => setOTP(e.target.value)}
+                label="OTP"
+              />
           </div>
-          <Button
+           <Button
             name="VERIFY"
             use="ButtonVerify"
             onClick={() => verifyOTP(email, OTP, navigate, resetPass)}
           />
+          </div>
+         
         </div>
       </div>
     </div>

@@ -44,7 +44,7 @@ input{
   transform: translateY(0); 
 }
 
-@media (max-width: 500px) {
+@media (min-width: 300px) and (max-width: 500px) {
   .inputLabel {
     font-size: 1.1rem;
     left: 1.2rem;

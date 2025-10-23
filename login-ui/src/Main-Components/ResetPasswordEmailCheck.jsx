@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from "react";
 import { Wlogo, Input, Blogo, Button } from '../Components';
 import { checkEmail } from '../Services/ChangePassword'
+import { MdEmail } from "react-icons/md";
 
 function ResetPasswordEmailCheck() {
   const navigate = useNavigate();
@@ -42,9 +43,14 @@ function ResetPasswordEmailCheck() {
 
       <h1 className={classes.title}>Reset Password</h1>
       <p className={classes.subtitle}>Please enter your email</p>
+
       <div className={classes.inputContainer}>
-      <Input  className={classes.InputEmailReset} label="Email" placeholder='Enter Email' type='email' value={email} onChange={(e) => setEmail(e.target.value)} />
+        <div className={classes.inputWrapper}>
+          <MdEmail className={classes.icon} size={30}/>
+          <Input  className={classes.InputEmailReset} label="Email"  type='email' value={email} onChange={(e) => setEmail(e.target.value)} />
+        </div>
       </div>
+
       <Button name="Verify Email" use="ButtonReset" onClick={handleCheckEmail} />
       
     </div>

@@ -14,9 +14,29 @@
   align-items: center;
 }
 
+.InputWrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  margin-top: 1rem;
+  margin-left: 1rem;
+  position: absolute;
+  
+  z-index: 99;
+  color: #101540;
+  font-size: 1.25rem;
+  pointer-events: none; 
+  transition: color 0.3s ease;
+}
+
 .LoginInput input{
   width: 24.75rem;
   border: 2px solid #101540;
+  padding-left: 3.5rem;
   border-radius: 0.75rem;
 }
 
@@ -271,6 +291,11 @@
   .LoginInput{
     width: 100%;
     padding-bottom: 5rem;
+  }
+
+  .LoginInput input{
+    max-width: 21.5rem;
+    padding-left: 3.5rem;
   }
 
   .LoginBody{

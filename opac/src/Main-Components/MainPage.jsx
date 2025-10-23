@@ -93,12 +93,9 @@ function MainPage() {
           
         </>
       }
-      onClick={handleBack}
-    />
-  ) : (
-    
-    active !== "SearchPage" && <SearchBar />
-  )}
+     onClick={handleBack}
+  />
+) : null}
 
 
   {active === "AboutPage" ? (
