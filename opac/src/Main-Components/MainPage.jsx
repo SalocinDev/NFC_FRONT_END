@@ -10,6 +10,7 @@ import { AboutPage, BookArchiveOpac } from "../Main-Components";
 import React, { useState } from "react";
 import classes from "../CSS/MainPage.module.css";
 import { IoMdInformationCircle, IoMdArrowBack } from "react-icons/io";
+import { AiPopUp } from '../../../login-ui/src/Components'
 
 
 function MainPage() {
@@ -131,9 +132,12 @@ function MainPage() {
         <div className={classes.BookContainer}>
           <div className={classes.SampleLangTo}>
             <main className={classes.RenderComponents}>{renderContent()}</main>
+
           </div>
         </div>
       </div>
+         <AiPopUp/>
+
     </div>
   );
 }

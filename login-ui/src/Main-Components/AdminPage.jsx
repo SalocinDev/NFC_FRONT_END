@@ -1,6 +1,6 @@
 import classes from '../CSS-Folder/AdminPage.module.css';
 import { FaUser, FaCog } from 'react-icons/fa';
-import { Button, Statistics, Books, UserManagement, SettingPage, LogsTable, ReportsExport, WifiList, UserLibraryLog, SurveyReport} from '../Components';
+import { Button, Statistics, Books, UserManagement, SettingPage, LogsTable, ReportsExport, WifiList, UserLibraryLog, SurveyReport, LiveClock} from '../Components';
 import { NavLink } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { WlogoSidebar } from '../Logo';
@@ -54,27 +54,11 @@ function AdminPage() {
   }, []);
 
   
-    useEffect(() => {
-      const updateTime = () => {
-        const now = new Date();
-        setCurrentTime(now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
-        setCurrentDate(now.toLocaleDateString(undefined, {
-          weekday: 'long',
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric',
-        }));
-      };
-
-    updateTime(); // initial run
-    const interval = setInterval(updateTime, 60000); // every 60s
-
-    return () => clearInterval(interval); // cleanup
-  }, []);
+    
 
   /* eto yung bago: */
   
-  const [active, setActive] = useState("DashBoard"); // default section
+  const [active, setActive] = useState("Dashboard"); // default section
 
   const renderContent = () => {
     switch (active) {
@@ -205,9 +189,9 @@ function AdminPage() {
         
         <div className={classes.RightTopbar}>
           <div className={classes.TimeGear}>
-            <span className={classes.Time}>{currentTime}</span>
+            <span><LiveClock/></span>
             <NavLink onClick={() => setActive("SettingPage")}>
-            <FaCog className={classes.GearIcon} size={16} />
+            <FaCog className={classes.GearIcon} size={30} />
             </NavLink>
           </div>
           <div className={classes.Date}>{currentDate}</div>

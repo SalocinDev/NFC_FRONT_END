@@ -12,6 +12,25 @@ function PopUpForm({ isOpen, onClose, columns = [], onSubmit, initialValues = {}
   const [availableUsers, setAvailableUsers] = useState([]);
   const [bookCategories, setBookCategories] = useState([]);
   const [borrowingID, setBorrowingID] = useState([]);
+  
+  const prettyLabels = {
+    book_id_fk: "Book",
+    user_id_fk: "User",
+    book_category_id_fk: "Book Category",
+    borrow_id_fk: "Borrowed Book",
+    book_cover_img: "Book Cover Image",
+    borrow_date: "Borrow Date",
+    return_date: "Return Date",
+    book_title: "Book Title",
+    full_name: "Full Name",
+    // ... add more as needed
+  };
+
+  function prettifyColumn(col) {
+    return col
+      .replace(/_/g, " ")           // replace underscores with spaces
+      .replace(/\b\w/g, (c) => c.toUpperCase()); // capitalize words
+  }
 
   useEffect(() => {
     if (isOpen) {
@@ -67,25 +86,27 @@ function PopUpForm({ isOpen, onClose, columns = [], onSubmit, initialValues = {}
             
             {columns.map((col) => {
               const isDateField = col.toLowerCase().includes("date") || col.toLowerCase().includes("year");
-
+              const isStatus = col.toLowerCase().includes("status")
               return (
                 <div className={classes.inputGroup} key={col}>
-                  <label>{col}</label>
+                  <label>{prettyLabels[col] || prettifyColumn(col)}</label>
 
                   {col === "book_id_fk" ? (
-                    <select
-                      
-                      required
-                      value={formData[col] || ""}
-                      onChange={(e) => handleChange(e, col)}
-                    >
-                      <option value="">-- Select a Book --</option>
-                      {availableBooks.map((book) => (
-                        <option key={book.book_id} value={book.book_id}>
-                          {book.book_title}
-                        </option>
-                      ))}
-                    </select>
+                    <>
+                      <select
+                        
+                        required
+                        value={formData[col] || ""}
+                        onChange={(e) => handleChange(e, col)}
+                        >
+                        <option value="">-- Select a Book --</option>
+                        {availableBooks.map((book) => (
+                          <option key={book.book_id} value={book.book_id}>
+                            {book.book_title}
+                          </option>
+                        ))}
+                      </select>
+                    </>
                   ) : col === "user_id_fk" ? (
                     <select
                       required
@@ -145,6 +166,14 @@ function PopUpForm({ isOpen, onClose, columns = [], onSubmit, initialValues = {}
                       value={formData[col] || ""}
                       onChange={(e) => handleChange(e, col)}
                     />
+                  ) : isStatus ? (
+                    <Input
+                      type="select"
+                      placeholder="Optional"
+                      options={["Borrowed", "Pending", "Returned", "Available", "Archived"]}
+                      value={formData[col] || ""}
+                      onChange={(e) => handleChange(e, col)}
+                    />
                   ) : (
                     <input
                       required
@@ -152,13 +181,12 @@ function PopUpForm({ isOpen, onClose, columns = [], onSubmit, initialValues = {}
                       value={formData[col] || ""}
                       onChange={(e) => handleChange(e, col)}
                     />
-                  )}
+                  ) }
 
                 </div>
               );
             })}
           
-            
               <Button use="CloseForm" 
               name={<><GrFormClose size={25} /><span>Close</span></>} 
               onClick={onClose} />

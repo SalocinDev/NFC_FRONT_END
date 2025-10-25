@@ -81,7 +81,7 @@ function Charts() {
         value={selectedService}
         onChange={(e) => setSelectedService(e.target.value)}
       >
-        <option value="">-- Select Service --</option>
+        <option value="">Select Service</option>
         {services.map((s) => (
           <option key={s.library_service_id} value={s.library_service_id}>
             {s.library_service_name}

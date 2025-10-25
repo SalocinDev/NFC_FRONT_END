@@ -21,12 +21,16 @@ function AiPopUP() {
   async function handleSend() {
     const msg = text.trim();
     if (!msg) return;
+
     setMessages((m) => [...m, { from: "you", text: msg }]);
     setText("");
+
     try {
-      const { reply } = await askLibraryAI(msg);
-      setMessages((m) => [...m, { from: "ai", text: reply }]);
-    } catch {
+      const data = await askLibraryAI(msg);
+      const replyText = data?.reply ?? "No response from AI";
+      setMessages((m) => [...m, { from: "ai", text: replyText }]);
+    } catch (err) {
+      console.error(err);
       setMessages((m) => [...m, { from: "ai", text: "Error contacting server" }]);
     } finally {
       inputRef.current?.focus();
@@ -43,7 +47,7 @@ function AiPopUP() {
   return (
     <div className={classes.wrapper}>
       <div className={classes.iconButton} onClick={() => setShowPopup((v) => !v)}>
-        <FaCommentMedical size={24} color="#000" />
+        <FaCommentMedical size={24} color="white" />
       </div>
 
       {showPopup && (
@@ -56,28 +60,26 @@ function AiPopUP() {
                 key={i}
                 className={m.from === "you" ? classes.userMessage : classes.aiMessage}
               >
-                <b>{m.from === "" ? "" : ""}</b> {m.text}
+                {m.text}
               </div>
             ))}
           </div>
 
           <div className={classes.inputWrapper}>
-  <input
-    ref={inputRef}
-    type="text"
-    placeholder="Write your message"
-    value={text}
-    onChange={(e) => setText(e.target.value)}
-    onKeyDown={onKeyDown}
-    className={classes.AiInput}
-  />
-  <button onClick={handleSend} className={classes.sendButton}>
-    <IoSend size={20} color="#101540"/>
-  </button>
-</div>
+            <input
+              ref={inputRef}
+              type="text"
+              placeholder="Write your message"
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+              onKeyDown={onKeyDown}
+              className={classes.AiInput}
+            />
+            <button onClick={handleSend} className={classes.sendButton}>
+              <IoSend size={20} color="#101540" />
+            </button>
+          </div>
         </div>
-
-        
       )}
     </div>
   );

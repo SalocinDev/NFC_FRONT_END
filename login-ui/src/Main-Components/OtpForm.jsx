@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Button, Wlogo, Blogo, Input } from '../Components';
 import classes from '../CSS-Folder/OtpForm.module.css';
 import { MdOutlinePassword  } from "react-icons/md";
-import { useNavigate, useSearchParams, useLocation } from 'react-router-dom';
+import { useNavigate, useSearchParams, useLocation, redirect } from 'react-router-dom';
 import { sendOTP, verifyOTP } from '../Services/SignUpService';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -26,13 +26,22 @@ function OtpForm() {
     }
 
     const sendIfNeeded = async () => {
-      if (resetPass) {
+      try {
         const result = await sendOTP(email);
         if (!result.success) {
-          toast.error("OTP sending Error");
-        } else {
+          toast.error(result.message);
+          return;
+        }
+        if (result.success) {
           toast.success(result.message);
         }
+        if (resetPass) {
+          navigate("/ResetPasswordForm") 
+          return;
+        }
+        return;
+      } catch (error) {
+        toast.error("An error occured: "+ error.message || error)
       }
     };
 

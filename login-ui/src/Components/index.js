@@ -24,6 +24,8 @@ export { default as SurveyReport} from './SurveyReport';
 export { default as SurveyForm} from './SurveyForm';
 export { default as WifiQRSelector} from './WifiQRSelector';
 export { default as WifiQRcode} from './WifiQRcode';
+export { default as LiveClock} from './LiveClock';
+
 
 /* UserPage related imports */
 export { default as UserDashboard} from './UserPage-Components/UserDashboard';

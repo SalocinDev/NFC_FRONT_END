@@ -5,6 +5,8 @@ import { Wlogo, Input, Blogo, Button } from '../Components';
 import { changePassword } from '../Services/ChangePassword'
 import { RiRotateLockFill } from "react-icons/ri";
 import { GiConfirmed } from "react-icons/gi";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function ResetPasswordForm() {
   const navigate = useNavigate();
@@ -14,29 +16,31 @@ function ResetPasswordForm() {
   const [ConfirmPass, setConfirmPass] = useState("");
   const { email } = location.state || {};
 
+  if (!email) {
+    toast.error("What are you doing here");
+    return;
+  }
+
   const handlePass = () => {
-    if (!email) {
-      alert("What are you doing here");
+    if (!Pass || !ConfirmPass) {
+      toast.warn("Input Password/s");
       return;
     }
 
-    if (!Pass) {
-      alert("Input Password");
+    const minimumLength = 8;
+    if (Pass.length < minimumLength || ConfirmPass.length < minimumLength) {
+      toast.error(`Password must be at least ${minimumLength} characters long.`);
       return;
     }
 
-    if (!ConfirmPass) {
-      alert("Input Password/s");
-      return;
-    }
-
-    if (Pass.length < 6 || ConfirmPass.length < 6) {
-      alert("Password must be at least 6 characters long.");
+    const complexityRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).+$/;
+    if (!complexityRegex.test(Pass)) {
+      toast.warn("Password must have 1 uppercase, 1 lowercase, and 1 symbol.");
       return;
     }
 
     if (Pass !== ConfirmPass) {
-      alert("Passwords are not the same");
+      toast.error("Passwords do not match.");
       return;
     }
 

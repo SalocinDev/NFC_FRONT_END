@@ -117,6 +117,7 @@ function UserManagement() {
                             { accessorKey: "user_email", header: "EMAIL" },
                             { accessorKey: "user_firstname", header: "FIRSTNAME" },
                             { accessorKey: "user_middlename", header: "MIDDLENAME" },
+                            { accessorKey: "user_lastname", header: "LASTNAME"},
                             { accessorKey: "user_date_of_birth", header: "DATE OF BIRTH" },
                             { accessorKey: "user_gender", header: "GENDER" },
                             { accessorKey: "user_contact_number", header: "CONTACT" },

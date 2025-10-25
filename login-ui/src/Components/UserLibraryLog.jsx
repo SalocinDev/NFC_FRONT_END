@@ -3,8 +3,10 @@ import {
   useReactTable,
   getCoreRowModel,
   getSortedRowModel,
+  getPaginationRowModel,
   flexRender,
 } from "@tanstack/react-table";
+import { GrCaretNext, GrChapterNext, GrCaretPrevious, GrChapterPrevious } from "react-icons/gr";
 import classes from "../CSS-Folder/UserLibraryLog.module.css";
 import { TbReload, TbSearch } from "react-icons/tb";
 import { Button } from '../Components';
@@ -76,6 +78,7 @@ const UserLibraryLog = () => {
     onSortingChange: setSorting,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
   });
 
   return (
@@ -89,7 +92,7 @@ const UserLibraryLog = () => {
           value={searchType}
           onChange={(e) => setSearchType(e.target.value)}
         >
-          <option value="all">All</option>
+          {/*<option value="all">All</option>*/}
           <option value="user">By User</option>
           <option value="service">By Service</option>
         </select>
@@ -172,21 +175,43 @@ const UserLibraryLog = () => {
       {/* Pagination */}
       {!loading && (
         <div>
-          <button
+
+          <Button
+                      use="FirstPageTable"
+                      name={<><GrChapterPrevious size={20} 
+                       /></>}
+                      onClick={() => setPage(1)} 
+                      disabled={page === 1}
+                    />
+
+          <Button
             disabled={page === 1}
             onClick={() => setPage((p) => Math.max(p - 1, 1))}
-          >
-            Previous
-          </button>
-          <span>
+            use="PreviousPageButton"
+            name={<><GrCaretPrevious size={20} 
+            /></>}
+          />
+            
+          <span className={classes.PageCount}>
             Page {page} of {totalPages || 1}
           </span>
-          <button
+
+          <Button
             disabled={page === totalPages || totalPages === 0}
             onClick={() => setPage((p) => Math.min(p + 1, totalPages))}
-          >
-            Next
-          </button>
+            use="PreviousPageButton"
+            name={<><GrCaretNext size={20} 
+            /></>}
+          /> 
+          <Button
+            use="LastPageTable"
+            name={<><GrChapterNext size={20} 
+            /></>}
+            onClick={() => setPage(totalPages)} 
+            disabled={page === totalPages || totalPages === 0} 
+
+            
+          />
         </div>
       )}
     </div>

@@ -1,5 +1,5 @@
 import classes from '../CSS-Folder/Services.module.css';
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Button, Checkbox } from '../Components';
 import { logOut } from '../Services/SessionUtils';
@@ -17,7 +17,7 @@ function Services() {
 
   const location = useLocation();
   const { loggedIn } = location.state || {};
-
+  const effectRan = useRef(false);
   // useEffect(() => {
   //   const checkLogin = async () => {
   //     console.log(loggedIn);
@@ -30,10 +30,10 @@ function Services() {
   // }, [loggedIn, navigate]);
 
   useEffect(() => {
-    if (!alertShown) {
-      toast.success(`Hello, ${storedUser?.firstName || "User"}. Please select the services you'd like to avail.`);
-      setAlertShown(true);
-    }
+    if (effectRan.current) return;
+    toast.success(`Hello, ${storedUser?.firstName || "User"}. Please select the services you'd like to avail.`);
+    setAlertShown(true);
+    effectRan.current = true;
   }, [alertShown, storedUser]);
 
   const handleServicesChange = useCallback((selected, others) => {

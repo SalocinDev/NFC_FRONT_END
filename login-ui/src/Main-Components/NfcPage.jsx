@@ -22,41 +22,60 @@ function NfcPage() {
   const handleSignIn = async () => {
     IsSigningIn(true);
 
-    const timeout = new Promise((resolve) => {
-      setTimeout(() => resolve("Timeout"), 5000);
-    }); 
+    try {
+      const timeout = new Promise((resolve) => {
+        setTimeout(() => resolve("Timeout"), 5000);
+      });
 
-    const result = await Promise.race([toNFClogin(navigate), timeout]);
+      const result = await Promise.race([toNFClogin(navigate), timeout]);
+      // console.log(result);
+      
+      if (!result) {
+        toast.error("No response received. Returning to login.");
+        navigate('/');
+        return;
+      }
 
-    // sessionStorage.setItem("userInfo", JSON.stringify(result));
-    if (!result) {
-      toast.error("No response received. Returning to login.");
-      navigate('/');
-    } else if (result === "Timeout") {
-      toast.error("NFC login timed out. Returning to login.");
-      navigate('/');
-    } if (result.success && !result.alreadyLoggedIn) {
-      // First NFC login go to Services
-      toast.success(`Welcome, ${result.user_firstname} (via NFC)!`);
-      navigate("/Services", { state: { loggedIn: true } });
-    } else if (result.success && result.alreadyLoggedIn) {
-      // Already logged in
-      toast.success(`Welcome, ${result.user_firstname} (via NFC)!`);
-      navigate('/Intermediary', { state: { loggedIn: true } });
-    } else if (result.valid === false) {
-      toast.error("NFC Login Failed. Returning to login.");
-      navigate('/');
-    } else if (result.error) {
-      toast.error(`An error occurred: ${result.error}`);
-      navigate('/');
-    } else {
+      if (result === "Timeout") {
+        toast.error("NFC login timed out. Returning to login.");
+        navigate('/');
+        return;
+      }
+
+      if (!result.success) {
+        toast.error("NFC Login Failed. Returning to login.");
+        navigate('/');
+        return;
+      }
+
+      if (result.success) {
+        if (!result.reader_attached) {
+          toast.error(result.message)
+          navigate('/');
+          return;
+        }
+        const welcomeMessage = `Welcome, ${result.user_firstname} (via NFC)!`;
+        toast.success(welcomeMessage);
+
+        if (result.alreadyLoggedIn) {
+          navigate('/Intermediary', { state: { loggedIn: true } });
+        } else {
+          navigate('/Services', { state: { loggedIn: true } });
+        }
+
+        return;
+      }
+
       console.warn("Unexpected response format:", result);
       toast.error("Unexpected response. Returning to login.");
       navigate('/');
+    } catch (error) {
+      console.error("Error during NFC login:", error);
+      toast.error("Unexpected error. Returning to login.");
+      navigate('/');
+    } finally {
+      IsSigningIn(false);
     }
-    
-    IsSigningIn(false);
-
   };
 
   return (

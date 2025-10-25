@@ -57,10 +57,10 @@ async function checkIfLoggedIn({ email, token, navigate }) {
     });
 
     const resultCheck = await checkFirst.json().catch(() => ({}));
-    console.log("checkIfLoggedIn response:", resultCheck);
+    // console.log("checkIfLoggedIn response:", resultCheck);
 
     if (resultCheck.success) {
-      console.log("User already logged in, redirecting to /Intermediary");
+      // console.log("User already logged in, redirecting to /Intermediary");
       // navigate('/Intermediary', { state: { hasLogged: true } });
       return { success: true };
     }
@@ -73,7 +73,7 @@ async function checkIfLoggedIn({ email, token, navigate }) {
 }
 
 export async function toNFClogin(navigate) {
-  console.log("API URL:", apiUrl);
+  // console.log("API URL:", apiUrl);
   try {
     const nfcResponse = await fetch(`${apiUrl}/nfc/read`, {
       method: "POST",
@@ -85,8 +85,11 @@ export async function toNFClogin(navigate) {
 
     const nfcData = await nfcResponse.json().catch(() => ({}));
     const token = nfcData?.token;
-    console.log("Token:", token);
+    const reader_attached = nfcData?.reader_attached
+    const error = nfcData?.error
+    // console.log(nfcData);
 
+    if (!reader_attached) return {...nfcData}
     if (!token) throw new Error("No token returned from NFC data");
 
     const checkFirst = await fetch(`${apiUrl}/acc/relogin`, {
@@ -100,7 +103,7 @@ export async function toNFClogin(navigate) {
     });
 
     const recheck = await checkFirst.json().catch(() => ({}));
-    console.log("checkIfLoggedIn response:", recheck);
+    // console.log("checkIfLoggedIn response:", recheck);
 
     if (recheck.success) {
       return { success: true, alreadyLoggedIn: true, user_firstname: recheck.user_firstname };
@@ -123,10 +126,10 @@ export async function toNFClogin(navigate) {
 
     if (!result) return { success: false, message: "No response from server" };
 
-    return { ...result, alreadyLoggedIn: false };
-  } catch (error) {
-    console.error("NFC Login Error:", error.message);
-    return { success: false, error: error.message };
+    return { ...result, reader_attached, alreadyLoggedIn: false };
+  } catch (err) {
+    console.error("NFC Login Error:", err.message);
+    return { success: false, error: err.message };
   }
 }
 
@@ -156,7 +159,8 @@ export async function signIn(email, password, navigate) {
         // if (OTPsend.success) {
         //   toast.error(`OTP has been sent to ${email}!`);
         // }
-        return navigate(`OtpForm`, { state: { email, resetPass: true } })
+        navigate(`OtpForm`, { state: { email, resetPass: false } })
+        return;
       }
       return;
     }
@@ -172,7 +176,7 @@ export async function signIn(email, password, navigate) {
       const check = await checkIfLoggedIn({ email, navigate });
 
       if (check.success) {
-        navigate("/Intermediary", { state: { hasLogged: true } });
+        navigate("/Intermediary", { state: { loggedIn: true } });
       } else {
         navigate("/Services", { state: { loggedIn: true } });
       }

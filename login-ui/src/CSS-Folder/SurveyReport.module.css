@@ -24,3 +24,37 @@
     box-shadow: none; 
 }
 
+.SelectContainer{
+    display: flex;
+    gap: 1rem;
+}
+
+.ButtonContainer{
+display: flex;
+flex-direction: column;
+gap: 10px;
+margin-bottom: 15px;
+  
+}
+
+.CustomInput {
+    display: flex;
+    flex-direction: row;
+}
+
+.CustomInput input{
+    
+    padding: 10px;
+  font-size: 16px;
+  border: 2px solid #101540;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  color: #333;
+  outline: none;
+  cursor: pointer;
+  text-align: center;
+  width: 175px;
+  height: 2rem;
+    
+}
+

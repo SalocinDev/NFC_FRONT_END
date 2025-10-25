@@ -25,7 +25,7 @@ function Statistics() {
         />
 
         <Button 
-          name="Overall Usage" use="ReturnedBooks" 
+          name="Overall User" use="ReturnedBooks" 
           onClick={() => setActive("OverallStats")}
           isActive={active === "OverallStats"} 
         />

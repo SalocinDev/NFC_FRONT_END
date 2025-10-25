@@ -45,6 +45,7 @@ function PopUpNfc({ isOpen, onClose, initialValues }) {
   const handleIntiateNFCCard = async () => {
     if (!nfcToken) return toast.error("No NFC token generated");
     try {
+      toast.info("Please wait, writing to NFC Card..")
       const res = await api.post("/nfc/write", { token: nfcToken });
       const data = res.data;
       if (data.success) {

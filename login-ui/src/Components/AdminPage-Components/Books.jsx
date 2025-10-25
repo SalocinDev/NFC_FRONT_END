@@ -116,15 +116,17 @@ function Books() {
   }
 };
 
-  const handleFormSubmit = async( formValues, active, action) => {
-    if (!formValues || !active || !action) {
-      toast.error("What are you doing");
-      return;
-    }
-    console.log("Form values: ", formValues);
-    console.log("Active tab: ", active);
-    console.log("Action taken: ", action);
+const handleFormSubmit = async (formValues, active, action) => {
+  if (!formValues || !active || !action) {
+    toast.error("Missing data in form submission");
+    return;
+  }
 
+  console.log("Form values: ", formValues);
+  console.log("Active tab: ", active);
+  console.log("Action taken: ", action);
+
+  try {
     if (action === "add" && active === "BorrowedBooksAdmin") {
       const res = await api.post(`/borrowing/staff`, formValues);
       fetchBorrowedBooks();
@@ -132,7 +134,20 @@ function Books() {
     }
 
     if (action === "add" && active === "BooksAdmin") {
-      const res = await api.post(`/opac/`, formValues);
+      // Build FormData for image upload
+      const formData = new FormData();
+      Object.entries(formValues).forEach(([key, value]) => {
+        if (key === "book_cover_img" && value instanceof File) {
+          formData.append("cover", value); // <-- must match upload.single("cover")
+        } else {
+          formData.append(key, value);
+        }
+      });
+
+      const res = await api.post(`/opac`, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+
       fetchBooks();
       toast.success(res.data.message);
     }
@@ -142,8 +157,14 @@ function Books() {
       fetchReturnedBooks();
       toast.success(res.data.message);
     }
+
     setIsOpen(false);
-  };
+  } catch (err) {
+    console.error("Error submitting form:", err);
+    toast.error(err.response?.data?.error || "Submission failed");
+  }
+};
+
 
   const handleDeleteConfirm = async () => {
     const selectedIndexes = Object.keys(selectedRows).filter(idx => selectedRows[idx]);

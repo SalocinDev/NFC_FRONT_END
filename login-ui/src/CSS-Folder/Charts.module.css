@@ -114,7 +114,7 @@ h3{
   height: 2rem;
 }
 
-input[type="date"]:focus {
+.InputContainer input[type="date"]:focus {
   border-color: #101540;
   background-color: #fff;
 }

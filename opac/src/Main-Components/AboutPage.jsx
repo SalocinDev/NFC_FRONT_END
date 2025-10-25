@@ -47,7 +47,6 @@ function AboutPage() {
             </p>
           </span>
         </div>
-         <AiPopUp/>
     </div>
    
    </div>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 const apiUrl = import.meta.env.VITE_API_URL;
 
@@ -6,8 +6,10 @@ export default function ProtectedRoute({ children }) {
   const [loading, setLoading] = useState(true);
   const [loggedIn, setLoggedIn] = useState(false);
   const navigate = useNavigate();
+  const effectRan = useRef(false);
 
   useEffect(() => {
+    if (effectRan.current) return;
     const checkSession = async () => {
       try {
         const res = await fetch(`${apiUrl}/session/get-session`, {
@@ -39,6 +41,7 @@ export default function ProtectedRoute({ children }) {
     };
 
     checkSession();
+    effectRan.current = true;
   }, [navigate]);
 
   if (loading) return <div>Checking session...</div>;

@@ -4,7 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export async function signUp (email, password, firstName, middleName, lastName, dob, gender, contactNumber, school, navigate) {
     /* console.log("Signing up with:", { email, password, firstName, middleName, lastName, dob, gender, contactNumber, school }); */
-    toast.success(`Signing up with:, ${email}, ${firstName}, ${middleName}, ${lastName}, ${dob}, ${gender}, ${contactNumber}, ${school}`);
+    // toast.success(`Signing up with:, ${email}, ${firstName}, ${middleName}, ${lastName}, ${dob}, ${gender}, ${contactNumber}, ${school}`);
     try {
         const response = await fetch(`${apiUrl}/acc/sign-up`, {
             method: "POST",
@@ -23,18 +23,9 @@ export async function signUp (email, password, firstName, middleName, lastName, 
         if (result.success) {
             // console.log(result);
             toast.success(result.message);
-            const response = await sendOTP(email);
-
-            if (!response.success) {
-                toast.error(response.message);
-                return;
-            }
-
-            if (response.success) {
-                toast.success(response.message);
-                navigate(`/OtpForm`, { state: { email, resetPass: false } });
-                return;
-            }
+            toast.info(`Please wait, Sending OTP to ${email}`)
+            navigate(`/OtpForm`, { state: { email, resetPass: false } });
+            return;
         } 
     } catch (error) {
         toast.error(error);

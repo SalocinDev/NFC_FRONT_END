@@ -57,6 +57,17 @@
   background-color: #fff;
 }
 
+.UniversityInput{
+  width: 17rem;
+  height: 4rem;
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  border: 2px solid #101540;
+  box-sizing: border-box;
+  display: block;
+} 
+
 .myDropdown {
   height: 4rem !important;             
   border: 2px solid #101540 !important; 

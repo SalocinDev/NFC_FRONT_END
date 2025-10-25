@@ -23,7 +23,8 @@ function RegisterUser({ isOpen, onClose }) {
   const [Gender, setGender] = useState("");
   const [Contact, setContact] = useState("");
   const [School, setSchool] = useState("");
-
+  const [Category, setCategory] = useState("");
+  
   const handleRegister = async () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(Email)) {
@@ -132,6 +133,31 @@ function RegisterUser({ isOpen, onClose }) {
             onChange={(e) => setGender(e.target.value)}
             label="Gender"
           />
+          <Input 
+                  className={classes.UniversityInput}
+                  required
+                  label="User Category"
+                  type="select"
+                  options={[
+                    "Elementary Student (ES)",
+                    "High School Student (HS)",
+                    "College Student (CS)",
+                    "Employees-Gov’t (EGOV)",
+                    "Employees-Private (EPRI)",
+                    "Senior Citizens (SC)",
+                    "Reviewees (R)",
+                    "Person with Disabilities (PWD)",
+                    "Children in Street Situations (CISS)",
+                    "Out-of-School-Youth (OSY)",
+                    "Housewife/Husband (HH)",
+                    "LGBTQIAS2+",
+                    "OTHERS",
+                    "N/A"
+                  ]}
+                  value={Category}
+                  onChange={(e) => setCategory(e.target.value)}
+                />
+
           <div className={classes.inputContainer}>
 
           <PhoneInput
@@ -153,6 +179,8 @@ function RegisterUser({ isOpen, onClose }) {
           <Input required type="password" label="Password"  value={Pass} onChange={(e) => setPass(e.target.value)} />
           <Input required type="email" label="Email"  value={Email} onChange={(e) => setEmail(e.target.value)} />
           <Input required type="password" label="Verify Password"  value={ConfirmPass} onChange={(e) => setConfirmPass(e.target.value)} />
+                  
+
         </div>
 
         {/* Footer */}

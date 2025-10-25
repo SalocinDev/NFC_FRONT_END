@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import classes from "../CSS-Folder/Intemediary.module.css";
 import { SurveyWhite } from "../Logo";
 import { Button, LogoComponent } from "../Components";
+import { logOut } from "../Services/SessionUtils";
 
 function Intemediary() {
   const location = useLocation();

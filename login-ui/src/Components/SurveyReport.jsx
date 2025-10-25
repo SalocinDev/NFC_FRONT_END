@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo } from "react";
 import api from "../api/api";
-import { Button } from ".";
+import { Button, Input } from ".";
 import { BarChart } from "@mui/x-charts/BarChart";
 import {
   useReactTable,
@@ -159,15 +159,9 @@ const SurveyReport = () => {
       <h2>Library Survey Report</h2>
 
       {/* Filters */}
-      <div
-        style={{
-          display: "flex",
-          gap: "10px",
-          marginBottom: "15px",
-          alignItems: "center",
-          flexWrap: "wrap",
-        }}
+      <div className={classes.ButtonContainer}
       >
+        <div className={classes.SelectContainer}>        
         <select
           value={selectedService}
           onChange={(e) => setSelectedService(e.target.value)}
@@ -190,22 +184,7 @@ const SurveyReport = () => {
           <option value="custom">Custom</option>
         </select>
 
-        {dateRange === "custom" && (
-          <>
-            <input
-              type="date"
-              value={customStart}
-              onChange={(e) => setCustomStart(e.target.value)}
-            />
-            <input
-              type="date"
-              value={customEnd}
-              onChange={(e) => setCustomEnd(e.target.value)}
-            />
-          </>
-        )}
-
-        <Button 
+         <Button 
   onClick={fetchReport} 
   disabled={loading} 
   use="GoButtonSurvey"
@@ -219,7 +198,30 @@ const SurveyReport = () => {
       </>
     )
   }
-/>
+/> 
+
+      </div>
+        {dateRange === "custom" && (
+          <>
+          <div className={classes.CustomInput}>
+            <Input
+              type="date"
+              value={customStart}
+              onChange={(e) => setCustomStart(e.target.value)}
+            />
+
+            <Input
+              type="date"
+              value={customEnd}
+              onChange={(e) => setCustomEnd(e.target.value)}
+            />
+
+            
+          </div>
+          </>
+        )}
+
+        
           
         
       </div>

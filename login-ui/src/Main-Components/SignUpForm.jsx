@@ -6,8 +6,10 @@ import { BlogoImg } from '../Logo';
 import { signUp, sendOTP } from '../Services/SignUpService';
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css"; 
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-function ResetPasswordForm() {
+function SignUpForm() {
   const navigate = useNavigate();
 
   const [FN, setFN] = useState("");
@@ -22,52 +24,59 @@ function ResetPasswordForm() {
   const [School, setSchool] = useState("");
   const [Category, setCategory] = useState("");
 
-  const SymbolList = ["!","@","#","$","%","^","&","*","(",")","-","_","=","+"];
+  // const SymbolList = ["!","@","#","$","%","^","&","*","(",")","-","_","=","+"];
 
   const handleSignUp = () => {
-  //required fields check
-  if (!FN || !LN || !Email || !Pass || !DoB || !Gender || !Contact || !School) {
-    alert("Please fill in all required fields.");
-    return;
-  }
+    // Required fields check
+    if (!FN || !LN || !Email || !Pass || !ConfirmPass || !DoB || !Gender || !Contact || !School) {
+      toast.error("Please fill in all required fields.");
+      return;
+    }
 
-  //email format validation
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(Email)) {
-    alert("Please enter a valid email address.");
-    return;
-  }
+    // Email format validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(Email)) {
+      toast.error("Please enter a valid email address.");
+      return;
+    }
 
-  //password length check
-  if (Pass.length < 6 || ConfirmPass.length < 6) {
-    alert("Password must be at least 6 characters long.");
-    return;
-  }
+    // Password length check
+    const minimumLength = 8;
+    if (Pass.length < minimumLength || ConfirmPass.length < minimumLength) {
+      toast.error(`Password must be at least ${minimumLength} characters long.`);
+      return;
+    }
 
-  if (Pass.includes(""))
-  //confirm password are the same
-  if (Pass !== ConfirmPass) {
-    alert("Passwords are not the same");
-    return;
-  }
+    // Password complexity check (1 uppercase, 1 lowercase, 1 symbol)
+    const complexityRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).+$/;
+    if (!complexityRegex.test(Pass)) {
+      toast.warn("Password must have 1 uppercase, 1 lowercase, and 1 symbol.");
+      return;
+    }
 
-  //contact number validation (10–15 digits)
-  const contactRegex = /^[0-9]{10,15}$/;
-  if (!contactRegex.test(Contact)) {
-    alert("Contact number must be 10–15 digits only (no letters or symbols).");
-    return;
-  }
+    // Confirm password match
+    if (Pass !== ConfirmPass) {
+      toast.error("Passwords do not match.");
+      return;
+    }
 
-  //date of Birth not in future
-  const today = new Date();
-  if (new Date(DoB) > today) {
-    alert("Date of birth cannot be in the future.");
-    return;
-  }
+    // Contact number validation (10–15 digits)
+    const contactRegex = /^[0-9]{10,15}$/;
+    if (!contactRegex.test(Contact)) {
+      toast.error("Contact number must be 10–15 digits only (no letters or symbols).");
+      return;
+    }
 
-  //if all validations pass, call your signUp function
-  signUp(Email, Pass, FN, MN, LN, DoB, Gender, Contact, School, navigate);
-};
+    // Date of Birth not in the future
+    const today = new Date();
+    if (new Date(DoB) > today) {
+      toast.error("Date of birth cannot be in the future.");
+      return;
+    }
+
+    // All validations passed
+    signUp(Email, Pass, FN, MN, LN, DoB, Gender, Contact, School, navigate);
+  };
 
   return (
 
@@ -106,7 +115,7 @@ function ResetPasswordForm() {
       <Input required type="text" label="First Name"  value={FN} onChange={(e) => setFN(e.target.value)} />
       <Input type="text" label="Middle Name"  value={MN} onChange={(e) => setMN(e.target.value)} />
       <Input required label="Last Name" type="text"  value={LN} onChange={(e) => setLN(e.target.value)} />
-      <Input className={classes.UniversityInput} required label="University" type="select" options={["TUP", "PNU", "UDM", "PLM", "ADAMSON", "Others."]} value={School} onChange={(e) => setSchool(e.target.value)} />
+      <Input className={classes.UniversityInput} required label="University" type="select" options={["TUP", "PNU", "UDM", "PLM", "ADAMSON", "Others", "None"]} value={School} onChange={(e) => setSchool(e.target.value)} />
       
       <div className={classes.inputContainer}>
       <PhoneInput
@@ -168,7 +177,6 @@ function ResetPasswordForm() {
     </div>
   </div>
 
-      
     <div className={classes.InputGender}>
       <Button name="SIGN UP" use="SignUpButtonForm" type="submit" />
     </div>
@@ -180,4 +188,4 @@ function ResetPasswordForm() {
   );
 }
 
-export default ResetPasswordForm;
+export default SignUpForm;

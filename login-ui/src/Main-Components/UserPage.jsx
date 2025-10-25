@@ -3,12 +3,16 @@ import classes from '../CSS-Folder/UserPage.module.css';
 import { MdMenu, MdDashboard, MdLogout } from "react-icons/md"; 
 import { FaUser, FaCog, FaCompass, FaBookOpen } from 'react-icons/fa';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { Button, UserDashboard, ServicesAvailed, BorrowedForm, SettingPage, AiPopUp, SurveyForm, WifiQRSelector } from '../Components';
+import { Button, UserDashboard, ServicesAvailed, BorrowedForm, SettingPage, AiPopUp, SurveyForm, WifiQRSelector, LiveClock } from '../Components';
 import { FaWifi } from "react-icons/fa";
 import { RiSurveyFill } from "react-icons/ri";
 import { WlogoSidebar } from '../Logo';
 import { logOut } from '../Services/SessionUtils';
 import { getProfilePicture } from '../Services/FileService'
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css"; 
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
@@ -46,24 +50,6 @@ function UserPage() {
   window.addEventListener("resize", handleResize);
   return () => window.removeEventListener("resize", handleResize);
 }, []);
-
-
-  useEffect(() => {
-    const updateTime = () => {
-      const now = new Date();
-      setCurrentTime(now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
-      setCurrentDate(now.toLocaleDateString(undefined, {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-      }));
-    };
-
-    updateTime();
-    const interval = setInterval(updateTime, 60000);
-    return () => clearInterval(interval);
-  }, []);
 
   useEffect(() => {
     if (storedUser.user_pfp_id_fk) {
@@ -178,9 +164,9 @@ function UserPage() {
         
         <div className={classes.RightTopbar}>
           <div className={classes.TimeGear}>
-            <span className={classes.Time}>{currentTime}</span>
-            <NavLink className={classes.GearButton} onClick={() => setActive("SettingPage")}>
-              <FaCog className={classes.GearIcon} size={16} />
+            <span><LiveClock/></span>
+            <NavLink onClick={() => setActive("SettingPage")}>
+            <FaCog className={classes.GearIcon} size={30} />
             </NavLink>
           </div>
           <div className={classes.Date}>{currentDate}</div>
