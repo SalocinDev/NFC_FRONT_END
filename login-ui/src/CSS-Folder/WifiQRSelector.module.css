@@ -193,7 +193,7 @@
 
   .SelectContainer select{
     margin-left: 1rem;
-    background-color: red;
+   
   }
 
   .WPAContainer h3, .WiFiContainer h3, .PassContainer h3{
@@ -204,6 +204,7 @@
   .WPAContainer p, .WiFiContainer p, .PassContainer p{
     margin: 0;
     padding: 0;
+    font-size: 2rem;
   }
 
   .WPAContainer, .WiFiContainer, .PassContainer{
