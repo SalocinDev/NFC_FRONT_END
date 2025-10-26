@@ -260,7 +260,12 @@
   display: flex;
   white-space: nowrap;
   word-break: break-all;
+  
 
+ }
+
+ .iconLink{
+  margin-top: 0.5rem;
  }
  
  .NavBar{
@@ -291,7 +296,10 @@
     display: none;
   }
 
-  
+  .RenderComponents{
+    padding: 0;
+    margin: 0;
+  }
 
  
 }

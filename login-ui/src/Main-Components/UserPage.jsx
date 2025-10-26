@@ -144,6 +144,7 @@ function UserPage() {
       )}
 
       <div className={classes.NavBar}>
+        
         <div className={classes.LeftTopbar}>
           <div className={classes.iconLink}>
             {profileSrc ? (

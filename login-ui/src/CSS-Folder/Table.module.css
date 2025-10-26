@@ -47,7 +47,7 @@ tr:hover {
 .tableButton {
   padding: 2px 6px;
   font-size: 0.85rem;
-  height: 100%;       /* matches row height */
+  height: 100%;      
   cursor: pointer;
   box-sizing: border-box;
 }
@@ -119,3 +119,77 @@ tr:hover {
   margin: 0 auto;
   margin-top: 2.5rem;
 }
+
+
+
+@media (min-width: 300px) and (max-width: 900px) {
+
+  .ServicesAvailedContainer{
+    padding: 0;
+    margin: 0;
+  }
+
+  .tableWrapper{
+    padding: 0;
+    margin: 0;
+    background-color: red;
+  }
+
+  table thead {
+    display: none;
+  }
+
+  table,
+  tbody,
+  tr,
+  td {
+    display: block;
+    width: 97%;
+    
+  }
+
+  tr {
+    background: white;
+    margin-bottom: 1rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    border: 2px solid #02010c96;
+    padding: 0.5rem;
+  }
+
+  td {
+    border: none;
+    text-align: left;
+    padding: 0.3rem 0;
+    font-size: 1rem;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center; /* vertically center label and text */
+    justify-content: flex-start; /* align everything to the left */
+    gap: 0.5rem; /* small space between label and value */
+  }
+
+  td::before {
+    content: attr(data-label) ": ";
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #101540;
+    font-size: 0.85rem;
+    display: inline-block;
+  }
+
+  td:last-child {
+    border-bottom: none;
+  }
+
+  .ReturnedBooksContainer,
+  .BorrowedBooksContainer,
+  .ServicesAvailedContainer {
+    width: 100%;
+    padding: 0.5rem;
+  }
+}
+
+
+

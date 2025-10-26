@@ -1,98 +1,214 @@
-.TextContainer{
-
-    border-radius: 0.75rem;
-    padding: 2rem;
-    width: 50%;
+.TextContainer {
+  border-radius: 0.75rem;
+  padding: 2rem;
+  width: 50%;
 }
 
-.MainText{
-    display: flex;
+.MainText {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.MainText h1,
+.MainText p {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+.WPAContainer,
+.WiFiContainer,
+.PassContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 2rem;
+  margin-top: 2rem;
+}
+
+.WPAContainer p,
+.WiFiContainer p,
+.PassContainer p {
+  font-size: 2rem;
+}
+
+.WPAContainer h3,
+.WiFiContainer h3,
+.PassContainer h3 {
+  color: black;
+  font-size: 2.5rem;
+  margin-right: 1rem;
+}
+
+.SelectWifi p {
+  color: black;
+  margin-top: 1rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.QRContainer {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.SubDiv {
+  display: flex;
+  flex-direction: row;
+  width: 70%;
+  justify-self: center;
+  background-color: #8080804b;
+  box-shadow: 
+    0 4px 10px rgba(0, 0, 0, 0.25),
+    0 -4px 10px rgba(0, 0, 0, 0.15),
+    4px 0 10px rgba(0, 0, 0, 0.1),
+    -4px 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+  padding: 2rem;
+  gap: 2rem;
+}
+
+.SubDiv select {
+  color: black;
+  font-size: 1.5rem;
+  width: 100%;
+  height: 4rem;
+  background-color: #d9d9d9;
+  border: 0.5px solid black;
+  border-radius: 0.75rem;
+  padding: 1rem 1rem 1rem 2rem;
+}
+
+.WifiHeader {
+  padding: 0 2rem;
+  width: 70%;
+  display: flex;
+  justify-self: center;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+@media (max-width: 900px) {
+  .SubDiv {
     flex-direction: column;
-    gap: 1rem;
-}
+    width: 90%;
+    padding: 1.5rem;
+    gap: 1.5rem;
+   
+  }
 
-.MainText h1, p{
-    margin: 0;
-    padding: 0;
-    
-    text-align: left;
-}
+  .TextContainer,
+  .QRContainer {
+    width: 90%;
+  }
 
-.WPAContainer{
-    margin-top: 2rem;
-}
+  .WPAContainer,
+  .WiFiContainer,
+  .PassContainer {
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+  }
 
-.WPAContainer, 
-.WiFiContainer, 
-.PassContainer{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    height: 2rem;
-}
+  .WPAContainer h3,
+  .WiFiContainer h3,
+  .PassContainer h3 {
+    font-size: 1.8rem;
+    margin-right: 0;
+  }
 
-.WPAContainer p, 
-.WiFiContainer p, 
-.PassContainer p{
-    font-size: 2rem;
-}
-
-.WPAContainer h3, 
-.WiFiContainer h3, 
-.PassContainer h3{
-    color: black;
-    font-size: 2.5rem;
-    margin-right: 1rem;
-}
-
-.SelectWifi p{
-    color: black;
-    margin-top: 1rem;
-    font-size: 2rem;
-    text-align: center;
-}
-
-.QRContainer{
-    width: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-}
-
-.SubDiv{
-    display: flex;
-    flex-direction: row;
-    width: 70%;
-    justify-self: center;
-    background-color: #8080804b; 
-    box-shadow:
-  0 4px 10px rgba(0, 0, 0, 0.25),   
-  0 -4px 10px rgba(0, 0, 0, 0.15),
-  4px 0 10px rgba(0, 0, 0, 0.1),    
-  -4px 0 10px rgba(0, 0, 0, 0.1);   
-    border-radius: 1rem;
-    padding: 2rem 2rem 3rem 2rem;
-    gap: 2rem;
-}
-
-.SubDiv select{
-    color: black;
+  .WPAContainer p,
+  .WiFiContainer p,
+  .PassContainer p {
     font-size: 1.5rem;
-    width: 100%;
-    height: 4rem;
-    background-color: #D9D9D9;
-    border: 0.5px solid black;
-    border-radius: 0.75rem;
-    padding: 1rem 1rem 1rem 2rem;
+  }
+
+  .SelectWifi p {
+    font-size: 1.4rem;
+  }
+
+  .MainText h1 {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  .MainText p {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  .WifiHeader {
+    width: 90%;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .WifiHeader h2 {
+    font-size: 1.5rem;
+  }
 }
 
-.WifiHeader{
-    padding-left: 2rem;
-    padding-right: 2rem;
-    width: 70%;
-    display: flex;
-    justify-self: center;
+
+@media (max-width: 480px) {
+
+    .MainText{
+        display: flex;
+        flex-direction: column;
+    }
+  .MainText h1 {
+    font-size: 1.6rem;
+  }
+
+  .MainText p {
+    font-size: 1rem;
+  }
+
+  .SubDiv {
     
+   
+    width: 80vw;
+  }
+
+  .SubDiv select {
+    font-size: 1.2rem;
+    margin: 0;
+    height: 3.5rem;
+  }
+
+  .SelectWifi p {
+    font-size: 1.2rem;
+  }
+  
+  .TextContainer{
+    padding: 0;
+  }
+
+  .SelectContainer select{
+    margin-left: 1rem;
+    background-color: red;
+  }
+
+  .WPAContainer h3, .WiFiContainer h3, .PassContainer h3{
+    padding: 0;
+    margin: 0;
+  }
+
+  .WPAContainer p, .WiFiContainer p, .PassContainer p{
+    margin: 0;
+    padding: 0;
+  }
+
+  .WPAContainer, .WiFiContainer, .PassContainer{
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+  }
 }
