@@ -38,7 +38,7 @@ const WifiQRSelector = () => {
   }, [selectedWifiId]);
 
   return (
-    <div>
+    <div className={classes.WifiMainDiv}>
       <h2 className={classes.WifiHeader}>Wi-Fi QR Code Generator</h2>
 <div className={classes.SubDiv}>
   <div className={classes.TextContainer}>

@@ -10,25 +10,7 @@
   z-index: 1;
 }
 
-p{
-  color: #101540;
-  font-size: 3rem;
-  line-height: 2rem;
 
-}
-
-a{
-  text-decoration: none;
-  color: white;
-  padding: 2rem 2rem 2rem 2.5rem;
-  display: block;
-}
-
-a:hover{
-  cursor: pointer;
-  color: lightblue;
-  transition: 0.5s;
-}
 
 .NavBar {
   display: flex;
@@ -244,12 +226,14 @@ footer{
   margin-bottom: 2vh;
 }
 
-@media (max-width: 480px){
+@media (min-width: 300px) and (max-width: 900px){
 
   .samplelang{
     margin: 0;
     padding: 0;
-    padding-left: 1rem;
+    padding-left: 0.5rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
     justify-content: center;
     align-items: center;
   }

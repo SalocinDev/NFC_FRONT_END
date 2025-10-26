@@ -25,10 +25,10 @@ function LiveClock() {
   return (
     <>
     <div className={classes.RightTopbar}>
-        <div className={classes.TimeGear}>
+        
       <span className={classes.Time}>{time}</span>
-      <div>{date}</div>
-      </div>
+      <span className={classes.Date}>{date}</span>
+      
       </div>
     </>
   );

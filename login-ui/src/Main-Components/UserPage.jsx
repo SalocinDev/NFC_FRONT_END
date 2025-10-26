@@ -155,6 +155,7 @@ function UserPage() {
       )}
 
       <div className={classes.NavBar}>
+        
         <div className={classes.LeftTopbar}>
           <div className={classes.iconLink}>
             {profileSrc ? (
@@ -174,13 +175,11 @@ function UserPage() {
         </div>
         
         <div className={classes.RightTopbar}>
-          <div className={classes.TimeGear}>
+          
             <span><LiveClock/></span>
             <NavLink onClick={() => setActive("SettingPage")}>
             <FaCog className={classes.GearIcon} size={30} />
             </NavLink>
-          </div>
-          <div className={classes.Date}>{currentDate}</div>
         </div>
       </div>
      

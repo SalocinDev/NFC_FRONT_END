@@ -195,14 +195,16 @@
   }
  }
 
-@media  (max-width: 800px), (max-width: 480px) {
-  .container {
-    width: 80vw;
-    height: 100vw;
-    padding: 2rem 1rem;
-    margin-top: 7vh;
-    margin-right: 40vw;
+ @media (min-width: 300px) and (max-width: 900px){
+
+  
+
+  .container{
+    margin: 0;
+    padding: 0;
+    
     max-height: 80vh;
+    width: 80vw;
     overflow-y: auto;
     scroll-behavior: smooth;
     box-sizing: border-box;
@@ -253,4 +255,32 @@
     background-color: #ccc;
     border-radius: 3px;
   }
+
+  
+ }
+
+/* @media  (max-width: 800px), (max-width: 480px) {
+  .container {
+    
+    height: 100vw;
+    padding: 2rem 1rem;
+    
+    margin-right: 40vw;
+    
+  }
+
+  
+
+  
+
+  
+
+  
 }
+
+@media  (max-width: 412px){
+  .container{
+    background-color: red;
+  }
+}
+ */

@@ -1,8 +1,12 @@
 import React from "react";
 import classes from "../CSS-Folder/Table.module.css";
-import { GrCaretNext, GrChapterNext, GrCaretPrevious, GrChapterPrevious } from "react-icons/gr";
+import {
+  GrCaretNext,
+  GrChapterNext,
+  GrCaretPrevious,
+  GrChapterPrevious,
+} from "react-icons/gr";
 import { Button } from ".";
-
 import {
   useReactTable,
   getCoreRowModel,
@@ -42,9 +46,19 @@ const Table = ({
   checkbox = false,
   view = false,
   onViewRow,
-  hiddenColumns = [], 
+  hiddenColumns = [],
+  mobilePageSize = 2,
+  mobileIcons = {},
 }) => {
   const [selectedRows, setSelectedRows] = React.useState({});
+  const [mobilePage, setMobilePage] = React.useState(0);
+  const [isMobile, setIsMobile] = React.useState(window.innerWidth <= 900);
+
+  React.useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 900);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const updateSelected = (newSelected) => {
     setSelectedRows(newSelected);
@@ -79,7 +93,9 @@ const Table = ({
                   type="checkbox"
                   checked={
                     table.getRowModel().rows.length > 0 &&
-                    table.getRowModel().rows.every((row) => selectedRows[row.id])
+                    table.getRowModel().rows.every(
+                      (row) => selectedRows[row.id]
+                    )
                   }
                   onChange={(e) => {
                     const checked = e.target.checked;
@@ -154,6 +170,11 @@ const Table = ({
     initialState: { pagination: { pageSize: 10 } },
   });
 
+  const allRows = table.getRowModel().rows;
+  const startIndex = mobilePage * mobilePageSize;
+  const endIndex = startIndex + mobilePageSize;
+  const mobileRows = allRows.slice(startIndex, endIndex);
+
   return (
     <div className={`${classes.tableWrapper} ${wrapperClass}`}>
       <div className={`${classes.tableContainer} ${containerClass}`}>
@@ -161,19 +182,27 @@ const Table = ({
           <thead>
             {table.getHeaderGroups().map((headerGroup) => (
               <tr key={headerGroup.id}>
-                {headerGroup.headers.map((header) => (
-                  <th key={header.id}>
-                    {flexRender(
-                      header.column.columnDef.header,
-                      header.getContext()
-                    )}
-                  </th>
-                ))}
+                {headerGroup.headers.map((header) => {
+                  const columnId = header.column.id;
+                  const icon = mobileIcons[columnId];
+
+                  return (
+                    <th key={header.id}>
+                      {isMobile && icon
+                        ? icon 
+                        : flexRender(
+                            header.column.columnDef.header,
+                            header.getContext()
+                          )}
+                    </th>
+                  );
+                })}
               </tr>
             ))}
           </thead>
+
           <tbody>
-            {table.getRowModel().rows.length === 0 ? (
+            {allRows.length === 0 ? (
               <tr>
                 <td
                   colSpan={columnsToUse.length || 1}
@@ -183,74 +212,98 @@ const Table = ({
                 </td>
               </tr>
             ) : (
-              Array.from({ length: 10 }).map((_, i) => {
-                const row = table.getRowModel().rows[i];
-                return row ? (
-                  <tr
-                    key={row.id}
-                    onClick={() => onRowClick && onRowClick(row.original)}
-                    style={{ cursor: onRowClick ? "pointer" : "default" }}
-                  >
-                    {row.getVisibleCells().map((cell) => (
-                      <td key={cell.id}>
-                        {flexRender(
-                          cell.column.columnDef.cell,
-                          cell.getContext()
-                        )}
-                      </td>
-                    ))}
-                  </tr>
-                ) : (
-                  <tr key={`empty-${i}`}>
-                    {columnsToUse.map((_, colIndex) => (
-                      <td key={colIndex}>&nbsp;</td>
-                    ))}
-                  </tr>
-                );
-              })
+              (isMobile ? mobileRows : allRows).map((row) => (
+                <tr
+                  key={row.id}
+                  onClick={() => onRowClick && onRowClick(row.original)}
+                  style={{ cursor: onRowClick ? "pointer" : "default" }}
+                >
+                  {row.getVisibleCells().map((cell) => (
+                    <td
+                      key={cell.id}
+                      data-label={
+                        cell.column.columnDef.header
+                          ? typeof cell.column.columnDef.header === "string"
+                            ? cell.column.columnDef.header
+                            : formatHeader(cell.column.id)
+                          : ""
+                      }
+                    >
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext()
+                      )}
+                    </td>
+                  ))}
+                </tr>
+              ))
             )}
           </tbody>
         </table>
 
-        <div className={classes.paginationControls}>
-          <Button
-            use="FirstPageTable"
-            name={<><GrChapterPrevious size={20} 
-             /></>}
-            onClick={() => table.setPageIndex(0)}
-            disabled={!table.getCanPreviousPage()}
-          />
-          
-          <Button
-            use="PreviousPageButton"
-            name={<><GrCaretPrevious size={20} 
-             /></>}
-            onClick={() => table.previousPage()}
-            disabled={!table.getCanPreviousPage()}
-          />
+        {/* desktop pagination */}
+        {!isMobile && (
+          <div className={classes.paginationControls}>
+            <Button
+              use="FirstPageTable"
+              name={<GrChapterPrevious size={20} />}
+              onClick={() => table.setPageIndex(0)}
+              disabled={!table.getCanPreviousPage()}
+            />
 
-          <span className={classes.PageCount}>
-            Page {table.getState().pagination.pageIndex + 1} of{" "}
-            {table.getPageCount()}
-          </span>
+            <Button
+              use="PreviousPageButton"
+              name={<GrCaretPrevious size={20} />}
+              onClick={() => table.previousPage()}
+              disabled={!table.getCanPreviousPage()}
+            />
 
-          <Button
-            use="NextPageButton"
-            name={<><GrCaretNext size={20} 
-             /></>}
-            onClick={() => table.nextPage()}
-            disabled={!table.getCanNextPage()}
-          />
-      
-          <Button
-            use="LastPageTable"
-            name={<><GrChapterNext size={20} 
-             /></>}
-            onClick={() => table.setPageIndex(table.getPageCount() - 1)}
-            disabled={!table.getCanNextPage()}
-          />
-    
-        </div>
+            <span className={classes.PageCount}>
+              Page {table.getState().pagination.pageIndex + 1} of{" "}
+              {table.getPageCount()}
+            </span>
+
+            <Button
+              use="NextPageButton"
+              name={<GrCaretNext size={20} />}
+              onClick={() => table.nextPage()}
+              disabled={!table.getCanNextPage()}
+            />
+
+            <Button
+              use="LastPageTable"
+              name={<GrChapterNext size={20} />}
+              onClick={() => table.setPageIndex(table.getPageCount() - 1)}
+              disabled={!table.getCanNextPage()}
+            />
+          </div>
+        )}
+
+        {/* mobile pagination */}
+        {isMobile && (
+          <div className={classes.mobilePagination}>
+            <Button
+              use="PreviousPageButton"
+              name="Prev"
+              onClick={() => setMobilePage((p) => Math.max(p - 1, 0))}
+              disabled={mobilePage === 0}
+            />
+            <span className={classes.PageCount}>
+              Page {mobilePage + 1} of{" "}
+              {Math.ceil(allRows.length / mobilePageSize)}
+            </span>
+            <Button
+              use="NextPageButton"
+              name="Next"
+              onClick={() =>
+                setMobilePage((p) =>
+                  endIndex < allRows.length ? p + 1 : p
+                )
+              }
+              disabled={endIndex >= allRows.length}
+            />
+          </div>
+        )}
       </div>
     </div>
   );

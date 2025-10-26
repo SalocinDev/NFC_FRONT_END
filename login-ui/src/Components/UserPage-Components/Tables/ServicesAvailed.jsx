@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Table, SearchID } from "../.."; 
 import api from "../../../api/api";
 import classes from "../../../CSS-Folder/Table.module.css";
+import { IoMdTime } from "react-icons/io";
 
 function ServicesAvailed() {
   const [records, setRecords] = useState([]);
@@ -40,7 +41,14 @@ function ServicesAvailed() {
         onChange={(e) => setSearchTerm(e.target.value)}
          />
       <Table records={searchTerm ? filteredRecords : records}
-      containerClass={classes.ServicesTable} />
+      containerClass={classes.ServicesTable}
+      mobilePageSize={3}
+      mobileIcons={{
+      service_id: <IoMdTime />,
+      service_name: <IoMdTime />,
+      date: <IoMdTime />,
+  }}  />
+      
       </div>
     </div>
   );
