@@ -1,26 +1,35 @@
 .Time {
   font-size: 1.5rem;
-  font-weight: 500;
+  
   color: #101540;
   cursor: pointer;
-  margin-right: -7.8vw;
-  margin-bottom: 4vh;
-
   
 }
 
-.RightTopbar {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  margin-top: -2vh;
+.Date{
+  font-size: 1.5rem;
+  color: #101540;
 }
 
-.TimeGear {
+.RightTopbar{
   display: flex;
-  align-items: center;
+  flex-direction: column;
   text-align: right;
-  justify-content: right;
-  gap: 8px;
-  margin-right: -2.5rem;
+  line-height: 1.5rem;
+}
+
+.Righttopbar a.active{
+  padding: 0;
+}
+
+
+
+
+@media (min-width: 300px) and (max-width: 900px) {
+
+  .Time, .Date{
+    display: none;
+  }
+
+
 }

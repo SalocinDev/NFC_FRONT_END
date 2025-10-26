@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 function IconText({ icon: Icon, headerTop, headerBottom, to }) {
   return (
     
+    
     <NavLink to={to} className={classes.card}>
       <div className={classes.iconContainer}>
         <div className={classes.iconWrapper}>
@@ -16,6 +17,8 @@ function IconText({ icon: Icon, headerTop, headerBottom, to }) {
         <span>{headerBottom}</span>
       </h2>
     </NavLink>
+   
+
   );
 }
 

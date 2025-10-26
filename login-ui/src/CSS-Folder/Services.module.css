@@ -243,7 +243,23 @@ font-size: 5rem;
 }
 }
 
-@media (max-width: 480px) {
+@media (min-width: 300px) and (max-width: 480px) {
+
+  .PopupBox{
+    
+    width: 80vw;
+    height: auto;
+  }
+
+  .PopupBox h2{
+    text-align: center;
+    padding: 0;
+    margin: 0;
+  }
+
+  .Background{
+    background-image: none;
+  }
 
   .ServicesSubmitted{
   position: flex;
@@ -258,13 +274,15 @@ font-size: 5rem;
       grid-template-columns: repeat(2, 4fr);
 
     } 
+
   .CheckboxContainer {
     display: flex;
     flex-direction: column; 
     align-items: center;
     justify-content: center; 
     gap: 1rem;
-    padding: 1rem; 
+    padding: 0;
+    margin: 0;
     width: 100vw;
     max-height: 80vh;
     /* overflow-y: auto;
