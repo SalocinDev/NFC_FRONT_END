@@ -26,6 +26,7 @@ function OtpForm() {
     }
 
     const sendIfNeeded = async () => {
+      if (effectRan) { return null }
       try {
         const result = await sendOTP(email);
         if (!result.success) {
@@ -34,10 +35,6 @@ function OtpForm() {
         }
         if (result.success) {
           toast.success(result.message);
-        }
-        if (resetPass) {
-          navigate("/ResetPasswordForm") 
-          return;
         }
         return;
       } catch (error) {
@@ -49,7 +46,20 @@ function OtpForm() {
     effectRan.current = true;
   }, [email, resetPass, navigate]);
 
-
+  const handleVerifyOTP = async () => {
+    try {
+      await verifyOTP(email, OTP, navigate);
+      if (resetPass) {
+        navigate("/ResetPasswordForm", { state: { success: true, email }});
+        return;
+      } else {
+        toast.success("Email Verified!")
+        navigate("/")
+      }
+    } catch (error) {
+      toast.error("OTP verify error: "+ error.message || error)
+    }
+  }
   return (
     <div className="App">
       <Button name="Back" use="BackButtonOtp" onClick={() => navigate("/")} />
@@ -88,7 +98,7 @@ function OtpForm() {
            <Button
             name="VERIFY"
             use="ButtonVerify"
-            onClick={() => verifyOTP(email, OTP, navigate, resetPass)}
+            onClick={handleVerifyOTP}
           />
           </div>
          

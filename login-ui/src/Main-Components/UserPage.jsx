@@ -3,7 +3,7 @@ import classes from '../CSS-Folder/UserPage.module.css';
 import { MdMenu, MdDashboard, MdLogout } from "react-icons/md"; 
 import { FaUser, FaCog, FaCompass, FaBookOpen } from 'react-icons/fa';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { Button, UserDashboard, ServicesAvailed, BorrowedForm, SettingPage, AiPopUp, SurveyForm, WifiQRSelector, LiveClock } from '../Components';
+import { Button, UserDashboard, ServicesAvailed, BorrowedForm, SettingPage, AiPopUp, SurveyForm, WifiQRSelector, LiveClock, PopUpConfirm } from '../Components';
 import { FaWifi } from "react-icons/fa";
 import { RiSurveyFill } from "react-icons/ri";
 import { WlogoSidebar } from '../Logo';
@@ -28,6 +28,8 @@ function UserPage() {
   const [currentTime, setCurrentTime] = useState('');
   const [currentDate, setCurrentDate] = useState('');
   const [profileSrc, setProfileSrc] = useState(null);
+  const [isPopupConfirmOpen, setIsPopupConfirmOpen] = useState(false);
+
   const FirstName = storedUser.user_firstname;
   const UserID = storedUser.user_id;
 
@@ -71,6 +73,17 @@ function UserPage() {
     }
   };
 
+  const handlePopupConfirmOpen = () => setIsPopupConfirmOpen(true)
+  const handlePopupConfirm = async () => {
+    try {
+      await logOut();
+      navigate("/");
+      // return toast.success("Logout Complete")
+    } catch (error) {
+      return toast.error("Logout Error")
+    }
+  }
+  
   return (
     <div>
 
@@ -128,9 +141,7 @@ function UserPage() {
         <Button 
           name={<><MdLogout size={24} /><span>Logout</span></>} 
           use="Sample" 
-          onClick={() => {
-            logOut().then(() => navigate('/'));
-          }}
+          onClick={handlePopupConfirmOpen}
         />
       </aside>
 
@@ -172,7 +183,6 @@ function UserPage() {
           <div className={classes.Date}>{currentDate}</div>
         </div>
       </div>
-
      
       <div className={classes.SampleLangTo}>
         <main className={classes.RenderComponents}>
@@ -187,6 +197,12 @@ function UserPage() {
           <AiPopUp/>
         </div>
       </div>
+      <PopUpConfirm
+        isOpen={isPopupConfirmOpen}
+        onClose={() => setIsPopupConfirmOpen(false)}
+        onConfirm={handlePopupConfirm}
+        subject={"Confirm Logout?"}
+      />
     </div>
   );
 }

@@ -1,6 +1,7 @@
 const apiUrl = import.meta.env.VITE_API_URL;
 import { sendOTP } from '../Services/SignUpService'
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export async function checkEmail(email, navigate) {
     try {
@@ -72,7 +73,7 @@ export async function changePassword(email, password, navigate) {
         }
 
         if (result.success) {
-            alert(result.message);
+            toast.success(result.message);
             navigate(`/`);
             return;
         }

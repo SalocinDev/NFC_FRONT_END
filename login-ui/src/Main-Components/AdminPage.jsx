@@ -1,6 +1,6 @@
 import classes from '../CSS-Folder/AdminPage.module.css';
 import { FaUser, FaCog } from 'react-icons/fa';
-import { Button, Statistics, Books, UserManagement, SettingPage, LogsTable, ReportsExport, WifiList, UserLibraryLog, SurveyReport, LiveClock} from '../Components';
+import { Button, Statistics, Books, UserManagement, SettingPage, LogsTable, ReportsExport, WifiList, UserLibraryLog, SurveyReport, LiveClock, PopUpConfirm} from '../Components';
 import { NavLink } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { WlogoSidebar } from '../Logo';
@@ -12,8 +12,6 @@ import { logOut } from '../Services/SessionUtils';
 import { getProfilePicture } from '../Services/FileService'
 import { FaWifi } from "react-icons/fa";
 import { IoDocumentText } from "react-icons/io5";
-
-
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
@@ -27,6 +25,7 @@ function AdminPage() {
   const [currentDate, setCurrentDate] = useState('');
   const [collapsed, setCollapsed] = useState(false);
   const [profileSrc, setProfileSrc] = useState(null);
+  const [isPopupConfirmOpen, setIsPopupConfirmOpen] = useState(false);
   const borrowedBooks = 60;
   const returnedBooks = 40;
 
@@ -83,7 +82,16 @@ function AdminPage() {
     }
   };
 
-
+  const handlePopupConfirmOpen = () => setIsPopupConfirmOpen(true)
+  const handlePopupConfirm = async () => {
+    try {
+      await logOut();
+      navigate("/");
+      // return toast.success("Logout Complete")
+    } catch (error) {
+      return toast.error("Logout Error")
+    }
+  }
   return (
     <div>
       <aside className={`${classes.Sidebar} ${collapsed ? classes.hidden : classes.open}`}>
@@ -156,9 +164,7 @@ function AdminPage() {
            <Button 
                      name={<><MdLogout size={24} /><span>Logout</span></>} 
                      use="Sample" 
-                     onClick={() => {
-                       logOut().then(() => navigate('/'));
-                     }}
+                     onClick={handlePopupConfirmOpen}
                    />
       </aside>
 
@@ -203,8 +209,12 @@ function AdminPage() {
         {renderContent()}
       </main>
       </div>
-    
-
+      <PopUpConfirm
+        isOpen={isPopupConfirmOpen}
+        onClose={() => setIsPopupConfirmOpen(false)}
+        onConfirm={handlePopupConfirm}
+        subject={"Confirm Logout?"}
+      />
     </div>
   );
 }

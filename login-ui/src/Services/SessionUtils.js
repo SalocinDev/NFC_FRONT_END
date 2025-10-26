@@ -1,3 +1,5 @@
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const apiUrl = import.meta.env.VITE_API_URL;
 
 export async function logOut() {
@@ -10,7 +12,7 @@ export async function logOut() {
         },
     });
     sessionStorage.clear();
-    console.log(`Session Deleted`);
+    toast.success(`Logged Out Successfully`);
 }
   
 export async function getSession() {

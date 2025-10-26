@@ -47,13 +47,15 @@ function NfcPage() {
         navigate('/');
         return;
       }
-
+      
       if (result.success) {
-        if (!result.reader_attached) {
+        if (!result.reader_attached && !result.success) {
           toast.error(result.message)
           navigate('/');
           return;
         }
+        console.log((result));
+
         const welcomeMessage = `Welcome, ${result.user_firstname} (via NFC)!`;
         toast.success(welcomeMessage);
 

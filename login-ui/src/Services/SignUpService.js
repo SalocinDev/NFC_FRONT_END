@@ -108,12 +108,6 @@ export async function verifyOTP(email, OTP, navigate, resetPass) {
         console.log(result.message);
         toast.success("Email Verified!");
 
-        if (resetPass) {
-            navigate("/ResetPasswordForm", { state: { email } });
-        } else {
-            navigate("/");
-        }
-
         return result;
     } catch (error) {
         toast.error(error);

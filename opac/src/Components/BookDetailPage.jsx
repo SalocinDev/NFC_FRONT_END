@@ -72,7 +72,7 @@ export default function BookDetail({ setActive, setBookSelected, bookId, onBack}
             src={
               book.book_cover_img
                 ? `${import.meta.env.VITE_API_URL}/${book.book_cover_img}`
-                : `${import.meta.env.BASE_URL}images/placeholder-book.png`
+                : `${import.meta.env.BASE_URL}images/Fallback.png`
             }
             alt={book.book_title}
             className={classes.Image}

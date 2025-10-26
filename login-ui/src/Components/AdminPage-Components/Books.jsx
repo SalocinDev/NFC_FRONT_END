@@ -31,9 +31,11 @@ function Books() {
   const fetchBorrowedBooks = async () => {
     try {
       const res = await api.get(`/borrowing/`);
-      setBorrowedRecords(res.data);
-      if (res.data.length > 0) {
-        setBorrowedColumns(Object.keys(res.data[0]));
+      const formatted = autoFormatDates(res.data);
+      setBorrowedRecords(formatted);
+
+      if (formatted.length > 0) {
+        setBorrowedColumns(Object.keys(formatted[0]));
       } else if (borrowedColumns.length === 0) {
         setBorrowedColumns(["borrow_id", "book_id_fk", "user_id_fk", "borrowed_due_date", "Note"]);
       }
@@ -45,9 +47,11 @@ function Books() {
   const fetchReturnedBooks = async () => {
     try {
       const res = await api.get(`/returning/`);
-      setReturnedRecords(res.data);
-      if (res.data.length > 0) {
-        setReturnedColumns(Object.keys(res.data[0]));
+      const formatted = autoFormatDates(res.data);
+      setReturnedRecords(formatted);
+
+      if (formatted.length > 0) {
+        setReturnedColumns(Object.keys(formatted[0]));
       } else if (returnedColumns.length === 0) {
         setReturnedColumns(["book_returned_id", "borrow_id_fk", "date_returned", "Notes"]);
       }
@@ -59,9 +63,11 @@ function Books() {
   const fetchBooks = async () => {
     try {
       const res = await api.get(`/books/`);
-      setBookRecords(res.data);
-      if (res.data.length > 0) {
-        setBookColumns(Object.keys(res.data[0]));
+      const formatted = autoFormatDates(res.data);
+      setBookRecords(formatted);
+
+      if (formatted.length > 0) {
+        setBookColumns(Object.keys(formatted[0]));
       } else if (bookColumns.length === 0) {
         setBookColumns(["book_id", "book_title", "book_cover_img", "book_author", "book_description", "book_publisher", "book_year_publish", "book_category_id_fk", "book_status", "book_inventory", "book_view_count"]);
       }
@@ -69,6 +75,7 @@ function Books() {
       console.error("Error fetching books:", err);
     }
   };
+
   
   // Initial fetch on mount
   useEffect(() => {
@@ -98,7 +105,6 @@ function Books() {
           records={returnedRecords}
           onSelectedRowsChange={setSelectedRows} 
           checkbox
-          
         />
       );
     case "BooksAdmin":
@@ -122,9 +128,9 @@ const handleFormSubmit = async (formValues, active, action) => {
     return;
   }
 
-  console.log("Form values: ", formValues);
-  console.log("Active tab: ", active);
-  console.log("Action taken: ", action);
+  // console.log("Form values: ", formValues);
+  // console.log("Active tab: ", active);
+  // console.log("Action taken: ", action);
 
   try {
     if (action === "add" && active === "BorrowedBooksAdmin") {
@@ -232,6 +238,28 @@ const handleFormSubmit = async (formValues, active, action) => {
       }
     }
     setIsOpenDeleteConfirm(false);
+  };
+
+  const autoFormatDates = (data) => {
+    return data.map(item => {
+      const formattedItem = { ...item };
+      
+      for (const key in formattedItem) {
+        const value = formattedItem[key];
+        if (typeof value === "string" && !isNaN(Date.parse(value))) {
+          const date = new Date(value);
+          formattedItem[key] = date.toLocaleString("en-US", {
+            month: "long",
+            day: "numeric",
+            year: "numeric",
+            hour: "numeric",
+            minute: "2-digit",
+            hour12: true
+          }).replace(",", " at");
+        }
+      }
+      return formattedItem;
+    });
   };
 
   return (

@@ -12,7 +12,7 @@ function Intemediary() {
 
   useEffect(() => {
     const checkLogin = async () => {
-      console.log(loggedIn);
+      // console.log(loggedIn);
       
       if (!loggedIn) {
         await logOut();

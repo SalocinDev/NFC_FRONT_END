@@ -1,6 +1,6 @@
 import classes from '../CSS-Folder/ResetPasswordForm.module.css';
 import { useNavigate, useSearchParams, useLocation } from 'react-router-dom';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Wlogo, Input, Blogo, Button } from '../Components';
 import { changePassword } from '../Services/ChangePassword'
 import { RiRotateLockFill } from "react-icons/ri";
@@ -14,12 +14,18 @@ function ResetPasswordForm() {
 
   const [Pass, setPass] = useState("");
   const [ConfirmPass, setConfirmPass] = useState("");
-  const { email } = location.state || {};
-
-  if (!email) {
-    toast.error("What are you doing here");
-    return;
-  }
+  const { success, email } = location.state || {};
+  
+  useEffect(() => {
+    if (!success) {
+      toast.error("You're not supposed to be here");
+      return navigate("/");
+    }
+    if (!email) {
+      toast.error("What are you doing here");
+      return navigate("/");
+    }
+  }, [])
 
   const handlePass = () => {
     if (!Pass || !ConfirmPass) {

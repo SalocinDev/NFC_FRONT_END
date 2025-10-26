@@ -1,7 +1,7 @@
 import classes from '../CSS-Folder/Services.module.css';
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Button, Checkbox } from '../Components';
+import { Button, Checkbox, PopUpConfirm } from '../Components';
 import { logOut } from '../Services/SessionUtils';
 import { submitServices } from '../Services/ServicesUtis';
 import { toast } from 'react-toastify';
@@ -14,6 +14,7 @@ function Services() {
   const [alertShown, setAlertShown] = useState(false);
   const [showPopup, setShowPopup] = useState(false); 
   const [popupServices, setPopupServices] = useState([]); 
+  const [isPopupConfirmOpen, setIsPopupConfirmOpen] = useState(false);
 
   const location = useLocation();
   const { loggedIn } = location.state || {};
@@ -59,9 +60,11 @@ function Services() {
       return;
     }
     setShowPopup(false);
-    logOut().then(() => navigate("/", { state: { loggedIn: true } }));
+    setIsPopupConfirmOpen(true);
+    // logOut().then(() => navigate("/", { state: { loggedIn: true } }));
   };
 
+  const handleContinue = () => navigate("/UserPage")
   return (
     <div className={classes.Background}>
       <div className={classes.RectangleAbove}>
@@ -110,6 +113,12 @@ function Services() {
           </div>
         </div>
       )}
+      <PopUpConfirm
+        isOpen={isPopupConfirmOpen}
+        onClose={() =>{setIsPopupConfirmOpen(false)}}
+        onConfirm={handleContinue}
+        subject={"Logout/Continue?"}
+      />
     </div>
   );
 }

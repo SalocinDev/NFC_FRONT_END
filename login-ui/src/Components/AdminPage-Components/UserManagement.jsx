@@ -118,12 +118,45 @@ function UserManagement() {
                             { accessorKey: "user_firstname", header: "FIRSTNAME" },
                             { accessorKey: "user_middlename", header: "MIDDLENAME" },
                             { accessorKey: "user_lastname", header: "LASTNAME"},
-                            { accessorKey: "user_date_of_birth", header: "DATE OF BIRTH" },
+                            // { accessorKey: "user_date_of_birth", header: "DATE OF BIRTH" },
+                            { 
+                                accessorKey: "user_date_of_birth",
+                                header: "DATE OF BIRTH",
+                                cell: (info) => {
+                                const value = info.getValue();
+                                if (!value) return "N/A";
+
+                                return new Date(value).toLocaleString("en-US", {
+                                    month: "long",
+                                    day: "numeric",
+                                    year: "numeric",
+                                    hour: "numeric",
+                                    minute: "numeric",
+                                    hour12: true
+                                });
+                                }
+                            },
                             { accessorKey: "user_gender", header: "GENDER" },
                             { accessorKey: "user_contact_number", header: "CONTACT" },
                             { accessorKey: "user_category_name", header: "USER CATEGORY" },
                             { accessorKey: "user_school", header: "UNIVERSITY" },
-                            { accessorKey: "user_creation_time", header: "CREATION DATE" },
+                            { 
+                                accessorKey: "user_creation_time", 
+                                header: "CREATION DATE" ,
+                                cell: (info) => {
+                                const value = info.getValue();
+                                if (!value) return "N/A";
+
+                                return new Date(value).toLocaleString("en-US", {
+                                    month: "long",
+                                    day: "numeric",
+                                    year: "numeric",
+                                    hour: "numeric",
+                                    minute: "numeric",
+                                    hour12: true
+                                });
+                                }
+                            },
                         ]}
                     />
                 </main>
