@@ -93,8 +93,8 @@ const WifiQRSelector = () => {
         name={selectedWifi.wifi_name}
         password={selectedWifi.wifi_password}
         security={selectedWifi.wifi_security}
-        
-        size={500}
+        size={window.innerWidth >= 300 && window.innerWidth <= 900 ? 300 : 500}
+       
       />
       )}
       </div>

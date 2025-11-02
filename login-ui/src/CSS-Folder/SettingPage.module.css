@@ -437,4 +437,182 @@ label{
   justify-self: start; 
 }
 
+@media (min-width: 300px) and (max-width: 700px) {
+
+  .Sidebar {
+    width: 5rem;
+  }
+
+  .NavBar {
+    margin-left: 5rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .VerticalManila {
+    font-size: 2rem;
+    letter-spacing: 0.8rem;
+  }
+
+  .VerticalLibrary {
+    font-size: 1rem;
+    letter-spacing: 0.6rem;
+  }
+
+  .DesignRectangle {
+    width: 8vw;
+    height: 50vh;
+  }
+
+  .ParagraphContainer {
+    margin-left: 2rem;
+    margin-top: 1rem;
+    width: 80%;
+    font-size: 0.9rem;
+  }
+
+  .PersonalDetail {
+    width: 90%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .InputGrid {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .InputField input,
+  .SmallInput,
+  .GenderInput {
+    width: 100% !important;
+    font-size: 1rem !important;
+    height: 4rem !important;
+  }
+
+  .myDropdown {
+    height: 4rem !important;
+  }
+
+  .LogoUser {
+    width: 9rem;
+    margin-left: 0.5rem;
+  }
+
+  .AcquireContainer {
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .GearIcon, .Time {
+    margin-right: 0;
+  }
+
+  footer {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  
+}
+
+@media (min-width: 701px) and (max-width: 900px) {
+
+  .Sidebar {
+    width: 6rem;
+  }
+
+  .NavBar {
+    margin-left: 6rem;
+    padding: 0.75rem 1.5rem;
+  }
+
+  .PersonalDetail {
+    width: 80%;
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  .InputGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .InputField input,
+  .SmallInput,
+  .GenderInput {
+    max-width: 100%;
+    height: 3.5rem;
+    font-size: 1.2rem;
+  }
+
+
+  .VerticalManila {
+    font-size: 3rem;
+    letter-spacing: 1rem;
+  }
+
+  .VerticalLibrary {
+    font-size: 1.5rem;
+    letter-spacing: 0.8rem;
+  }
+
+  .DesignRectangle {
+    width: 6vw;
+    height: 60vh;
+  }
+
+  .ParagraphContainer {
+    margin-left: 6rem;
+    width: 80%;
+  }
+
+  .GearIcon {
+    margin-right: -10vw;
+  }
+
+  
+}
+
+@media (min-width: 901px) and (max-width: 1024px) {
+
+  .Sidebar {
+    width: 6.5rem;
+  }
+
+  .NavBar {
+    margin-left: 6.5rem;
+  }
+
+  .PersonalDetail {
+    width: 75%;
+    padding-left: 4rem;
+    padding-right: 3rem;
+  }
+
+  .InputField input,
+  .SmallInput,
+  .GenderInput {
+    font-size: 1.3rem;
+    height: 3.8rem;
+  }
+
+  .VerticalManila {
+    font-size: 3.5rem;
+    letter-spacing: 1.2rem;
+  }
+
+  .VerticalLibrary {
+    font-size: 1.8rem;
+  }
+
+  .DesignRectangle {
+    width: 5vw;
+    height: 65vh;
+  }
+
+  .ParagraphContainer {
+    margin-left: 8rem;
+    width: 75%;
+  }
+}
 

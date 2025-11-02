@@ -26,8 +26,9 @@ function OtpForm() {
     }
 
     const sendIfNeeded = async () => {
-      if (effectRan) { return null }
+      if (effectRan.current) return;
       try {
+        toast.info(`Please wait, Sending OTP to ${email}`);
         const result = await sendOTP(email);
         if (!result.success) {
           toast.error(result.message);
@@ -48,16 +49,22 @@ function OtpForm() {
 
   const handleVerifyOTP = async () => {
     try {
-      await verifyOTP(email, OTP, navigate);
-      if (resetPass) {
+      const result = await verifyOTP(email, OTP, navigate);
+      if (!result.verified) {
+        toast.error("Failed to verify Email")
+        return;
+      }
+      if (result.verified && resetPass) {
         navigate("/ResetPasswordForm", { state: { success: true, email }});
         return;
-      } else {
+      } 
+      if (result.verified) {
         toast.success("Email Verified!")
         navigate("/")
+        return; 
       }
     } catch (error) {
-      toast.error("OTP verify error: "+ error.message || error)
+      // toast.error("OTP verify error: "+ error.message || error)
     }
   }
   return (

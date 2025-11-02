@@ -23,39 +23,51 @@
   position: relative;
 }
 
-@media (max-width: 480px), (max-width: 600px) {
-  .WhiteLogo{
+
+
+@media (min-width: 300px) and (max-width: 700px) {
+  .WhiteLogo {
     display: none;
   }
 
-  
-.BlueLogo2{
-  margin: 0;
-  padding: 0;
-}
-
-}
-
-/* Small screens: phones */
-@media (max-width: 480px) {
   .Bluelogo {
-    transform: scale(0.8);
-    top: 30px;
+    transform: scale(0.7);
+    top: 20px;
+  }
+
+  .BlueLogo2 {
+    width: 17rem;
+    height: 17rem;
+    padding: 0;
+    margin: 0 auto;
+  }
+
+  .SidebarLogo {
+    transform: scale(0.4);
   }
 }
 
-/* Medium screens: tablets */
-@media (min-width: 481px) and (max-width: 768px) {
+
+@media (min-width: 701px) and (max-width: 1024px) {
+  .WhiteLogo {
+    transform: scale(1.2);
+    top: -3vw;
+  }
+
   .Bluelogo {
-    transform: scale(0.9);
-    top: 40px;
+    transform: scale(0.85);
+    
+  }
+
+  .BlueLogo2 {
+    width: 38rem;
+    height: 38rem;
+    padding-bottom: 1rem;
+  }
+
+  .SidebarLogo {
+    transform: scale(0.45);
   }
 }
 
-/* Large screens: desktops */
-@media (min-width: 769px) {
-  .Bluelogo {
-    transform: scale(1);
-    top: 50px;
-  }
-}
+

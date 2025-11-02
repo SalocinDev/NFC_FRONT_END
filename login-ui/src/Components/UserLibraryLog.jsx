@@ -86,29 +86,29 @@ const UserLibraryLog = () => {
       <h2>User Library Logs</h2>
 
       {/* Search & Controls */}
-      <div  className={classes.InputDiv}>
+      <div className={classes.InputDiv}>
         <div className={classes.SelectDiv}>
-        <select
-          value={searchType}
-          onChange={(e) => setSearchType(e.target.value)}
-        >
-          {/*<option value="all">All</option>*/}
-          <option value="user">By User</option>
-          <option value="service">By Service</option>
-        </select>
-      <div className={classes.ButtonContainer}>
-        <Button 
-        onClick={fetchLogs} 
-        name={<><TbSearch size={23} /></>} 
-        use="SearchLogs"
-         />
-        <Button 
-        onClick={fetchLogs} 
-        name={<><TbReload size={24} /></>} 
-        use="ReloadLogs"
-        />
-      </div>
-</div>
+          <select
+            value={searchType}
+            onChange={(e) => setSearchType(e.target.value)}
+          >
+            {/*<option value="all">All</option>*/}
+            <option value="user">By User</option>
+            <option value="service">By Service</option>
+          </select>
+          <div className={classes.ButtonContainer}>
+            <Button
+              onClick={fetchLogs}
+              name={<><TbSearch size={23} /></>}
+              use="SearchLogs"
+            />
+            <Button
+              onClick={fetchLogs}
+              name={<><TbReload size={24} /></>}
+              use="ReloadLogs"
+            />
+          </div>
+        </div>
         <input
           type="text"
           placeholder="Search..."
@@ -117,7 +117,7 @@ const UserLibraryLog = () => {
           onKeyDown={handleKeyPress}
         />
 
-        
+
       </div>
 
       {/* Table */}
@@ -143,8 +143,8 @@ const UserLibraryLog = () => {
                       {isSorted === "asc"
                         ? " 🔼"
                         : isSorted === "desc"
-                        ? " 🔽"
-                        : ""}
+                          ? " 🔽"
+                          : ""}
                     </th>
                   );
                 })}
@@ -177,21 +177,21 @@ const UserLibraryLog = () => {
         <div>
 
           <Button
-                      use="FirstPageTable"
-                      name={<><GrChapterPrevious size={20} 
-                       /></>}
-                      onClick={() => setPage(1)} 
-                      disabled={page === 1}
-                    />
+            use="FirstPageTable"
+            name={<><GrChapterPrevious size={20}
+            /></>}
+            onClick={() => setPage(1)}
+            disabled={page === 1}
+          />
 
           <Button
             disabled={page === 1}
             onClick={() => setPage((p) => Math.max(p - 1, 1))}
             use="PreviousPageButton"
-            name={<><GrCaretPrevious size={20} 
+            name={<><GrCaretPrevious size={20}
             /></>}
           />
-            
+
           <span className={classes.PageCount}>
             Page {page} of {totalPages || 1}
           </span>
@@ -200,17 +200,17 @@ const UserLibraryLog = () => {
             disabled={page === totalPages || totalPages === 0}
             onClick={() => setPage((p) => Math.min(p + 1, totalPages))}
             use="PreviousPageButton"
-            name={<><GrCaretNext size={20} 
+            name={<><GrCaretNext size={20}
             /></>}
-          /> 
+          />
           <Button
             use="LastPageTable"
-            name={<><GrChapterNext size={20} 
+            name={<><GrChapterNext size={20}
             /></>}
-            onClick={() => setPage(totalPages)} 
-            disabled={page === totalPages || totalPages === 0} 
+            onClick={() => setPage(totalPages)}
+            disabled={page === totalPages || totalPages === 0}
 
-            
+
           />
         </div>
       )}

@@ -6,6 +6,8 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { logOut } from '../Services/SessionUtils';
 import { updateAccount, updateAddress } from '../Services/UpdateAccount';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function SettingPage() {
   const navigate = useNavigate(); 
@@ -60,7 +62,7 @@ function SettingPage() {
     }
 
     if (Object.keys(updatedFields).length === 0) {
-      alert("No changes detected.");
+      toast.warn("No changes detected.");
       return;
     }
 
@@ -79,7 +81,7 @@ function SettingPage() {
     if (Zip) updatedAddress.zip = Zip;
 
     if (Object.keys(updatedAddress).length === 0) {
-      alert("No address changes detected.");
+      toast.warn("No address changes detected.");
       return;
     }
 

@@ -2,9 +2,9 @@ const apiUrl = import.meta.env.VITE_API_URL;
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-export async function signUp (email, password, firstName, middleName, lastName, dob, gender, contactNumber, school, navigate) {
+export async function signUp (email, password, firstName, middleName, lastName, dob, gender, contactNumber, school, category, navigate) {
     /* console.log("Signing up with:", { email, password, firstName, middleName, lastName, dob, gender, contactNumber, school }); */
-    // toast.success(`Signing up with:, ${email}, ${firstName}, ${middleName}, ${lastName}, ${dob}, ${gender}, ${contactNumber}, ${school}`);
+    // toast.success(`Signing up with:, ${email}, ${firstName}, ${middleName}, ${lastName}, ${dob}, ${gender}, ${contactNumber}, ${school}, ${category}`);
     try {
         const response = await fetch(`${apiUrl}/acc/sign-up`, {
             method: "POST",
@@ -13,7 +13,7 @@ export async function signUp (email, password, firstName, middleName, lastName, 
                 "Content-Type": "application/json",
                 "x-api-key": import.meta.env.VITE_API_KEY
         },
-        body: JSON.stringify({ email, password, firstName, middleName, lastName, dob, gender, contactNumber, school })
+        body: JSON.stringify({ email, password, firstName, middleName, lastName, dob, gender, contactNumber, school, category })
         });
         const result = await response.json();
         if (!result.success && result.message === "Account already registered"){
@@ -87,6 +87,12 @@ export async function sendOTP(email){
 
 export async function verifyOTP(email, OTP, navigate, resetPass) {
     try {
+
+        if (!OTP) {
+            toast.warn("Input OTP");
+            return
+        }
+
         const response = await fetch(`${apiUrl}/acc/verify-otp`, {
             method: "POST",
             credentials: "include",
@@ -101,7 +107,7 @@ export async function verifyOTP(email, OTP, navigate, resetPass) {
 
         if (!result.verified) {
             toast.error(result.message || "Invalid OTP");
-        return;
+            return;
         }
 
         // Success case
@@ -110,6 +116,6 @@ export async function verifyOTP(email, OTP, navigate, resetPass) {
 
         return result;
     } catch (error) {
-        toast.error(error);
+        // toast.error(error);
     }
 }

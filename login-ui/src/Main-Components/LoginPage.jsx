@@ -161,23 +161,18 @@ function LoginPage() {
         </div>
       </form>
         <div className={classes.ForgotPassContainer}>  
-              <a 
-              className={classes.attribute}
-              onClick={() => navigate("/ResetPasswordEmailCheck")}
-                >
-                Forgot password?
-              </a>
+              
               <Button name="SIGN-IN" use="ButtonSignIn" onClick={() => signIn(Email, Pass, navigate)} />
-        </div>
+        
 
         <div className={classes.LineContainer}>
           <div className={`${classes.Line} ${classes.Left}`}></div>
             <span className={classes.Text}>or</span>
           <div className={`${classes.Line} ${classes.Right}`}></div>
         </div>
-
+              
               <Button name="LOGIN WITH NFC" use="NfcSignIn" onClick={() => navigate("/NfcPage")}/>
-
+        </div>
       </div>
     
     </div>

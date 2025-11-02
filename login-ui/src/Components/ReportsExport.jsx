@@ -4,7 +4,8 @@ import ExcelJS from "exceljs";
 import classes from "../CSS-Folder/ReportsExport.module.css";
 import { Button } from ".";
 import { RiFileExcel2Line } from "react-icons/ri";
-
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function ReportsExportPage() {
   const [services, setServices] = useState([]);
@@ -115,13 +116,13 @@ function ReportsExportPage() {
 
   const handleExport = async () => {
     if (selectedServices.length === 0) {
-      alert("Please select at least one service");
+      toast.warn("Please select at least one service");
       return;
     }
 
     if (range === "custom" && customDates.start && customDates.end) {
       if (new Date(customDates.start) > new Date(customDates.end)) {
-        alert("Start date cannot be later than end date");
+        toast.warn("Start date cannot be later than end date");
         return;
       }
     }
@@ -159,7 +160,7 @@ function ReportsExportPage() {
       link.click();
     } catch (err) {
       console.error("Export failed:", err);
-      alert("Failed to export report");
+      toast.error("Failed to export report");
     }
   };
 

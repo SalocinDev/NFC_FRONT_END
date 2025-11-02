@@ -1,6 +1,3 @@
-
-
-
 .card {
   display: flex;
   align-items: center;
@@ -14,18 +11,19 @@
   color: #101540;
   border-left: 2px solid black;
   border-radius: 0px;
+  transition: all 0.3s ease;
 }
 
-.card:hover{
+.card:hover {
   background-color: #77798a75;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
 
-.iconContainer{
+.iconContainer {
   background: #d4d0d0;
-  padding: 10px;
   border-radius: 0.5rem;
+  display: flex;
   align-items: center;
   justify-content: center;
   padding: 1.8rem;
@@ -57,73 +55,68 @@
 }
 
 
-/* Tablets (720px and below) */
-@media (max-width: 768px) {
-
-  .header {
-
-    flex-direction: column;
-    font-size: 2rem;
-    margin-left: 0.5rem;
-    align-items: flex-start;
-  }
- .cardWrapper {
-    flex-direction: column;
-    align-items: center;
-  }
-  .card{
-    
-    display: block;
-    width: 90%; /* or 100% if you want full width */
-    max-width: 100vw;
-    flex: column;
-  }
-  .iconContainer{
-
-  }
-}
-
-@media (min-width: 300px) and (max-width: 800px) {
+@media (min-width: 300px) and (max-width: 700px) {
   .card {
     display: flex;
-    flex-direction: column;       
+    flex-direction: row;  
     align-items: center;
-    justify-content: center;
-    width: 100%;                   
-    max-width: 100px;              
-    height: auto;
-    padding: 1rem 2rem 2rem 2rem;
-    margin: 0 auto;
-    border-radius: 0.50rem;
+    justify-content: flex-start;
+    width: 90%;                  
+    max-width: 100%;              
+    margin: 0 auto;             
+    padding: 0;
+    padding: 1rem;
     border: 2px solid #101540;
+    border-radius: 0.5rem;
+    gap: 1rem;
   }
 
   .iconContainer {
-    width: 60px;                  
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #d4d0d0;
-    border-radius: 0.5rem;
-    margin-bottom: 0.8rem;
+    width: 50px;
+    height: 50px;
+    padding: 1rem;
   }
 
   .icon {
     font-size: 2rem;
-    color: white;
   }
 
   .header {
-    font-size: 1.6rem;
-    margin-left: 0;
-  }
-
-  .CardContainer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
+    font-size: 1.4rem;
+    text-align: left;
   }
 }
 
+
+@media (min-width: 701px) and (max-width: 1024px) {
+  .card {
+    display: flex;
+    flex-direction: row;  
+    align-items: center;
+    justify-content: flex-start;
+    width: 90%;        
+    height: 8rem;          
+    max-width: 100%;              
+    margin: 0 auto;             
+    padding: 0;
+    padding: 1rem;
+    border: 2px solid #101540;
+    border-radius: 0.5rem;
+    gap: 1rem;
+  }
+
+  .iconContainer {
+    width: 100px;
+    height: 100px;
+    padding: 1rem;
+  }
+
+  .icon {
+    font-size: 2rem;
+  }
+
+  .header {
+    font-size: 1.4rem;
+    text-align: left;
+  }
+}

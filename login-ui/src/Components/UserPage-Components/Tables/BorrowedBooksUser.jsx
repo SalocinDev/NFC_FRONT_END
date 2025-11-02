@@ -51,7 +51,8 @@ function BorrowedBooksTable() {
       onChange={(e) => setSearchTerm(e.target.value)}
         />
     <Table records={searchTerm ? filteredRecords : records}
-    containerClass={classes.BorrowedTable} />
+    containerClass={classes.BorrowedTable}
+    mobilePageSize = {2} />
     </div>
   </div>
   );

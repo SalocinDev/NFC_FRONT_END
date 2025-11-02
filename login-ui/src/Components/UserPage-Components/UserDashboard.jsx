@@ -18,7 +18,7 @@ function UserDashboard() {
       case "HomePage":
         return <UserHomePage onChangePage={setActive}/>;
       case "BorrowedBooks":
-        return <BorrowedBooksTable/>;
+        return <BorrowedBooksTable />;
       case "ReturnedBooks":
         return <ReturnedBooksTable/>;
       case "BrowseBooks":

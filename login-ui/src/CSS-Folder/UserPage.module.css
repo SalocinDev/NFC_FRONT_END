@@ -1,41 +1,3 @@
-/* Everything from here is about the sidebar */
-
-.Sidebar {
-  background-color: #101540;
-  position: fixed;
-  width: 7rem;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  top: 0;
-  left: 0;
-  z-index: 100; 
-  transition: transform 0.3s ease;
-}
-
-/* Hidden state */
-.hidden {
-  transform: translateX(-100%);
-}
-
-.ToggleButton {
-  position: fixed;
-  top: 1rem;
-  left: 1rem;
-  color: #101540;
-  border: none;
-  cursor: pointer;
-  z-index: 200;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-}
-
-@media (min-width: 900px) {
-  .ToggleButton {
-    display: none; 
-  }
-}
-
 .WSidebar {
   width: 100%;
   height: auto;
@@ -110,8 +72,6 @@
 }
 
 
-
-/* MANILA CITY ON THE SIDE */
 .DesignRectangle {
   position: fixed;
   bottom: 0;
@@ -155,18 +115,17 @@
 }
 
 .RenderComponents {
-  height: calc(100vh - 4rem); /* adjust for top navbar */
+  height: calc(100vh - 4rem); 
   overflow-y: auto;
   padding: 1rem;
-  scrollbar-width: none;   /* Firefox */
-  -ms-overflow-style: none; /* IE 10+ */
+  scrollbar-width: none;  
+  -ms-overflow-style: none;
 }
 
 .RenderComponents::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Edge */
+  display: none;
 }
 
-/* Top bar (right side) */
 .RightTopbar {
   
   display: flex;
@@ -187,21 +146,6 @@
   margin-top: 2rem;
 }
 
-/* .Time {
-  font-size: 2.3rem;
-  font-weight: 500;
-  color: #101540;
-  cursor: pointer;
-  margin-right: -2vw;
-  margin-bottom: 2vh;
-}
-
-.Date {
-  margin-top: -5vh;
-  color: #101540;
-  font-size: 1rem;
-} */
-
 .UserName {
   font-size: 1.8rem;
   color: #101540;
@@ -220,24 +164,66 @@
   margin-top: 0.5rem; 
 }
 
+/* Sidebar Stuffs */
+.Sidebar {
+  background-color: #101540;
+  position: fixed;
+  width: 7rem;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  top: 0;
+  left: 0;
+  z-index: 100; 
+  transition: transform 0.3s ease;
+}
 
+.ToggleButton {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  color: #101540;
+  border: none;
+  cursor: pointer;
+  z-index: 200;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
 
+.hidden {
+  transform: translateX(-100%);
+}
 
+.Sidebar.open {
+    transform: translateX(0);
+  }
 
+@media(min-width: 701px) and (max-width: 1024px){
+  .SampleLangTo{
+    margin: 0;
+    padding: 0;
+  }
 
+  .DesignRectangle{
+    display: none;
+  }
 
-
-
-@media (min-width: 300px) and (max-width: 480px), (max-width: 800px) {
+  .RenderComponents{
+    margin: 0;
+    padding: 0;
+  }
+  
+  
+}
+  
+@media (min-width: 300px) and (max-width: 700px) {
   .Sidebar {
     transform: translateX(-100%);
-    position: absolute; /* so it slides over content */
+    position: absolute; 
     margin-left: 0;
   }
 
-  .Sidebar.open {
-    transform: translateX(0);
-  }
+  
 
   .SampleLangTo{
     margin: 0;
@@ -300,6 +286,8 @@
     padding: 0;
     margin: 0;
   }
+
+  
 
  
 }

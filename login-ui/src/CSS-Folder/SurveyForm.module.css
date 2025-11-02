@@ -72,3 +72,109 @@ margin-bottom: 1rem;
 .FeedbackContainer label{
   font-size: 1.5rem;
 }
+
+
+@media (min-width: 901px) and (max-width: 1200px) {
+  .MainDiv {
+    width: 70vw;
+  }
+
+  .MainDiv h2 {
+    font-size: 2.2rem;
+    text-align: center;
+  }
+
+  .Form {
+    max-height: 55vh;
+  }
+
+  .Radiohead {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  .Radiohead label {
+    font-size: 1.3rem;
+  }
+
+  .Radiohead input {
+    width: 1.8rem;
+  }
+
+  .RadioheadContainer {
+    padding: 1rem;
+  }
+
+  .RadioheadContainer strong {
+    font-size: 1.4rem;
+  }
+
+  .FeedbackContainer label {
+    font-size: 1.4rem;
+  }
+
+  .FeedbackContainer textarea {
+    width: 100%;
+    font-size: 1.1rem;
+  }
+}
+
+@media (min-width: 300px) and (max-width: 900px) {
+  .MainDiv {
+    width: 90vw;
+  }
+
+  .MainDiv h2 {
+    font-size: 1.8rem;
+    text-align: left;
+  }
+
+  .Form {
+    max-height: 60vh;
+  }
+
+  .Radiohead {
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .Radiohead label {
+    font-size: 1.1rem;
+    margin-right: 0;
+  }
+
+  .Radiohead input {
+    width: 1.5rem;
+  }
+
+  .RadioheadContainer {
+    padding: 0.8rem;
+  }
+
+  .RadioheadContainer strong {
+    font-size: 1.2rem;
+    text-align: left;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .FeedbackContainer label {
+    font-size: 1.2rem;
+  }
+
+  .FeedbackContainer textarea {
+    width: 100%;
+    height: 2rem;
+    font-size: 1rem;
+    display: flex;
+    
+  }
+
+  .FeedbackContainer{
+    display: flex;
+    justify-content: center;
+  }
+}

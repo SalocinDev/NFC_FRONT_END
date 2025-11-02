@@ -24,13 +24,19 @@ function Input({
           required={required}
         >
           <option value="" disabled>
-            {placeholder}
+            {placeholder || "-- Select --"}
           </option>
-          {options.map((opt, index) => (
-            <option key={index} value={opt}>
-              {opt}
-            </option>
-          ))}
+          {options.map((opt, index) => {
+            // Support both string and object options
+            const optionValue = typeof opt === "object" ? opt.value : opt;
+            const optionLabel = typeof opt === "object" ? opt.label : opt;
+
+            return (
+              <option key={index} value={optionValue}>
+                {optionLabel}
+              </option>
+            );
+          })}
         </select>
         {label && <label htmlFor={id} className={classes.inputLabel}>{label}</label>}
       </div>

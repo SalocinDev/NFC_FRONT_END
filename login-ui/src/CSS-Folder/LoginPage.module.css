@@ -104,14 +104,14 @@
   margin-top: 2rem;
 }
 
-.attributemobile{
+/* .attributemobile{
   display: none;
 }
 
 
 .mobileattribute{
   display: none;
-}
+} */
 
 .WelcomeHeader{
   color: #101540;
@@ -153,136 +153,166 @@
 .LoginInput{
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  gap: 20px;
+
+}
+
+.ForgotPassContainer a{
+  display: none;
+}
+
+.attributemobile a{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0;
+  
+}
+
+.mobileattribute{
+   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%; 
+  
+}
+
+.mobileattribute a{
+  color: #101540;
+  padding: 0;
+  margin: 0;
+}
+
+.mobileattribute a:hover{
+  color: rgba(104, 22, 115, 0.413);
 }
 
 @media (min-width: 1024px) and (max-width: 1700px) {
 
-  .LoginContainer {
-    margin: 0;
-    padding: 0;
-    margin-left: 11vw;
+  .RightRectangle{
+    display: none;
   }
 
-  .Header{
-    padding: 0;
-  }
-
-  .WelcomeHeader{
-    padding: 0;
-    margin: 0;
-  }
-
-  .Credentials{
-    margin: 0;
-    margin-bottom: 1rem;
-    padding: 0;
-  }
-}
-
-@media (max-width: 800px){
-    .attributemobile{
+  .LoginBody{
     display: flex;
-    padding: 0;
+    justify-content: center;
+    padding-top: 5rem;
+    
+  }
+  .LoginContainer{
     margin: 0;
-    justify-content: space-between;
-    color:#101540;
+    padding: 0;
+    max-width: 70vw;
+    
   }
 
-    .mobileattribute{
-  display: flex;
-  justify-content: space-between; /* pushes first link left, second link right */
-  width: 100%;
-  gap: 1rem;
-  }
-
-  .attribute{
-    display: none;
-  }
-}
-
-@media (max-width: 600px) {
-   .RightRectangle{
-   
-    display: none;
-  }
-  .RightContent{
-    padding-bottom: 10vh;
-  
-  }
-
-  .RightContent p {
-
- margin: 0 auto;
-  font-size: 2rem;
-  color: black;
-}
-
-  .LoginContainer {
-    margin: 0 auto;
-    padding: 2rem 1rem;
-    width: 90%;
-  }
-
-  .Header {
-    margin-left: 0;
-    margin-top: 0;
-    text-align: center;
-  }
-
-  .WelcomeHeader {
-    font-size: 1.8rem;
-  }
-
-  .LoginInput {
-    width: 100%;
-    margin: 1rem 0;
+  .LoginInput{
+    display: flex;
+    justify-content: center;
     align-items: center;
-    gap: 12px;
   }
 
-  .LineContainer{
-    display: none;
+  .inputContainer{
+    width: 100%;
   }
 
-  .SignUpContainer {
-    text-align: center;
-    margin-top: 1.5rem;
+  .inputContainer input{
+    width: 100%;
+    max-width: 100vw;
   }
 
-  .RightContent {
-    padding: 1rem;
+
+  .LoginInput button{
+    max-width: 100%;
+    width: 100%;
   }
 
-  .RightContent p {
-    font-size: 1.3rem;
-  }
-
-  .attributemobile{
-    display: flex;
+  .LoginInput a{
+    color: #101540;
     padding: 0;
     margin: 0;
-    justify-content: space-between;
-    color:#101540;
-  }
-  .mobileattribute{
-   display: flex;
-  justify-content: space-between; 
-  width: 90%;
-  gap: 1rem;
   }
 
-  .attribute{
+  .ForgotPassContainer button{
+    max-width: 100%;
+    width: 100vw;
+    
+  }
+ 
+}
+
+
+@media (min-width: 701px) and (max-width: 1023px){
+  .RightRectangle{
     display: none;
+  }
+
+  .LoginBody{
+    display: flex;
+    justify-content: center;
+    padding-top: 5rem;
+    
+  }
+  .LoginContainer{
+    margin: 0;
+    padding: 0;
+    max-width: 70vw;
+    
+  }
+
+  .LoginInput{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .inputContainer{
+    width: 100%;
+  }
+
+  .inputContainer input{
+    width: 100%;
+    max-width: 100vw;
+  }
+
+
+  .LoginInput button{
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .LoginInput a{
+    color: #101540;
+    padding: 0;
+    margin: 0;
+  }
+
+  .ForgotPassContainer{
+    display: none;
+  }
+
+  
+
+  .mobileattribute{
+    display: flex;
+    gap: 12rem;
+    justify-content: space-between;
   }
 
 }
 
-@media (min-width: 300px) and (max-width: 480px) {
+
+@media (min-width: 300px) and (max-width: 700px) {
 
 
-
+  .LoginInput{
+    
+    max-width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-self: center;
+  }
   .RightRectangle {
     display: none;
   }
@@ -300,8 +330,9 @@
   }
 
   .LoginInput input{
-    max-width: 21.5rem;
+    max-width: 90%;   
     padding-left: 3.5rem;
+    font-size: 1rem;
   }
 
   .LoginBody{
@@ -312,7 +343,7 @@
   .LoginContainer {
     margin: 0 auto;
     padding: 2rem 1rem;
-    width: 90%;
+    width: 100%;
     height: 100vh;
     width: 100%;
     max-width: 100%;
@@ -330,6 +361,11 @@
   .ForgotPassContainer{
     display: none;
   }
+
+  .LineContainer{
+    display: none;
+  }
+
  
   .WelcomeHeader {
     font-size: 2rem;
@@ -358,7 +394,15 @@
   gap: 1rem;
   }
 
+  .inputContainer{
+    padding-left: 2rem;
+    width: 100%;
+  }
+
+  
 }
+
+
 
 
 

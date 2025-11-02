@@ -13,7 +13,7 @@ export default function ProtectedRoute({ children }) {
     const checkSession = async () => {
       try {
         const res = await fetch(`${apiUrl}/session/get-session`, {
-          method: "POST",
+          method: "GET",
           credentials: 'include',
           headers: {
             "Content-Type": "application/json",
@@ -32,7 +32,7 @@ export default function ProtectedRoute({ children }) {
           navigate('/', { replace: true }); // replace ensures no back button
         }
       } catch (err) {
-        console.error("Session check failed:", err);
+        // console.error("Session check failed:", err);
         setLoggedIn(false);
         navigate('/', { replace: true });
       } finally {

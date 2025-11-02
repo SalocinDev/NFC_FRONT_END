@@ -1,6 +1,6 @@
 import classes from '../CSS-Folder/SignUpForm.module.css';
 import { useNavigate } from 'react-router-dom';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Wlogo, Input, Blogo, Button } from '../Components';
 import { BlogoImg } from '../Logo';
 import { signUp, sendOTP } from '../Services/SignUpService';
@@ -8,6 +8,7 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css"; 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import api from "../api/api";
 
 function SignUpForm() {
   const navigate = useNavigate();
@@ -23,6 +24,24 @@ function SignUpForm() {
   const [Contact, setContact] = useState("");
   const [School, setSchool] = useState("");
   const [Category, setCategory] = useState("");
+
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await api.get("/user/categories");
+        if (response.data.success) {
+          setCategories(response.data.data);
+        }
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+        toast.error("Failed to load user categories.");
+      }
+    };
+    fetchCategories();
+  }, []);
+
 
   // const SymbolList = ["!","@","#","$","%","^","&","*","(",")","-","_","=","+"];
 
@@ -75,7 +94,7 @@ function SignUpForm() {
     }
 
     // All validations passed
-    signUp(Email, Pass, FN, MN, LN, DoB, Gender, Contact, School, navigate);
+    signUp(Email, Pass, FN, MN, LN, DoB, Gender, Contact, School, Category, navigate);
   };
 
   return (
@@ -137,30 +156,20 @@ function SignUpForm() {
     </div>
 
     <div className={classes.InfoContainer}>
-      <Input 
+      <Input
         className={classes.UniversityInput}
         required
         label="User Category"
         type="select"
-        options={[
-          "Elementary Student (ES)",
-          "High School Student (HS)",
-          "College Student (CS)",
-          "Employees-Gov’t (EGOV)",
-          "Employees-Private (EPRI)",
-          "Senior Citizens (SC)",
-          "Reviewees (R)",
-          "Person with Disabilities (PWD)",
-          "Children in Street Situations (CISS)",
-          "Out-of-School-Youth (OSY)",
-          "Housewife/Husband (HH)",
-          "LGBTQIAS2+",
-          "OTHERS",
-          "N/A"
-        ]}
+        placeholder="-- Select Category --"
+        options={categories.map(cat => ({
+          value: cat.id,
+          label: cat.name,
+        }))}
         value={Category}
         onChange={(e) => setCategory(e.target.value)}
-      />      
+      />
+
       <Input required type="email" label="Email" value={Email} onChange={(e) => setEmail(e.target.value)} />
       <Input required type="password" label="Password"  value={Pass} onChange={(e) => setPass(e.target.value)} />
       <Input required type="password" label="Verify Password"  value={ConfirmPass} onChange={(e) => setconfirmPass(e.target.value)} />
@@ -172,9 +181,7 @@ function SignUpForm() {
         
 
     </div>
-    <div>
-      
-    </div>
+    
   </div>
 
     <div className={classes.InputGender}>

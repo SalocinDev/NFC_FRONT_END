@@ -30,7 +30,7 @@ function AiPopUP() {
       const replyText = data?.reply ?? "No response from AI";
       setMessages((m) => [...m, { from: "ai", text: replyText }]);
     } catch (err) {
-      console.error(err);
+      // console.error(err);
       setMessages((m) => [...m, { from: "ai", text: "Error contacting server" }]);
     } finally {
       inputRef.current?.focus();

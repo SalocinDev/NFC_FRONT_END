@@ -36,6 +36,7 @@ function UserHomepage({ onChangePage }) {
         </div>
        
       </div>
+      
         <div className={classes.ChartContainer}>
             <p className={classes.Paragraph}>
                 "Embarking on the journey of reading fosters <br/>

@@ -62,22 +62,6 @@ html,
   justify-self: center;
 }
 
-
-
-@media (max-width: 768px) {
-  .Ewan {
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-    
-  }
-
-  .Text {
-    font-size: 0.9rem;
-  }
-}
-
-
-
 .Text {
   font-family: 'Montserrat', sans-serif;
   font-size: 1rem;
@@ -164,24 +148,22 @@ html,
   justify-content: center;
 }
 
-button:disabled,
-.disabled {
-  opacity: 0.5;
-  pointer-events: none;
-  cursor: not-allowed;
-  filter: grayscale(100%);
-}
+
+
+
 
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
 
-
-@media (max-width: 800px) {
+  
+@media (min-width: 701px) and (max-width: 1024px) {
   .curvedRectangle {
-      display: none;
+    display: none;
   }
+
+  
 
   .Ewan {
     width: 100vw;
@@ -191,39 +173,50 @@ button:disabled,
     align-items: center;
     justify-content: flex-start;
   }
-  
-  .NfcLogo{
+
+  .NfcLogo {
     display: none;
   }
+
   .Logo {
-    padding-top: 10vh; /* More fluid than cm */
-    transform: scale(0.8); /* Responsive scaling */
+    padding-top: 10vh;
+    transform: scale(0.8);
     margin-bottom: 1rem;
   }
 
   .Text {
-    font-size: clamp(0.85rem, 2vw, 1rem); /* Fluid font sizing */
+    font-size: clamp(0.85rem, 2vw, 1rem);
     margin-top: 2rem;
     text-align: center;
   }
 
- 
+   .ButtonDiv{
+    width: 80%;
 
-@media (max-width: 600px), (max-width: 800px) {
-  .extraBtn {
-    display: inline-block; /* or flex if you want it aligned */
   }
-}
 
+  .Logo{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  .Text{
+    font-size: 2rem;
+    white-space: nowrap;
+  }
 
   
 
+}
 
-@media (max-width: 480px) {
+
+@media (min-width: 300px) and (max-width: 700px) {
   .curvedRectangle {
-   display: none;
+    display: none;
   }
 
+ 
   .Ewan {
     width: 100vw;
     padding: 1.5rem 1rem;
@@ -234,7 +227,6 @@ button:disabled,
   }
 
   .Logo {
-    margin-top: -20vh;
     margin-bottom: 1rem;
     width: 80%;
   }
@@ -244,5 +236,7 @@ button:disabled,
     margin-top: 1.5rem;
     text-align: center;
   }
+
+  
 }
-}
+

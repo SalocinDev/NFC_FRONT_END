@@ -186,7 +186,7 @@ tr:hover {
   .ReturnedBooksContainer,
   .BorrowedBooksContainer,
   .ServicesAvailedContainer {
-    width: 100%;
+    width: 100vw;
     padding: 0.5rem;
   }
 }

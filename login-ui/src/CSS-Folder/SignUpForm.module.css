@@ -90,7 +90,7 @@ html,
 .LogoContainer {
   display: flex;
   align-items: center;
-  gap: 1rem; /* spacing between text and image */
+  gap: 1rem;
   font-size: 3rem;
   font-weight: 600;
   color: #101540;
@@ -291,62 +291,117 @@ html,
  margin-top: -50px;
 }
 
-@media (max-width: 768px) {
-  .curvedRectangle {
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
+
+@media (min-width: 701px) and (max-width: 1024px) {
+  .title {
+    font-size: 3rem;
+    margin: 0;
   }
 
-  .tagline {
-    font-size: 0.5rem;
+  .info {
+    font-size: 1.5rem;
   }
-}
 
-@media (min-width: 1500px) {
   .SignUpContainer {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem 3rem;
-    margin-right: -10vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    background-color: #f7f7f7;
+  }
+
+  .SignUpContainer input,
+  .SignUpContainer .input,
+  .SignUpContainer select,
+  .UniversityInput select,
+  .SmallInput select,
+  .GenderInput select,
+  .DateInput input {
+    font-size: 1.3rem;
+    height: 4.4rem;
+    padding: 0 1.2rem;
+    border-radius: 0.75rem;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  .inputContainer {
+    width: 100%;
+  }
+
+  .inputContainer .input {
+    width: 100%;
+    font-size: 1.3rem;
+    height: 4.4rem;
+    padding-left: 3.5rem;
+  }
+
+  .inputContainer .myDropdown {
+    height: 4.4rem;
+  }
+
+  .UniversityInput select,
+  .SmallInput select,
+  .GenderInput select {
+    max-height: 12rem;
+    overflow-y: auto;
+    font-size: 1.2rem;
+  }
+
+  .UniversityInput select option,
+  .SmallInput select option,
+  .GenderInput select option {
+    font-size: 1.1rem;
+    padding: 0.5rem 0.75rem;
   }
 
   .SmallInput {
-    font-size: 1.6rem;
-    height: 4.5rem;
-  }
-}
-
-@media (max-width: 1024px) {
-  .SignUpContainer {
-  grid-template-columns: repeat(3, 1fr);
-    gap: 2rem 3rem;
-    margin-right: -10vw;
-  }
-
-  .SmallInput {
-    font-size: 1.4rem;
-    height: 4rem;
+    font-size: 1.2rem;
+    height: 4.4rem;
   }
 
   .ContactContainer,
   .SignContainer,
   .Gender {
-    margin-left: -5rem;
+    margin-left: 0;
+  }
+
+  .InfoContainer,
+  .NameContainer {
+    max-width: 26rem;
+    width: 100%;
+  }
+
+  .curvedRectangle {
+    display: none;
   }
 }
 
-@media (max-width: 768px) {
+
+
+
+@media(min-width: 300px) and (max-width: 700px){
+
+  
   .curvedRectangle{
-    display:none;
+    display: none;
   }
+  
 
   .SignUpContainer {
-    display: flex;
+    display: grid;
+    
+    grid-template-columns: 1fr, 1fr;
     flex-direction: column;
-    align-items: center;
+    margin-left: 1rem;
+    margin: 0;
     gap: 1rem;
-    margin: 0 auto;
     width: 100%;
-    padding: 1rem;
+    padding-left: 2rem;
+   
   }
 
   .InputMagkatabi {
@@ -372,13 +427,13 @@ html,
   }
    .InfoContainer,
   .NameContainer{
-    width: 90%;
+    width: 100%;
   }
 }
 
 
 
-@media (max-width: 480px) {
+@media (max-width: 480px){
 
 
 .NameContainer input, select{
@@ -459,3 +514,4 @@ html,
     padding-bottom: 10rem;
   }
 }
+

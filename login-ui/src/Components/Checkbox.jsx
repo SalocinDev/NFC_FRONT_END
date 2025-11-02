@@ -65,10 +65,6 @@ const handleClearAll = () => {
 
 </header>
       <div className={classes.checkboxWrapper}>
-        
-        
-
-
         <div className={classes.column}>
           {optionsLeft.map(option => (
             <label key={option} className={classes.checkbox}>

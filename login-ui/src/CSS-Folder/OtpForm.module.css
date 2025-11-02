@@ -235,14 +235,16 @@
   }
 }
 
-@media (max-width: 768px) {
-  .loginContainer {
-    top: 5%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
-    margin-top: 15vh;
+@media (min-width: 481px) and (max-width: 900px) {
+  .LoginContainer {
+    width: 100%;
+    margin: 0;
+    margin-top: 20vh;
   }
+  .icon{
+    left: 4vw;
+  }
+  
 }
 
 
@@ -285,10 +287,9 @@
     align-items: center;
   }
 
-}
-
-@media (min-width: 360px){
   .LoginContainer{
     padding: 0;
   }
+
 }
+

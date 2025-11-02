@@ -31,14 +31,14 @@ export async function handleLoginClick(navigate) {
   const result = await toLogin(email, password);
   console.log(result);
   if (result.success && result.data.user_id) {
-    alert(`Welcome, ${result.data.user_firstname}!`);
+    toast.success(`Welcome, ${result.data.user_firstname}!`);
     navigate("/UserPage");
   } else if (result.success === false) {
-    alert("Login Failed. Try again.");
+    toast.warn("Login Failed. Try again.");
   } else if (result.data === "Error") {
-    alert("An error occurred. Check console.");
+    toast.warn("An error occurred. Check console.");
   } else {
-    alert("Unexpected server response: " + JSON.stringify(result));
+    // toast.warn("Unexpected server response: " + JSON.stringify(result));
   }
 }
 //////////////////////////////////////////////////////////////////////////////////////////////
@@ -76,7 +76,7 @@ export async function toNFClogin(navigate) {
   // console.log("API URL:", apiUrl);
   try {
     const nfcResponse = await fetch(`${apiUrl}/nfc/read`, {
-      method: "POST",
+      method: "GET",
       headers: { 
         "Accept": "application/json",
         "x-api-key": import.meta.env.VITE_API_KEY
@@ -151,7 +151,7 @@ export async function signIn(email, password, navigate) {
     if (!result.success) {
       toast.error(result.error || result.message || "Login failed");
       if (response.status === 403) {
-        toast.info(`Please wait, Sending OTP to ${email}`);
+        // toast.info(`Please wait, Sending OTP to ${email}`);
         // const OTPsend = await sendOTP(email);
         // if (!OTPsend) {
         //   return toast.error(`OTP has failed to Send`);

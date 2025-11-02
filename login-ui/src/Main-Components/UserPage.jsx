@@ -35,23 +35,19 @@ function UserPage() {
 
   useEffect(() => {
   const handleResize = () => {
-    if (window.innerWidth <= 480) {
-  
-      setCollapsed(true);
-    } else if (window.innerWidth <= 820) {
- 
+    if (window.innerWidth <= 1180) {
       setCollapsed(true);
     } else {
-
       setCollapsed(false);
     }
   };
 
   handleResize();
-
   window.addEventListener("resize", handleResize);
   return () => window.removeEventListener("resize", handleResize);
 }, []);
+
+
 
   useEffect(() => {
     if (storedUser.user_pfp_id_fk) {
@@ -91,7 +87,7 @@ function UserPage() {
         <Button 
           name={<MdMenu size={24} />} 
           use="BurgerIcon" 
-          onClick={() => setCollapsed(true)}    
+          onClick={() => setCollapsed(!collapsed)}    
         />
         <img src={WlogoSidebar} alt="Logo" className={classes.WSidebar} />
 

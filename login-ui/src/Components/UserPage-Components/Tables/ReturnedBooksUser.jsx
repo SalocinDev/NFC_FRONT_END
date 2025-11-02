@@ -53,6 +53,7 @@ function ReturnedBooksTable() {
 
       <Table records={searchTerm ? filteredRecords : records}
       containerClass={classes.ReturnedTable}
+      mobilePageSize = {2}
       />
       </div>
     </div>

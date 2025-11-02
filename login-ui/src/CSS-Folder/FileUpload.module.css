@@ -40,7 +40,6 @@
     display: none;
 }
 
-/* Hide the file name button in Firefox */
 .UploadImage::file-name {
     display: none;
 }
@@ -74,74 +73,84 @@ img{
     border-radius: 1rem;
 }
 
-@media (min-width: 820px) and (max-width: 1024px) {
-  
-    .ProfileContainer{
-        width: 13rem;
-        padding-bottom: 1rem;
-        justify-self: left;
-        background-color: red;
-    }
+/* ========================= */
+/* 📱 300px to 700px — Phones */
+@media (min-width: 300px) and (max-width: 700px) {
 
+  .ProfileContainer {
+    width: 13rem;
+    padding-bottom: 1rem;
+    justify-self: left;
+  }
+
+  .ImageContainer {
+    width: 80%;
+    height: 20vh;
+    border-radius: 8rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .InputButtonContainer {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  .UploadButton {
+    width: 100%;
+  }
+}
+
+/* ========================= */
+/* 📲 701px to 900px — Small Tablets / Large Phones */
+@media (min-width: 701px) and (max-width: 900px) {
+
+  .ProfileContainer {
+    width: 15rem;
+    padding-bottom: 1rem;
+    justify-self: left;
+  }
+
+  .ImageContainer {
+    width: 70%;
+    height: 22vh;
+    border-radius: 9rem;
+  }
+
+  .InputButtonContainer {
+    width: 90%;
+    margin-left: 1rem;
+  }
+
+  .UploadButton {
+    width: 90%;
+  }
+}
+
+/* ========================= */
+/* 💻 901px to 1024px — Tablets / Small Laptops */
+@media (min-width: 901px) and (max-width: 1024px) {
+
+  .ProfileContainer {
+    width: 13rem;
+    padding-bottom: 1rem;
+    justify-self: left;
+  }
+
+  .ImageContainer {
+    width: 65%;
+    height: 22vh;
+  }
+
+  .InputButtonContainer {
+    width: 90%;
+    margin-left: 1rem;
+  }
+
+  .UploadButton {
+    width: 90%;
+  }
 }
 
 
-@media (min-width: 480px) and (max-width: 600px){
  
-    .ProfileContainer{
-        width: 13rem;
-        padding-bottom: 1rem;
-        justify-self: left;
-        background-color: red;
-    }
-
-    .ImageContainer{
-        background-color: red;
-        width: 80%;
-        height: 20vh;
-        border-radius: 8rem;
-        margin-bottom: 0.5rem;
-    }
-
-    .InputButtonContainer{
-        width: 100%;
-        padding: 0;
-        margin: 0;
-    }
-
-    .UploadButton{
-    
-         width: 100%
-    }
- 
-}
-
-@media (min-width: 360px) and (max-width: 480px){
- 
-    .ProfileContainer{
-        width: 13rem;
-        padding-bottom: 1rem;
-        justify-self: left;
-      
-    }
-
-    .ImageContainer{
-     
-        width: 80%;
-        height: 20vh;
-        border-radius: 8rem;
-        margin-bottom: 0.5rem;
-    }
-
-    .InputButtonContainer{
-        width: 100%;
-        padding: 0;
-        margin: 0;
-    }
-
-    .UploadButton{
-    
-         width: 100%
-    }
- 
-}

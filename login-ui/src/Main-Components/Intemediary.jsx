@@ -35,6 +35,8 @@ function Intemediary() {
               name="Services"
               use="ButtonServices"
               onClick={() => navigate("/Services")}
+              type="button" 
+
             />
           </div>
         </div>
@@ -45,18 +47,18 @@ function Intemediary() {
           <LogoComponent />
           <p className={classes.Text}>Navigate through your account.</p>
 
-          <div>
+          <div className={classes.ButtonDiv}>
             <Button
               name="Account"
               use="ButtonUserPage"
               onClick={() => navigate("/UserPage")}
             />
             <Button
-              className={classes.Services}
               name="Services"
               use="extraBtn"
-              onClick={() => navigate("/Services", { state: { loggedIn } })}
-              disabled
+              onClick={() => navigate("/Services")}
+              type="button" 
+
             />
           </div>
         </div>

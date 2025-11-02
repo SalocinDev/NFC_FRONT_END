@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { uploadProfilePicture } from "../Services/FileService";
 import classes from "../CSS-Folder/FileUpload.module.css";
 import { useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function ImageUpload() {
   const [file, setFile] = useState(null);
@@ -21,7 +23,7 @@ function ImageUpload() {
 
   const handleUpload = async () => {
   if (!file) {
-    alert("Please select a file first!");
+    toast.warn("Please select a file first!");
     return;
   }
 
@@ -38,7 +40,7 @@ function ImageUpload() {
 
     if (result && result.success) {
       console.log("Upload success:", result?.url);
-      alert("Upload Success!");
+      toast.success("Upload Success!, relogin to refresh profile");
       window.location.reload();
       setUploadedPath(result.path);
     } else {
@@ -47,7 +49,6 @@ function ImageUpload() {
   } catch (error) {
     console.error("Error uploading file:", error);
   }};
-
 
   return (
     <div>

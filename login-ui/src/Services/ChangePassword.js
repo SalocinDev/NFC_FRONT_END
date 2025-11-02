@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 export async function checkEmail(email, navigate) {
     try {
         if (!email) {
-            alert("No Email");
+            toast.warn("No Email");
             return { success: false, message: "No email" };
         }
         
@@ -22,37 +22,32 @@ export async function checkEmail(email, navigate) {
 
         const result = await response.json();
         if (!result.success) {
-            alert(result.message);
+            toast.error(result.message);
             return { success: false, email };
         }
 
         if (result.success) {
             const response = await sendOTP(email);
             if (!response.success) {
-                alert(response.message);
+                toast.error(response.message);
                 return { success: false, email };
             }
 
             if (response.success) {
-                alert(response.message);
+                toast.warn(response.message);
                 return { success: true, email };
             }
         }
     } catch (error) {
-        alert(error);
+        // toast.error(error);
     }
 }
 
 export async function changePassword(email, password, navigate) {
     try {
-        if (!email) {
-            alert("No Email");
+        if (!email || !password) {
+            toast.warn("No Email");
             navigate('/');
-            return;
-        }
-        
-        if (!password) {
-            alert("No Password");
             return;
         }
 
@@ -68,7 +63,7 @@ export async function changePassword(email, password, navigate) {
 
         const result = await response.json();
         if(!result.success) {
-            alert(JSON.stringify(result));
+            toast.error(JSON.stringify(result));
             return;
         }
 
@@ -78,8 +73,8 @@ export async function changePassword(email, password, navigate) {
             return;
         }
     } catch (error) {
-        alert(error.message);
-        console.log(error);
+        // toast.error(error.message);
+        // console.log(error);
         return;
     }
 }

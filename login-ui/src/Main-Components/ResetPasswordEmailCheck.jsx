@@ -4,6 +4,8 @@ import { useState } from "react";
 import { Wlogo, Input, Blogo, Button } from '../Components';
 import { checkEmail } from '../Services/ChangePassword'
 import { MdEmail } from "react-icons/md";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function ResetPasswordEmailCheck() {
   const navigate = useNavigate();
@@ -12,12 +14,12 @@ function ResetPasswordEmailCheck() {
 
   const handleCheckEmail = async () => {
     if (!email) {
-      alert("Email missing");
+      toast.warn("Email missing");
       return;
     }
     
     if (!/^[^@]+@[^@]+\.[^@]+$/.test(email)) {
-        alert("Invalid Email");
+        toast.error("Invalid Email");
         return;
     }
 

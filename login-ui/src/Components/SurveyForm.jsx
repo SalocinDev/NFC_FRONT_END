@@ -11,14 +11,26 @@ const SurveyForm = () => {
   const [loading, setLoading] = useState(true);
   const [submitted, setSubmitted] = useState(false);
   const [duplicateServices, setDuplicateServices] = useState([]);
+  const [hasSubmittedToday, setHasSubmittedToday] = useState(false);
+  const [errorMsg, setErrorMsg] = useState(""); // 🟢 New state for validation message
+
+  const checkSurveySubmission = async (userId) => {
+    try {
+      const res = await api.get(`/survey/has-submitted/${userId}`);
+      setHasSubmittedToday(res.data.hasSubmitted);
+    } catch (err) {
+      console.error("Error checking today's survey:", err);
+    }
+  };
 
   //Function to get user session
   const fetchUserSession = async () => {
     try {
-      const res = await api.post("/session/get-session");
+      const res = await api.get("/session/get-session");
       if (res.data.loggedIn) {
         setUser(res.data);
-        await fetchTodayServices(res.data.user_id);
+        await checkSurveySubmission(res.data.user_id);
+        await fetchAvailableServices(res.data.user_id);
       } else {
         setUser(null);
       }
@@ -28,14 +40,14 @@ const SurveyForm = () => {
       setLoading(false);
     }
   };
-
   //Function to fetch today’s services
-  const fetchTodayServices = async (userId) => {
+  //Fetch services that the user hasn’t submitted feedback for today
+  const fetchAvailableServices = async (userId) => {
     try {
-      const res = await api.get(`/survey/services/${userId}`);
+      const res = await api.get(`/survey/available-services/${userId}`);
       setServices(res.data);
     } catch (err) {
-      console.error("Error fetching services:", err);
+      console.error("Error fetching available services:", err);
     }
   };
 
@@ -69,54 +81,79 @@ const SurveyForm = () => {
       ...prev,
       [serviceId]: value,
     }));
+    setErrorMsg(""); // clear error once user rates a service
   };
 
   //Handle submit button
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    //Validation to Check if user rated ALL services before allowing submission
+    const allRated = services.every(
+      (service) => responses[service.library_service_id]
+    );
+
+    if (!allRated) {
+      setErrorMsg("Please rate all the services you availed before submitting a comment.");
+      return;
+    }
+
+    // Only allow comment submission after rating all services
+    if (!comment.trim()) {
+      setErrorMsg("Please provide a comment before submitting.");
+      return;
+    }
+
+    setErrorMsg("");
     submitSurvey();
   };
 
   if (loading) return <p>Loading...</p>;
   if (!user) return <p>Please log in to access the survey.</p>;
+  if (hasSubmittedToday)
+    return (
+      <div className={classes.MainDiv}>
+        <h2>Library Service Feedback</h2>
+        <p>You have already submitted a survey today. Thank you!</p>
+      </div>
+    );
 
   return (
     <div className={classes.MainDiv}>
       <h2>Library Service Feedback</h2>
 
       {!submitted ? (
-        <form onSubmit={handleSubmit} >
+        <form onSubmit={handleSubmit}>
           <div className={classes.Form}>
-          {services.length === 0 ? (
-            <p>No services availed today.</p>
-          ) : (
-            services.map((service) => (
-              <div key={service.library_service_id} className={classes.RadioheadContainer}>
-                <label>
-                  <strong>{service.library_service_name}</strong>
-                </label>
-                <div className={classes.Radiohead}>
-                  {[1, 2, 3, 4, 5].map((num) => (
-                    <label key={num}>
-                      {num}
-                      <input
-                        type="radio"
-                        name={`service-${service.library_service_id}`}
-                        value={num}
-                        checked={responses[service.library_service_id] === num}
-                        onChange={() =>
-                          handleRatingChange(service.library_service_id, num)
-                        }
-                      />
-                      
-                    </label>
-                  ))}
+            {services.length === 0 ? (
+              <p>You’ve already submitted feedback for all your services today. Thank you!</p>
+            ) : (
+              services.map((service) => (
+                <div key={service.library_service_id} className={classes.RadioheadContainer}>
+                  <label>
+                    <strong>{service.library_service_name}</strong>
+                  </label>
+                  <div className={classes.Radiohead}>
+                    {[1, 2, 3, 4, 5].map((num) => (
+                      <label key={num}>
+                        {num}
+                        <input
+                          type="radio"
+                          name={`service-${service.library_service_id}`}
+                          value={num}
+                          checked={responses[service.library_service_id] === num}
+                          onChange={() =>
+                            handleRatingChange(service.library_service_id, num)
+                          }
+                        />
+                      </label>
+                    ))}
+                  </div>
                 </div>
-              </div>
-              
-            ))
-          )}
-        </div>
+              ))
+            )}
+          </div>
+
           <div className={classes.FeedbackContainer}>
             <label>Additional Comments:</label>
             <textarea
@@ -126,12 +163,11 @@ const SurveyForm = () => {
             ></textarea>
           </div>
 
-          <Button 
-          type="submit" 
-          name="Submit"
-          use="SubmitFeedback"
-          />
-           
+          {errorMsg && (
+            <p style={{ color: "red", fontWeight: "bold" }}>{errorMsg}</p>
+          )}
+
+          <Button type="submit" name="Submit" use="SubmitFeedback" />
         </form>
       ) : (
         <div>
