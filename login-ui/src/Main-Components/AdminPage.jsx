@@ -1,6 +1,6 @@
 import classes from '../CSS-Folder/AdminPage.module.css';
 import { FaUser, FaCog } from 'react-icons/fa';
-import { Button, Statistics, Books, UserManagement, SettingPage, LogsTable, ReportsExport, WifiList, UserLibraryLog, SurveyReport, LiveClock, PopUpConfirm} from '../Components';
+import { Button, Statistics, Books, UserManagement, SettingPage, LogsTable, ReportsExport, WifiList, UserLibraryLog, AllSurvey, LiveClock, PopUpConfirm} from '../Components';
 import { NavLink } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { WlogoSidebar } from '../Logo';
@@ -76,7 +76,7 @@ function AdminPage() {
         case "Logs": 
         return <UserLibraryLog />;
         case "SurveyReport": 
-        return <SurveyReport />;
+        return <AllSurvey />;
       default:
         return <Statistics />;
     }

@@ -116,7 +116,7 @@ function MainPage() {
       name={
         <>
           <span>ABOUT US</span>
-          <IoMdInformationCircle size={20} />
+          <IoMdInformationCircle className={classes.InfoIcon} />
         </>
       }
       onClick={() => setActive("AboutPage")}

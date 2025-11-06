@@ -102,3 +102,87 @@
     width: 10.4rem;
     height: 16.7rem;
 }
+
+@media (min-width: 300px) and (max-width: 700px) {
+  
+  .Container {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    
+  }
+
+  .Container h2 {
+    font-size: 1.5rem;
+    text-align: left;
+    margin: 0 0 1rem 0;
+    color: #101540;
+    margin: 0;
+    padding: 1;
+  }
+
+  .Container p{
+    display: none;
+  }
+
+  .MySwiper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Centers 2 slides visually in the middle */
+  .swiper-wrapper {
+    justify-content: center !important;
+  }
+
+  .BookCard {
+    flex: 0 0 auto;
+    width: 42vw;              
+    margin: 0 1vw;            
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 2rem;
+  }
+
+  .BookImage {
+    width: 9rem;
+    height: auto;
+    aspect-ratio: 3 / 4.3;   
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .BookInfo {
+    margin-top: 0.5rem;
+    text-align: center;
+  }
+
+  .BookInfo h3 {
+    font-size: 1rem;
+    margin: 0;
+    color: #101010;
+  }
+
+  .BookInfo p {
+    font-size: 0.85rem;
+    color: #666;
+    margin: 0.25rem 0 0 0;
+  }
+
+  .BookGrid::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media (min-width: 701px) and (max-width: 1024px){
+  
+
+  
+
+  
+  
+}

@@ -35,7 +35,7 @@ function UserPage() {
 
   useEffect(() => {
   const handleResize = () => {
-    if (window.innerWidth <= 1180) {
+    if (window.innerWidth <= 1024) {
       setCollapsed(true);
     } else {
       setCollapsed(false);
@@ -139,6 +139,7 @@ function UserPage() {
           use="Sample" 
           onClick={handlePopupConfirmOpen}
         />
+
       </aside>
 
       {collapsed && (

@@ -27,9 +27,9 @@ function OPACSearchBar({ setActive, onSearch }) {
   };
 
   const options = [
-    { value: "keyword", label: "Keyword", icon: <HiSortDescending size={18} /> },
-    { value: "title", label: "Title", icon: <FaBook size={18} /> },
-    { value: "author", label: "Author", icon: <FaUser size={18} /> },
+    { value: "keyword", label: "Keyword", icon: <HiSortDescending/> },
+    { value: "title", label: "Title", icon: <FaBook /> },
+    { value: "author", label: "Author", icon: <FaUser /> },
   ];
 
   // ✅ close dropdown if clicked outside
@@ -108,7 +108,8 @@ function OPACSearchBar({ setActive, onSearch }) {
                     }}
                     className={classes.DropdownItem}
                   >
-                    {option.icon} {option.label}
+                    {option.icon} 
+                    <span className={classes.HideLabelMobile}>{option.label}</span>
                   </li>
                 ))}
               </ul>

@@ -47,7 +47,7 @@ function AiPopUP() {
   return (
     <div className={classes.wrapper}>
       <div className={classes.iconButton} onClick={() => setShowPopup((v) => !v)}>
-        <FaCommentMedical size={24} color="white" />
+        <FaCommentMedical color="white" />
       </div>
 
       {showPopup && (

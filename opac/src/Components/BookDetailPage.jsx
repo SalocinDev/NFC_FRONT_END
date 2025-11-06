@@ -127,6 +127,11 @@ export default function BookDetail({ setActive, setBookSelected, bookId, onBack}
         setActive={setActive}            
         setBookSelected={setBookSelected} 
         bookImageClass="SmallBook"
+        customBreakpoints={{
+    400: { slidesPerView: 2, spaceBetween: 5 },
+    768: { slidesPerView: 3, spaceBetween: 0 },
+    1024: { slidesPerView: 4, spaceBetween: 0,}
+  }}
       />
       </div>
       </div>

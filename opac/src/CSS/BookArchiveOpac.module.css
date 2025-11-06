@@ -57,3 +57,17 @@ body {
   grid-template-columns: repeat(4, 1fr); /* 4 per row */
   gap: 20px; /* spacing between cards */
 }
+
+@media (min-width: 300px) and (max-width: 700px) {
+  .MainBody{
+    width: 100vw;
+  }
+}
+
+@media (min-width: 701px) and (max-width: 1024px) {
+  .MainBody{
+    width: 100vw;
+  }
+
+  
+}

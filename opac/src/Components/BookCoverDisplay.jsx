@@ -12,7 +12,8 @@ function BookCoverDisplay({
   slidesPerView = 4,
   setActive,
   setBookSelected,
-  bookImageClass // NEW PROP: pass a custom class name for the book image
+  bookImageClass,
+  customBreakpoints = {} 
 }) {
   const [books, setBooks] = useState([]);
   const [error, setError] = useState(null);
@@ -41,20 +42,28 @@ function BookCoverDisplay({
         <p className={classes.Empty}>No picks available</p>
       ) : (
         <Swiper
-          modules={[Pagination]}
-          pagination={{ clickable: true }}
-          slidesPerView={slidesPerView}
-          spaceBetween={8}
-          loop={false}
-          className={classes.MySwiper}
-        >
+  modules={[Pagination]}
+  pagination={{ clickable: true }}
+  slidesPerView={slidesPerView}
+  spaceBetween={8}
+  loop={false}
+  className={classes.MySwiper}
+  breakpoints={{
+    0: { slidesPerView: Math.min(slidesPerView, 2), spaceBetween: 8 },
+    500: { slidesPerView: Math.min(slidesPerView, 2), spaceBetween: 10 },
+    768: { slidesPerView: Math.min(slidesPerView, 2), spaceBetween: 12 },
+    1024: { slidesPerView: Math.min(slidesPerView, 3), spaceBetween: 1 },
+    1280: { slidesPerView: slidesPerView, spaceBetween: 20 },
+    ...customBreakpoints, 
+  }}
+>
           {books.map((book, index) => {
             const imgSrc = book.book_cover_img
               ? `${import.meta.env.VITE_API_URL}/${book.book_cover_img}`
               : `${import.meta.env.BASE_URL}images/Fallback.png`;
 
             return (
-              <SwiperSlide key={book.book_id ?? index}>
+              <SwiperSlide className={classes.SwiperSlide} key={book.book_id ?? index}>
                 <div className={classes.BookCard}>
                   <div className={classes.ImageContainer}>
                     <img

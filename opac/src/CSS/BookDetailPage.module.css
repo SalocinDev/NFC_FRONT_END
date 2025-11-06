@@ -110,3 +110,167 @@ height: 29.9rem;
     color: #101540;
     font-family: "Poppins", sans-serif;
 }
+
+@media (min-width: 300px) and (max-width: 700px) {
+  .BookDetailContainer {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: 4rem;
+  }
+
+  .BookTitle h1 {
+    font-size: 2rem;
+    text-align: center;
+    border-bottom: 3px solid #101540;
+    padding-bottom: 0.25rem;
+    width: 90%;
+  }
+
+  .CoverInfoContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    width: 100%;
+    padding: 0;
+  }
+
+  .Image {
+    width: 80vw;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .InfoContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    text-align: left;
+    gap: 0.25rem;
+    width: 90%;
+  }
+
+
+
+  .InfoContainer h1{
+    text-align: left;
+  }
+
+  .InfoRow {
+    display: flex;
+    flex-direction: column;
+    
+    gap: 0.25rem;
+  }
+
+  .Label {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #727374;
+  }
+
+  .Value {
+    font-size: 1.2rem;
+    color: #101010;
+  }
+
+  .ChooseBooks {
+    margin-top: 1.5rem;
+    text-align: center;
+  }
+
+  .LoadingBooks {
+    margin-top: 10vh;
+  }
+}
+
+
+@media (min-width: 701px) and (max-width: 1024px) {
+  .BookDetailContainer {
+    display: flex;
+    width: 100vw;
+    flex-direction: column;
+    padding: 0;
+  
+    gap: 2rem;
+  }
+
+  .BookTitle h1 {
+    font-size: 3rem;
+    font-weight: 600;
+    color: #101540;
+    border-bottom: 4px solid #101540;
+    padding-bottom: 0.5rem;
+    width: 30rem;
+  }
+
+  .CoverInfoContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 1rem;
+    padding: 1rem 0;
+    padding-left: 2rem;
+  }
+
+  .Image {
+    width: 25vw;
+    max-width: 250px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .InfoContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0;
+    width: 70%;
+  }
+
+  .InfoContainer span{
+    margin: 0;
+    text-align: left;
+  }
+
+  .InfoRow {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    border-bottom: 1px solid #e6e6e6;
+    padding-bottom: 0.25rem;
+  }
+
+  .Label {
+    width: 150px;
+    text-align: right;
+    font-weight: 600;
+    color: #727374;
+    font-size: 1.2rem;
+  }
+
+  .Value {
+    flex: 1;
+    font-size: 1.3rem;
+    color: #101010;
+  }
+
+  .ChooseBooks {
+    margin-top: 2rem;
+  }
+
+  .LoadingBooks {
+    margin-top: 15vh;
+  }
+
+  
+}
