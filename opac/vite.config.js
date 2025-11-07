@@ -17,7 +17,6 @@ export default defineConfig({
       '@emotion/styled'
     ],
     alias: {
-      // Force Vite to use local node_modules, not ../login-ui
       '@mui': '/srv/Capstone/NFC_FRONT_END/opac/node_modules/@mui',
       '@emotion': '/srv/Capstone/NFC_FRONT_END/opac/node_modules/@emotion'
     }
