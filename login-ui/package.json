@@ -17,6 +17,7 @@
     "@react-pdf/renderer": "^4.3.1",
     "@tanstack/react-form": "^1.21.1",
     "@tanstack/react-table": "^8.21.3",
+    "@tanstack/react-virtual": "^3.13.12",
     "axios": "^1.12.2",
     "dotenv": "^17.2.2",
     "exceljs": "^4.4.0",
