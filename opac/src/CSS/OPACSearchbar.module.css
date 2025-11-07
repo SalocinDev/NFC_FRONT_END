@@ -258,7 +258,7 @@
   }
 
   .ButtonContainer span {
-    display: inline; /* visible again for medium screens */
+    display: inline;
     font-size: 1rem;
   }
 
