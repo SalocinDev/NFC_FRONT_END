@@ -22,9 +22,7 @@ function UserDashboard() {
       case "ReturnedBooks":
         return <ReturnedBooksTable/>;
       case "BrowseBooks":
-        window.open("http://manila.city.library:5001/NFC_FRONT_END/opac/",
-        "_self"
-);
+        window.location.assign("http://manila.city.library:5001/NFC_FRONT_END/opac/");
         return null;
       default:
         return <UserHomePage />;

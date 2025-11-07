@@ -12,7 +12,7 @@ function OPACSearchBar({ setActive, onSearch }) {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef();
 
-  // ✅ When user clicks Search button or presses Enter
+  //When user clicks Search button or presses Enter
   const handleSearch = (e) => {
     e.preventDefault();
     if (!query.trim()) {
@@ -32,7 +32,7 @@ function OPACSearchBar({ setActive, onSearch }) {
     { value: "author", label: "Author", icon: <FaUser /> },
   ];
 
-  // ✅ close dropdown if clicked outside
+  //close dropdown if clicked outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -74,7 +74,7 @@ function OPACSearchBar({ setActive, onSearch }) {
             type="submit"
           />
 
-          {/* 📚 Browse Button */}
+          {/*Browse Button */}
           <Button
             use="RandomButton"
             name={
@@ -87,7 +87,7 @@ function OPACSearchBar({ setActive, onSearch }) {
             onClick={() => setActive("BookArchive")}
           />
 
-          {/* ⚙️ Dropdown */}
+          {/*Dropdown */}
           <div className={classes.CustomDropdown} ref={dropdownRef}>
             <button
               type="button"

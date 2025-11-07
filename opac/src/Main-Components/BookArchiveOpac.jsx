@@ -1,6 +1,6 @@
 import { SearchBar, ImageSlider, BookDetailPage } from '../Components';
 import classes from '../CSS/BookArchiveOpac.module.css';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 
 function BookArchiveOpac() {

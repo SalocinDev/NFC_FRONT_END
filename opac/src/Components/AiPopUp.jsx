@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { FaCommentMedical } from "react-icons/fa";
 import classes from '../CSS/AiPopUp.module.css';
 
