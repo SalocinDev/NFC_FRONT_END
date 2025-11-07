@@ -1,5 +1,5 @@
 import React, { useState} from 'react';
-import { BarChart } from '@mui/x-charts/BarChart';
+import { BarChart } from '@mui/x-charts';
 import classes from '../CSS/SearchBar.module.css';
 import { FaSearch } from "react-icons/fa";
 const apiUrl = import.meta.env.VITE_API_URL;
