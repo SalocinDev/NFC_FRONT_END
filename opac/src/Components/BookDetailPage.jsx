@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import api from "../api/api";
-import { ClassNames } from "@emotion/react";
 import classes from "../CSS/BookDetailPage.module.css";
 import { BookCoverDisplay } from '../Components';
 import { GiBookCover } from "react-icons/gi";
