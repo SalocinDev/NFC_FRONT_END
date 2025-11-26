@@ -1,0 +1,23 @@
+.PopupServices h3{
+    padding: 0;
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.PopupServices input{
+    height: 4rem;
+    border-radius: 0.75rem;
+    border: 2px solid #101540;
+}
+
+.PopupServices select{
+    border-radius: 16px;
+    border-style: solid;
+    height: 1.5rem;
+}
+
+.ButtonContainer{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}

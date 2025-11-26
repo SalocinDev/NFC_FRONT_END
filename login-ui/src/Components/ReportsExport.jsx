@@ -6,6 +6,10 @@ import { Button } from ".";
 import { RiFileExcel2Line } from "react-icons/ri";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Document, Page, Text, View, StyleSheet, pdf } from "@react-pdf/renderer";
+import { saveAs } from "file-saver";
+import { FaRegFilePdf } from "react-icons/fa6";
+
 
 function ReportsExportPage() {
   const [services, setServices] = useState([]);
@@ -164,6 +168,96 @@ function ReportsExportPage() {
     }
   };
 
+  const pdfStyles = StyleSheet.create({
+  page: { padding: 20, fontSize: 11 },
+  title: { fontSize: 16, fontWeight: "bold", marginBottom: 10, textAlign: "center" },
+  table: { display: "table", width: "auto", borderStyle: "solid", borderWidth: 1, borderRightWidth: 0, borderBottomWidth: 0 },
+  tableRow: { flexDirection: "row" },
+  tableColHeader: { width: "33%", borderStyle: "solid", borderWidth: 1, borderLeftWidth: 0, borderTopWidth: 0, backgroundColor: "#eaeaea", padding: 4 },
+  tableCol: { width: "33%", borderStyle: "solid", borderWidth: 1, borderLeftWidth: 0, borderTopWidth: 0, padding: 4 },
+  tableCell: { textAlign: "center" },
+});
+
+const PdfDoc = ({ data, type }) => (
+  <Document>
+    {type === "all"
+      ? ["gender", "age", "user_category", "user_school"].map((reportType) => (
+          <Page key={reportType} style={pdfStyles.page}>
+            <Text style={pdfStyles.title}>{reportType.replace("_", " ").toUpperCase()} Report</Text>
+            <Text style={{ fontSize: 11, marginBottom: 8 }}>{getRangeLabel()}</Text>
+
+            <View style={pdfStyles.table}>
+              <View style={pdfStyles.tableRow}>
+                <View style={pdfStyles.tableColHeader}><Text>Service</Text></View>
+                <View style={pdfStyles.tableColHeader}><Text>Category</Text></View>
+                <View style={pdfStyles.tableColHeader}><Text>Total</Text></View>
+              </View>
+
+              {data[reportType].map((row, i) => (
+                <View key={i} style={pdfStyles.tableRow}>
+                  <View style={pdfStyles.tableCol}><Text style={pdfStyles.tableCell}>{row.library_service_name}</Text></View>
+                  <View style={pdfStyles.tableCol}><Text style={pdfStyles.tableCell}>{row.category || "N/A"}</Text></View>
+                  <View style={pdfStyles.tableCol}><Text style={pdfStyles.tableCell}>{row.total}</Text></View>
+                </View>
+              ))}
+            </View>
+          </Page>
+        ))
+      : (
+          <Page style={pdfStyles.page}>
+            <Text style={pdfStyles.title}>{type.toUpperCase()} Report</Text>
+            <Text style={{ fontSize: 11, marginBottom: 8 }}>{getRangeLabel()}</Text>
+
+            <View style={pdfStyles.table}>
+              <View style={pdfStyles.tableRow}>
+                <View style={pdfStyles.tableColHeader}><Text>Service</Text></View>
+                <View style={pdfStyles.tableColHeader}><Text>Category</Text></View>
+                <View style={pdfStyles.tableColHeader}><Text>Total</Text></View>
+              </View>
+
+              {data.map((row, i) => (
+                <View key={i} style={pdfStyles.tableRow}>
+                  <View style={pdfStyles.tableCol}><Text style={pdfStyles.tableCell}>{row.library_service_name}</Text></View>
+                  <View style={pdfStyles.tableCol}><Text style={pdfStyles.tableCell}>{row.category || "N/A"}</Text></View>
+                  <View style={pdfStyles.tableCol}><Text style={pdfStyles.tableCell}>{row.total}</Text></View>
+                </View>
+              ))}
+            </View>
+          </Page>
+        )}
+  </Document>
+);
+
+
+const exportPDF = async () => {
+  if (selectedServices.length === 0) {
+    toast.warn("Please select at least one service");
+    return;
+  }
+
+  try {
+    const params = new URLSearchParams({
+      serviceIds: selectedServices.join(","),
+      range,
+      type,
+      startDate: customDates.start,
+      endDate: customDates.end,
+    });
+
+    const res = await api.get(`/ReportsExport/export?${params.toString()}`);
+    const data = res.data;
+
+    const blob = await pdf(<PdfDoc data={data} type={type} />).toBlob();
+    saveAs(blob, `${type}_report.pdf`);
+  } catch (err) {
+    console.error("PDF export failed:", err);
+    toast.error("Failed to export PDF report");
+  }
+};
+
+
+
+
   return (
     <div className={classes.BackgroundContainer}>
       <h3>Generate Reports</h3>
@@ -268,17 +362,27 @@ function ReportsExportPage() {
       </div>
       <div>
       
+      <div className={classes.ButtonContainer}>
         <Button 
         onClick={handleExport}
-        
         use="ExportExcel"
         name={<><RiFileExcel2Line size={25} 
         /><span>Export to Excel</span></>}
         cooldown={2000}
         />
+      
+      <Button 
+        onClick={exportPDF} 
+        name={<><FaRegFilePdf size={25} /><span>Export to PDF</span></>} 
+        use="ExportPDF" 
+      />
       </div>
+      </div>
+
     </div>
+    
   );
+  
 }
 
 export default ReportsExportPage;

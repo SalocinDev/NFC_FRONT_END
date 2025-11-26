@@ -21,7 +21,7 @@ export default function ProtectedRoute({ children }) {
           }
         });
         const data = await res.json();
-        console.log("Session data:", data);
+        // console.log("Session data:", data);
 
         if (data?.loggedIn) {
           sessionStorage.setItem("userInfo", JSON.stringify(data));

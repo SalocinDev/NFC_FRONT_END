@@ -119,39 +119,44 @@
 }
 
 .RightTopbar {
+  
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: flex-end;
-  margin-top: -2vh;
+  gap: 1rem;
+  margin-top: -5vh;
+  
+  margin-right: 0.5rem;
+
+}
+
+.RightTopbar a{
+  padding: 0;
 }
 
 .TimeGear {
   display: flex;
   align-items: center;
   gap: 8px;
+  margin-top: 2rem;
 }
 
-.Time {
-  font-size: 2.3rem;
-  font-weight: 500;
+.UserName {
+  font-size: 1.8rem;
   color: #101540;
-  cursor: pointer;
-  margin-right: -2vw;
-  margin-bottom: 2vh;
+  line-height: 2rem;
 }
 
-.Date {
-  margin-top: -5vh;
-  margin-right: 1rem;
+.UserRole {
+  font-size: 1.5rem;
+  line-height: 1rem;
   color: #101540;
-  font-size: 1rem;
 }
 
 .GearIcon {
   color: #101540;
   cursor: pointer;
-  margin-right: -25vw;
-  margin-bottom: 3vh;
+  margin-top: 0.5rem; 
 }
 
 

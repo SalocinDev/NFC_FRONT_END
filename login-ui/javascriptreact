@@ -10,3 +10,4 @@ export async function askLibraryAI(message) {
 }  
 
 // ano toh?
+// delete na ito

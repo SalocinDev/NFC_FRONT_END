@@ -19,16 +19,15 @@ function UserManagement() {
     useEffect(() => {
         const fetchUsersAndCategories = async () => {
             try {
-                // Fetch both users and categories in parallel
                 const [usersRes, categoriesRes] = await Promise.all([
                     api.get("/user/"),
-                    api.get("/user/categories/")
+                    api.get("/user/categories/admin") // returns { success, data }
                 ]);
 
-                // Map categories by ID for easy lookup
+                // Map categories by ID
                 const categoriesMap = {};
-                categoriesRes.data.forEach(cat => {
-                    categoriesMap[cat.user_category_id] = cat.user_category_name;
+                categoriesRes.data.data.forEach(cat => {
+                    categoriesMap[cat.id] = cat.name;
                 });
 
                 // Merge category names into user records
@@ -41,6 +40,7 @@ function UserManagement() {
                 const sorted = usersWithCategory.sort(
                     (a, b) => new Date(b.log_time) - new Date(a.log_time)
                 );
+
                 setUserRecords(sorted);
             } catch (err) {
                 console.error("Error fetching users or categories:", err);

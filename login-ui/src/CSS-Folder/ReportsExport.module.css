@@ -23,6 +23,7 @@ color: #101540;
 
 .CheckboxContainer label {
   display: flex;
+  
   align-items: center;
   gap: 0.5rem; 
   cursor: pointer;
@@ -68,6 +69,12 @@ color: #101540;
 .FilterContainer select:focus{
   outline-color: none;
   box-shadow: none;   
+}
+
+.ButtonContainer{
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
 }
 
 .switch {

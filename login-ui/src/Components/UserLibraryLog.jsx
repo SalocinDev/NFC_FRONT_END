@@ -87,6 +87,14 @@ const UserLibraryLog = () => {
 
       {/* Search & Controls */}
       <div className={classes.InputDiv}>
+        
+        <input
+          type="text"
+          placeholder="Search..."
+          value={searchValue}
+          onChange={(e) => setSearchValue(e.target.value)}
+          onKeyDown={handleKeyPress}
+        />
         <div className={classes.SelectDiv}>
           <select
             value={searchType}
@@ -109,14 +117,6 @@ const UserLibraryLog = () => {
             />
           </div>
         </div>
-        <input
-          type="text"
-          placeholder="Search..."
-          value={searchValue}
-          onChange={(e) => setSearchValue(e.target.value)}
-          onKeyDown={handleKeyPress}
-        />
-
 
       </div>
 

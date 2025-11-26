@@ -27,18 +27,19 @@ function SignUpForm() {
 
   const [categories, setCategories] = useState([]);
 
-  useEffect(() => {
-    const fetchCategories = async () => {
-      try {
-        const response = await api.get("/user/categories");
-        if (response.data.success) {
-          setCategories(response.data.data);
-        }
-      } catch (error) {
-        console.error("Error fetching categories:", error);
-        toast.error("Failed to load user categories.");
+  const fetchCategories = async () => {
+    try {
+      const response = await api.get("/user/categories");
+      if (response.data.success) {
+        console.log(response.data);
+        setCategories(response.data.data);
       }
-    };
+    } catch (error) {
+      console.error("Error fetching categories:", error);
+      toast.error("Failed to load user categories.");
+    }
+  };
+  useEffect(() => {
     fetchCategories();
   }, []);
 

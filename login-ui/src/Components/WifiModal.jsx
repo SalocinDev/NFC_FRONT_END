@@ -11,7 +11,7 @@ const WifiModal = ({ wifi, onClose }) => {
       onClick={onClose} 
     >
       <div className={classes.PopUpBackground}
-        onClick={(e) => e.stopPropagation()} // Prevent background close
+        onClick={(e) => e.stopPropagation()} 
       >
         <h2 style={{ marginBottom: "15px" }}>{wifi.wifi_name}</h2>
 

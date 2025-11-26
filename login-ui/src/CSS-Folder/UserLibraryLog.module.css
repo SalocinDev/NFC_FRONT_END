@@ -3,10 +3,15 @@
     flex-direction: row;
 }
 
+.InputDiv{
+    display: flex;
+}
+
 .InputDiv input{
     border-radius: 0.75rem;
     border: 2px solid #101540;
     margin-bottom: 1rem;
+    height: 3rem;
 }
 
 .InputDiv input:focus{

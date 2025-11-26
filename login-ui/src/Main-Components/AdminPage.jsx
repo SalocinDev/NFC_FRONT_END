@@ -1,6 +1,6 @@
 import classes from '../CSS-Folder/AdminPage.module.css';
 import { FaUser, FaCog } from 'react-icons/fa';
-import { Button, Statistics, Books, UserManagement, SettingPage, LogsTable, ReportsExport, WifiList, UserLibraryLog, AllSurvey, LiveClock, PopUpConfirm} from '../Components';
+import { Button, Statistics, Books, UserManagement, SettingPage, LogsTable, ReportsExport, WifiList, UserLibraryLog, AllSurvey, LiveClock, PopUpConfirm, AllServices} from '../Components';
 import { NavLink } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { WlogoSidebar } from '../Logo';
@@ -74,7 +74,7 @@ function AdminPage() {
         case "WiFi":
         return <WifiList />;
         case "Logs": 
-        return <UserLibraryLog />;
+        return <AllServices />;
         case "SurveyReport": 
         return <AllSurvey />;
       default:
@@ -145,7 +145,7 @@ function AdminPage() {
             </li>
             <li>
               <Button 
-                name={<><IoDocumentText size={24} /><span>Service Logs</span></>} 
+                name={<><IoDocumentText size={24} /><span>Services</span></>} 
                 use="Sample" 
                 onClick={() => setActive("Logs")} 
                 isActive={active === "Logs"}
@@ -153,7 +153,7 @@ function AdminPage() {
             </li>
             <li>
               <Button 
-                name={<><RiSurveyFill  size={24} /><span>Survey Report</span></>} 
+                name={<><RiSurveyFill  size={24} /><span>Survey</span></>} 
                 use="Sample" 
                 onClick={() => setActive("SurveyReport")} 
                 isActive={active === "SurveyReport"}

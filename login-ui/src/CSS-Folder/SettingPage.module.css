@@ -527,21 +527,23 @@ label{
   }
 
   .PersonalDetail {
-    width: 80%;
-    padding-left: 3rem;
-    padding-right: 3rem;
+    width: 100%;
+    padding: 0;
+    padding: 1rem;
   }
 
   .InputGrid {
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
+    width: 95%;
+   
   }
 
   .InputField input,
   .SmallInput,
   .GenderInput {
     max-width: 100%;
-    height: 3.5rem;
+    height: 4rem;
     font-size: 1.2rem;
   }
 

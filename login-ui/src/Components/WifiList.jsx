@@ -110,11 +110,11 @@ const WifiList = () => {
                   }}
                   use="EditQR"
                   name={
-            <>
-              < FaEdit size={25} />
-              <span>Edit</span>
-            </>
-          }
+                    <>
+                      < FaEdit size={25} />
+                      <span>Edit</span>
+                    </>
+                  }
                 />
                   
                 <Button
@@ -122,11 +122,11 @@ const WifiList = () => {
                   onClick={() => handleDelete(wifi.wifi_id)}
                   use="DeleteQR"
                   name={
-            <>
-              <MdOutlineDelete size={25} />
-              <span>Delete</span>
-            </>
-          }
+                  <>
+                    <MdOutlineDelete size={25} />
+                    <span>Delete</span>
+                  </>
+                }
                 />
               </div>
               </td>

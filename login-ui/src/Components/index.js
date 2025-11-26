@@ -1,4 +1,5 @@
 export { default as Button } from './General-Components/Button';
+export { default as FilterTable } from './General-Components/FilterTable';
 export { default as Wlogo } from './Wlogo';
 export { default as Blogo } from './Blogo';
 export { default as Input} from './Input';
@@ -27,11 +28,10 @@ export { default as WifiQRSelector} from './WifiQRSelector';
 export { default as WifiQRcode} from './WifiQRcode';
 export { default as LiveClock} from './LiveClock';
 export { default as AllSurvey} from './AllSurvey';
+export { default as AllServices} from './AllServices';
 export { default as SurveyReportExport} from './SurveyReportExport';
+export { default as ServiceManageTable} from './ServiceManageTable';
  
-
-
-
 /* UserPage related imports */
 export { default as UserDashboard} from './UserPage-Components/UserDashboard';
 export { default as ServicesAvailed} from './UserPage-Components/Tables/ServicesAvailed';
@@ -55,6 +55,8 @@ export { default as PopUpFormDeleteConfirm } from './PopUps/PopUpDeleteConfirm'
 export { default as PopUpNfc } from './PopUps/PopUpNfc';
 export { default as GenerateTokenForm } from './General-Components/GenerateTokenForm';
 export { default as RegisterUser } from './PopUps/RegisterUser';
+export { default as SurveyFeedback } from './SurveyFeedback';
+export { default as CountsOverview } from './CountsOverview';
 
 
 export { default as Charts } from './Charts';

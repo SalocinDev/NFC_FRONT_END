@@ -1,9 +1,10 @@
 import classes from '../CSS-Folder/Allservices.module.css';
-import { Button, SurveyReport, SurveyReportExport} from '.';
+import { Button, SurveyReport, SurveyReportExport, ServiceManageTable, UserLibraryLog} from '.';
 import { useState, useEffect } from "react";
 import 'react-toastify/dist/ReactToastify.css';
 
-function AllSurvey() {
+function AllServices() {
+
 
   /* Three different endpoint variables for each child */
   const [borrowedRecords, setBorrowedRecords] = useState([]);
@@ -15,12 +16,12 @@ function AllSurvey() {
   switch (active) {
     case "SurveyReport":
       return (
-        <SurveyReport
+        <ServiceManageTable
         />
       );
     case "SurveyExport":
       return (
-        <SurveyReportExport
+        <UserLibraryLog
         />
       );
     
@@ -33,13 +34,13 @@ function AllSurvey() {
     <div>
       <div className={classes.samplelang}>
         <Button 
-          name="Survey Graph" use="GraphButton" 
+          name="Library Service" use="GraphButton" 
           onClick={() => setActive("SurveyReport")}
           isActive={active === "SurveyReport"} 
         />
 
         <Button 
-          name="Generate Report" use="GenerateButton" 
+          name="Library Logs" use="GenerateButton" 
           onClick={() => setActive("SurveyExport")}
           isActive={active === "SurveyExport"} 
         />
@@ -57,4 +58,4 @@ function AllSurvey() {
   );
 }
 
-export default AllSurvey;
+export default AllServices;

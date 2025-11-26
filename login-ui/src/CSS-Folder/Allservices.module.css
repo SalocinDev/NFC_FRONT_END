@@ -1,6 +1,5 @@
 .samplelang{
     display: flex;
     flex-direction: row;
-    gap: 0.5rem;
-    
+    gap: 1rem;
 }

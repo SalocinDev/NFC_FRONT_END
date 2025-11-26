@@ -23,6 +23,8 @@
   color: #101540;
   font-size: 3rem;
   line-height: 2rem;
+  text-align: center;
+  align-items: center;
 
 }
 
@@ -261,12 +263,7 @@ footer{
   margin-bottom: 2vh;
 }
 
-.Paragraph{
-    text-align: center;
-    margin-top: 10rem;
-    font-size: 3rem;
-    color: #101540;
-}
+
 
 @media (min-width: 701px) and (max-width: 1024px){
 

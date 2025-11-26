@@ -19,6 +19,19 @@ function PopUpNfc({ isOpen, onClose, initialValues }) {
     ...rest 
   } = initialValues;
 
+
+  const formatHeader = (key) => {
+  return key
+    .replace(/^user_/, "")       // remove user_ prefix
+    .replace(/_id_fk$/i, "")     // clean *_id_fk
+    .replace(/_fk$/i, "")        
+    .replace(/_id$/i, "")        
+    .replace(/_/g, " ")          // replace underscores
+    .trim()
+    .replace(/\b\w/g, (c) => c.toUpperCase()); // capitalize
+};
+
+
   const [nfcToken, setNfcToken] = useState(initialNfcToken || "");
 
   useEffect(() => {
@@ -59,6 +72,20 @@ function PopUpNfc({ isOpen, onClose, initialValues }) {
     }
   };
 
+  const formatDate = (value) => {
+  if (!value) return value;
+
+  const date = new Date(value);
+  if (isNaN(date)) return value; 
+
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "2-digit",
+  });
+};
+
+
   return (
     <div className={classes.popup}>
       <div className={classes.popupContent}>
@@ -83,7 +110,10 @@ function PopUpNfc({ isOpen, onClose, initialValues }) {
         <div className={classes.popupDetails}>
           {Object.entries(rest).map(([key, value]) => (
             <p key={key}>
-              <strong>{key.replace(/^user_/, "")}:</strong> {String(value)}
+              <strong>{formatHeader(key)}:</strong> 
+              {value instanceof Date || !isNaN(Date.parse(value))
+                ? formatDate(value)
+                : String(value)}
             </p>
           ))}
           {nfcToken && (

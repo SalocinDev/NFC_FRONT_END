@@ -73,12 +73,11 @@ img{
     border-radius: 1rem;
 }
 
-/* ========================= */
-/* 📱 300px to 700px — Phones */
+
 @media (min-width: 300px) and (max-width: 700px) {
 
   .ProfileContainer {
-    width: 13rem;
+    width: 15rem;
     padding-bottom: 1rem;
     justify-self: left;
   }
@@ -101,8 +100,7 @@ img{
   }
 }
 
-/* ========================= */
-/* 📲 701px to 900px — Small Tablets / Large Phones */
+
 @media (min-width: 701px) and (max-width: 900px) {
 
   .ProfileContainer {
@@ -127,8 +125,6 @@ img{
   }
 }
 
-/* ========================= */
-/* 💻 901px to 1024px — Tablets / Small Laptops */
 @media (min-width: 901px) and (max-width: 1024px) {
 
   .ProfileContainer {

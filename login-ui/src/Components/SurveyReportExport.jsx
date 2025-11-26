@@ -3,126 +3,228 @@ import api from "../api/api";
 import { Button } from "../Components";
 import { saveAs } from "file-saver";
 import ExcelJS from "exceljs";
-import { PDFDownloadLink, Document, Page, Text, View, StyleSheet } from "@react-pdf/renderer";
+import { RiFileExcel2Line } from "react-icons/ri";
+import { FaRegFilePdf } from "react-icons/fa6";
+import { Document, Page, Text, View, StyleSheet, pdf } from "@react-pdf/renderer";
 import classes from "../CSS-Folder/SurveyReportExport.module.css";
+
 
 const SurveyReportExport = () => {
   const [services, setServices] = useState([]);
   const [selectedServices, setSelectedServices] = useState([]);
   const [range, setRange] = useState("today");
   const [customDates, setCustomDates] = useState({ start: "", end: "" });
-  const [reportData, setReportData] = useState({ details: [], summary: [] });
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    api.get("/survey/all-services").then((res) => setServices(res.data));
+    api.get("/services").then((res) => setServices(res.data));
   }, []);
 
+  // Helper to fetch report data
   const fetchReport = async () => {
-    const payload = {
-      serviceIds: selectedServices,
-      range,
-      startDate: customDates.start,
-      endDate: customDates.end,
-    };
-    const res = await api.post("/survey/report", payload);
-    setReportData(res.data);
+    if (selectedServices.length === 0) {
+      alert("Please select at least one service.");
+      return null;
+    }
+
+    setLoading(true);
+    try {
+      const payload = {
+        serviceIds: selectedServices,
+        range,
+        startDate: customDates.start,
+        endDate: customDates.end,
+      };
+      const res = await api.post("/survey/report", payload);
+      return res.data;
+    } catch (err) {
+      console.error("Error fetching report:", err);
+      alert("Failed to fetch report data.");
+      return null;
+    } finally {
+      setLoading(false);
+    }
   };
 
+  //Export to Excel
   const exportExcel = async () => {
+    const data = await fetchReport();
+    if (!data || data.summary.length === 0) {
+      alert("No data available for export.");
+      return;
+    }
+
     const workbook = new ExcelJS.Workbook();
     const sheet = workbook.addWorksheet("Survey Report");
 
-    // --- Header ---
-    sheet.mergeCells("A1", "C1");
+    // Title
+    sheet.mergeCells("A1", "H1");
     sheet.getCell("A1").value = `Survey Report (${range.toUpperCase()})`;
     sheet.getCell("A1").font = { bold: true, size: 16 };
     sheet.addRow([]);
 
-    // --- Summary Section ---
-    sheet.addRow(["Service", "Average Rating", "Total Responses"]);
-    reportData.summary.forEach((s) =>
-      sheet.addRow([s.library_service_name, s.avg_rating, s.total_responses])
-    );
-    sheet.addRow([]);
-    sheet.addRow([]);
+    // Header
+    sheet.addRow([
+      "Service",
+      "Avg Rating",
+      "Total Responses",
+      "1 Star",
+      "2 Stars",
+      "3 Stars",
+      "4 Stars",
+      "5 Stars",
+    ]);
+    sheet.getRow(sheet.lastRow.number).font = { bold: true };
 
-    // --- Detailed Data Section ---
-    sheet.addRow(["Service Name", "Rating", "Timestamp"]);
-    reportData.details.forEach((d) =>
-      sheet.addRow([d.library_service_name, d.feedback_rating, d.response_timestamp])
-    );
+    // Data
+    data.summary.forEach((s) => {
+      sheet.addRow([
+        s.library_service_name,
+        s.avg_rating,
+        s.total_responses,
+        s.rating_counts?.["1"] || 0,
+        s.rating_counts?.["2"] || 0,
+        s.rating_counts?.["3"] || 0,
+        s.rating_counts?.["4"] || 0,
+        s.rating_counts?.["5"] || 0,
+      ]);
+    });
 
     sheet.columns = [
       { width: 30 },
+      { width: 12 },
       { width: 15 },
-      { width: 25 },
+      { width: 10 },
+      { width: 10 },
+      { width: 10 },
+      { width: 10 },
+      { width: 10 },
     ];
 
     const buffer = await workbook.xlsx.writeBuffer();
     saveAs(new Blob([buffer]), `Survey_Report_${range}.xlsx`);
   };
 
-  // --- PDF Styles ---
+  // PDF Styles
   const styles = StyleSheet.create({
-    page: { padding: 20 },
-    title: { fontSize: 18, marginBottom: 10, fontWeight: "bold" },
-    sectionTitle: { marginTop: 10, marginBottom: 5, fontWeight: "bold" },
-    row: { marginBottom: 4 },
+    page: { padding: 20, fontSize: 11 },
+    title: { fontSize: 18, fontWeight: "bold", marginBottom: 10 },
+    table: {
+      display: "table",
+      width: "auto",
+      borderStyle: "solid",
+      borderWidth: 1,
+      borderRightWidth: 0,
+      borderBottomWidth: 0,
+      marginTop: 10,
+    },
+    tableRow: { flexDirection: "row" },
+    tableColHeader: {
+      width: "12.5%",
+      borderStyle: "solid",
+      borderWidth: 1,
+      borderLeftWidth: 0,
+      borderTopWidth: 0,
+      backgroundColor: "#eaeaea",
+      padding: 4,
+    },
+    tableCol: {
+      width: "12.5%",
+      borderStyle: "solid",
+      borderWidth: 1,
+      borderLeftWidth: 0,
+      borderTopWidth: 0,
+      padding: 4,
+    },
+    tableCell: { textAlign: "center" },
   });
 
-  const PdfDoc = () => (
+  // PDF Document
+  const PdfDoc = ({ data }) => (
     <Document>
       <Page style={styles.page}>
         <Text style={styles.title}>Survey Report ({range.toUpperCase()})</Text>
+        <View style={styles.table}>
+          <View style={styles.tableRow}>
+            <View style={styles.tableColHeader}><Text>Service</Text></View>
+            <View style={styles.tableColHeader}><Text>Avg</Text></View>
+            <View style={styles.tableColHeader}><Text>Total</Text></View>
+            <View style={styles.tableColHeader}><Text>1★</Text></View>
+            <View style={styles.tableColHeader}><Text>2★</Text></View>
+            <View style={styles.tableColHeader}><Text>3★</Text></View>
+            <View style={styles.tableColHeader}><Text>4★</Text></View>
+            <View style={styles.tableColHeader}><Text>5★</Text></View>
+          </View>
 
-        <Text style={styles.sectionTitle}>Summary</Text>
-        {reportData.summary.length === 0 && <Text>No summary data.</Text>}
-        {reportData.summary.map((s, i) => (
-          <Text key={i} style={styles.row}>
-            {s.library_service_name} — Avg: {s.avg_rating} ({s.total_responses} responses)
-          </Text>
-        ))}
-
-        <Text style={styles.sectionTitle}>Detailed Responses</Text>
-        {reportData.details.map((d, i) => (
-          <Text key={i} style={styles.row}>
-            {d.library_service_name}: Rating {d.feedback_rating} — {new Date(d.response_timestamp).toLocaleString()}
-          </Text>
-        ))}
+          {data.summary.map((s, i) => (
+            <View key={i} style={styles.tableRow}>
+              <View style={styles.tableCol}><Text style={styles.tableCell}>{s.library_service_name}</Text></View>
+              <View style={styles.tableCol}><Text style={styles.tableCell}>{s.avg_rating}</Text></View>
+              <View style={styles.tableCol}><Text style={styles.tableCell}>{s.total_responses}</Text></View>
+              <View style={styles.tableCol}><Text style={styles.tableCell}>{s.rating_counts?.["1"] || 0}</Text></View>
+              <View style={styles.tableCol}><Text style={styles.tableCell}>{s.rating_counts?.["2"] || 0}</Text></View>
+              <View style={styles.tableCol}><Text style={styles.tableCell}>{s.rating_counts?.["3"] || 0}</Text></View>
+              <View style={styles.tableCol}><Text style={styles.tableCell}>{s.rating_counts?.["4"] || 0}</Text></View>
+              <View style={styles.tableCol}><Text style={styles.tableCell}>{s.rating_counts?.["5"] || 0}</Text></View>
+            </View>
+          ))}
+        </View>
       </Page>
     </Document>
   );
+
+  // ✅ Fixed Export to PDF
+  const exportPDF = async () => {
+    const data = await fetchReport();
+    if (!data || data.summary.length === 0) {
+      alert("No data available for export.");
+      return;
+    }
+
+    try {
+      setLoading(true);
+      const blob = await pdf(<PdfDoc data={data} />).toBlob();
+      saveAs(blob, `Survey_Report_${range}.pdf`);
+    } catch (err) {
+      console.error("Error generating PDF:", err);
+      alert("Failed to generate PDF file.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className={classes.MainDiv}>
       <h2>Export Survey Report</h2>
 
-      {/* --- Service Selector --- */}
+      {/* Service Selector */}
+      <div>
       <div className={classes.FilterSection}>
-        <label>Select Services:</label>
-        <div className={classes.ServiceList}>
-          {services.map((svc) => (
-            <label key={svc.library_service_id}>
+        <div className={classes.ActionButtonsHeader}>
+        <label className={classes.switch}>
               <input
                 type="checkbox"
-                value={svc.library_service_id}
-                checked={selectedServices.includes(svc.library_service_id)}
+                checked={selectedServices.length === services.length && services.length > 0}
                 onChange={(e) => {
-                  const id = svc.library_service_id;
-                  setSelectedServices((prev) =>
-                    e.target.checked ? [...prev, id] : prev.filter((sid) => sid !== id)
-                  );
+                  if (e.target.checked) {
+                    // Select All
+                    setSelectedServices(services.map((s) => s.library_service_id));
+                  } else {
+                    // Clear All
+                    setSelectedServices([]);
+                  }
                 }}
               />
-              {svc.library_service_name}
-            </label>
-          ))}
-        </div>
-      </div>
+              
+              <span className={classes.slider}></span>
 
-      {/* --- Time Range Selector --- */}
-      <div className={classes.FilterSection}>
-        <label>Time Range:</label>
+              <span className={classes.SwitchLabel}>
+                {selectedServices.length === services.length && services.length > 0
+                  ? "Clear All"
+                  : "Select All"}
+              </span>
+          </label>
+          <div className={classes.FilterSection}>
         <select value={range} onChange={(e) => setRange(e.target.value)}>
           <option value="today">Today</option>
           <option value="week">This Week</option>
@@ -136,76 +238,88 @@ const SurveyReportExport = () => {
             <input
               type="date"
               value={customDates.start}
-              onChange={(e) => setCustomDates({ ...customDates, start: e.target.value })}
+              onChange={(e) =>
+                setCustomDates({ ...customDates, start: e.target.value })
+              }
             />
-            <span>to</span>
+            <p className={classes.DateRange}>to</p>
             <input
               type="date"
               value={customDates.end}
-              onChange={(e) => setCustomDates({ ...customDates, end: e.target.value })}
+              onChange={(e) =>
+                setCustomDates({ ...customDates, end: e.target.value })
+              }
             />
           </div>
         )}
       </div>
-
-      {/* --- Buttons --- */}
-      <div className={classes.ActionButtons}>
-        <Button name="Fetch Report" use="Primary" onClick={fetchReport} />
-        {reportData.details.length > 0 && (
-          <>
-            <Button name="Export to Excel" use="Success" onClick={exportExcel} />
-            <PDFDownloadLink document={<PdfDoc />} fileName={`Survey_Report_${range}.pdf`}>
-              {({ loading }) => (
-                <Button name={loading ? "Generating..." : "Export to PDF"} use="Warning" />
-              )}
-            </PDFDownloadLink>
-          </>
-        )}
+      </div>
+      </div>
+        <div className={classes.ServiceList}>        
+          {services.map((svc) => (
+            <label key={svc.library_service_id}>
+              <input
+                type="checkbox"
+                value={svc.library_service_id}
+                checked={selectedServices.includes(svc.library_service_id)}
+                onChange={(e) => {
+                  const id = svc.library_service_id;
+                  setSelectedServices((prev) =>
+                    e.target.checked
+                      ? [...prev, id]
+                      : prev.filter((sid) => sid !== id)
+                  );
+                }}
+              />
+              {svc.library_service_name}
+            </label>
+          ))}
+        </div>
       </div>
 
-      {/* --- Preview Table --- */}
-      {reportData.details.length > 0 && (
-        <>
-          <h3>Summary</h3>
-          <table className={classes.ReportTable}>
-            <thead>
-              <tr>
-                <th>Service</th>
-                <th>Average Rating</th>
-                <th>Total Responses</th>
-              </tr>
-            </thead>
-            <tbody>
-              {reportData.summary.map((row, i) => (
-                <tr key={i}>
-                  <td>{row.library_service_name}</td>
-                  <td>{row.avg_rating}</td>
-                  <td>{row.total_responses}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+      {/* Time Range */}
+      {/* Export Buttons */}
+      <div className={classes.ActionButtons}>
+        <Button
+          name={
+            loading 
+              ? "Generating..." 
+              : (
+                  <>
+                    <RiFileExcel2Line size={25} />
+                    <span>Export to Excel</span>
+                  </>
+                )
+          }
+          use="ExportExcel"
+          disabled={loading}
+          onClick={exportExcel}
+        />
+        <Button
+          name={
+            loading 
+              ? "Generating..." 
+              : (
+                  <>
+                    <FaRegFilePdf size={25} />
+                    <span>Export to PDF</span>
+                  </>
+                )
+          }
+          use="ExportPDF"
+          disabled={loading}
+          onClick={exportPDF}
+        />
 
-          <h3>Detailed Responses</h3>
-          <table className={classes.ReportTable}>
-            <thead>
-              <tr>
-                <th>Service</th>
-                <th>Rating</th>
-                <th>Timestamp</th>
-              </tr>
-            </thead>
-            <tbody>
-              {reportData.details.map((row, i) => (
-                <tr key={i}>
-                  <td>{row.library_service_name}</td>
-                  <td>{row.feedback_rating}</td>
-                  <td>{new Date(row.response_timestamp).toLocaleString()}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </>
+        
+      </div>
+
+      {/* Loading Overlay */}
+      {loading && (
+        <div className={classes.LoadingOverlay}>
+          <div className={classes.Spinner}></div>
+          <p>Generating report, please wait...</p>
+        </div>
       )}
     </div>
   );

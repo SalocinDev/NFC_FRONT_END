@@ -12,7 +12,7 @@ function PopUpForm({ isOpen, onClose, columns = [], onSubmit, initialValues = {}
   const [availableUsers, setAvailableUsers] = useState([]);
   const [bookCategories, setBookCategories] = useState([]);
   const [borrowingID, setBorrowingID] = useState([]);
-  
+
   const prettyLabels = {
     book_id_fk: "Book",
     user_id_fk: "User",
@@ -38,6 +38,7 @@ function PopUpForm({ isOpen, onClose, columns = [], onSubmit, initialValues = {}
       setAvailableBooks([]);
       setAvailableUsers([]);
       setBookCategories([]);
+      setBorrowingID([]);
 
       api.get("/books/available-books")
         .then((res) => {
@@ -58,10 +59,10 @@ function PopUpForm({ isOpen, onClose, columns = [], onSubmit, initialValues = {}
         .catch((err) => console.error("Error loading book categories", err));
 
       api.get("/borrowing/borrowing-id")
-      .then((res) => {
-        if (res.data.success) setBorrowingID(res.data.data);
-      })
-      .catch((err) => console.error("Error loading borrowed books", err));
+        .then((res) => {
+          if (res.data.success) setBorrowingID(res.data.data);
+        })
+        .catch((err) => console.error("Error loading borrowed books", err));
     }
   }, [isOpen, initialValues]);
 
@@ -83,7 +84,7 @@ function PopUpForm({ isOpen, onClose, columns = [], onSubmit, initialValues = {}
       <div className={classes.popup}>
         <div className={classes.FormContainer}>
           <form onSubmit={handleSubmit}>
-            
+
             {columns.map((col) => {
               const isDateField = col.toLowerCase().includes("date") || col.toLowerCase().includes("year");
               const isStatus = col.toLowerCase().includes("status")
@@ -94,11 +95,10 @@ function PopUpForm({ isOpen, onClose, columns = [], onSubmit, initialValues = {}
                   {col === "book_id_fk" ? (
                     <>
                       <select
-                        
                         required
                         value={formData[col] || ""}
                         onChange={(e) => handleChange(e, col)}
-                        >
+                      >
                         <option value="">-- Select a Book --</option>
                         {availableBooks.map((book) => (
                           <option key={book.book_id} value={book.book_id}>
@@ -151,14 +151,14 @@ function PopUpForm({ isOpen, onClose, columns = [], onSubmit, initialValues = {}
                       ))}
                     </select>
                   ) : col === "book_cover_img" ? (
-                    <div className={classes.FileInput}> 
+                    <div className={classes.FileInput}>
                       <input
                         required
                         type="file"
                         accept="image/*"
                         onChange={(e) => handleChange(e, col)}
                       />
-                    </div>                  
+                    </div>
                   ) : isDateField ? (
                     <input
                       required
@@ -181,23 +181,21 @@ function PopUpForm({ isOpen, onClose, columns = [], onSubmit, initialValues = {}
                       value={formData[col] || ""}
                       onChange={(e) => handleChange(e, col)}
                     />
-                  ) }
+                  )}
 
                 </div>
               );
             })}
-          
-              <Button use="CloseForm" 
-              name={<><GrFormClose size={25} /><span>Close</span></>} 
+
+            <Button use="CloseForm"
+              name={<><GrFormClose size={25} /><span>Close</span></>}
               onClick={onClose} />
-            
-            
-              <Button 
-              use="SaveForm" 
-              name={<><span>Save</span><TiPin size={25} color="red"/></>}  
+
+            <Button
+              use="SaveForm"
+              name={<><span>Save</span><TiPin size={25} color="red" /></>}
               type="submit" />
-            
-      
+
           </form>
         </div>
       </div>

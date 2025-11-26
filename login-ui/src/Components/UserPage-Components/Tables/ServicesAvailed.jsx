@@ -40,14 +40,17 @@ function ServicesAvailed() {
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
          />
-      <Table records={searchTerm ? filteredRecords : records}
+      <Table 
+      records={searchTerm ? filteredRecords : records}
       containerClass={classes.ServicesTable}
       mobilePageSize={3}
       mobileIcons={{
-      service_id: <IoMdTime />,
-      service_name: <IoMdTime />,
-      date: <IoMdTime />,
-  }}  />
+        service_id: <IoMdTime />,
+        service_name: <IoMdTime />,
+        date: <IoMdTime />,
+      }}
+      hiddenColumns={["user_name"]}
+      />
       
       </div>
     </div>

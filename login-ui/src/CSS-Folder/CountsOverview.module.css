@@ -1,0 +1,27 @@
+.CountCardRow {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.CountCard {
+  flex: 1;
+  background: white;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  text-align: center;
+}
+
+.CountCard h4 {
+  margin: 0;
+  font-size: 16px;
+  color: #444;
+}
+
+.CountCard p {
+  margin-top: 8px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #222;
+}

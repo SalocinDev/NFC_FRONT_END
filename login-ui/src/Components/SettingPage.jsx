@@ -140,25 +140,11 @@ function SettingPage() {
           <Button name="Update Account" use="ConfirmPassButton" onClick={handleUpdateAcc} />
         </div>
 
-        <h1>LOCATION SETTING</h1>
-
-    
-          
+        {/* <h1>LOCATION SETTING</h1>
           <Input type="text" label="Address" value={Address} onChange={(e) => setAddress(e.target.value)} />
-  
-
-       
-     
           <Input type="text" label="City"  value={City} onChange={(e) => setCity(e.target.value)} />
-    
-
-       
-          
           <Input type="text" label="Zip Code"  value={Zip} onChange={(e) => setZip(e.target.value)} />
-    
-       
-          <Button name="Update Address" use="UpdateProfileButton" onClick={handleUpdateAddress}/>
-          
+          <Button name="Update Address" use="UpdateProfileButton" onClick={handleUpdateAddress}/> */}
       </div>
     </div>
   );
