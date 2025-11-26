@@ -21,7 +21,7 @@ function UserManagement() {
             try {
                 const [usersRes, categoriesRes] = await Promise.all([
                     api.get("/user/"),
-                    api.get("/user/categories/admin") // returns { success, data }
+                    api.get("/user/categories/") // returns { success, data }
                 ]);
 
                 // Map categories by ID

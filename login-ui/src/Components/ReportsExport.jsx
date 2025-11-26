@@ -10,7 +10,6 @@ import { Document, Page, Text, View, StyleSheet, pdf } from "@react-pdf/renderer
 import { saveAs } from "file-saver";
 import { FaRegFilePdf } from "react-icons/fa6";
 
-
 function ReportsExportPage() {
   const [services, setServices] = useState([]);
   const [selectedServices, setSelectedServices] = useState([]);
