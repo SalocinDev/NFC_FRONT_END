@@ -69,22 +69,31 @@ function UserManagement() {
     };
 
     const handleDeleteConfirm = async () => {
-        try {
-            await api.delete("/user/", { data: selectedRowsData });
-            // console.log(`Deleting Users: ${selectedRowsData}`);
+    if (!selectedRowsData || selectedRowsData.length === 0) {
+        toast.error("No user selected.");
+        return;
+    }
 
-            setUserRecords((prev) => prev.filter(u => !selectedRowsData.includes(u.user_id)));
+    try {
+        const res = await api.delete("/user/", { data: selectedRowsData });
+        if (res.data?.success) {
+            setUserRecords(prev => prev.filter(u => !selectedRowsData.includes(u.user_id)));
 
             setSelectedRowsData([]);
             setSelectedRow(null);
             setIsDeleteConfirmOpen(false);
 
-            toast.success("Selected user(s) deleted successfully");
-        } catch (err) {
-            console.error("Failed to delete users:", err);
-            toast.error("Failed to delete users");
+            toast.success(res.data.message || "Selected user(s) deleted successfully");
+        } else {
+            toast.error(res.data?.message || "Failed to delete user(s)");
         }
-    };
+    } catch (err) {
+        console.error("Failed to delete users:", err);
+        const msg = err.response?.data?.message || err.message || "Unknown error";
+        toast.error(`Failed to delete user(s): ${msg}`);
+    }
+};
+
 
     return (
         <div>
