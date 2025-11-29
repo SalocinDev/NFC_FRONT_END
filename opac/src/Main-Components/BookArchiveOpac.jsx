@@ -37,7 +37,7 @@ function BookArchiveOpac() {
   return (
     <div className={classes.MainBody}>
       <div className={classes.BookContainer}>
-        <div className={classes.SampleLangTo}>
+        <div className={classes.MainRender}>
           <main className={classes.RenderComponents}>
             {renderContent()}
           </main>

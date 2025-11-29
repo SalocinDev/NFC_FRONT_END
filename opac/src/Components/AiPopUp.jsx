@@ -17,8 +17,8 @@ function AiPopUP() {
     
       {showPopup && (
         <div className={classes.popup}>
-          <h4>AI NI TABILID</h4>
-          <p>Sample lang to idk what to put</p>
+          <h4>MCL AI</h4>
+          <p></p>
           <input type="text" placeholder="Type something..." />
           <button onClick={() => alert("Submitted!")}>Submit</button>
         </div>
@@ -29,4 +29,4 @@ function AiPopUP() {
 
 export default AiPopUP;
 
-/*DITO ILALAGAY YUNG AI POPUP, MABABAGO PA TO LAHAT ENTIRELY SAMPLE LNG TO*/
+

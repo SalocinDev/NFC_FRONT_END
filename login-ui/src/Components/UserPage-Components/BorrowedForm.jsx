@@ -26,7 +26,7 @@ function BorrowedForm() {
 
   return (
     <div>
-      <div className={classes.samplelang}>
+      <div className={classes.ButtonContainer}>
         <Button
           name="Borrowed Books"
           use="BorrowedBooks"
@@ -35,7 +35,7 @@ function BorrowedForm() {
         />
         <Button
           name="Returned Books"
-          use="ReturnedBooks"
+          use="ReturnedBooksUser"
           onClick={() => setActive("ReturnedBooks")}
           isActive={active === "ReturnedBooks"}   
         />

@@ -31,7 +31,7 @@ function UserDashboard() {
 
   return (
    
-    <div className={classes.samplelang}>
+    <div className={classes.MainRender}>
       <main className={classes.RenderComponents}>
           {renderTableContent()}
       </main>

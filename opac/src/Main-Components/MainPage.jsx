@@ -130,7 +130,7 @@ function MainPage() {
       {/* Main Content */}
       <div className={classes.MainDiv}>
         <div className={classes.BookContainer}>
-          <div className={classes.SampleLangTo}>
+          <div className={classes.MainRender}>
             <main className={classes.RenderComponents}>{renderContent()}</main>
 
           </div>

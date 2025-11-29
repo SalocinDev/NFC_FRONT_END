@@ -19,7 +19,7 @@ function Statistics() {
 
   return (
     <div>
-      <div className={classes.samplelang}>
+      <div className={classes.ButtonContainer}>
         <Button 
           name="Services Usage" use="ServicesChart" 
           onClick={() => setActive("ServicesChart")}
@@ -45,7 +45,7 @@ function Statistics() {
         />
       </div>
 
-      <div className={classes.SampleLangTo}>
+      <div className={classes.RenderMain}>
         <main className={classes.RenderComponents}>
           {renderContent()}
         </main>

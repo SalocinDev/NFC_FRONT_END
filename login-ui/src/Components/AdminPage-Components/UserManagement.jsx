@@ -97,7 +97,7 @@ function UserManagement() {
 
     return (
         <div>
-            <div className={classes.samplelang}>
+            <div className={classes.ButtonContainer}>
                 <SearchID placeholder="Search by User Name" />
                 <Button use="RegisterUser" name={<TiUserAddOutline size={24} />} onClick={handleOpenRegister} />
                 <Button use="DeleteUser" name={<TiUserDeleteOutline size={25} />} onClick={handleDeleteUser} />

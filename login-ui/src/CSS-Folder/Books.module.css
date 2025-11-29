@@ -115,7 +115,7 @@ a:hover{
   text-decoration: none;
 }
 
-.samplelang{
+.ButtonContainer{
   display: flex;
   flex-direction: block;
   margin-bottom: 2rem;

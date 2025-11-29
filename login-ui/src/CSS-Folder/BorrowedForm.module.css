@@ -179,8 +179,6 @@ footer{
   font-size: 2rem;
 }
 
-/* mga inaayos */
-
 .RightTopbar {
   display: flex;
   flex-direction: column;
@@ -226,7 +224,7 @@ footer{
 
 @media (min-width: 300px) and (max-width: 900px){
 
-  .samplelang{
+  .ButtonContainer{
     margin: 0;
     padding: 0;
     padding-left: 0.5rem;

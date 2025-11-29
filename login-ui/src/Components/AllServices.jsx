@@ -32,7 +32,7 @@ function AllServices() {
 
   return (
     <div>
-      <div className={classes.samplelang}>
+      <div className={classes.ButtonContainer}>
         <Button 
           name="Library Service" use="GraphButton" 
           onClick={() => setActive("SurveyReport")}

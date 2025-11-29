@@ -51,13 +51,8 @@ function AdminPage() {
       setCollapsed(true); 
     }
   }, []);
-
   
-    
-
-  /* eto yung bago: */
-  
-  const [active, setActive] = useState("Dashboard"); // default section
+  const [active, setActive] = useState("Dashboard"); 
 
   const renderContent = () => {
     switch (active) {
@@ -87,7 +82,7 @@ function AdminPage() {
     try {
       await logOut();
       navigate("/");
-      // return toast.success("Logout Complete")
+      
     } catch (error) {
       return toast.error("Logout Error")
     }
@@ -106,7 +101,7 @@ function AdminPage() {
             <li>
               <Button 
                 name={<><MdDashboard size={24} /><span>Home</span></>} 
-                use="Sample" 
+                use="SidebarButton" 
                 onClick={() => setActive("Dashboard")} 
                 isActive={active === "Dashboard"}
               />
@@ -114,7 +109,7 @@ function AdminPage() {
             <li>
               <Button 
                 name={<><MdBook size={24} /><span>Books</span></>} 
-                use="Sample" 
+                use="SidebarButton" 
                 onClick={() => setActive("Books")} 
                 isActive={active === "Books"}
               />
@@ -122,7 +117,7 @@ function AdminPage() {
             <li>
               <Button 
                 name={<><MdPeople size={24} /><span>Users</span></>} 
-                use="Sample" 
+                use="SidebarButton" 
                 onClick={() => setActive("Users")} 
                 isActive={active === "Users"}
               />
@@ -130,7 +125,7 @@ function AdminPage() {
             <li>
               <Button 
                 name={<><MdReport size={24} /><span>Reports</span></>} 
-                use="Sample" 
+                use="SidebarButton" 
                 onClick={() => setActive("Reports")} 
                 isActive={active === "Reports"}
               />
@@ -138,7 +133,7 @@ function AdminPage() {
             <li>
               <Button 
                 name={<><FaWifi size={24} /><span>Wi-Fi</span></>} 
-                use="Sample" 
+                use="SidebarButton" 
                 onClick={() => setActive("WiFi")} 
                 isActive={active === "Wifi"}
               />
@@ -146,7 +141,7 @@ function AdminPage() {
             <li>
               <Button 
                 name={<><IoDocumentText size={24} /><span>Services</span></>} 
-                use="Sample" 
+                use="SidebarButton" 
                 onClick={() => setActive("Logs")} 
                 isActive={active === "Logs"}
               />
@@ -154,7 +149,7 @@ function AdminPage() {
             <li>
               <Button 
                 name={<><RiSurveyFill  size={24} /><span>Survey</span></>} 
-                use="Sample" 
+                use="SidebarButton" 
                 onClick={() => setActive("SurveyReport")} 
                 isActive={active === "SurveyReport"}
               />
@@ -162,53 +157,56 @@ function AdminPage() {
           </ul>
 
            <Button 
-                     name={<><MdLogout size={24} /><span>Logout</span></>} 
-                     use="Sample" 
-                     onClick={handlePopupConfirmOpen}
-                   />
+              name={<><MdLogout size={24} /><span>Logout</span></>} 
+              use="SidebarButton" 
+              onClick={handlePopupConfirmOpen}
+            />
       </aside>
 
-        {collapsed && (
-                <button 
-                  className={classes.ToggleButton}
-                  onClick={() => setCollapsed(false)}
-                >
-                  <MdMenu size={22} color="#101540" />
-                </button>
-              )}
+      {collapsed && (
+        <button 
+        className={classes.ToggleButton}
+        onClick={() => setCollapsed(false)}
+        >
+          <MdMenu size={22} color="#101540" />
+        </button>
+      )}
       
       <div className={classes.NavBar}>
         
-        <div className={classes.LeftTopbar}>
-          <div className={classes.iconLink}>
+      <div className={classes.LeftTopbar}>
+        <div className={classes.iconLink}>
             {profileSrc ? (
               <img src={profileSrc} alt="Profile" className={classes.ChogogImage}/>
             ) : (
               <FaUser className={classes.userIcon} size={32} />
             )}
-          </div>
-          <div className={classes.Contents}>
-            <div className={classes.UserName}>{storedUser?.firstName || storedUser?.staff_firstname || "Test"}</div>
-            <div className={classes.UserRole}>{storedUser?.userID || storedUser?.staff_id || "Test"}</div>
-          </div>
         </div>
+
+        <div className={classes.Contents}>
+          <div className={classes.UserName}>{storedUser?.firstName || storedUser?.staff_firstname || "Test"}</div>
+          <div className={classes.UserRole}>{storedUser?.userID || storedUser?.staff_id || "Test"}</div>
+        </div>
+      </div>
         
-        <div className={classes.RightTopbar}>
-          <div className={classes.TimeGear}>
-            <span><LiveClock/></span>
-            <NavLink onClick={() => setActive("SettingPage")}>
-            <FaCog className={classes.GearIcon} size={30} />
-            </NavLink>
-          </div>
-          <div className={classes.Date}>{currentDate}</div>
+      <div className={classes.RightTopbar}>
+        <div className={classes.TimeGear}>
+          <span><LiveClock/></span>
+          <NavLink onClick={() => setActive("SettingPage")}>
+          <FaCog className={classes.GearIcon} size={30} />
+          </NavLink>
         </div>
+        <div className={classes.Date}>{currentDate}</div>
+      </div>
         
       </div>
-      <div className={classes.SampleLangTo}>
-      <main className={classes.RenderComponents}>
-        {renderContent()}
-      </main>
+
+      <div className={classes.MainRender}>
+        <main className={classes.RenderComponents}>
+          {renderContent()}
+        </main>
       </div>
+
       <PopUpConfirm
         isOpen={isPopupConfirmOpen}
         onClose={() => setIsPopupConfirmOpen(false)}

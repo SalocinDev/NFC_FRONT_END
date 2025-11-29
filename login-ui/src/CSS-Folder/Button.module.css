@@ -575,7 +575,8 @@
 .CountButton,
 .SurveyFeedback,
 .ServicesChart,
-.ReturnedBook{
+.ReturnedBook,
+.ReturnedBooksUser{
   border: none;
   padding: 0.5rem 4rem;
   background-color: #E3E3E3;
@@ -592,7 +593,8 @@
 .CountButton:hover,
 .SurveyFeedback:hover,
 .ServicesChart:hover,
-.ReturnedBook:hover{
+.ReturnedBook:hover,
+.ReturnedBooksUser:hover{
   background-color:#101540;
   color: white;
   transition: 0.4s;
@@ -610,7 +612,8 @@
 .Books.active,
 .CountButton.active,
 .SurveyFeedback.active,
-.ServicesChart.active{
+.ServicesChart.active,
+.ReturnedBooksUser.active{
   background-color:#101540;
   color: white;
 } 
@@ -628,7 +631,8 @@
 
 .Counts,
 .ReturnedBook,
-.CountButton {
+.CountButton,
+.ReturnedBooksUser {
   border-top-right-radius: 2rem;
   border-bottom-right-radius: 2rem;
 }
@@ -655,8 +659,7 @@
  margin-left: 5vw;
 }
 
-/* The buttons for adminpage sidebar */
-.Sample,
+.SidebarButton,
 .BurgerIcon{
   width: 100%;
   height: 5vh;
@@ -665,9 +668,9 @@
   border-style: none;
   color: white;
   cursor: pointer;
-  align-items: center; /* vertically center icon and text */
-  gap: 0.5rem;        /* space between icon and text */
-  justify-content: flex-start; /* keep text aligned to left */
+  align-items: center; 
+  gap: 0.5rem;       
+  justify-content: flex-start; 
   padding: 0.5rem 1rem;
   display: flex;
 }
@@ -857,7 +860,7 @@
  color: #101540;
 }
 
-.Sample:hover{
+.SidebarButton:hover{
   width: 100%;
   height: 5vh;
   margin-bottom: 0.5rem;
@@ -868,7 +871,7 @@
   transition: 0.5s;
 }
 
-.Sample.active{
+.SidebarButton.active{
   background-color: white;
   color: #101540;
 }
@@ -900,7 +903,7 @@
   }
   
 
-  .Sample{
+  .SidebarButton{
     justify-content: center;
     margin: 0;
   }
@@ -1111,12 +1114,12 @@
   margin-top: 2vh;
   
 }
-  .Sample{
+  .SidebarButton{
     justify-content: center;
     margin: 0;
   }
 
-  .Sample span{
+  .SidebarButton span{
     display: none;
   }
   
@@ -1165,12 +1168,12 @@
   display: none;
   }
 
-  .Sample{
+  .SidebarButton{
     justify-content: center;
     margin: 0;
   }
 
-  .Sample span{
+  .SidebarButton span{
     display: none;
   }
 

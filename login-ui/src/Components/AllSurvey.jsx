@@ -31,7 +31,7 @@ function AllSurvey() {
 
   return (
     <div>
-      <div className={classes.samplelang}>
+      <div className={classes.ButtonContainer}>
         <Button 
           name="Survey Graph" use="GraphButton" 
           onClick={() => setActive("SurveyReport")}
@@ -43,7 +43,6 @@ function AllSurvey() {
           onClick={() => setActive("SurveyExport")}
           isActive={active === "SurveyExport"} 
         />
-
       </div>
 
       <div className={classes.TableContainer}>

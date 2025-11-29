@@ -89,13 +89,13 @@ function UserPage() {
           use="BurgerIcon" 
           onClick={() => setCollapsed(!collapsed)}    
         />
-        <img src={WlogoSidebar} alt="Logo" className={classes.WSidebar} />
+        <img src={WlogoSidebar} alt="Logo"/>
 
         <ul className={classes.ulstyling}>
           <li>
             <Button 
               name={<><MdDashboard size={24} /><span>Home</span></>} 
-              use="Sample" 
+              use="SidebarButton" 
               onClick={() => setActive("UserDashboard")} 
               isActive={active === "UserDashboard"}   
             />
@@ -103,7 +103,7 @@ function UserPage() {
           <li>
             <Button 
               name={<><FaBookOpen size={24} /><span>Borrowed Books</span></>} 
-              use="Sample" 
+              use="SidebarButton" 
               onClick={() => setActive("BorrowedForm")}
               isActive={active === "BorrowedForm"}   
             />
@@ -111,7 +111,7 @@ function UserPage() {
           <li>
             <Button 
               name={<><FaCompass size={24} /><span>Services Used</span></>} 
-              use="Sample" 
+              use="SidebarButton" 
               onClick={() => setActive("ServicesAvailed")}
               isActive={active === "ServicesAvailed"}    
             />
@@ -119,7 +119,7 @@ function UserPage() {
           <li>
             <Button 
               name={<>< RiSurveyFill size={24} /><span>Survey Form</span></>} 
-              use="Sample" 
+              use="SidebarButton" 
               onClick={() => setActive("SurveyPage")}
               isActive={active === "SurveyPage"}    
             />
@@ -127,7 +127,7 @@ function UserPage() {
            <li>
             <Button 
               name={<>< FaWifi size={24} /><span>Wi-Fi</span></>} 
-              use="Sample" 
+              use="SidebarButton" 
               onClick={() => setActive("WifiPage")}
               isActive={active === "WifiPage"}    
             />
@@ -136,7 +136,7 @@ function UserPage() {
 
         <Button 
           name={<><MdLogout size={24} /><span>Logout</span></>} 
-          use="Sample" 
+          use="SidebarButton" 
           onClick={handlePopupConfirmOpen}
         />
 
@@ -180,7 +180,7 @@ function UserPage() {
         </div>
       </div>
      
-      <div className={classes.SampleLangTo}>
+      <div className={classes.MainRender}>
         <main className={classes.RenderComponents}>
           {renderContent()}
         </main>
